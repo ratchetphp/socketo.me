@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Ratchet - WebSockets for PHP | Home</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="WebSocket development in PHP">
+    <meta name="author" content="Chris Boden">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>

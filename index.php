@@ -23,7 +23,7 @@
 
         <div class="span-one-third">
           <h2>Decoupled</h2>
-           <p>Ratchet provides many components to pick and choose from for you to use. 
+           <p>Ratchet provides many components for you to pick and choose from.</p>
            <p>For example, Ratchet comes with a Server component; a CLI based I/O server written in PHP...you really don't want to use that for a live site - but it makes development/testing easy. </p>
            <p>When it comes time to go live, take out the five lines of code that implement Server, and hitch your application on to something more robust, like Nginx.</p>
           <p><a class="btn" href="#">View details &raquo;</a></p>
