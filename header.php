@@ -12,12 +12,18 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
-      body {
-        padding-top: 60px;
-      }
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+
+        .nobr { white-space: nowrap; }
+
+        .navbar .container { margin-left: 150px; }
     </style>
+    <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="favicon.ico">
@@ -28,17 +34,24 @@
 
   <body>
 
-    <div class="topbar">
-      <div class="topbar-inner">
-        <div class="container-fluid">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
           <a class="brand" href="/">Ratchet</a>
-          <ul class="nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/docs">Documentation</a></li>
-            <li><a href="/api/namespace-Ratchet.html">API Docs</a></li>
-            <li><a href="/demos">Demos</a></li>
-            <li><a href="https://groups.google.com/forum/#!forum/ratchet-php">Google Groups</a></li>
-          </ul>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/docs">Documentation</a></li>
+              <li><a href="/api/namespace-Ratchet.html">API Docs</a></li>
+              <li><a href="/demos">Demos</a></li>
+              <li><a href="https://groups.google.com/forum/#!forum/ratchet-php">Google Groups</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
