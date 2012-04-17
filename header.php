@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+    require_once __DIR__ . '/bootstrap.php';
+?><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -45,11 +47,7 @@
           <a class="brand" href="/">Ratchet</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="/">Home</a></li>
-              <li><a href="/docs">Documentation</a></li>
-              <li><a href="/api/namespace-Ratchet.html">API Docs</a></li>
-              <li><a href="/demos">Demos</a></li>
-              <li><a href="https://groups.google.com/forum/#!forum/ratchet-php">Google Groups</a></li>
+                <?php $renderMenu('main'); ?>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
