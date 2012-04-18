@@ -16,9 +16,11 @@
       , 'docs' => array(
             'init' => array(
                 '_title' => 'Getting Started'
-              , '/docs/install'     => 'Installation'
-              , '/docs/hello-world' => 'Hello World!'
-              , '/docs/design'      => 'Design Philosophy'
+              , '/docs/design'         => 'Design Philosophy'
+              , '/docs/flow'           => 'Process Flow'
+              , '/docs/install'        => 'Installation'
+              , '/docs/hello-world'    => 'Hello World!'
+              , '/docs/hello-universe' => 'Hello Universe!'
             )
 
           , 'components' => array(
@@ -32,6 +34,11 @@
         )
 
       , 'resources' => array(
+//            '_title' => 'Resources'
+            'https://groups.google.com/forum/#!forum/ratchet-php' => 'Mailing List'
+          , 'https://github.com/cboden/Ratchet/issues' => 'Submit an Issue'
+          , 'https://github.com/cboden/Ratchet' => 'Contribute'
+
         )
     );
 

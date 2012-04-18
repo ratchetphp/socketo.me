@@ -4,7 +4,7 @@
 ?>
 
         <div class="span9">
-            <h2>Creating an Application</h2>
+            <h2>Creating <em>Your</em> First Application</h2>
 
             <section>
                 <h3>Goal</h3>
