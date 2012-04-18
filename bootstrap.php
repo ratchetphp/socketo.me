@@ -16,9 +16,9 @@
       , 'docs' => array(
             'init' => array(
                 '_title' => 'Getting Started'
-              , '/docs/install' => 'Installation'
-              , '/docs/about'   => 'Understanding Flow'
-              , '/docs/design'  => 'Design Philosophy'
+              , '/docs/install'     => 'Installation'
+              , '/docs/hello-world' => 'Hello World!'
+              , '/docs/design'      => 'Design Philosophy'
             )
 
           , 'components' => array(
