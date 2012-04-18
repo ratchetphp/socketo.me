@@ -170,6 +170,54 @@ class Chat implements MessageComponentInterface {
 }</pre>
         </section>
 
+        <section>
+            <h3>Running It</h3>
+
+            <p>Complete, let's run it and test it. Open up three terminal windows, typing:</p>
+
+            <pre>$ php chat-server.php</pre>
+            <pre>$ telnet localhost 1000</pre>
+            <pre>$ telnet localhost 1000</pre>
+
+            <p>In each of the telnet windows, type a message ("Hello World!") and see it appear in the other!</p>
+        </section>
+
+        <section>
+            <h3>Next Steps</h3>
+
+            <p>
+                Now that we have a basic working Chat application, let's make that work in a web browser (Chrome, FireFox, or Safari [for now]).
+                First, let's go back to our <em>chat-server.php</em> script. 
+                We're going to utilize another component of <em>Ratchet</em>; the WebSocketComponent:
+            </p>
+
+            <pre>&lt;?php
+use Ratchet\Component\Server\IOServerComponent;
+use Ratchet\Component\WebSocket\WebSocketComponent;
+use MyApp\Chat;
+
+    $server = new IOServerComponent(
+        new WebSocketComponent(
+            new Chat()
+        )
+    );
+
+    $server->run(8000);
+</pre>
+
+            <p>Now, open a couple web browser windows and open the a javascript console or a page with the following javascript:</p>
+
+            <pre>&lt;script&gt;
+    var conn = new WebSocket('http://localhost:8000');
+    conn.onmessage = function(data) {
+        console.log(data);
+    };
+
+    // Later, at your leisure:
+    conn.send('Hello World!');
+&lt;/script&gt;
+        </section>
+
         </div><!--/span-->
       </div><!--/row-->
 
