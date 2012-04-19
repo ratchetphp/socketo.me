@@ -207,7 +207,7 @@ use MyApp\Chat;
 
             <p>Now, open a couple web browser windows and open the a javascript console or a page with the following javascript:</p>
 
-            <pre class="prettyprint">&lt;script&gt;
+            <pre class="prettyprint lang-js">&lt;script&gt;
     var conn = new WebSocket('http://localhost:8000');
     conn.onmessage = function(data) {
         console.log(data);
