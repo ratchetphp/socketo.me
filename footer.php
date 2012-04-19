@@ -13,6 +13,12 @@
     <script src="/assets/js/bootstrap-collapse.js"></script>
     <script src="/assets/js/bootstrap-carousel.js"></script>
     <script src="/assets/js/bootstrap-typeahead.js"></script>
-
+    <script src="/assets/js/google-code-prettify/prettify.js"></script>
+    
+    <script>
+    $(function() {
+        prettyPrint();
+    });
+    </script>
   </body>
 </html>

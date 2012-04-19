@@ -34,7 +34,7 @@
 
                     <p>Given those triggers, our class will implement the <a href="/api/class-Ratchet.Component.MessageComponentInterface.html">MessageComponentInterface</a>:</p>
 
-                    <pre>&lt;?php
+                    <pre class="prettyprint">&lt;?php
 namespace MyApp;
 use Ratchet\Component\MessageComponentInterface;
 use Ratchet\Resource\ConnectionInterface;
@@ -72,7 +72,7 @@ class Chat implements MessageComponentInterface {
                 This is the script/file we will call from the command line to launch our application. 
             </p>
 
-        <pre>&lt;?php
+        <pre class="prettyprint">&lt;?php
 use Ratchet\Component\Server\IOServerComponent;
 use MyApp\Chat;
 
@@ -95,7 +95,7 @@ use MyApp\Chat;
                 Now, we can run it with the following command in your terminal:
             </p>
 
-            <pre>$ php chat-server.php</pre>
+            <pre class="prettyprint">$ php chat-server.php</pre>
 
             <p>The script should now execute, taking possession of your terminal. You can cancel the script, as we're not quite finished yet.</p>
         </section>
@@ -119,7 +119,7 @@ use MyApp\Chat;
                 These storage containers are built to store objects, which is what the incoming <em>Connections</em> are. 
             </p>
 
-            <pre>&lt;?php
+            <pre class="prettyprint">&lt;?php
 namespace MyApp;
 use Ratchet\Component\MessageComponentInterface;
 use Ratchet\Resource\ConnectionInterface;
@@ -191,7 +191,7 @@ class Chat implements MessageComponentInterface {
                 We're going to utilize another component of <em>Ratchet</em>; the WebSocketComponent:
             </p>
 
-            <pre>&lt;?php
+            <pre class="prettyprint">&lt;?php
 use Ratchet\Component\Server\IOServerComponent;
 use Ratchet\Component\WebSocket\WebSocketComponent;
 use MyApp\Chat;
@@ -207,7 +207,7 @@ use MyApp\Chat;
 
             <p>Now, open a couple web browser windows and open the a javascript console or a page with the following javascript:</p>
 
-            <pre>&lt;script&gt;
+            <pre class="prettyprint lang-js">&lt;script&gt;
     var conn = new WebSocket('ws://localhost:8000');
     conn.onmessage = function(e) {
         console.log(e.data);
