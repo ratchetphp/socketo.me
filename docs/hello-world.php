@@ -218,6 +218,12 @@ use MyApp\Chat;
 &lt;/script&gt;
         </section>
 
+        <section>
+            <h3>Download</h3>
+
+            <p>The source code for a working demo of this tutorial is available in the <a href="https://github.com/cboden/Ratchet-examples">Ratchet Examples</a> GitHub repository.</p>
+        </section>
+
         </div><!--/span-->
       </div><!--/row-->
 

@@ -16,8 +16,8 @@
       , 'docs' => array(
             'init' => array(
                 '_title' => 'Getting Started'
-              , '/docs/design'         => 'Design Philosophy'
               , '/docs/flow'           => 'Process Flow'
+              , '/docs/design'         => 'Design Philosophy'
               , '/docs/install'        => 'Installation'
               , '/docs/hello-world'    => 'Hello World!'
               , '/docs/hello-universe' => 'Hello Universe!'
