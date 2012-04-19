@@ -17,7 +17,8 @@
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
     <link href="/assets/css/site.css" rel="stylesheet">
     <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
-
+    <link href="/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">

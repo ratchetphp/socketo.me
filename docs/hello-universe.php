@@ -41,7 +41,7 @@
                     Knowing we will be using the <em>WAMPComponent</em>, it requires an object that implements the <a href="http://ratchet.cb/api/class-Ratchet.Component.WAMP.WAMPServerComponentInterface.html">WAMPServerComponentInterface</a>, so our class will implement that:
                 </p>
 
-                <pre>&lt;php
+                <pre class="prettyprint">&lt;php
 namespace MyApp;
 use Ratchet\Component\WAMP\WAMPComponentInterface;
 use Ratchet\Resource\ConnectionInterface;
