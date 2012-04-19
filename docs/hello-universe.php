@@ -3,7 +3,7 @@
     require __DIR__ . '/menu.php';
 ?>
         <div class="span9">
-            <h2>Hello Universe! Go Deeper with Ratchet</h2>
+            <h2>Hello Universe! Expand <em>Your</em> Application with Ratchet</h2>
 
             <section class="intro">
                 <h3>Goal</h3>
@@ -47,6 +47,7 @@ use Ratchet\Component\WAMP\WAMPComponentInterface;
 use Ratchet\Resource\ConnectionInterface;
 
 class ChatRoom implements WAMPComponentInterface {
+    public function onOpen(ConnectionInterface $conn) {
     }
 
     public function onClose(ConnectionInterface $conn) {

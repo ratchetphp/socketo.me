@@ -176,8 +176,8 @@ class Chat implements MessageComponentInterface {
             <p>Complete, let's run it and test it. Open up three terminal windows, typing:</p>
 
             <pre>$ php chat-server.php</pre>
-            <pre>$ telnet localhost 1000</pre>
-            <pre>$ telnet localhost 1000</pre>
+            <pre>$ telnet localhost 8000</pre>
+            <pre>$ telnet localhost 8000</pre>
 
             <p>In each of the telnet windows, type a message ("Hello World!") and see it appear in the other!</p>
         </section>
@@ -208,9 +208,9 @@ use MyApp\Chat;
             <p>Now, open a couple web browser windows and open the a javascript console or a page with the following javascript:</p>
 
             <pre>&lt;script&gt;
-    var conn = new WebSocket('http://localhost:8000');
-    conn.onmessage = function(data) {
-        console.log(data);
+    var conn = new WebSocket('ws://localhost:8000');
+    conn.onmessage = function(e) {
+        console.log(e.data);
     };
 
     // Later, at your leisure:
