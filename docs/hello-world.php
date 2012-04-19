@@ -106,9 +106,9 @@ use MyApp\Chat;
             <p>So far, we've just set up structure, both in our executable script and our <em>Chat</em> class. Now, to add code to our <em>Chat</em> to complete our application.</p>
 
             <p>
-                <strong>Important:</strong> An important convention of building Ratchet applications is how data is returned to clients. 
+                <strong>Important:</strong> An important convention of building Ratchet applications is how data is sent to clients. 
                 This is done with classes following what's called the <em>Command Pattern</em>.
-                Ratchet provides several <em>Command</em> classes, that delay code execution until the <em>IOServerComponent</em> is ready to deliver your messages.
+                Ratchet provides several <em>Command\Action</em> classes, that delay code execution until the <em>IOServerComponent</em> is ready to deliver your messages.
                 See the <a href="/docs/design#command">Design Philosophy</a> section on <em>Commands</em> for more information.
             </p>
 
@@ -207,15 +207,13 @@ use MyApp\Chat;
 
             <p>Now, open a couple web browser windows and open the a javascript console or a page with the following javascript:</p>
 
-            <pre class="prettyprint lang-js">&lt;script&gt;
-    var conn = new WebSocket('ws://localhost:8000');
+            <pre class="prettyprint lang-js">    var conn = new WebSocket('ws://localhost:8000');
     conn.onmessage = function(e) {
         console.log(e.data);
     };
 
     // Later, at your leisure:
-    conn.send('Hello World!');
-&lt;/script&gt;
+    conn.send('Hello World!');</pre>
         </section>
 
         <section>
