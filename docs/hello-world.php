@@ -115,7 +115,7 @@ use MyApp\Chat;
             <p>
                 Let's add some logic to our <em>Chat</em> class.  We'll incorporate the logic in our methods and use some <em>Command</em> classes to do this:
                 What we're going to do, is track all incoming <em>Connections</em>, in order to send them messages. 
-                Typically, you would store a collection of items in an array, but we're going to use something called <a href="http://ca2.php.net/manual/en/class.splobjectstorage.php">SplObjectStorage</a>. 
+                Typically, you would store a collection of items in an array, but we're going to use something called <a rel="external" href="http://ca2.php.net/manual/en/class.splobjectstorage.php">SplObjectStorage</a>. 
                 These storage containers are built to store objects, which is what the incoming <em>Connections</em> are. 
             </p>
 
@@ -219,7 +219,7 @@ use MyApp\Chat;
         <section>
             <h3>Download</h3>
 
-            <p>The source code for a working demo of this tutorial is available in the <a href="https://github.com/cboden/Ratchet-examples">Ratchet Examples</a> GitHub repository.</p>
+            <p>The source code for a working demo of this tutorial is available in the <a rel="external" href="https://github.com/cboden/Ratchet-examples">Ratchet Examples</a> GitHub repository.</p>
         </section>
 
         </div><!--/span-->

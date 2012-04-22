@@ -3,7 +3,7 @@
     require __DIR__ . '/menu.php';
 ?>
         <div class="span9">
-            <h2>IPBlackListComponent</h2>
+            <h2>FlashPolicyComponent</h2>
 
             <section>
                 <h3>Purpose <small>of this <em>Component</em></small></h3>

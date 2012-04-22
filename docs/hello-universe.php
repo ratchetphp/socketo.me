@@ -3,7 +3,7 @@
     require __DIR__ . '/menu.php';
 ?>
         <div class="span9">
-            <h2>Hello Universe! Expand <em>Your</em> Application with Ratchet</h2>
+            <h2>Hello Universe! <small>Expand <em>Your</em> Application</small></h2>
 
             <section class="intro">
                 <h3>Goal</h3>
@@ -32,13 +32,13 @@
                 <h2>The ChatRoom Class Structure</h2>
 
                 <p><strong>Note:</strong> 
-                    The <a href="http://wamp.ws/spec">WAMP Specification</a> makes developing WebSocket applications <em>much</em> easier by describing commonly used events triggered either by the server or clients. 
+                    The <a rel="external" href="http://wamp.ws/spec"><abbr title="WebSocket Application Messaging Protocol">WAMP</abbr> Specification</a> makes developing WebSocket applications <em>much</em> easier by describing commonly used events triggered either by the server or clients. 
                     Please familiarize yourself with the 9 events before continuing.
                 </p>
 
                 <p>
-                    We will accomplish this by using the <a href="/docs/wamp">WAMPServerComponent</a> as well as an accompanying Javascript library called <a href="http://autobahn.ws/developers/autobahnjs">AutobahnJS</a> (<a href="https://github.com/tavendo/AutobahnJS">GitHub Repo</a>). 
-                    Knowing we will be using the <em>WAMPComponent</em>, it requires an object that implements the <a href="http://ratchet.cb/api/class-Ratchet.Component.WAMP.WAMPServerComponentInterface.html">WAMPServerComponentInterface</a>, so our class will implement that:
+                    We will accomplish this by using the <a href="/docs/wamp">WAMPServerComponent</a> as well as an accompanying Javascript library called <a rel="external" href="http://autobahn.ws/developers/autobahnjs">AutobahnJS</a> (<a rel="external" href="https://github.com/tavendo/AutobahnJS">GitHub Repo</a>). 
+                    Knowing we will be using the <em>WAMPComponent</em>, it requires an object that implements the <a href="/api/class-Ratchet.Component.WAMP.WAMPServerComponentInterface.html">WAMPServerComponentInterface</a>, so our class will implement that:
                 </p>
 
                 <pre class="prettyprint">&lt;?php

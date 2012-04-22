@@ -9,8 +9,8 @@
 
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-                <li class="nav-header">Resources</li>
-                <?php $renderMenu('resources'); ?>
+                <li class="nav-header">Links</li>
+                <?php $renderMenu('links'); ?>
             </ul>
           </div>
         </div><!--/span-->
