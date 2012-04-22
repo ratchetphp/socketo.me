@@ -14,12 +14,16 @@
             <section>
                 <h3>Events <small>triggered by this <em>Component</em></h3>
 
+                <p>As found in the API Docs: Triggered events are propagated through a <a href="http://ratchet.cb/api/class-Ratchet.Component.MessageComponentInterface.html">MessageComponentInterface</a> object passed to the <em>__construct</em>.</p>
+
                 <ul>
                     <li><span class="label label-success">onOpen</span> (ConnectionInterface <em>$conn</em>) - A new client connection has been opened</li>
                     <li><span class="label label-warning">onClose</span> (ConnectionInterface <em>$conn</em>) - A client connection is about to, or has closed</li>
                     <li><span class="label label-info">onMessage</span> (ConnectionInterface <em>$from</em>, string <em>$message</em>) - A data message has been received</li>
                     <li><span class="label label-important">onError</span> (ConnectionInterface <em>$from</em>, Exception <em>$error</em>) - An error has occurred with a <em>Connection</em></li>
+<?php /*
                     <li><span class="label label-inverse">onFile</span> (ConnectionInterface <em>$from</em>, object <em>$file</em>) - NOT IMPLEMENTED YET.  When coded, will be when a binary file is transferred to the server</li>
+*/ ?>
                 </ul>
             </section>
 
@@ -37,8 +41,8 @@
 
                 <ul>
                     <li><span class="label label-warning">Disconnect</span> - Notify the client of an intent to close the connection. All data currently being transferred will finish before the connection closes</li>
-                    <li><span class="label">Pong</span> - Part of the WebSocket protocol, not needed by your application
-                    <li><span class="label">Ping</span> - Part of the WebSocket protocol, not needed by your application
+                    <li><span class="label">Pong</span> - Part of the WebSocket protocol, typically not needed by your application
+                    <li><span class="label">Ping</span> - Part of the WebSocket protocol, typically not needed by your application
                 </ul>
             </section>
 

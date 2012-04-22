@@ -9,7 +9,7 @@
             '/'      => 'Home'
           , '/docs/'  => 'Documentation'
           , '/api/namespace-Ratchet.html' => 'API Docs'
-          , '/demos' => 'Demos'
+//          , '/demos' => 'Demos'
           , 'https://groups.google.com/forum/#!forum/ratchet-php' => 'Mailing List'
         )
 

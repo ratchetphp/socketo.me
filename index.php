@@ -17,13 +17,14 @@
           <h2>Fast & Easy</h2>
           <p>Write your own chat (aka "Hello World!" for sockets) application in a matter of minutes. </p>
           <p>After understanding "the new flow" - event driven programming, compared to traditional HTTP request/response - writing any application on top of Ratchet becomes fast and easy.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <p><a class="btn" href="/docs/hello-world">View details &raquo;</a></p>
         </div>
 
         <div class="span4">
           <h2>Components</h2>
-           <p>Ratchet provides many components for you to pick and choose from.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+            <p>Ratchet provides many components for you to pick and choose from to easily add functionality.</p>
+            <p>The component architecture allows you to focus on functionality with the ability to reuse and add or remove other component functionality.</p>
+          <p><a class="btn" href="/docs/design">View details &raquo;</a></p>
        </div>
 
         <div class="span4">
@@ -31,12 +32,15 @@
           <p>Ratchet is fully PSR-0 compliant, so it naturally plays well with others. Ratchet leverages components of Symfony2, making development familiar to many.</p>
           <p>Unit tests ensure each part of Ratchet behaves as intended.</p>
           <p>Ratchet provides a Session component to allow persistence between your website and your WebSocket application.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <p><a class="btn" href="/docs/sessions">View details &raquo;</a></p>
         </div>
       </div>
 
       <footer>
-        <p><a href="http://www.w3.org/html/logo/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity.png" width="133" height="64" alt="HTML5 Powered with Connectivity / Realtime" title="HTML5 Powered with Connectivity / Realtime"></a></p>
+        <p>
+            <a rel="external" href="http://dev.w3.org/html5/websockets/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity.png" width="133" height="64" alt="HTML5 Powered with Connectivity / Realtime" title="HTML5 Powered with Connectivity / Realtime"></a>
+            <a rel="external" href="http://wamp.ws/"><img src="/assets/img/wamp_logo.png"></a>
+        </p>
       </footer>
 
     </div> <!-- /container -->
