@@ -36,13 +36,6 @@
         </div>
       </div>
 
-      <footer>
-        <p>
-            <a rel="external" href="http://dev.w3.org/html5/websockets/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity.png" width="133" height="64" alt="HTML5 Powered with Connectivity / Realtime" title="HTML5 Powered with Connectivity / Realtime"></a>
-            <a rel="external" href="http://wamp.ws/"><img src="/assets/img/wamp_logo.png"></a>
-        </p>
-      </footer>
-
     </div> <!-- /container -->
 
 <?php

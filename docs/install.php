@@ -2,7 +2,7 @@
     require dirname(__DIR__) . '/header.php';
     require __DIR__ . '/menu.php';
 ?>
-        <span class="span9">
+        <div class="span9">
             <h2>Installation</h2>
 
             <section>
@@ -19,7 +19,7 @@
     }
 }</pre>
             </section>
-        </span>
-    </span>
+        </div>
+    </div>
 <?php
     require dirname(__DIR__) . '/footer.php';

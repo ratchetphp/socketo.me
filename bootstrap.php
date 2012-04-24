@@ -4,6 +4,10 @@
 
     $sr = Symfony\Component\HttpFoundation\Request::createFromGlobals();
 
+function wamp() {
+    echo '<abbr title="WebSocket Application Messaging Protocol">WAMP</abbr>';
+}
+
     $menus = array(
         'main' => array(
             '/'      => 'Home'
