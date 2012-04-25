@@ -30,7 +30,7 @@
                 <thead>
                     <tr>
                         <th>Component Class</th>
-                        <th colspan="9">Event triggered by Client (JavaScript)</th>
+                        <th colspan="8">Event triggered by Client (JavaScript)</th>
                     </tr>
                 </thead>
         
@@ -41,7 +41,7 @@
                         <td>open</td>
                         <td>close</td>
                         <td>error</td>
-                        <td colspan="6">data</td>
+                        <td colspan="5">data</td>
                     </tr>
 
                     <tr>
@@ -51,7 +51,6 @@
                         <td>close</td>
                         <td>error</td>
                         <td colspan="5">data</td>
-                        <td>file</td>
                     </tr>
 
                     <tr>
@@ -65,7 +64,6 @@
                         <td>unsubscribe</td>
                         <td>call</td>
                         <td>prefix</td>
-                        <td>file</td>
                     </tr>
 
                     <tr>
@@ -79,7 +77,6 @@
                         <td>unsubscribe</td>
                         <td>call</td>
                         <td>prefix</td>
-                        <td>file</td>
                     </tr>
                 </tbody>
             </table>

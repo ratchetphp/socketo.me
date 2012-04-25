@@ -28,13 +28,15 @@
             <section>
                 <h3>Events <small>triggered by this <em>Component</em></h3>
 
+                <p>As found in the API Docs: Triggered events are propagated through a <a href="http://ratchet.cb/api/class-Ratchet.Component.WAMP.WAMPServerComponentInterface.html">WAMPServerComponentInterface</a> object passed to the __construct.
+
                 <ul>
                     <li><span class="label label-success">onOpen</span> (ConnectionInterface <em>$conn</em>) - A new client connection has been opened</li>
                     <li><span class="label label-warning">onClose</span> (ConnectionInterface <em>$conn</em>) - A client connection is about to, or has closed</li>
-                    <li><span class="label label-info">onCall</span> (ConnectionInterface <em>$conn</em>) - </li>
-                    <li><span class="label label-info">onSubscribe</span> (ConnectionInterface <em>$conn</em>) - </li>
-                    <li><span class="label label-info">onUnsubscribe</span> (ConnectionInterface <em>$conn</em>) - </li>
-                    <li><span class="label label-info">onPublish</span> (ConnectionInterface <em>$conn</em>) - </li>
+                    <li><span class="label label-info">onCall</span> (ConnectionInterface <em>$conn</em>, string <em>$id</em>, string <em>$procUri</em>, array <em>$params</em>) - The client has made an <abbr title="Remote Procedure Call">RPC</abbr> to the server. You should send a <em>CallResult</em> or <em>CallError</em> in return</li>
+                    <li><span class="label label-info">onSubscribe</span> (ConnectionInterface <em>$conn</em>, string <em>$uri</em>) - The client has subscribed to a channel, expecting to receive events published to the given <em>$uri</em></li>
+                    <li><span class="label label-info">onUnsubscribe</span> (ConnectionInterface <em>$conn</em>, string <em>$uri</em>) - The client unsubscribed from a channel, opting out of receiving events from the <em>$uri</em></li>
+                    <li><span class="label label-info">onPublish</span> (ConnectionInterface <em>$conn</em>, string <em>$uri</em>, string <em>$event</em>) - The user publishes data to a <em>$uri</em>. You should in return an <em>Event Command</em> to <em>Connections</em> who have <em>Subscribed</em> to the <em>$uri</em></li>
                     <li><span class="label label-important">onError</span> (ConnectionInterface <em>$from</em>, Exception <em>$error</em>) - An error has occurred with a <em>Connection</em></li>
                 </ul>
             </section>
@@ -42,18 +44,18 @@
             <section>
                 <h3>Methods <small>for configuration</small></h3>
 
-                <p></p>
+                <p>None</p>
             </section>
 
             <section>
                 <h3>Commands <small>added to its Factory</small></h3>
 
                 <ul>
-                    <li><span class="label label-info">Welcome</span> - </li>
-                    <li><span class="label label-info">Event</span> - </li>
-                    <li><span class="label label-info">CallResult</span> - </li>
-                    <li><span class="label label-info">CallError</span> - </li>
-                    <li><span class="label label-info">Prefix</span> - </li>
+                    <li><span class="label label-info">Welcome</span> - Upon a client connecting a welcome message, with a new unique id is to be sent back to the client</li>
+                    <li><span class="label label-info">Event</span> - An event is publishing data to clients subscribed to a specific URI</li>
+                    <li><span class="label label-info">CallResult</span> - A response to a client <em>Call</em></li>
+                    <li><span class="label label-info">CallError</span> - A response to the client after making a <em>Call</em> informing of an error processing the <em>Call</em></li>
+                    <li><span class="label label-info">Prefix</span> - Agree with the client to shorten a URI into a CURIE (ex. "http://socketo.me" -> "sock")</li>
                 </ul>
             </section>
 
