@@ -3,30 +3,35 @@
     require __DIR__ . '/menu.php';
 ?>
         <div class="span9">
-            <h2>Connections</h2>
+            <section>
+                <h2>Connections</h2>
 
-            <p>
-                A <em>Connection</em> is a PHP object that represents a client connected to your server. 
-                The object has properties that contain information about the client. 
-                The more Component classes the <em>Connection</em> is passed through, the more properties will be attached to it. 
-                For example, you may or may not use the <a href="/docs/sessions">SessionComponent</a> in your application stack. 
-                If you choose to use it, each connection will have a <a rel="external" href="http://symfony.com/doc/master/components/http_foundation/sessions.html">Symfony2 Session</a> class attached to it you can access like this:
-            </p>
+                <p>
+                    A <em>Connection</em> is a PHP object that represents a client connected to your server. 
+                    The object has properties that contain information about the client. 
+                    The more Component classes the <em>Connection</em> is passed through, the more properties will be attached to it. 
+                    For example, you may or may not use the <a href="/docs/sessions">SessionComponent</a> in your application stack. 
+                    If you choose to use it, each connection will have a <a rel="external" href="http://symfony.com/doc/master/components/http_foundation/sessions.html">Symfony2 Session</a> class attached to it you can access like this:
+                </p>
 
-            <pre class="prettyprint">$hello = $conn->Session->get('hello');</pre>
+                <pre class="prettyprint">$hello = $conn->Session->get('hello');</pre>
 
-            <p>If you do not include the SessionComponent in your application stack, there will be no Session variable accessible in a connection.</p>
+                <p>If you do not include the SessionComponent in your application stack, there will be no Session variable accessible in a connection.</p>
 
-            <h3>Containers</h3>
+                <p>If you're in your development environment and curious to see what's attached to a <em>Connection</em> object, just <code>var_dump</code> it!</p>
+            </section>
 
-            <p>
-                Even though <em>Connection</em> objects are passed to your application on every event trigger, it's usually a good idea to store your connections in a container, to reference later. 
-                The purpose of this is to interact, or push, to a <em>Connection</em> even though that <em>Connection</em> may not have triggered an event. 
-                We suggest using a <a rel="external" href="http://ca2.php.net/manual/en/class.splobjectstorage.php">SplObjectStorage</a> to keep your connections; however, a standard array will do. 
-                SplObjectStorage classes are often easier to work with when dealing with objects, as there is no lookup required:
-            </p>
+            <section>
+                <h3>Containers</h3>
 
-            <pre class="prettyprint">&lt;?php
+                <p>
+                    Even though <em>Connection</em> objects are passed to your application on every event trigger, it's usually a good idea to store your connections in a container, to reference later. 
+                    The purpose of this is to interact, or push, to a <em>Connection</em> even though that <em>Connection</em> may not have triggered an event. 
+                    We suggest using a <a rel="external" href="http://ca2.php.net/manual/en/class.splobjectstorage.php">SplObjectStorage</a> to keep your connections; however, a standard array will do. 
+                    SplObjectStorage classes are often easier to work with when dealing with objects, as there is no lookup required:
+                </p>
+
+                <pre class="prettyprint">&lt;?php
 use Ratchet\Resource\ConnectionInterface;
 
 class MyApp {
@@ -44,6 +49,7 @@ class MyApp {
         $this->connections->detach($conn);
     }
 }</pre>
+            </section>
         </div>
     </div>
 <?php

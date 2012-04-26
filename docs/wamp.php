@@ -64,7 +64,7 @@
 
                 <dl>
                     <dt>WAMP</dt>
-                    <dl>(Closure <em>$addPrefix(string $curie, string $uri)</em>) - Alias a URI into a CURIE on this one <em>Connection</em></dl>
+                    <dd>(Closure <em>$addPrefix(string $curie, string $uri)</em>) - Alias a URI into a CURIE on this one <em>Connection</em></dd>
                 </dl>
             </section>
 
