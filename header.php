@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ratchet - WebSockets for PHP | Home</title>
+    <title>Ratchet - WebSockets for PHP</title>
     <meta name="description" content="WebSocket development in PHP">
     <meta name="author" content="Chris Boden">
 

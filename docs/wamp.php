@@ -19,7 +19,7 @@
                 <p>
                     If you choose to build your application on the <?php wamp(); ?> spec (highly recommended) you will need a JavaScript library to implement the client side. 
                     <a rel="external" href="https://github.com/tavendo/AutobahnJS">AutobahnJS</a> is a client to interact with <?php wamp(); ?> servers and is highly recommended to use with Ratchet. 
-                    Using AutobahnJS has a requirement of a deferred library.  They recommend using <a rel="external" href="https://github.com/cujojs/when">when</a> but jQuery's deferred library should work (not supported though).
+                    Using AutobahnJS has a requirement of a deferred library.  They recommend using <a rel="external" href="https://github.com/cujojs/when">when</a> but jQuery's deferred library should work (not officially supported though).
                     The programming reference for AutobahnJS can be found on <a rel="external" href="http://autobahn.ws/developers/autobahnjs/reference">Autobahn website</a>.
                 </p>
 
@@ -51,7 +51,7 @@
                 <h3>Commands <small>added to its Factory</small></h3>
 
                 <ul>
-                    <li><span class="label label-info">Welcome</span> - Upon a client connecting a welcome message, with a new unique id is to be sent back to the client</li>
+                    <li><span class="label">Welcome</span> - Upon connection Ratchet will send a "welcome message" identifying its version to the client.</li>
                     <li><span class="label label-info">Event</span> - An event is publishing data to clients subscribed to a specific URI</li>
                     <li><span class="label label-info">CallResult</span> - A response to a client <em>Call</em></li>
                     <li><span class="label label-info">CallError</span> - A response to the client after making a <em>Call</em> informing of an error processing the <em>Call</em></li>

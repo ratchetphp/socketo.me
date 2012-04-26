@@ -47,7 +47,10 @@
             <section>
                 <h3>Parameters <small>added to each <em>Connection</em></small></h3>
 
-                <p>IOServerComponent does not add any parameters to <em>Connection</em> objects.</p>
+                <dl>
+                    <dd><em>$remoteAddress</em> - The address (IP Address) the user connected with</dd>
+                    <dd><em>$resourceId</em> - An incremental number assigned when the connection is made</dd>
+                </dl>
             </section>
 
             <section>

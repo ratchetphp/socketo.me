@@ -40,8 +40,8 @@
         
                         <td>open</td>
                         <td>close</td>
-                        <td>error</td>
                         <td colspan="5">data</td>
+                        <td>error</td>
                     </tr>
 
                     <tr>
@@ -49,8 +49,17 @@
         
                         <td>open</td>
                         <td>close</td>
-                        <td>error</td>
                         <td colspan="5">data</td>
+                        <td>error</td>
+                    </tr>
+
+                    <tr>
+                        <th>Session Handler</th>
+        
+                        <td>open</td>
+                        <td>close</td>
+                        <td colspan="5">data</td>
+                        <td>error</td>
                     </tr>
 
                     <tr>
@@ -58,12 +67,12 @@
         
                         <td>open</td>
                         <td>close</td>
-                        <td>error</td>
                         <td>publish</td>
                         <td>subscribe</td>
                         <td>unsubscribe</td>
                         <td>call</td>
                         <td>prefix</td>
+                        <td>error</td>
                     </tr>
 
                     <tr>
@@ -71,12 +80,12 @@
         
                         <td>open</td>
                         <td>close</td>
-                        <td>error</td>
                         <td>publish</td>
                         <td>subscribe</td>
                         <td>unsubscribe</td>
                         <td>call</td>
                         <td>prefix</td>
+                        <td>error</td>
                     </tr>
                 </tbody>
             </table>
