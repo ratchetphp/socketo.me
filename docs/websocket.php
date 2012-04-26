@@ -51,8 +51,8 @@
 
                 <dl>
                     <dt>WebSocket</dt>
-                    <dd>Guzzle\Http\Message\RequestInterface <em>$headers</em> - A Guzzle Request object containing all the information from the initial HTTP connection</dd>
-                    <dd>Ratchet\Component\WebSocket\Version\VersionInterface <em>$version</em> - Not used by your application, but stores information/data about the WebSocket version the client is connected with</dd>
+                    <dd>(Guzzle\Http\Message\RequestInterface <em>$headers</em>) - A Guzzle Request object containing all the information from the initial HTTP connection</dd>
+                    <dd>(Ratchet\Component\WebSocket\Version\VersionInterface <em>$version</em>) - Not used by your application, but stores information/data about the WebSocket version the client is connected with. The object is a re-entrant, re-used on other connections, so don't mess with it  :)</dd>
                 </ul>
             </section>
 

@@ -21,9 +21,11 @@
         });
     </script>
 
-    <footer class="well">
-        <div class="pull-left"><a href="http://dev.w3.org/html5/websockets/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity.png" width="133" height="64" alt="HTML5 Powered with Connectivity / Realtime" title="HTML5 Powered with Connectivity / Realtime"></a><a href="http://wamp.ws/"><img src="/assets/img/wamp_logo.png"></a></div>
+    <footer id="banner" class="well">
+        <div id="banner-logos" class="pull-left"><a href="http://dev.w3.org/html5/websockets/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity.png" width="133" height="64" alt="HTML5 Powered with Connectivity / Realtime" title="HTML5 Powered with Connectivity / Realtime"></a><a href="http://wamp.ws/"><img src="/assets/img/wamp_logo.png"></a></div>
         <div class="pull-right">"<abbr title="WebSocket Application Messaging Protocol">WAMP</abbr>" and the WAMP logo are trademarks of Tavendo GmbH.</div>
+
+        <div style="clear: both;"></div>
     </footer>
   </body>
 </html>

@@ -52,9 +52,9 @@
 
                 <ul>
                     <li><span class="label">Welcome</span> - Upon connection Ratchet will send a "welcome message" identifying its version to the client.</li>
-                    <li><span class="label label-info">Event</span> - An event is publishing data to clients subscribed to a specific URI</li>
-                    <li><span class="label label-info">CallResult</span> - A response to a client <em>Call</em></li>
-                    <li><span class="label label-info">CallError</span> - A response to the client after making a <em>Call</em> informing of an error processing the <em>Call</em></li>
+                    <li><span class="label label-info">Event</span> - Publish/Send data to a specific connection that has subscribed to a specific URI</li>
+                    <li><span class="label label-info">CallResult</span> - A response to a client <em>Call</em>. Make sure to pass the corresponding <em>$id</em> from the <em>onCall</em> event</li>
+                    <li><span class="label label-info">CallError</span> - A response to the client after making a <em>Call</em> informing of an error processing the <em>Call</em>. Make sure to pass the corresponding <em>$id</em> from the <em>onCall</em> event</li>
                     <li><span class="label label-info">Prefix</span> - Agree with the client to shorten a URI into a CURIE (ex. "http://socketo.me" -> "sock")</li>
                 </ul>
             </section>
@@ -62,7 +62,10 @@
             <section>
                 <h3>Parameters <small>added to each <em>Connection</em></small></h3>
 
-                <p></p>
+                <dl>
+                    <dt>WAMP</dt>
+                    <dl>(Closure <em>$addPrefix(string $curie, string $uri)</em>) - Alias a URI into a CURIE on this one <em>Connection</em></dl>
+                </dl>
             </section>
 
             <section>

@@ -24,7 +24,7 @@ function wamp() {
               , '/docs/design'         => '!picture Design Philosophy'
               , '/docs/install'        => '!download-alt Installation'
               , '/docs/hello-world'    => '!camera Hello World!'
-              , '/docs/hello-universe' => '!facetime-video Hello Universe!'
+//              , '/docs/hello-universe' => '!facetime-video Hello Universe!'
             )
 
           , 'resources' => array(
@@ -39,8 +39,8 @@ function wamp() {
               , '/docs/sessions'  => '!user SessionComponent'
               , '/docs/wamp'      => '!road WAMPServerComponent'
               , '/docs/server'    => '!off IOServerComponent'
-              , '/docs/flash'     => '!cog FlashPolicyComponent'
-              , '/docs/black'     => '!ban-circle IPBlackListComponent'
+//              , '/docs/flash'     => '!cog FlashPolicyComponent'
+//              , '/docs/black'     => '!ban-circle IPBlackListComponent'
             )
         )
 

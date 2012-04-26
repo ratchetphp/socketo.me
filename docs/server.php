@@ -48,8 +48,8 @@
                 <h3>Parameters <small>added to each <em>Connection</em></small></h3>
 
                 <dl>
-                    <dd><em>$remoteAddress</em> - The address (IP Address) the user connected with</dd>
-                    <dd><em>$resourceId</em> - An incremental number assigned when the connection is made</dd>
+                    <dd>(string <em>$remoteAddress</em>) - The address (IP Address) the user connected with</dd>
+                    <dd>(int <em>$resourceId</em>) - An incremental number assigned when the connection is made</dd>
                 </dl>
             </section>
 

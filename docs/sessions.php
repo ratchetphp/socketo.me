@@ -56,7 +56,9 @@
             <section>
                 <h3>Parameters <small>added to each <em>Connection</em></small></h3>
 
-                <p>None.</p>
+                <dl>
+                    <dd>(Symfony\Component\HttpFoundation\Session <em>$Session</em>) - A Symfony2 Session object. See the <a href="#">API docs</a> or <a rel="external" href="http://symfony.com/doc/master/components/http_foundation/sessions.html">Symfony Documentation</a> on working with the Session object.  Also, <em>please</em> do not try and write to the session</dd>
+                </dl>
             </section>
 
             <section>
