@@ -39,11 +39,14 @@
             <section>
                 <h3>Commands <small>added to its Factory</small></h3>
 
+                <p>None.</p>
+<?php /*
                 <ul>
                     <li><span class="label label-warning">Disconnect</span> - Notify the client of an intent to close the connection. All data currently being transferred will finish before the connection closes</li>
                     <li><span class="label">Pong</span> - Part of the WebSocket protocol, typically not needed by your application
                     <li><span class="label">Ping</span> - Part of the WebSocket protocol, typically not needed by your application
                 </ul>
+*/ ?>
             </section>
 
             <section>

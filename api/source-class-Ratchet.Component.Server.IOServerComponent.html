@@ -8,7 +8,7 @@
 	<title>File Ratchet/Component/Server/IOServerComponent.php</title>
 
 	<script type="text/javascript" src="resources/combined.js?1969147233"></script>
-	<script type="text/javascript" src="elementlist.js?3822822638"></script>
+	<script type="text/javascript" src="elementlist.js?2339534310"></script>
 	<script type="text/javascript">
 		var ApiGen = ApiGen || {};
 		ApiGen.options = {"elementDetailsCollapsed":true,"elementsOrder":"natural"};
@@ -57,6 +57,8 @@
 				<li><a href="namespace-Guzzle.Service.Description.html">Description</a>
 						</li>
 							</ul></li></ul></li>
+				<li><a href="namespace-None.html">None</a>
+						</li>
 				<li><a href="namespace-PHP.html">PHP</a>
 						</li>
 				<li class="active"><a href="namespace-Ratchet.html">Ratchet</a>
@@ -67,6 +69,17 @@
 						<ul>
 				<li class="active"><a href="namespace-Ratchet.Component.Server.html">Server</a>
 						</li>
+				<li><a href="namespace-Ratchet.Component.Session.html">Session</a>
+						<span></span>
+						<ul>
+				<li><a href="namespace-Ratchet.Component.Session.Serialize.html">Serialize</a>
+						</li>
+				<li><a href="namespace-Ratchet.Component.Session.Storage.html">Storage</a>
+						<span></span>
+						<ul>
+				<li><a href="namespace-Ratchet.Component.Session.Storage.Proxy.html">Proxy</a>
+						</li>
+							</ul></li></ul></li>
 				<li><a href="namespace-Ratchet.Component.WAMP.html">WAMP</a>
 						<span></span>
 						<ul>
@@ -114,6 +127,60 @@
 				<li><a href="namespace-Ratchet.Resource.Socket.html">Socket</a>
 						</li>
 							</ul></li></ul></li>
+				<li><a href="namespace-Symfony.html">Symfony</a>
+						<span></span>
+						<ul>
+				<li><a href="namespace-Symfony.Component.html">Component</a>
+						<span></span>
+						<ul>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.html">HttpFoundation</a>
+						<span></span>
+						<ul>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.File.html">File</a>
+						<span></span>
+						<ul>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.File.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.File.MimeType.html">MimeType</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.File.Mimetype.html">Mimetype</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.Session.html">Session</a>
+						<span></span>
+						<ul>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.Session.Attribute.html">Attribute</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.Session.Flash.html">Flash</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.Session.Storage.html">Storage</a>
+						<span></span>
+						<ul>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.Session.Storage.Handler.html">Handler</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.Session.Storage.Proxy.html">Proxy</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.Tests.html">Tests</a>
+						<span></span>
+						<ul>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.Tests.File.html">File</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.Tests.Session.html">Session</a>
+						<span></span>
+						<ul>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.Tests.Session.Attribute.html">Attribute</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.Tests.Session.Flash.html">Flash</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.Tests.Session.Storage.html">Storage</a>
+						<span></span>
+						<ul>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.Tests.Session.Storage.Handler.html">Handler</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.HttpFoundation.Tests.Session.Storage.Proxy.html">Proxy</a>
+						</li>
+							</ul></li></ul></li></ul></li></ul></li></ul></li></ul></li>
 			</ul>
 		</div>
 
@@ -319,46 +386,49 @@
 <a href="#154" id="154" class="l">154: </a>    }
 <a href="#155" id="155" class="l">155: </a>
 <a href="#156" id="156" class="l">156: </a>    <span class="php-comment">/**
-</span><a href="#157" id="157" class="l">157: </a><span class="php-comment">     * @{inheritdoc}
+</span><a href="#157" id="157" class="l">157: </a><span class="php-comment">     * {@inheritdoc}
 </span><a href="#158" id="158" class="l">158: </a><span class="php-comment">     */</span>
 <a href="#159" id="159" class="l">159: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> onOpen(ConnectionInterface <span class="php-var">$conn</span>) {
 <a href="#160" id="160" class="l">160: </a>        <span class="php-var">$new_socket</span>     = <span class="php-keyword1">clone</span> <span class="php-var">$conn</span>-&gt;getSocket();
 <a href="#161" id="161" class="l">161: </a>        <span class="php-var">$new_socket</span>-&gt;set_nonblock();
 <a href="#162" id="162" class="l">162: </a>        <span class="php-var">$new_connection</span> = <span class="php-keyword1">new</span> Connection(<span class="php-var">$new_socket</span>);
 <a href="#163" id="163" class="l">163: </a>
-<a href="#164" id="164" class="l">164: </a>        <span class="php-var">$this</span>-&gt;_resources[] = <span class="php-var">$new_connection</span>-&gt;getSocket()-&gt;getResource();
-<a href="#165" id="165" class="l">165: </a>        <span class="php-var">$this</span>-&gt;_connections[<span class="php-var">$new_connection</span>-&gt;getSocket()-&gt;getResource()] = <span class="php-var">$new_connection</span>;
+<a href="#164" id="164" class="l">164: </a>        <span class="php-var">$new_connection</span>-&gt;remoteAddress = <span class="php-var">$new_socket</span>-&gt;getRemoteAddress();
+<a href="#165" id="165" class="l">165: </a>        <span class="php-var">$new_connection</span>-&gt;resourceId    = (int)<span class="php-keyword2">substr</span>((string)<span class="php-var">$new_socket</span>-&gt;getResource(), <span class="php-keyword2">strrpos</span>((string)<span class="php-var">$new_socket</span>-&gt;getResource(), <span class="php-quote">'#'</span>) + <span class="php-num">1</span>);
 <a href="#166" id="166" class="l">166: </a>
-<a href="#167" id="167" class="l">167: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;_decorating-&gt;onOpen(<span class="php-var">$new_connection</span>);
-<a href="#168" id="168" class="l">168: </a>    }
+<a href="#167" id="167" class="l">167: </a>        <span class="php-var">$this</span>-&gt;_resources[] = <span class="php-var">$new_connection</span>-&gt;getSocket()-&gt;getResource();
+<a href="#168" id="168" class="l">168: </a>        <span class="php-var">$this</span>-&gt;_connections[<span class="php-var">$new_connection</span>-&gt;getSocket()-&gt;getResource()] = <span class="php-var">$new_connection</span>;
 <a href="#169" id="169" class="l">169: </a>
-<a href="#170" id="170" class="l">170: </a>    <span class="php-comment">/**
-</span><a href="#171" id="171" class="l">171: </a><span class="php-comment">     * @{inheritdoc}
-</span><a href="#172" id="172" class="l">172: </a><span class="php-comment">     */</span>
-<a href="#173" id="173" class="l">173: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> onMessage(ConnectionInterface <span class="php-var">$from</span>, <span class="php-var">$msg</span>) {
-<a href="#174" id="174" class="l">174: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;_decorating-&gt;onMessage(<span class="php-var">$from</span>, <span class="php-var">$msg</span>);
-<a href="#175" id="175" class="l">175: </a>    }
-<a href="#176" id="176" class="l">176: </a>
-<a href="#177" id="177" class="l">177: </a>    <span class="php-comment">/**
-</span><a href="#178" id="178" class="l">178: </a><span class="php-comment">     * @{inheritdoc}
-</span><a href="#179" id="179" class="l">179: </a><span class="php-comment">     */</span>
-<a href="#180" id="180" class="l">180: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> onClose(ConnectionInterface <span class="php-var">$conn</span>) {
-<a href="#181" id="181" class="l">181: </a>        <span class="php-var">$resource</span> = <span class="php-var">$conn</span>-&gt;getSocket()-&gt;getResource();
-<a href="#182" id="182" class="l">182: </a>
-<a href="#183" id="183" class="l">183: </a>        <span class="php-var">$cmd</span> = <span class="php-var">$this</span>-&gt;_decorating-&gt;onClose(<span class="php-var">$conn</span>);
-<a href="#184" id="184" class="l">184: </a>
-<a href="#185" id="185" class="l">185: </a>        <span class="php-keyword1">unset</span>(<span class="php-var">$this</span>-&gt;_connections[<span class="php-var">$resource</span>], <span class="php-var">$this</span>-&gt;_resources[<span class="php-keyword2">array_search</span>(<span class="php-var">$resource</span>, <span class="php-var">$this</span>-&gt;_resources)]);
-<a href="#186" id="186" class="l">186: </a>
-<a href="#187" id="187" class="l">187: </a>        <span class="php-keyword1">return</span> <span class="php-var">$cmd</span>;
-<a href="#188" id="188" class="l">188: </a>    }
+<a href="#170" id="170" class="l">170: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;_decorating-&gt;onOpen(<span class="php-var">$new_connection</span>);
+<a href="#171" id="171" class="l">171: </a>    }
+<a href="#172" id="172" class="l">172: </a>
+<a href="#173" id="173" class="l">173: </a>    <span class="php-comment">/**
+</span><a href="#174" id="174" class="l">174: </a><span class="php-comment">     * {@inheritdoc}
+</span><a href="#175" id="175" class="l">175: </a><span class="php-comment">     */</span>
+<a href="#176" id="176" class="l">176: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> onMessage(ConnectionInterface <span class="php-var">$from</span>, <span class="php-var">$msg</span>) {
+<a href="#177" id="177" class="l">177: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;_decorating-&gt;onMessage(<span class="php-var">$from</span>, <span class="php-var">$msg</span>);
+<a href="#178" id="178" class="l">178: </a>    }
+<a href="#179" id="179" class="l">179: </a>
+<a href="#180" id="180" class="l">180: </a>    <span class="php-comment">/**
+</span><a href="#181" id="181" class="l">181: </a><span class="php-comment">     * {@inheritdoc}
+</span><a href="#182" id="182" class="l">182: </a><span class="php-comment">     */</span>
+<a href="#183" id="183" class="l">183: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> onClose(ConnectionInterface <span class="php-var">$conn</span>) {
+<a href="#184" id="184" class="l">184: </a>        <span class="php-var">$resource</span> = <span class="php-var">$conn</span>-&gt;getSocket()-&gt;getResource();
+<a href="#185" id="185" class="l">185: </a>
+<a href="#186" id="186" class="l">186: </a>        <span class="php-var">$cmd</span> = <span class="php-var">$this</span>-&gt;_decorating-&gt;onClose(<span class="php-var">$conn</span>);
+<a href="#187" id="187" class="l">187: </a>
+<a href="#188" id="188" class="l">188: </a>        <span class="php-keyword1">unset</span>(<span class="php-var">$this</span>-&gt;_connections[<span class="php-var">$resource</span>], <span class="php-var">$this</span>-&gt;_resources[<span class="php-keyword2">array_search</span>(<span class="php-var">$resource</span>, <span class="php-var">$this</span>-&gt;_resources)]);
 <a href="#189" id="189" class="l">189: </a>
-<a href="#190" id="190" class="l">190: </a>    <span class="php-comment">/**
-</span><a href="#191" id="191" class="l">191: </a><span class="php-comment">     * @{inheritdoc}
-</span><a href="#192" id="192" class="l">192: </a><span class="php-comment">     */</span>
-<a href="#193" id="193" class="l">193: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> onError(ConnectionInterface <span class="php-var">$conn</span>, \Exception <span class="php-var">$e</span>) {
-<a href="#194" id="194" class="l">194: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;_decorating-&gt;onError(<span class="php-var">$conn</span>, <span class="php-var">$e</span>);
-<a href="#195" id="195" class="l">195: </a>    }
-<a href="#196" id="196" class="l">196: </a>}</code></pre>
+<a href="#190" id="190" class="l">190: </a>        <span class="php-keyword1">return</span> <span class="php-var">$cmd</span>;
+<a href="#191" id="191" class="l">191: </a>    }
+<a href="#192" id="192" class="l">192: </a>
+<a href="#193" id="193" class="l">193: </a>    <span class="php-comment">/**
+</span><a href="#194" id="194" class="l">194: </a><span class="php-comment">     * {@inheritdoc}
+</span><a href="#195" id="195" class="l">195: </a><span class="php-comment">     */</span>
+<a href="#196" id="196" class="l">196: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> onError(ConnectionInterface <span class="php-var">$conn</span>, \Exception <span class="php-var">$e</span>) {
+<a href="#197" id="197" class="l">197: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;_decorating-&gt;onError(<span class="php-var">$conn</span>, <span class="php-var">$e</span>);
+<a href="#198" id="198" class="l">198: </a>    }
+<a href="#199" id="199" class="l">199: </a>}</code></pre>
 
 	<div id="footer">
 		 API documentation generated by <a href="http://apigen.org">ApiGen</a>.
