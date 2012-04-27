@@ -54,8 +54,8 @@ class Chat implements MessageComponentInterface {
 }</pre>
 
             <p>
-                You'll notice, in addition from just implementing methods from the <em>MessageComponentInterface</em>, we've given our application a namespace and are accepting the <a href="http://ratchet.cb/api/class-Ratchet.Resource.ConnectionInterface.html">ConnectionInterface</a> classes.
-                This class, usually implemented by a <a href="http://ratchet.cb/api/class-Ratchet.Resource.Connection.html">Connection</a> instance, is a representation of a client's connection on the other side of the socket.
+                You'll notice, in addition from just implementing methods from the <em>MessageComponentInterface</em>, we've given our application a namespace and are accepting the <a href="http://socketo.me/api/class-Ratchet.Resource.ConnectionInterface.html">ConnectionInterface</a> classes.
+                This class, usually implemented by a <a href="http://socketo.me/api/class-Ratchet.Resource.Connection.html">Connection</a> instance, is a representation of a client's connection on the other side of the socket.
                 On each of the four triggered events, the client <em>Connection</em> representation is passed. 
                 These objects are re-used, you will receive the same <em>Connection</em> sometimes.
             </p>

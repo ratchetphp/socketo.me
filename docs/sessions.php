@@ -31,7 +31,7 @@
             <section>
                 <h3>Events <small>triggered by this <em>Component</em></h3>
 
-                <p>As found in the API Docs: Triggered events are propagated through a <a href="http://ratchet.cb/api/class-Ratchet.Component.MessageComponentInterface.html">MessageComponentInterface</a> object passed to the <em>__construct</em>.</p>
+                <p>As found in the API Docs: Triggered events are propagated through a <a href="http://socketo.me/api/class-Ratchet.Component.MessageComponentInterface.html">MessageComponentInterface</a> object passed to the <em>__construct</em>.</p>
 
                 <ul>
                     <li><span class="label label-success">onOpen</span> (ConnectionInterface <em>$conn</em>) - A new client connection has been opened</li>

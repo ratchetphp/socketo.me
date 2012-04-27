@@ -11,7 +11,7 @@
                 <p>
                     Simply put: <em>Commands</em> are how <em>you</em> <strong>push</strong> data to clients. 
                     <br>The namespace <em>Command</em> is called so because it's an implementation of the <em>Design Pattern:</em> <a rel="external" href="http://en.wikipedia.org/wiki/Command_pattern">Command pattern</a>. 
-                    <br>Actions, in Ratchet, are just a subset of specific Commands that inherit the <a href="http://ratchet.cb/api/class-Ratchet.Resource.Command.CommandInterface.html">CommandInterface</a>
+                    <br>Actions, in Ratchet, are just a subset of specific Commands that inherit the <a href="http://socketo.me/api/class-Ratchet.Resource.Command.CommandInterface.html">CommandInterface</a>
                 </p>
             </section>
 
@@ -50,7 +50,7 @@ class Chat implements MessageComponentInterface {
 
                 <p>
                     Above, when a new client connects to our server we roll the die. 
-                    If the user is unfortunate enough to get unlucky 13, we close the connection with the <a href="http://ratchet.cb/api/class-Ratchet.Resource.Command.Action.CloseConnection.html">CloseConnection class</a>.
+                    If the user is unfortunate enough to get unlucky 13, we close the connection with the <a href="http://socketo.me/api/class-Ratchet.Resource.Command.Action.CloseConnection.html">CloseConnection class</a>.
                     Now, as fun as this is, it's a little rude, wouldn't you say?  The user has just connected and then just disconnected!  We should at least let them know they were unlucky. But how?  Introducing...
                 </p>
             </section>
@@ -59,7 +59,7 @@ class Chat implements MessageComponentInterface {
                 <h3><small>the</small> Composite Command</h3>
 
                 <p>
-                    The <a href="http://ratchet.cb/api/class-Ratchet.Resource.Command.Composite.html">Composite class</a> is another type of Ratchet <em>Command</em>.  This class uses the <em>Design Pattern:</em> <a href="http://en.wikipedia.org/wiki/Composite_pattern">Composite pattern</a>...With one small difference: all leafs are flattened, there is no hierarchy. 
+                    The <a href="http://socketo.me/api/class-Ratchet.Resource.Command.Composite.html">Composite class</a> is another type of Ratchet <em>Command</em>.  This class uses the <em>Design Pattern:</em> <a href="http://en.wikipedia.org/wiki/Composite_pattern">Composite pattern</a>...With one small difference: all leafs are flattened, there is no hierarchy. 
                     The <em>Composite Command</em> allows you to return multiple <em>Commands/Actions</em> back down the application stack. 
                     Continuing with our "Chat roulette enhancements" let's send the user a message of their miss-fortune before we disconnect them:
                 </p>
@@ -97,7 +97,7 @@ class Chat implements MessageComponentInterface {
                 <p>
                     ...Another <em>Design pattern</em> thingy?  You bet! 
                     This class' only purpose is to shorten your coding. 
-                    The <a href="http://ratchet.cb/api/class-Ratchet.Resource.Command.Factory.html">Factory class</a> has two (primary) methods: <em>newComposite()</em> and <em>newCommand(string $name)</em>. 
+                    The <a href="http://socketo.me/api/class-Ratchet.Resource.Command.Factory.html">Factory class</a> has two (primary) methods: <em>newComposite()</em> and <em>newCommand(string $name)</em>. 
                     Let's refactor our last block of code using the factory:
                 </p>
 

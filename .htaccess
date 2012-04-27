@@ -1,6 +1,14 @@
 <IfModule mod_rewrite.c>
-  RewriteCond %{REQUEST_URI} !^/index\.php$
-  RewriteRule ^([^.]+)\.php$ http://ratchet.cb/$1 [R=301,L]
+  RewriteEngine On
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  RewriteCond %{REQUEST_FILENAME}.php -f
+  RewriteRule ^(.*)$ $1.php
+
+#  RewriteCond %{REQUEST_URI} !^/index\.php$
+#  RewriteRule ^([^.]+)\.php$ http://ratchet.cb/$1 [R=301,L]
 </IfModule>
 
 ErrorDocument 404 /404.php
