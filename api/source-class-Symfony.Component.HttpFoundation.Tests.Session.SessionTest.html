@@ -8,7 +8,7 @@
 	<title>File Symfony/Component/HttpFoundation/Tests/Session/SessionTest.php</title>
 
 	<script type="text/javascript" src="resources/combined.js?1969147233"></script>
-	<script type="text/javascript" src="elementlist.js?2339534310"></script>
+	<script type="text/javascript" src="elementlist.js?396043362"></script>
 	<script type="text/javascript">
 		var ApiGen = ApiGen || {};
 		ApiGen.options = {"elementDetailsCollapsed":true,"elementsOrder":"natural"};
@@ -415,84 +415,99 @@
 <a href="#183" id="183" class="l">183: </a>        <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-keyword1">array</span>(<span class="php-quote">'notice'</span> =&gt; <span class="php-quote">'foo'</span>), <span class="php-var">$this</span>-&gt;session-&gt;getFlashes());
 <a href="#184" id="184" class="l">184: </a>    }
 <a href="#185" id="185" class="l">185: </a>
-<a href="#186" id="186" class="l">186: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> testGetSetFlash()
+<a href="#186" id="186" class="l">186: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> testGetFlashesWithArray()
 <a href="#187" id="187" class="l">187: </a>    {
-<a href="#188" id="188" class="l">188: </a>        <span class="php-var">$this</span>-&gt;assertNull(<span class="php-var">$this</span>-&gt;session-&gt;getFlash(<span class="php-quote">'notice'</span>));
-<a href="#189" id="189" class="l">189: </a>        <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-quote">'default'</span>, <span class="php-var">$this</span>-&gt;session-&gt;getFlash(<span class="php-quote">'notice'</span>, <span class="php-quote">'default'</span>));
-<a href="#190" id="190" class="l">190: </a>        <span class="php-var">$this</span>-&gt;session-&gt;getFlashBag()-&gt;add(<span class="php-quote">'notice'</span>, <span class="php-quote">'foo'</span>);
-<a href="#191" id="191" class="l">191: </a>        <span class="php-var">$this</span>-&gt;session-&gt;getFlashBag()-&gt;add(<span class="php-quote">'notice'</span>, <span class="php-quote">'foo2'</span>);
-<a href="#192" id="192" class="l">192: </a>
-<a href="#193" id="193" class="l">193: </a>        <span class="php-comment">// test that BC works by only retrieving the first added.</span>
-<a href="#194" id="194" class="l">194: </a>        <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-quote">'foo'</span>, <span class="php-var">$this</span>-&gt;session-&gt;getFlash(<span class="php-quote">'notice'</span>));
-<a href="#195" id="195" class="l">195: </a>        <span class="php-var">$this</span>-&gt;assertNull(<span class="php-var">$this</span>-&gt;session-&gt;getFlash(<span class="php-quote">'notice'</span>));
-<a href="#196" id="196" class="l">196: </a>    }
-<a href="#197" id="197" class="l">197: </a>
-<a href="#198" id="198" class="l">198: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> testHasFlash()
-<a href="#199" id="199" class="l">199: </a>    {
-<a href="#200" id="200" class="l">200: </a>        <span class="php-var">$this</span>-&gt;assertFalse(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'notice'</span>));
-<a href="#201" id="201" class="l">201: </a>        <span class="php-var">$this</span>-&gt;session-&gt;setFlash(<span class="php-quote">'notice'</span>, <span class="php-quote">'foo'</span>);
-<a href="#202" id="202" class="l">202: </a>        <span class="php-var">$this</span>-&gt;assertTrue(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'notice'</span>));
-<a href="#203" id="203" class="l">203: </a>    }
-<a href="#204" id="204" class="l">204: </a>
-<a href="#205" id="205" class="l">205: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> testRemoveFlash()
-<a href="#206" id="206" class="l">206: </a>    {
-<a href="#207" id="207" class="l">207: </a>        <span class="php-var">$this</span>-&gt;session-&gt;setFlash(<span class="php-quote">'notice'</span>, <span class="php-quote">'foo'</span>);
-<a href="#208" id="208" class="l">208: </a>        <span class="php-var">$this</span>-&gt;session-&gt;setFlash(<span class="php-quote">'error'</span>, <span class="php-quote">'bar'</span>);
-<a href="#209" id="209" class="l">209: </a>        <span class="php-var">$this</span>-&gt;assertTrue(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'notice'</span>));
-<a href="#210" id="210" class="l">210: </a>        <span class="php-var">$this</span>-&gt;session-&gt;removeFlash(<span class="php-quote">'error'</span>);
-<a href="#211" id="211" class="l">211: </a>        <span class="php-var">$this</span>-&gt;assertTrue(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'notice'</span>));
-<a href="#212" id="212" class="l">212: </a>        <span class="php-var">$this</span>-&gt;assertFalse(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'error'</span>));
-<a href="#213" id="213" class="l">213: </a>    }
-<a href="#214" id="214" class="l">214: </a>
-<a href="#215" id="215" class="l">215: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> testClearFlashes()
-<a href="#216" id="216" class="l">216: </a>    {
-<a href="#217" id="217" class="l">217: </a>        <span class="php-var">$this</span>-&gt;assertFalse(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'notice'</span>));
-<a href="#218" id="218" class="l">218: </a>        <span class="php-var">$this</span>-&gt;assertFalse(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'error'</span>));
-<a href="#219" id="219" class="l">219: </a>        <span class="php-var">$this</span>-&gt;session-&gt;setFlash(<span class="php-quote">'notice'</span>, <span class="php-quote">'foo'</span>);
-<a href="#220" id="220" class="l">220: </a>        <span class="php-var">$this</span>-&gt;session-&gt;setFlash(<span class="php-quote">'error'</span>, <span class="php-quote">'bar'</span>);
-<a href="#221" id="221" class="l">221: </a>        <span class="php-var">$this</span>-&gt;assertTrue(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'notice'</span>));
-<a href="#222" id="222" class="l">222: </a>        <span class="php-var">$this</span>-&gt;assertTrue(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'error'</span>));
-<a href="#223" id="223" class="l">223: </a>        <span class="php-var">$this</span>-&gt;session-&gt;clearFlashes();
-<a href="#224" id="224" class="l">224: </a>        <span class="php-var">$this</span>-&gt;assertFalse(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'notice'</span>));
-<a href="#225" id="225" class="l">225: </a>        <span class="php-var">$this</span>-&gt;assertFalse(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'error'</span>));
-<a href="#226" id="226" class="l">226: </a>    }
-<a href="#227" id="227" class="l">227: </a>
-<a href="#228" id="228" class="l">228: </a>    <span class="php-comment">/**
-</span><a href="#229" id="229" class="l">229: </a><span class="php-comment">     * @covers Symfony\Component\HttpFoundation\Session\Session::getIterator
-</span><a href="#230" id="230" class="l">230: </a><span class="php-comment">     */</span>
-<a href="#231" id="231" class="l">231: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> testGetIterator()
-<a href="#232" id="232" class="l">232: </a>    {
-<a href="#233" id="233" class="l">233: </a>        <span class="php-var">$attributes</span> = <span class="php-keyword1">array</span>(<span class="php-quote">'hello'</span> =&gt; <span class="php-quote">'world'</span>, <span class="php-quote">'symfony2'</span> =&gt; <span class="php-quote">'rocks'</span>);
-<a href="#234" id="234" class="l">234: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$attributes</span> <span class="php-keyword1">as</span> <span class="php-var">$key</span> =&gt; <span class="php-var">$val</span>) {
-<a href="#235" id="235" class="l">235: </a>            <span class="php-var">$this</span>-&gt;session-&gt;set(<span class="php-var">$key</span>, <span class="php-var">$val</span>);
-<a href="#236" id="236" class="l">236: </a>        }
-<a href="#237" id="237" class="l">237: </a>
-<a href="#238" id="238" class="l">238: </a>        <span class="php-var">$i</span> = <span class="php-num">0</span>;
-<a href="#239" id="239" class="l">239: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$this</span>-&gt;session <span class="php-keyword1">as</span> <span class="php-var">$key</span> =&gt; <span class="php-var">$val</span>) {
-<a href="#240" id="240" class="l">240: </a>            <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-var">$attributes</span>[<span class="php-var">$key</span>], <span class="php-var">$val</span>);
-<a href="#241" id="241" class="l">241: </a>            <span class="php-var">$i</span>++;
-<a href="#242" id="242" class="l">242: </a>        }
-<a href="#243" id="243" class="l">243: </a>
-<a href="#244" id="244" class="l">244: </a>        <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-keyword2">count</span>(<span class="php-var">$attributes</span>), <span class="php-var">$i</span>);
-<a href="#245" id="245" class="l">245: </a>    }
-<a href="#246" id="246" class="l">246: </a>
-<a href="#247" id="247" class="l">247: </a>    <span class="php-comment">/**
-</span><a href="#248" id="248" class="l">248: </a><span class="php-comment">     * @covers Symfony\Component\HttpFoundation\Session\Session::count
-</span><a href="#249" id="249" class="l">249: </a><span class="php-comment">     */</span>
-<a href="#250" id="250" class="l">250: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> testGetCount()
-<a href="#251" id="251" class="l">251: </a>    {
-<a href="#252" id="252" class="l">252: </a>        <span class="php-var">$this</span>-&gt;session-&gt;set(<span class="php-quote">'hello'</span>, <span class="php-quote">'world'</span>);
-<a href="#253" id="253" class="l">253: </a>        <span class="php-var">$this</span>-&gt;session-&gt;set(<span class="php-quote">'symfony2'</span>, <span class="php-quote">'rocks'</span>);
-<a href="#254" id="254" class="l">254: </a>
-<a href="#255" id="255" class="l">255: </a>        <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-num">2</span>, <span class="php-keyword2">count</span>(<span class="php-var">$this</span>-&gt;session));
-<a href="#256" id="256" class="l">256: </a>    }
-<a href="#257" id="257" class="l">257: </a>
-<a href="#258" id="258" class="l">258: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> testGetMeta()
-<a href="#259" id="259" class="l">259: </a>    {
-<a href="#260" id="260" class="l">260: </a>        <span class="php-var">$this</span>-&gt;assertInstanceOf(<span class="php-quote">'Symfony\Component\HttpFoundation\Session\Storage\MetadataBag'</span>, <span class="php-var">$this</span>-&gt;session-&gt;getMetadataBag());
-<a href="#261" id="261" class="l">261: </a>    }
-<a href="#262" id="262" class="l">262: </a>}
-<a href="#263" id="263" class="l">263: </a></code></pre>
+<a href="#188" id="188" class="l">188: </a>        <span class="php-var">$array</span> = <span class="php-keyword1">array</span>(<span class="php-quote">'notice'</span> =&gt; <span class="php-quote">'hello'</span>, <span class="php-quote">'error'</span> =&gt; <span class="php-quote">'none'</span>);
+<a href="#189" id="189" class="l">189: </a>        <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-keyword1">array</span>(), <span class="php-var">$this</span>-&gt;session-&gt;getFlashes());
+<a href="#190" id="190" class="l">190: </a>        <span class="php-var">$this</span>-&gt;session-&gt;setFlash(<span class="php-quote">'foo'</span>, <span class="php-var">$array</span>);
+<a href="#191" id="191" class="l">191: </a>        <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-keyword1">array</span>(<span class="php-quote">'foo'</span> =&gt; <span class="php-var">$array</span>), <span class="php-var">$this</span>-&gt;session-&gt;getFlashes());
+<a href="#192" id="192" class="l">192: </a>        <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-keyword1">array</span>(), <span class="php-var">$this</span>-&gt;session-&gt;getFlashes());
+<a href="#193" id="193" class="l">193: </a>
+<a href="#194" id="194" class="l">194: </a>        <span class="php-var">$array</span> = <span class="php-keyword1">array</span>(<span class="php-quote">'hello'</span>, <span class="php-quote">'foo'</span>);
+<a href="#195" id="195" class="l">195: </a>        <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-keyword1">array</span>(), <span class="php-var">$this</span>-&gt;session-&gt;getFlashes());
+<a href="#196" id="196" class="l">196: </a>        <span class="php-var">$this</span>-&gt;session-&gt;setFlash(<span class="php-quote">'foo'</span>, <span class="php-var">$array</span>);
+<a href="#197" id="197" class="l">197: </a>        <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-keyword1">array</span>(<span class="php-quote">'foo'</span> =&gt; <span class="php-quote">'hello'</span>), <span class="php-var">$this</span>-&gt;session-&gt;getFlashes());
+<a href="#198" id="198" class="l">198: </a>        <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-keyword1">array</span>(), <span class="php-var">$this</span>-&gt;session-&gt;getFlashes());
+<a href="#199" id="199" class="l">199: </a>    }
+<a href="#200" id="200" class="l">200: </a>
+<a href="#201" id="201" class="l">201: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> testGetSetFlash()
+<a href="#202" id="202" class="l">202: </a>    {
+<a href="#203" id="203" class="l">203: </a>        <span class="php-var">$this</span>-&gt;assertNull(<span class="php-var">$this</span>-&gt;session-&gt;getFlash(<span class="php-quote">'notice'</span>));
+<a href="#204" id="204" class="l">204: </a>        <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-quote">'default'</span>, <span class="php-var">$this</span>-&gt;session-&gt;getFlash(<span class="php-quote">'notice'</span>, <span class="php-quote">'default'</span>));
+<a href="#205" id="205" class="l">205: </a>        <span class="php-var">$this</span>-&gt;session-&gt;getFlashBag()-&gt;add(<span class="php-quote">'notice'</span>, <span class="php-quote">'foo'</span>);
+<a href="#206" id="206" class="l">206: </a>        <span class="php-var">$this</span>-&gt;session-&gt;getFlashBag()-&gt;add(<span class="php-quote">'notice'</span>, <span class="php-quote">'foo2'</span>);
+<a href="#207" id="207" class="l">207: </a>
+<a href="#208" id="208" class="l">208: </a>        <span class="php-comment">// test that BC works by only retrieving the first added.</span>
+<a href="#209" id="209" class="l">209: </a>        <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-quote">'foo'</span>, <span class="php-var">$this</span>-&gt;session-&gt;getFlash(<span class="php-quote">'notice'</span>));
+<a href="#210" id="210" class="l">210: </a>        <span class="php-var">$this</span>-&gt;assertNull(<span class="php-var">$this</span>-&gt;session-&gt;getFlash(<span class="php-quote">'notice'</span>));
+<a href="#211" id="211" class="l">211: </a>    }
+<a href="#212" id="212" class="l">212: </a>
+<a href="#213" id="213" class="l">213: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> testHasFlash()
+<a href="#214" id="214" class="l">214: </a>    {
+<a href="#215" id="215" class="l">215: </a>        <span class="php-var">$this</span>-&gt;assertFalse(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'notice'</span>));
+<a href="#216" id="216" class="l">216: </a>        <span class="php-var">$this</span>-&gt;session-&gt;setFlash(<span class="php-quote">'notice'</span>, <span class="php-quote">'foo'</span>);
+<a href="#217" id="217" class="l">217: </a>        <span class="php-var">$this</span>-&gt;assertTrue(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'notice'</span>));
+<a href="#218" id="218" class="l">218: </a>    }
+<a href="#219" id="219" class="l">219: </a>
+<a href="#220" id="220" class="l">220: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> testRemoveFlash()
+<a href="#221" id="221" class="l">221: </a>    {
+<a href="#222" id="222" class="l">222: </a>        <span class="php-var">$this</span>-&gt;session-&gt;setFlash(<span class="php-quote">'notice'</span>, <span class="php-quote">'foo'</span>);
+<a href="#223" id="223" class="l">223: </a>        <span class="php-var">$this</span>-&gt;session-&gt;setFlash(<span class="php-quote">'error'</span>, <span class="php-quote">'bar'</span>);
+<a href="#224" id="224" class="l">224: </a>        <span class="php-var">$this</span>-&gt;assertTrue(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'notice'</span>));
+<a href="#225" id="225" class="l">225: </a>        <span class="php-var">$this</span>-&gt;session-&gt;removeFlash(<span class="php-quote">'error'</span>);
+<a href="#226" id="226" class="l">226: </a>        <span class="php-var">$this</span>-&gt;assertTrue(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'notice'</span>));
+<a href="#227" id="227" class="l">227: </a>        <span class="php-var">$this</span>-&gt;assertFalse(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'error'</span>));
+<a href="#228" id="228" class="l">228: </a>    }
+<a href="#229" id="229" class="l">229: </a>
+<a href="#230" id="230" class="l">230: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> testClearFlashes()
+<a href="#231" id="231" class="l">231: </a>    {
+<a href="#232" id="232" class="l">232: </a>        <span class="php-var">$this</span>-&gt;assertFalse(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'notice'</span>));
+<a href="#233" id="233" class="l">233: </a>        <span class="php-var">$this</span>-&gt;assertFalse(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'error'</span>));
+<a href="#234" id="234" class="l">234: </a>        <span class="php-var">$this</span>-&gt;session-&gt;setFlash(<span class="php-quote">'notice'</span>, <span class="php-quote">'foo'</span>);
+<a href="#235" id="235" class="l">235: </a>        <span class="php-var">$this</span>-&gt;session-&gt;setFlash(<span class="php-quote">'error'</span>, <span class="php-quote">'bar'</span>);
+<a href="#236" id="236" class="l">236: </a>        <span class="php-var">$this</span>-&gt;assertTrue(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'notice'</span>));
+<a href="#237" id="237" class="l">237: </a>        <span class="php-var">$this</span>-&gt;assertTrue(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'error'</span>));
+<a href="#238" id="238" class="l">238: </a>        <span class="php-var">$this</span>-&gt;session-&gt;clearFlashes();
+<a href="#239" id="239" class="l">239: </a>        <span class="php-var">$this</span>-&gt;assertFalse(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'notice'</span>));
+<a href="#240" id="240" class="l">240: </a>        <span class="php-var">$this</span>-&gt;assertFalse(<span class="php-var">$this</span>-&gt;session-&gt;hasFlash(<span class="php-quote">'error'</span>));
+<a href="#241" id="241" class="l">241: </a>    }
+<a href="#242" id="242" class="l">242: </a>
+<a href="#243" id="243" class="l">243: </a>    <span class="php-comment">/**
+</span><a href="#244" id="244" class="l">244: </a><span class="php-comment">     * @covers Symfony\Component\HttpFoundation\Session\Session::getIterator
+</span><a href="#245" id="245" class="l">245: </a><span class="php-comment">     */</span>
+<a href="#246" id="246" class="l">246: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> testGetIterator()
+<a href="#247" id="247" class="l">247: </a>    {
+<a href="#248" id="248" class="l">248: </a>        <span class="php-var">$attributes</span> = <span class="php-keyword1">array</span>(<span class="php-quote">'hello'</span> =&gt; <span class="php-quote">'world'</span>, <span class="php-quote">'symfony2'</span> =&gt; <span class="php-quote">'rocks'</span>);
+<a href="#249" id="249" class="l">249: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$attributes</span> <span class="php-keyword1">as</span> <span class="php-var">$key</span> =&gt; <span class="php-var">$val</span>) {
+<a href="#250" id="250" class="l">250: </a>            <span class="php-var">$this</span>-&gt;session-&gt;set(<span class="php-var">$key</span>, <span class="php-var">$val</span>);
+<a href="#251" id="251" class="l">251: </a>        }
+<a href="#252" id="252" class="l">252: </a>
+<a href="#253" id="253" class="l">253: </a>        <span class="php-var">$i</span> = <span class="php-num">0</span>;
+<a href="#254" id="254" class="l">254: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$this</span>-&gt;session <span class="php-keyword1">as</span> <span class="php-var">$key</span> =&gt; <span class="php-var">$val</span>) {
+<a href="#255" id="255" class="l">255: </a>            <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-var">$attributes</span>[<span class="php-var">$key</span>], <span class="php-var">$val</span>);
+<a href="#256" id="256" class="l">256: </a>            <span class="php-var">$i</span>++;
+<a href="#257" id="257" class="l">257: </a>        }
+<a href="#258" id="258" class="l">258: </a>
+<a href="#259" id="259" class="l">259: </a>        <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-keyword2">count</span>(<span class="php-var">$attributes</span>), <span class="php-var">$i</span>);
+<a href="#260" id="260" class="l">260: </a>    }
+<a href="#261" id="261" class="l">261: </a>
+<a href="#262" id="262" class="l">262: </a>    <span class="php-comment">/**
+</span><a href="#263" id="263" class="l">263: </a><span class="php-comment">     * @covers Symfony\Component\HttpFoundation\Session\Session::count
+</span><a href="#264" id="264" class="l">264: </a><span class="php-comment">     */</span>
+<a href="#265" id="265" class="l">265: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> testGetCount()
+<a href="#266" id="266" class="l">266: </a>    {
+<a href="#267" id="267" class="l">267: </a>        <span class="php-var">$this</span>-&gt;session-&gt;set(<span class="php-quote">'hello'</span>, <span class="php-quote">'world'</span>);
+<a href="#268" id="268" class="l">268: </a>        <span class="php-var">$this</span>-&gt;session-&gt;set(<span class="php-quote">'symfony2'</span>, <span class="php-quote">'rocks'</span>);
+<a href="#269" id="269" class="l">269: </a>
+<a href="#270" id="270" class="l">270: </a>        <span class="php-var">$this</span>-&gt;assertEquals(<span class="php-num">2</span>, <span class="php-keyword2">count</span>(<span class="php-var">$this</span>-&gt;session));
+<a href="#271" id="271" class="l">271: </a>    }
+<a href="#272" id="272" class="l">272: </a>
+<a href="#273" id="273" class="l">273: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> testGetMeta()
+<a href="#274" id="274" class="l">274: </a>    {
+<a href="#275" id="275" class="l">275: </a>        <span class="php-var">$this</span>-&gt;assertInstanceOf(<span class="php-quote">'Symfony\Component\HttpFoundation\Session\Storage\MetadataBag'</span>, <span class="php-var">$this</span>-&gt;session-&gt;getMetadataBag());
+<a href="#276" id="276" class="l">276: </a>    }
+<a href="#277" id="277" class="l">277: </a>}
+<a href="#278" id="278" class="l">278: </a></code></pre>
 
 	<div id="footer">
 		 API documentation generated by <a href="http://apigen.org">ApiGen</a>.
