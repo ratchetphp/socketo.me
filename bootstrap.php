@@ -40,7 +40,7 @@ function wamp() {
               , '/docs/wamp'      => '!road WAMPServerComponent'
               , '/docs/server'    => '!off IOServerComponent'
 //              , '/docs/flash'     => '!cog FlashPolicyComponent'
-//              , '/docs/black'     => '!ban-circle IPBlackListComponent'
+              , '/docs/black'     => '!ban-circle IpBlackListComponent'
             )
         )
 

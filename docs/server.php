@@ -59,7 +59,9 @@
                 <ul>
                     <li>Your application (for testing, or making a telnet application)</li>
                     <li><a href="/docs/black">IPBlackListComponent</a></li>
+<?php /*
                     <li><a href="/docs/flash">FlashPolicyComponent</a></li>
+*/ ?>
                     <li><a href="/docs/websocket">WebSocketComponent</a></li>
                 </ul>
             </section>
