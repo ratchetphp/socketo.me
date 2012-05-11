@@ -3,7 +3,7 @@
     require __DIR__ . '/menu.php';
 ?>
         <div class="span9 component-doc">
-            <h2><abbr title="WebSocket Application Messaging Protocol">WAMP</abbr>ServerComponent</h2>
+            <h2><abbr title="WebSocket Application Messaging Protocol">Wamp</abbr>Server</h2>
 
             <section>
                 <h3>Purpose <small>of this <em>Component</em></small></h3>
@@ -28,7 +28,7 @@
             <section>
                 <h3>Events <small>triggered by this <em>Component</em></h3>
 
-                <p>As found in the API Docs: Triggered events are propagated through a <a href="http://socketo.me/api/class-Ratchet.Component.WAMP.WAMPServerComponentInterface.html">WAMPServerComponentInterface</a> object passed to the __construct.
+                <p>As found in the API Docs: Triggered events are propagated through a <a href="http://socketo.me/api/class-Ratchet.WAMP.WampServerInterface.html">WampServerInterface</a> object passed to the __construct.
 
                 <ul>
                     <li><span class="label label-success">onOpen</span> (ConnectionInterface <em>$conn</em>) - A new client connection has been opened</li>
@@ -42,20 +42,19 @@
             </section>
 
             <section>
-                <h3>Methods <small>for configuration</small></h3>
+                <h3>Configuration <small>methods</small></h3>
 
                 <p>None</p>
             </section>
 
             <section>
-                <h3>Commands <small>added to its Factory</small></h3>
+                <h3>Functions <small>callable on <em>Connections</em></small></h3>
 
                 <ul>
-                    <li><span class="label">Welcome</span> - Upon connection Ratchet will send a "welcome message" identifying its version to the client.</li>
-                    <li><span class="label label-info">Event</span> - Publish/Send data to a specific connection that has subscribed to a specific URI</li>
-                    <li><span class="label label-info">CallResult</span> - A response to a client <em>Call</em>. Make sure to pass the corresponding <em>$id</em> from the <em>onCall</em> event</li>
-                    <li><span class="label label-info">CallError</span> - A response to the client after making a <em>Call</em> informing of an error processing the <em>Call</em>. Make sure to pass the corresponding <em>$id</em> from the <em>onCall</em> event</li>
-                    <li><span class="label label-info">Prefix</span> - Agree with the client to shorten a URI into a CURIE (ex. "http://socketo.me" -> "sock")</li>
+                    <li><span class="label label-info">event</span> (string <em>$uri</em>, string <em>$msg</em>) - Publish/Send data to a specific connection that has subscribed to a specific URI</li>
+                    <li><span class="label label-info">callResult</span> (string <em>$id</em>, array <em>$data</em>) - A response to a client <em>Call</em>. Make sure to pass the corresponding <em>$id</em> from the <em>onCall</em> event</li>
+                    <li><span class="label label-info">callError</span> (string <em>$id</em>, string <em>$uri</em>, string <em>$desc</em> = '', string <em>$details</em> = null) - A response to the client after making a <em>Call</em> informing of an error processing the <em>Call</em>. Make sure to pass the corresponding <em>$id</em> from the <em>onCall</em> event</li>
+                    <li><span class="label label-info">prefix</span> (string <em>$curie</em>, string <em>$uri</em>) - Agree with the client to shorten a URI into a CURIE (ex. "http://socketo.me" -> "sock")</li>
                 </ul>
             </section>
 
@@ -64,7 +63,8 @@
 
                 <dl>
                     <dt>WAMP</dt>
-                    <dd>(Closure <em>$addPrefix(string $curie, string $uri)</em>) - Alias a URI into a CURIE on this one <em>Connection</em></dd>
+                    <dd>(string <em>$sessionId</em>) - A unique ID given to the client</dd>
+                    <dd>(array <em>$prefixes</em>) - An associative array of CURIE/URI prefixes (aliases) agreed upon by client/server. You can not add entries to this directly, it has to be done on the client or through a Connection object</dd>
                 </dl>
             </section>
 
@@ -80,9 +80,39 @@
                 <h3>Wrapped <small>by other components nicely</small></h3>
 
                 <ul>
-                    <li><a href="/docs/websocket">WebSocketComponent</a></li>
-                    <li><a href="/docs/sessions">SessionComponent</a></li>
+                    <li><a href="/docs/websocket">WsServer</a></li>
+                    <li><a href="/docs/sessions">SessionProvider</a></li>
                 </ul>
+            </section>
+
+            <section>
+                <h3>Usage</h3>
+
+                <p>(a better, more in depth tutorial on WAMP will be posted soon)</p>
+
+                <pre class="prettyprint">&lt;?php
+// Your shell script
+use Ratchet\Wamp\WampServer;
+use Ratchet\Server\IoServer;
+use Ratchet\WebSocket\WsServer;
+
+    $server = IoServer::factory(
+        new WsServer(
+            new WampServer(
+                new MyApp
+            );
+        );
+    );
+    $server->run();
+</pre>
+
+                <pre class="prettyprint">&lt;?php
+// Inside your application class
+    public function onSubscribe($conn, $uri) {
+        $conn->event($uri, "Welcome to the {$uri} channel!");
+    }
+</pre>
+
             </section>
         </div>
     </div>

@@ -30,17 +30,17 @@ function wamp() {
           , 'resources' => array(
                 '_title'            => 'Resources'
               , '/docs/connections' => '!share-alt Connections'
-              , '/docs/commands'    => '!play Commands/Actions'
+//              , '/docs/commands'    => '!play Commands/Actions'
             )
 
           , 'components' => array(
                 '_title' => 'Components'
-              , '/docs/websocket' => '!random WebSocketComponent'
-              , '/docs/sessions'  => '!user SessionComponent'
-              , '/docs/wamp'      => '!road WAMPServerComponent'
-              , '/docs/server'    => '!off IOServerComponent'
-//              , '/docs/flash'     => '!cog FlashPolicyComponent'
-              , '/docs/black'     => '!ban-circle IpBlackListComponent'
+              , '/docs/websocket' => '!random WsServer (WebSocket)'
+              , '/docs/sessions'  => '!user SessionProvider'
+              , '/docs/wamp'      => '!road WampServer'
+              , '/docs/server'    => '!off IoServer'
+              , '/docs/flash'     => '!cog FlashPolicy'
+              , '/docs/black'     => '!ban-circle IpBlackList'
             )
         )
 

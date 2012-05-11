@@ -3,14 +3,14 @@
     require __DIR__ . '/menu.php';
 ?>
         <div class="span9 component-doc">
-            <h2>SessionComponent</h2>
+            <h2>SessionProvider</h2>
 
             <section>
                 <h3>Purpose <small>of this <em>Component</em></small></h3>
 
                 <p>
-                    The <em>SessionComponent</em> will attach a <a rel="external" href="http://symfony.com/doc/master/components/http_foundation/sessions.html">Symfony2 HttpFoundation Session</a> object to each incoming <em>Connection</em> object that will give you read-only access to the session data from your website.
-                    The <em>SessionComponent</em> <strong>will not work</strong> with any of the Native* session handlers. It is suggested you use choose one of the following <em>Symfony Custom Save Handlers</em>:
+                    The <em>SessionProvider</em> will attach a <a rel="external" href="http://symfony.com/doc/master/components/http_foundation/sessions.html">Symfony2 Session</a> object to each incoming <em>Connection</em> object that will give you read-only access to the session data from your website.
+                    The <em>SessionProvider</em> <strong>will not work</strong> with any of the Native* session handlers. It is suggested you use choose one of the following <em>Symfony Custom Save Handlers</em>:
                 </p>
 
                 <ul>
@@ -42,15 +42,18 @@
             </section>
 
             <section>
-                <h3>Methods <small>for configuration</small></h3>
+                <h3>Configuration <small>methods</small></h3>
 
                 <p>None.</p>
             </section>
 
             <section>
-                <h3>Commands <small>added to its Factory</small></h3>
+                <h3>Functions <small>callable on <em>Connections</em></small></h3>
 
-                <p>None.</p>
+                <ul>
+                    <li><span class="label label-info">send</span> (string <em>$message</em>) - Send a message (string) to the client</li>
+                    <li><span class="label label-warning">close</span> - Gracefully close the connection to the client</span>
+                </ul>
             </section>
 
             <section>
@@ -65,7 +68,7 @@
                 <h3>Wraps <small>other components nicely</small></h3>
 
                 <ul>
-                    <li><a href="/docs/WAMPServerComponent">WAMPServerComponent</a></li>
+                    <li><a href="/docs/WampServer">WampServer</a></li>
                     <li>Your application</li>
                 </ul>
             </section>
@@ -74,8 +77,38 @@
                 <h3>Wrapped <small>by other components nicely</small></h3>
 
                 <ul>
-                    <li><a href="/docs/websocket">WebSocketComponent</a></li>
+                    <li><a href="/docs/websocket">WsServer</a></li>
                 </ul>
+            </section>
+
+            <section>
+                <h3>Usage</h3>
+
+                <pre class="prettyprint">&lt;?php
+// Your shell script
+use Ratchet\Session\SessionProvider;
+use Ratchet\WebSocket\WsServer;
+use Ratchet\Server\IoServer;
+use Symfony\Component\HttpFoundation\Session\Storage\Handler;
+
+    $memcache = new Memcache;
+    $memcache->connect('localhost', 11211);
+
+    $session = new SessionProvider(
+        new MyApp
+      , new Handler\MemcacheSessionHandler($memcache)
+    );
+
+    // Make sure to run as root
+    $server = IoServer::factory(new WsServer($session));
+    $server->run();
+</pre>
+
+                <pre class="prettyprint">&lt;?php
+// Inside your MyApp class
+    public function onOpen($conn) {
+        $conn->send('Hello ' . $conn->session->get('name'));
+    }</pre>
             </section>
         </div>
     </div>

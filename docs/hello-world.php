@@ -36,8 +36,8 @@
 
                     <pre class="prettyprint">&lt;?php
 namespace MyApp;
-use Ratchet\Component\MessageComponentInterface;
-use Ratchet\Resource\ConnectionInterface;
+use Ratchet\MessageComponentInterface;
+use Ratchet\ConnectionInterface;
 
 class Chat implements MessageComponentInterface {
     public function onOpen(ConnectionInterface $conn) {
@@ -73,14 +73,15 @@ class Chat implements MessageComponentInterface {
             </p>
 
         <pre class="prettyprint">&lt;?php
-use Ratchet\Component\Server\IOServerComponent;
+use Ratchet\Server\IoServer;
 use MyApp\Chat;
 
-    $server = new IOServerComponent(
+    $server = IoServer::factory(
         new Chat()
+      , 8000
     );
 
-    $server->run(8000);</pre>
+    $server->run();</pre>
 
             <p>
                 Above, you'll see we create an I/O (Input/Output) server. 
@@ -121,11 +122,8 @@ use MyApp\Chat;
 
             <pre class="prettyprint">&lt;?php
 namespace MyApp;
-use Ratchet\Component\MessageComponentInterface;
-use Ratchet\Resource\ConnectionInterface;
-use Ratchet\Resource\Command\Action\SendMessage;
-use Ratchet\Resource\Command\Action\CloseConnection;
-use Ratchet\Resource\Command\Composite as CommandComposite;
+use Ratchet\MessageComponentInterface;
+use Ratchet\ConnectionInterface;
 
 class Chat implements MessageComponentInterface {
     protected $clients;
@@ -140,21 +138,12 @@ class Chat implements MessageComponentInterface {
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
-        // This is a collection of commands to send back to the caller
-        $commands = new CommandComposite;
-
         foreach ($this->clients as $client) {
             if ($from !== $client) {
                 // The sender is not the receiver, enqueue a message to send to each client connected
-                $messageCommand = new SendMessage($client);
-                $messageCommand->setMessage($msg);
-
-                $commands->enqueue($messageCommand);
+                $client->send($msg);
             }
         }
-
-        // Return our collection of SendMessage commands to execute
-        return $commands;
     }
 
     public function onClose(ConnectionInterface $conn) {
@@ -165,7 +154,7 @@ class Chat implements MessageComponentInterface {
     public function onError(ConnectionInterface $conn, \Exception $e) {
         echo "An error has occurred: {$e->getMessage()}\n";
 
-        return new CloseConnection($conn);
+        $conn->close();
     }
 }</pre>
         </section>
@@ -192,17 +181,18 @@ class Chat implements MessageComponentInterface {
             </p>
 
             <pre class="prettyprint">&lt;?php
-use Ratchet\Component\Server\IOServerComponent;
-use Ratchet\Component\WebSocket\WebSocketComponent;
+use Ratchet\Server\IoServer;
+use Ratchet\WebSocket\WsServer;
 use MyApp\Chat;
 
-    $server = new IOServerComponent(
-        new WebSocketComponent(
+    $server = IoServer::factory(
+        new WsServer(
             new Chat()
         )
+      , 8000
     );
 
-    $server->run(8000);
+    $server->run();
 </pre>
 
             <p>Now, open a couple web browser windows and open the a javascript console or a page with the following javascript:</p>

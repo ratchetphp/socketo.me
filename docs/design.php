@@ -54,7 +54,7 @@
                     </tr>
 
                     <tr>
-                        <th>Session Handler</th>
+                        <th>Session Provider</th>
         
                         <td>open</td>
                         <td>close</td>
@@ -95,15 +95,8 @@
 
                 <p>
                     With your application architecture set up and instantiated <em>Resources</em> are then passed through your application.
-                    <em>Resources</em> are broken up into two categories: <a href="/docs/connections">Connections</a> and <a href="/docs/commands">Commands</a>.
-                    When events are triggered by the base (<em>IOServerComponent</em>) and propagated up to your application a <em>Connection</em> object is sent representing the client on the other end of the wire. 
+                    When events are triggered by the base (<em>IoServer</em>) and propagated up to your application a <em>Connection</em> object is sent representing the client on the other end of the wire. 
                     These <em>Connection</em> objects are used to interact with the client and are passed both up and down your application.
-                </p>
-
-                <p>
-                    <em>Commands</em> are classes you instantiate in your application within the context of a <em>Connection</em> to have executed by the <em>IOServerComponent</em>. 
-                    Two base commands are <em>SendMessage</em> and <em>CloseConnection</em>. 
-                    In your application class you will create a command, bound to a <em>Connection</em> and <em>return</em> the command from your event method to have it handled other <em>Components</em>, such as any required WebSocket encoding, then finally handled by the <em>IOServerComponent</em>.
                 </p>
             </section>
         </div><!--/span-->
