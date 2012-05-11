@@ -31,7 +31,7 @@
             <section>
                 <h3>Events <small>triggered by this <em>Component</em></h3>
 
-                <p>As found in the API Docs: Triggered events are propagated through a <a href="http://socketo.me/api/class-Ratchet.Component.MessageComponentInterface.html">MessageComponentInterface</a> object passed to the <em>__construct</em>.</p>
+                <p>As found in the API Docs: Triggered events are propagated through a <a href="/api/class-Ratchet.MessageComponentInterface.html">MessageComponentInterface</a> object passed to the <em>__construct</em>.</p>
 
                 <ul>
                     <li><span class="label label-success">onOpen</span> (ConnectionInterface <em>$conn</em>) - A new client connection has been opened</li>
@@ -60,7 +60,7 @@
                 <h3>Parameters <small>added to each <em>Connection</em></small></h3>
 
                 <dl>
-                    <dd>(Symfony\Component\HttpFoundation\Session <em>$Session</em>) - A Symfony2 Session object. See the <a href="#">API docs</a> or <a rel="external" href="http://symfony.com/doc/master/components/http_foundation/sessions.html">Symfony Documentation</a> on working with the Session object.  Also, <em>please</em> do not try and write to the session</dd>
+                    <dd>(Symfony\Component\HttpFoundation\Session <em>$Session</em>) - A Symfony2 Session object. See the <a href="/api/class-Symfony.Component.HttpFoundation.Session.Session.html">API docs</a> or <a rel="external" href="http://symfony.com/doc/master/components/http_foundation/sessions.html">Symfony Documentation</a> on working with the Session object.  Also, <em>please</em> do not try and write to the session</dd>
                 </dl>
             </section>
 

@@ -32,7 +32,7 @@
                         <li><em>onError</em> - Called when an error occurs on a <em>Connection</em>
                     </ul>
 
-                    <p>Given those triggers, our class will implement the <a href="/api/class-Ratchet.Component.MessageComponentInterface.html">MessageComponentInterface</a>:</p>
+                    <p>Given those triggers, our class will implement the <a href="/api/class-Ratchet.MessageComponentInterface.html">MessageComponentInterface</a>:</p>
 
                     <pre class="prettyprint">&lt;?php
 namespace MyApp;
@@ -54,8 +54,8 @@ class Chat implements MessageComponentInterface {
 }</pre>
 
             <p>
-                You'll notice, in addition from just implementing methods from the <em>MessageComponentInterface</em>, we've given our application a namespace and are accepting the <a href="http://socketo.me/api/class-Ratchet.Resource.ConnectionInterface.html">ConnectionInterface</a> classes.
-                This class, usually implemented by a <a href="http://socketo.me/api/class-Ratchet.Resource.Connection.html">Connection</a> instance, is a representation of a client's connection on the other side of the socket.
+                You'll notice, in addition from just implementing methods from the <em>MessageComponentInterface</em>, we've given our application a namespace and are accepting the <a href="/api/class-Ratchet.ConnectionInterface.html">ConnectionInterface</a> classes.
+                This class, usually implemented by a <a href="/api/class-Ratchet.Server.IoConnection.html">Connection</a> instance, is a representation of a client's connection on the other side of the socket.
                 On each of the four triggered events, the client <em>Connection</em> representation is passed. 
                 These objects are re-used, you will receive the same <em>Connection</em> sometimes.
             </p>
