@@ -3,7 +3,7 @@
     require __DIR__ . '/menu.php';
 ?>
         <div class="span9 component-doc">
-            <h2><abbr title="WebSocket Application Messaging Protocol">Wamp</abbr>Server</h2>
+            <h2><abbr title="WebSocket Application Messaging Protocol">Wamp</abbr>Server <small>(Pub/Sub & RPC)</small></h2>
 
             <section>
                 <h3>Purpose <small>of this <em>Component</em></small></h3>
@@ -23,6 +23,7 @@
                     The programming reference for AutobahnJS can be found on <a rel="external" href="http://autobahn.ws/developers/autobahnjs/reference">Autobahn website</a>.
                 </p>
 
+                <p><strong>Note:</strong> Although the documentation specified to use URI's as context, there is no enforcement on client or server; you can use any string to identify these channels.</p>
             </section>
 
             <section>
@@ -54,7 +55,10 @@
                     <li><span class="label label-info">event</span> (string <em>$uri</em>, string <em>$msg</em>) - Publish/Send data to a specific connection that has subscribed to a specific URI</li>
                     <li><span class="label label-info">callResult</span> (string <em>$id</em>, array <em>$data</em>) - A response to a client <em>Call</em>. Make sure to pass the corresponding <em>$id</em> from the <em>onCall</em> event</li>
                     <li><span class="label label-info">callError</span> (string <em>$id</em>, string <em>$uri</em>, string <em>$desc</em> = '', string <em>$details</em> = null) - A response to the client after making a <em>Call</em> informing of an error processing the <em>Call</em>. Make sure to pass the corresponding <em>$id</em> from the <em>onCall</em> event</li>
-                    <li><span class="label label-info">prefix</span> (string <em>$curie</em>, string <em>$uri</em>) - Agree with the client to shorten a URI into a CURIE (ex. "http://socketo.me" -> "sock")</li>
+                    <li><span class="label label-warning">close</span> - Gracefully close the connection to the client</span>
+<?php /*
+                    <li><span class="label label-info">prefix</span> (string <em>$curie</em>, string <em>$uri</em>) - Agree with the client to shorten a URI into a CURIE (ex. "http://socketo.me" -> "sock") (<em>Note:</em> This feature is marked for deprecated, it is not recommended to use)</li>
+*/ ?>
                 </ul>
             </section>
 

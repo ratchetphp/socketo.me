@@ -107,13 +107,6 @@ use MyApp\Chat;
             <p>So far, we've just set up structure, both in our executable script and our <em>Chat</em> class. Now, to add code to our <em>Chat</em> to complete our application.</p>
 
             <p>
-                <strong>Important:</strong> An important convention of building Ratchet applications is how data is sent to clients. 
-                This is done with classes following what's called the <em>Command Pattern</em>.
-                Ratchet provides several <em>Command\Action</em> classes, that delay code execution until the <em>IOServerComponent</em> is ready to deliver your messages.
-                See the <a href="/docs/design#command">Design Philosophy</a> section on <em>Commands</em> for more information.
-            </p>
-
-            <p>
                 Let's add some logic to our <em>Chat</em> class.  We'll incorporate the logic in our methods and use some <em>Command</em> classes to do this:
                 What we're going to do, is track all incoming <em>Connections</em>, in order to send them messages. 
                 Typically, you would store a collection of items in an array, but we're going to use something called <a rel="external" href="http://ca2.php.net/manual/en/class.splobjectstorage.php">SplObjectStorage</a>. 
@@ -140,7 +133,7 @@ class Chat implements MessageComponentInterface {
     public function onMessage(ConnectionInterface $from, $msg) {
         foreach ($this->clients as $client) {
             if ($from !== $client) {
-                // The sender is not the receiver, enqueue a message to send to each client connected
+                // The sender is not the receiver, send to each client connected
                 $client->send($msg);
             }
         }

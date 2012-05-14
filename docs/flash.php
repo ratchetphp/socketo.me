@@ -3,20 +3,29 @@
     require __DIR__ . '/menu.php';
 ?>
         <div class="span9 component-doc">
-            <h2>FlashPolicyComponent</h2>
+            <h2>FlashPolicy</h2>
 
             <section>
                 <h3>Purpose <small>of this <em>Component</em></small></h3>
 
                 <p>Allow browsers that don't natively support WebSockets to connect to your Ratchet app with Flash Sockets.</p>
 
-                <p>(This page is a work in progress, it should be finished soon)</p>
+                <p>In your HTML include the JavaScript library <a href="https://github.com/gimite/web-socket-js">web-socket-js</a>, which is a client-side polyfill for the WebSocket API.</p>
+
+                <p>
+                    In order for Flash to communicate with a server through sockets, it must first gain permission via an XML response on the 843 port. 
+                    Flash will make this request automatically before it connects to your WebSocket application server.
+                </p>
+
+                <p>This means you need to run two shell scripts; one on port 843 wit FlashPolicy and one on port 80 for your application.</p>
             </section>
 
             <section>
                 <h3>Configuration <small>methods</small></h3>
 
                 <ul>
+                    <li>FlashPolicy <strong>addAllowedAccess</strong> (string <em>$domain</em>, string <em>$ports</em>, bool <em>$secure</em>) - Whitelist a client based on their domain, port and if the connection must be secured or not</li>
+                    <li>FlashPolicy <strong>setSiteControl</strong> (string <em>$permittedCrossDomainPolicies</em>) - Set to one of "all", "master-only", or "none" (if you know what you're doing) - default is "all"</li>
                 </ul>
             </section>
 

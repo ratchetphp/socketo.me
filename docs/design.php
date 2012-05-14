@@ -91,12 +91,12 @@
             </table>
 
             <section>
-                <h3>Resources: <small>Objects Passed through your Application Components</small></h3>
+                <h3>Connections: <small>Objects Passed through your Application Components</small></h3>
 
                 <p>
                     With your application architecture set up and instantiated <em>Resources</em> are then passed through your application.
-                    When events are triggered by the base (<em>IoServer</em>) and propagated up to your application a <em>Connection</em> object is sent representing the client on the other end of the wire. 
-                    These <em>Connection</em> objects are used to interact with the client and are passed both up and down your application.
+                    When events are triggered by the base (<em>IoServer</em>) and propagated up to your application a <a href="/docs/connections">Connection</a> object is sent representing the client on the other end of the wire. 
+                    These <em>Connection</em> objects are used to interact with the client and are passed through your application.
                 </p>
             </section>
         </div><!--/span-->
