@@ -39,7 +39,7 @@ function wamp() {
               , '/docs/sessions'  => '!user SessionProvider'
               , '/docs/wamp'      => '!road WampServer'
               , '/docs/server'    => '!off IoServer'
-//              , '/docs/flash'     => '!cog FlashPolicy'
+              , '/docs/flash'     => '!cog FlashPolicy'
               , '/docs/black'     => '!ban-circle IpBlackList'
             )
         )
