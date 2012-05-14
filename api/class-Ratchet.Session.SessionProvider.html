@@ -238,7 +238,9 @@ composer)</p>
 		<dd style="padding-left:0px">
 <b>Ratchet\Session\SessionProvider</b>			
 			 implements 
-				<a href="class-Ratchet.MessageComponentInterface.html">Ratchet\MessageComponentInterface</a>
+				<a href="class-Ratchet.MessageComponentInterface.html">Ratchet\MessageComponentInterface</a>, 
+			
+				<a href="class-Ratchet.WebSocket.WsServerInterface.html">Ratchet\WebSocket\WsServerInterface</a>
 			
 			
 		</dd>
@@ -255,7 +257,7 @@ composer)</p>
 		
 		<b>Namespace:</b> <a href="namespace-Ratchet.html">Ratchet</a>\<a href="namespace-Ratchet.Session.html">Session</a><br>
 
-		<b>Located at</b> <a href="source-class-Ratchet.Session.SessionProvider.html#10" title="Go to source code">Ratchet/Session/SessionProvider.php</a><br>
+		<b>Located at</b> <a href="source-class-Ratchet.Session.SessionProvider.html#11" title="Go to source code">Ratchet/Session/SessionProvider.php</a><br>
 	</div>
 
 
@@ -273,7 +275,7 @@ composer)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Ratchet.Session.SessionProvider.html#39" title="Go to source code">__construct</a>( <span><a href="class-Ratchet.MessageComponentInterface.html">Ratchet\MessageComponentInterface</a> <var>$app</var></span>, <span><a href="class-SessionHandlerInterface.html">SessionHandlerInterface</a> <var>$handler</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">array</span>()</span>, <span><a href="class-Ratchet.Session.Serialize.HandlerInterface.html">Ratchet\Session\Serialize\HandlerInterface</a> <var>$serializer</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Ratchet.Session.SessionProvider.html#40" title="Go to source code">__construct</a>( <span><a href="class-Ratchet.MessageComponentInterface.html">Ratchet\MessageComponentInterface</a> <var>$app</var></span>, <span><a href="class-SessionHandlerInterface.html">SessionHandlerInterface</a> <var>$handler</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">array</span>()</span>, <span><a href="class-Ratchet.Session.Serialize.HandlerInterface.html">Ratchet\Session\Serialize\HandlerInterface</a> <var>$serializer</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -317,7 +319,7 @@ composer)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onOpen">#</a>
-		<code><a href="source-class-Ratchet.Session.SessionProvider.html#69" title="Go to source code">onOpen</a>( <span><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a> <var>$conn</var></span> )</code>
+		<code><a href="source-class-Ratchet.Session.SessionProvider.html#70" title="Go to source code">onOpen</a>( <span><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a> <var>$conn</var></span> )</code>
 
 		<div class="description short">
 			
@@ -361,7 +363,7 @@ composer)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onMessage">#</a>
-		<code><a href="source-class-Ratchet.Session.SessionProvider.html#89" title="Go to source code">onMessage</a>( <span><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a> <var>$from</var></span>, <span>string <var>$msg</var></span> )</code>
+		<code><a href="source-class-Ratchet.Session.SessionProvider.html#90" title="Go to source code">onMessage</a>( <span><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a> <var>$from</var></span>, <span>string <var>$msg</var></span> )</code>
 
 		<div class="description short">
 			
@@ -407,7 +409,7 @@ composer)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onClose">#</a>
-		<code><a href="source-class-Ratchet.Session.SessionProvider.html#96" title="Go to source code">onClose</a>( <span><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a> <var>$conn</var></span> )</code>
+		<code><a href="source-class-Ratchet.Session.SessionProvider.html#97" title="Go to source code">onClose</a>( <span><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a> <var>$conn</var></span> )</code>
 
 		<div class="description short">
 			
@@ -455,7 +457,7 @@ closed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onError">#</a>
-		<code><a href="source-class-Ratchet.Session.SessionProvider.html#105" title="Go to source code">onError</a>( <span><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a> <var>$conn</var></span>, <span><a href="class-Exception.html">Exception</a> <var>$e</var></span> )</code>
+		<code><a href="source-class-Ratchet.Session.SessionProvider.html#106" title="Go to source code">onError</a>( <span><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a> <var>$conn</var></span>, <span><a href="class-Exception.html">Exception</a> <var>$e</var></span> )</code>
 
 		<div class="description short">
 			
@@ -493,6 +495,47 @@ by the Server and bubbled back up the application through this method</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="getSubProtocols" id="_getSubProtocols">
+
+		<td class="attributes"><code>
+			
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSubProtocols">#</a>
+		<code><a href="source-class-Ratchet.Session.SessionProvider.html#113" title="Go to source code">getSubProtocols</a>( )</code>
+
+		<div class="description short">
+			
+<p>If any component in a stack supports a WebSocket sub-protocol return each
+supported in an array</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>If any component in a stack supports a WebSocket sub-protocol return each
+supported in an array</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Ratchet.WebSocket.WsServerInterface.html#_getSubProtocols">Ratchet\WebSocket\WsServerInterface::getSubProtocols</a></code></div>
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="setOptions" id="_setOptions">
 
 		<td class="attributes"><code>
@@ -505,7 +548,7 @@ by the Server and bubbled back up the application through this method</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setOptions">#</a>
-		<code><a href="source-class-Ratchet.Session.SessionProvider.html#112" title="Go to source code">setOptions</a>( <span>array <var>$options</var></span> )</code>
+		<code><a href="source-class-Ratchet.Session.SessionProvider.html#124" title="Go to source code">setOptions</a>( <span>array <var>$options</var></span> )</code>
 
 		<div class="description short">
 			
@@ -547,7 +590,7 @@ by the Server and bubbled back up the application through this method</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_toClassCase">#</a>
-		<code><a href="source-class-Ratchet.Session.SessionProvider.html#142" title="Go to source code">toClassCase</a>( <span>string <var>$langDef</var></span> )</code>
+		<code><a href="source-class-Ratchet.Session.SessionProvider.html#154" title="Go to source code">toClassCase</a>( <span>string <var>$langDef</var></span> )</code>
 
 		<div class="description short">
 			
@@ -592,7 +635,7 @@ by the Server and bubbled back up the application through this method</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Ratchet.Session.SessionProvider.html#17" title="Go to source code"><var>$_app</var></a>
+				<a href="source-class-Ratchet.Session.SessionProvider.html#18" title="Go to source code"><var>$_app</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -617,7 +660,7 @@ by the Server and bubbled back up the application through this method</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Ratchet.Session.SessionProvider.html#22" title="Go to source code"><var>$_handler</var></a>
+				<a href="source-class-Ratchet.Session.SessionProvider.html#23" title="Go to source code"><var>$_handler</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -646,7 +689,7 @@ by the Server and bubbled back up the application through this method</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Ratchet.Session.SessionProvider.html#28" title="Go to source code"><var>$_null</var></a>
+				<a href="source-class-Ratchet.Session.SessionProvider.html#29" title="Go to source code"><var>$_null</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -675,7 +718,7 @@ by the Server and bubbled back up the application through this method</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Ratchet.Session.SessionProvider.html#34" title="Go to source code"><var>$_serializer</var></a>
+				<a href="source-class-Ratchet.Session.SessionProvider.html#35" title="Go to source code"><var>$_serializer</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
