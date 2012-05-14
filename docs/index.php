@@ -9,7 +9,7 @@
             <h3>Everything You Know (about the web) is Wrong</h3>
 
             <p>
-                Stateless. You make a request to http://socketo.me/hello-world, what happens? 
+                Stateless. You make a request to <a href="/docs/hello-world">http://socketo.me/docs/hello-world</a>, what happens? 
                 Your browser opens up a socket port 80 on socketo.me, sends an HTTP header request to the server (Apache/Nginx/Rack/IIS), it buffers that message and sends it to the server application. 
                 The server decides what to do with the request, fetches data, generates HTML and sends it back to the server (Apache/Nginx/Rack/IIS). 
                 It then adds the appropriate HTTP headers to the body, sends it back to the browser and closes the connection.

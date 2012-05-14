@@ -32,7 +32,9 @@
 
                 <ul>
                     <li>void <strong>disableVersion</strong> (string $name) - Disable a specific version of the WebSocket protocol. Sometimes you'll want to disable "Hixie76"</li>
+<?php /*
                     <li>void <strong>setMaskPayload</strong> (bool $opt) - Enable or disable the server response being framed with the WebSocket framing protocol. Off by default, as per the spec.</li>
+*/ ?>
                 </ul>
             </section>
 

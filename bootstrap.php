@@ -35,7 +35,7 @@ function wamp() {
 
           , 'components' => array(
                 '_title' => 'Components'
-              , '/docs/websocket' => '!random WsServer (WebSocket)'
+              , '/docs/websocket' => '!random WsServer'
               , '/docs/sessions'  => '!user SessionProvider'
               , '/docs/wamp'      => '!road WampServer'
               , '/docs/server'    => '!off IoServer'

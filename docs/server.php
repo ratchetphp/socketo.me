@@ -79,7 +79,7 @@
 // Your shell script
 use Ratchet\Server\IoServer;
 
-    $server = IoServer::factory(new MyApp);
+    $server = IoServer::factory(new MyApp, 8000); // Run your app on port 8000
     $server->run();</pre>
             </section>
         </div>
