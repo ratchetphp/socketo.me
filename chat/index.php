@@ -10,6 +10,8 @@
 		<a href="#" class="groupHead">Channel 2 <span class="notifications">2</span></a>
 		<a href="#" class="groupHead">Channel 3</a>
 		<a href="#" class="groupHead">Channel 4</a>
+		
+		<a href="#" class="groupHead add">Add Channel</a>
 	</div>
 	
 	<div id="colB">
