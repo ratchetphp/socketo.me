@@ -1,15 +1,30 @@
 <section id="chat">
 
 	<div id="colA">
-		<a href="#" class="groupHead open">Channel 1</a>
+		<a href="#" class="groupHead">Channel 1</a>
 		<ul class="users">
 			<li><span>Indicator</span>Jon Rundle</li>
 			<li><span>Indicator</span>Chris Boden</li>
 			<li><span>Indicator</span>Mike Almond</li>
 		</ul>
 		<a href="#" class="groupHead">Channel 2 <span class="notifications">2</span></a>
+		<ul class="users">
+			<li><span>Indicator</span>Jon Rundle</li>
+			<li><span>Indicator</span>Chris Boden</li>
+			<li><span>Indicator</span>Mike Almond</li>
+		</ul>
 		<a href="#" class="groupHead">Channel 3</a>
+		<ul class="users">
+			<li><span>Indicator</span>Jon Rundle</li>
+			<li><span>Indicator</span>Chris Boden</li>
+			<li><span>Indicator</span>Mike Almond</li>
+		</ul>
 		<a href="#" class="groupHead">Channel 4</a>
+		<ul class="users">
+			<li><span>Indicator</span>Jon Rundle</li>
+			<li><span>Indicator</span>Chris Boden</li>
+			<li><span>Indicator</span>Mike Almond</li>
+		</ul>
 		
 		<a href="#" class="groupHead add">Add Channel</a>
 	</div>

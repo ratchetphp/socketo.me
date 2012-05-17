@@ -33,6 +33,7 @@
         <script src="/vendor/cujojs/when/when.js"></script>
         <script src="/vendor/tavendo/AutobahnJS/autobahn/autobahn.js"></script>
         <script src="/chat/transport.js"></script>
+        <script src="/chat/chat.js"></script>
     <?php endif; ?>
 
     <footer id="banner" class="well">
