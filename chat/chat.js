@@ -23,7 +23,7 @@ $(function() {
 });
 
 
-    $(Chat).bind('message', function(room, msg) {
+    $(Chat).bind('message', function(room, from, msg) {
         if (focus != room) {
             // update counter
         }
@@ -44,3 +44,7 @@ $(function() {
     $(Chat).bind('joinChannel', function(room, name) {
         // name has joined room
     });
+
+// Testing code
+$(Chat).trigger('openChannel', 'Channel 5');
+$(Chat).trigger('message', ['Channel 5', 'Chris', 'Hello World!']);
