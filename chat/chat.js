@@ -21,3 +21,26 @@ $(function() {
 		$('#' + channel).addClass('active');
 	}); 
 });
+
+
+    $(Chat).bind('message', function(room, msg) {
+        if (focus != room) {
+            // update counter
+        }
+
+        // create div, put in box
+    });
+
+    $(Chat).bind('openChannel', function(room) {
+    });
+
+    $(Chat).bind('closeChannel', function(room) {
+    });
+
+    $(Chat).bind('leftChannel', function(room, name) {
+        // name has left room
+    });
+
+    $(Chat).bind('joinChannel', function(room, name) {
+        // name has joined room
+    });
