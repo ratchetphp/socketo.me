@@ -1,32 +1,34 @@
 <section id="chat">
 
 	<div id="colA">
-		<a href="#" class="groupHead" data-channel="channel1">Channel 1</a>
-		<ul class="users">
-			<li><span>Indicator</span>Jon Rundle</li>
-			<li><span>Indicator</span>Chris Boden</li>
-			<li><span>Indicator</span>Mike Almond</li>
-		</ul>
-		<a href="#" class="groupHead" data-channel="channel2">Channel 2 <span class="notifications">2</span></a>
-		<ul class="users">
-			<li><span>Indicator</span>Jon Rundle</li>
-			<li><span>Indicator</span>Chris Boden</li>
-			<li><span>Indicator</span>Mike Almond</li>
-		</ul>
-		<a href="#" class="groupHead" data-channel="channel3">Channel 3</a>
-		<ul class="users">
-			<li><span>Indicator</span>Jon Rundle</li>
-			<li><span>Indicator</span>Chris Boden</li>
-			<li><span>Indicator</span>Mike Almond</li>
-		</ul>
-		<a href="#" class="groupHead" data-channel="channel4">Channel 4</a>
-		<ul class="users">
-			<li><span>Indicator</span>Jon Rundle</li>
-			<li><span>Indicator</span>Chris Boden</li>
-			<li><span>Indicator</span>Mike Almond</li>
-		</ul>
+		<div class="rooms">
+			<a href="#" class="groupHead" data-channel="channel1">Channel 1</a>
+			<ul class="users">
+				<li><span>Indicator</span>Jon Rundle</li>
+				<li><span>Indicator</span>Chris Boden</li>
+				<li><span>Indicator</span>Mike Almond</li>
+			</ul>
+			<a href="#" class="groupHead" data-channel="channel2">Channel 2 <span class="notifications">2</span></a>
+			<ul class="users">
+				<li><span>Indicator</span>Jon Rundle</li>
+				<li><span>Indicator</span>Chris Boden</li>
+				<li><span>Indicator</span>Mike Almond</li>
+			</ul>
+			<a href="#" class="groupHead" data-channel="channel3">Channel 3</a>
+			<ul class="users">
+				<li><span>Indicator</span>Jon Rundle</li>
+				<li><span>Indicator</span>Chris Boden</li>
+				<li><span>Indicator</span>Mike Almond</li>
+			</ul>
+			<a href="#" class="groupHead" data-channel="channel4">Channel 4</a>
+			<ul class="users">
+				<li><span>Indicator</span>Jon Rundle</li>
+				<li><span>Indicator</span>Chris Boden</li>
+				<li><span>Indicator</span>Mike Almond</li>
+			</ul>
+		</div>
 		
-		<a href="#" class="groupHead add">Add Channel</a>
+		<a href="#" class="groupHead add">Join Channel</a>
 	</div>
 	
 	<div id="colB">
