@@ -36,6 +36,11 @@ $(function() {
 		$('#channelList ul').width(listWidth);
 	});
 	
+	$('#textbox').submit(function() {
+		var text = $('#textbox input').val();
+		alert(text);
+	});
+	
 });
 
 

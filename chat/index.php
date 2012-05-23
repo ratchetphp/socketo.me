@@ -161,7 +161,7 @@
 				<p>Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor.</p>
 			</div>
 		</div>
-		<form>
+		<form id="textbox">
 			<input type="text" placeholder="Type here…" />
 		</form>
 	</div>
