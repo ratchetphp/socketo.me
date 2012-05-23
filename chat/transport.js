@@ -1,16 +1,6 @@
 var Chat = function() {
     var sess;
 
-    var onRoom = function(room, msg) {
-        Debug({'room': room, 'msg': msg});
-    }
-
-    var onMessage = function(room, msg) {
-        Debug({'room': room, 'msg': msg});
-
-        $(api).trigger('message', {'room': room, 'msg': msg});
-    }
-
     var onError = function(error) {
         Debug('Error: ' + error);
     }
@@ -24,49 +14,63 @@ var Chat = function() {
     var api = {
         events: [
             /**
+             * The user has connected to the server
              * @event connected
-             * @param Chat
              */
             'connect'
 
             /**
-             * @event message
-             * @param string Room the message is sent to
-             * @param string Name of the person who sent the message
-             * @param string Message received
-             */
-          , 'message'
-
-            /**
+             * The user has disconnected from the server
              * @event disconnect
              */
           , 'disconnect'
 
-
             /**
+             * Crap crap crap!
              * @event error
              * @param string Message from the server
              */
           , 'error'
 
             /**
-             * @event openChannel
-             * @param string Name of the room
+             * A new room has been created by another user
+             * @event openRoom
+             * @param string Room name
              */
-          , 'openChannel'
+          , 'openRoom'
 
             /**
-             * @event closeChannel
-             * @param string Name of the channel closing
+             * A room has been closed
+             * @event closeRoom
+             * @param string Room name
              */
-          , 'closeChannel'
+          , 'closeRoom'
 
             /**
-             * @event leftChannel
-             * @param string Name of the person who left
-             * @param string Name of the channel
+             * Another use has joined a room the current user is in
+             * @event joinRoom
+             * @param string Room name
+             * @param string Unique ID of the person who joined
+             * @param string Display name of the person who joined (make sure to store this in a lookup)
              */
-          , 'leftChannel'
+          , 'joinRoom'
+
+            /**
+             * Another use has left one of the rooms this user is in
+             * @event leftRoom
+             * @param string Room name
+             * @param string Unique ID of the person who left
+             */
+          , 'leftRoom'
+
+            /**
+             * A message has been received in one of the chat rooms
+             * @event message
+             * @param string Room the message is sent to
+             * @param string Unique ID of the person who sent the message
+             * @param string Message received
+             */
+          , 'message'
         ]
 
       , debug: true
@@ -83,10 +87,18 @@ var Chat = function() {
             // No more than 32 characters
             // Must be alpha numeric
 
-            sess.subscribe(room, onMessage);
+            sess.subscribe(room, function(room, msg) {
+                Debug({'room': room, 'msg': msg});
+
+                var action = msg.shift();
+                msg.push(room);
+
+                $(api).trigger(action, msg);
+            });
         }
 
       , leave: function(room) {
+            sess.unsubscribe(room);
         }
 
       , send: function(room, msg) {
@@ -113,9 +125,17 @@ var Chat = function() {
           , function() {
                 Debug('Connected!');
 
-                sess.subscribe('ctrl:channels', onRoom);
+                sess.subscribe('ctrl:rooms', function(room, msg) {
+                    if (1 == msg) {
+                        $(api).trigger('openRoom', [room]);
+                    } else {
+                        $(api).trigger('closeRoom', [room]);
+                    }
+                });
 
                 $(api).trigger('connect', api);
+
+                api.join('General');
             }
           , function() {
                 Debug('Connection closed');
