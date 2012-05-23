@@ -51,7 +51,7 @@ $(function() {
 	
 	$('#textbox').submit(function() {
 		var text = $('#textbox input').val();
-		//Chat.send(focus, text);
+		Chat.send(focus, text);
 		return false;
 	});
 	
