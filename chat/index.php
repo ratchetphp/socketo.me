@@ -1,3 +1,20 @@
+<section id="channelList">
+	<ul>
+		<li data-channel="channel1"><a href="#">Channel 1<span>Join</span></a></li>
+		<li data-channel="channel2" class="joined"><a href="#">Channel 2<span>Join</span></a></li>
+		<li data-channel="channel3"><a href="#">Channel 3<span>Join</span></a></li>
+		<li data-channel="channel4"><a href="#">Channel 4<span>Join</span></a></li>
+		<li data-channel="channel5"><a href="#">Channel 5<span>Join</span></a></li>
+		<li data-channel="channel6"><a href="#">Channel 6<span>Join</span></a></li>
+		<li data-channel="channel7"><a href="#">Channel 7<span>Join</span></a></li>
+		<li data-channel="channel8"><a href="#">Channel 8<span>Join</span></a></li>
+		<li data-channel="channel9"><a href="#">Channel 9<span>Join</span></a></li>
+		<li data-channel="channel10"><a href="#">Channel 10<span>Join</span></a></li>
+		<li data-channel="channel11"><a href="#">Channel 11<span>Join</span></a></li>
+		<li data-channel="channel12"><a href="#">Channel 12<span>Join</span></a></li>
+	</ul>
+</section>
+
 <section id="chat">
 
 	<div id="colA">
