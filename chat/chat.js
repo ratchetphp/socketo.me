@@ -38,7 +38,8 @@ $(function() {
 	
 	$('#textbox').submit(function() {
 		var text = $('#textbox input').val();
-		alert(text);
+		//Chat.send(focus, text);
+		return false;
 	});
 	
 });
