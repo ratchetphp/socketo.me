@@ -133,9 +133,7 @@ var Chat = function() {
                     }
                 });
 
-                $(api).trigger('connect', api);
-
-                api.join('General');
+                $(api).trigger('connect');
             }
           , function() {
                 Debug('Connection closed');
