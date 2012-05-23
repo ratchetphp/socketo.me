@@ -1,3 +1,5 @@
+var focusRoom = '';
+
 function createAccordian(roomName) {
     var room = roomName; // Keep here, will change API to pass a room ID at a later point
 
@@ -5,13 +7,14 @@ function createAccordian(roomName) {
     $('<div id="' + room + '" class="chatWindow"></div>').prependTo('#colB');
 }
 
+function createTab(roomName) {
+    var room = roomName; // Keep here, will change API to pass a room ID at a later point
+
+    $('<li data-channel="' + roomName + '"><a href="#">' + roomName + '<span>Join</span></a></li>').hide().prependTo('#channelList ul').fadeIn('slow');
+}
+
 $(function() {
-	var listWidth = 0;
-	
-	$('.groupHead:first').next('.users').slideToggle();
-	$('.groupHead:first').addClass('open');
-	$('.chatWindow:first').fadeIn();
-	$('.chatWindow:first').addClass('active');
+	var listWidth = 0; 
 	
 	$('.groupHead').live('click',function() {
 		$('.groupHead').each(function() {
@@ -28,6 +31,7 @@ $(function() {
 		var channel = $(this).attr('data-channel');
 		$('#' + channel).fadeIn();
 		$('#' + channel).addClass('active');
+		focusRoom = channel;
 		
 		return false;
 	}); 
@@ -35,11 +39,16 @@ $(function() {
 	$('#channelList ul li a').live('click', function() {
 		$(this).parent('li').addClass('joined');
 
-        var id = $(this).data('channel');
+        var id = $(this).parent('li').data('channel');
 
         Chat.join(id);
         createAccordian(id);
 
+		return false;
+	});
+	
+	$('.add').live('click',function() {
+		Chat.join('Testing');
 		return false;
 	});
 	
@@ -51,7 +60,8 @@ $(function() {
 	
 	$('#textbox').submit(function() {
 		var text = $('#textbox input').val();
-		Chat.send(focus, text);
+		Chat.send(focusRoom, text);
+		$('#textbox input').val('');
 		return false;
 	});
 	
@@ -72,7 +82,7 @@ $(function() {
     });
 
     $(Chat).bind('openRoom', function(e, roomName) {
-        console.log('Create a tab at the top plz');
+        createTab(roomName);
     });
 
     $(Chat).bind('closeRoom', function(e, room) {
