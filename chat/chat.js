@@ -48,30 +48,37 @@ $(function() {
         $('<div class="comment"><h2>' + from + '<br /><span>3 min ago</span></h2><p>' + msg + '</p></div>').hide().prependTo('#' + room).fadeIn('slow');
     });
 
-    $(Chat).bind('openChannel', function(e, room, roomName) {
+    $(Chat).bind('openRoom', function(e, roomName) {
+        var room = roomName; // Keep here, will change API to pass a room ID at a later point
+
     	$('<a href="#" class="groupHead" data-channel="' + room + '">' + roomName + '</a><ul class="users"></ul>').appendTo('.rooms');
     	$('<div id="' + room + '" class="chatWindow"></div>').prependTo('#colB');
     });
 
-    $(Chat).bind('closeChannel', function(e, room) {
+    $(Chat).bind('closeRoom', function(e, room) {
     	$('#' + room).remove();
     	$('.groupHead[data-channel=' + room + ']').next('.users').remove();
     	$('.groupHead[data-channel=' + room + ']').remove();
     });
 
-    $(Chat).bind('leftChannel', function(e, room, id) {
+    $(Chat).bind('leftRoom', function(e, room, id) {
         // name has left room
         $('#' + id + room).remove();
     });
 
-    $(Chat).bind('joinChannel', function(e, room, id, name) {
+    $(Chat).bind('joinRoom', function(e, room, id, name) {
         // name has joined room
         $('<li id="' + id + room +'"><span>Indicator</span>' + name + '</li>').appendTo($('.groupHead[data-channel=' + room + ']').next('.users'));
     });
 
 // Testing code
-//$(Chat).trigger('message', ['channel1', 'Jon Rundle', 'Testing this out']);
-//$(Chat).trigger('openChannel', ['channel5', 'Channel 5']);
-//$(Chat).trigger('closeChannel', ['channel1']);
-//$(Chat).trigger('leftChannel', ['channel1', '1']);
-//$(Chat).trigger('joinChannel', ['channel1', '1', 'Chris']);
+/*
+$(Chat).trigger('connect');
+$(Chat).trigger('disconnect');
+$(Chat).trigger('error', ['An error has occurred!']);
+$(Chat).trigger('openRoom', ['Room Name']);
+$(Chat).trigger('closeRoom', ['Room Name']);
+$(Chat).trigger('joinRoom', ['Room Name', 'uid12345', 'Chris']);
+$(Chat).trigger('leftRoom', ['Room Name', 'uid12345']);
+$(Chat).trigger('message', ['Room Name', 'uid12345', 'Hello World!']);
+*/
