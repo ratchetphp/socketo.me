@@ -25,6 +25,11 @@ $(function() {
 		return false;
 	}); 
 	
+	$('#channelList ul li a').live('click', function() {
+		$(this).parent('li').addClass('joined');
+		return false;
+	});
+	
 	$('#channelList ul li').each(function() {
 		listWidth = (listWidth + $(this).width()) + 15;
 		console.log(listWidth);
@@ -57,13 +62,11 @@ $(function() {
     $(Chat).bind('leftChannel', function(e, room, id) {
         // name has left room
         $('#' + id + room).remove();
-        $('#channelList ul li[data-channel=' + room + ']').removeClass('joined');
     });
 
     $(Chat).bind('joinChannel', function(e, room, id, name) {
         // name has joined room
         $('<li id="' + id + room +'"><span>Indicator</span>' + name + '</li>').appendTo($('.groupHead[data-channel=' + room + ']').next('.users'));
-        $('#channelList ul li[data-channel=' + room + ']').addClass('joined');
     });
 
 // Testing code
