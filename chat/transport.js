@@ -91,7 +91,7 @@ var Chat = function() {
                 Debug({'room': room, 'msg': msg});
 
                 var action = msg.shift();
-                msg.push(room);
+                msg.unshift(room);
 
                 $(api).trigger(action, msg);
             });
@@ -126,10 +126,10 @@ var Chat = function() {
                 Debug('Connected!');
 
                 sess.subscribe('ctrl:rooms', function(room, msg) {
-                    if (1 == msg) {
-                        $(api).trigger('openRoom', [room]);
+                    if (1 == msg[1]) {
+                        $(api).trigger('openRoom', [msg[0]]);
                     } else {
-                        $(api).trigger('closeRoom', [room]);
+                        $(api).trigger('closeRoom', [msg[0]]);
                     }
                 });
 
