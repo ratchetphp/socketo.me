@@ -121,7 +121,7 @@ var Chat = function() {
         /**/
 
         sess = new ab.Session(
-            'ws://localhost:8000'
+            'ws://192.168.1.120:8000'
           , function() {
                 Debug('Connected!');
 
