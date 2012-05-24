@@ -21,7 +21,7 @@
 	
 	<div id="colB">
 		<form id="textbox">
-			<input type="text" placeholder="Type here…" />
+			<input type="text" placeholder="Type here…" maxlength="140" />
 		</form>
 	</div>
 

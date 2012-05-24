@@ -10,31 +10,38 @@ function createAccordian(roomName) {
 function createTab(roomName) {
     var room = roomName; // Keep here, will change API to pass a room ID at a later point
 
-    $('<li data-channel="' + roomName + '"><a href="#">' + roomName + '<span>Join</span></a></li>').hide().prependTo('#channelList ul').fadeIn('slow');
+    $('<li data-channel="' + room + '"><a href="#">' + roomName + '<span>Join</span></a></li>').hide().prependTo('#channelList ul').fadeIn('slow');
 }
 
-$(function() {
-	var listWidth = 0; 
-	
-	$('.groupHead').live('click',function() {
+function focusChannel(channel) {
+        var objAccordian = $('.groupHead[data-channel="' + channel + '"]');
+
 		$('.groupHead').each(function() {
 			$('.open').next('.users').slideUp();
 			$('.open').removeClass('open');
 		});
-		$(this).next('.users').slideToggle();
-		$(this).toggleClass('open');
-		
+
+		$(objAccordian).next('.users').slideToggle();
+		$(objAccordian).toggleClass('open');
+
 		$('.active').each(function() {
 			$(this).fadeOut();
 			$(this).removeClass('active');
 		});
-		var channel = $(this).attr('data-channel');
+
 		$('#' + channel).fadeIn();
 		$('#' + channel).addClass('active');
 		focusRoom = channel;
 		$('#textbox input').focus();
 		$(this).children('.notifications').addClass('none').html(0);
-		
+}
+
+$(function() {
+	var listWidth = 0; 
+	
+	$('.groupHead').live('click', function() {
+        focusChannel($(this).attr('data-channel'));
+
 		return false;
 	}); 
 	
@@ -45,6 +52,8 @@ $(function() {
 
         Chat.join(id);
         createAccordian(id);
+
+        focusChannel(id);
 
 		return false;
 	});
@@ -85,6 +94,7 @@ $(function() {
     $(Chat).bind('connect', function(e) {
         Chat.join('General');
         createAccordian('General');
+        focusChannel('General');
     });
 
     $(Chat).bind('message', function(e, room, from, msg) {
@@ -128,6 +138,5 @@ $(Chat).trigger('openRoom', ['Room Name']);
 $(Chat).trigger('closeRoom', ['Room Name']);
 $(Chat).trigger('joinRoom', ['Room Name', 'uid12345', 'Chris']);
 $(Chat).trigger('leftRoom', ['Room Name', 'uid12345']);
-$(Chat).trigger('inRoom', ['Room Name', [{'uid12345':'Chris'}]]);
 $(Chat).trigger('message', ['Room Name', 'uid12345', 'Hello World!']);
 */
