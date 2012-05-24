@@ -48,7 +48,9 @@ $(function() {
 	});
 	
 	$('.add').live('click',function() {
-		Chat.join('Testing');
+		$('#create').fadeIn(500);
+		$('#channelList').animate({opacity: 0}, 300);
+		$('#chat').animate({opacity: 0}, 300);
 		return false;
 	});
 	
@@ -62,6 +64,16 @@ $(function() {
 		var text = $('#textbox input').val();
 		Chat.send(focusRoom, text);
 		$('#textbox input').val('');
+		return false;
+	});
+	
+	$('#createRoom').submit(function() {
+		var text = $('#createRoom input').val();
+		$('#createRoom input').val('');
+		$('#create').fadeOut(500);
+		$('#channelList').animate({opacity: 1}, 300);
+		$('#chat').animate({opacity: 1}, 300);
+		Chat.join(text);
 		return false;
 	});
 	
