@@ -1,3 +1,9 @@
+<section id="create">
+	<form id="createRoom">
+			<input type="text" placeholder="Enter room name..." />
+	</form>
+</section>
+
 <section id="channelList">
 	<ul>
 	</ul>
