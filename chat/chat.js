@@ -124,5 +124,6 @@ $(Chat).trigger('openRoom', ['Room Name']);
 $(Chat).trigger('closeRoom', ['Room Name']);
 $(Chat).trigger('joinRoom', ['Room Name', 'uid12345', 'Chris']);
 $(Chat).trigger('leftRoom', ['Room Name', 'uid12345']);
+$(Chat).trigger('inRoom', ['Room Name', [{'uid12345':'Chris'}]]);
 $(Chat).trigger('message', ['Room Name', 'uid12345', 'Hello World!']);
 */

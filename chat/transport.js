@@ -56,6 +56,14 @@ var Chat = function() {
           , 'joinRoom'
 
             /**
+             * Lists all the users in a specific room
+             * @event inRoom
+             * @param string Room name
+             * @param array [{id:display}] Array of users in the room
+             */
+          , 'inRoom'
+
+            /**
              * Another use has left one of the rooms this user is in
              * @event leftRoom
              * @param string Room name
@@ -88,10 +96,10 @@ var Chat = function() {
             // Must be alpha numeric
 
             sess.subscribe(room, function(room, msg) {
-                Debug({'room': room, 'msg': msg});
-
                 var action = msg.shift();
                 msg.unshift(room);
+
+                Debug([action, msg]);
 
                 $(api).trigger(action, msg);
             });
