@@ -3,7 +3,7 @@ var focusRoom = '';
 function createAccordian(roomName) {
     var room = roomName; // Keep here, will change API to pass a room ID at a later point
 
-    $('<a href="#" class="groupHead" data-channel="' + room + '">' + roomName + '<span class="notifications">0</span></a><ul class="users"></ul>').appendTo('.rooms');
+    $('<a href="#" class="groupHead" data-channel="' + room + '">' + roomName + '<span class="notifications none">0</span></a><ul class="users"></ul>').appendTo('.rooms');
     $('<div id="' + room + '" class="chatWindow"></div>').prependTo('#colB');
 }
 
@@ -33,7 +33,7 @@ $(function() {
 		$('#' + channel).addClass('active');
 		focusRoom = channel;
 		$('#textbox input').focus();
-		$(this).children('.notifications').html(0);
+		$(this).children('.notifications').addClass('none').html(0);
 		
 		return false;
 	}); 
@@ -90,10 +90,8 @@ $(function() {
     $(Chat).bind('message', function(e, room, from, msg) {
         if (focusRoom != room) {
         	var number = $('.groupHead[data-channel=' + room + '] .notifications').html();
-        	console.log(number);
         	number = parseInt(number) + 1;
-        	console.log(number);
-        	$('.groupHead[data-channel=' + room + '] .notifications').html(number);
+        	$('.groupHead[data-channel=' + room + '] .notifications').html(number).removeClass('none');
             // update counter
         }
 
