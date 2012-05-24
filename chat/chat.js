@@ -32,6 +32,7 @@ $(function() {
 		$('#' + channel).fadeIn();
 		$('#' + channel).addClass('active');
 		focusRoom = channel;
+		$('#textbox input').focus();
 		
 		return false;
 	}); 
@@ -51,6 +52,7 @@ $(function() {
 		$('#create').fadeIn(500);
 		$('#channelList').animate({opacity: 0}, 300);
 		$('#chat').animate({opacity: 0}, 300);
+		$('#createRoom input').focus();
 		return false;
 	});
 	
@@ -70,9 +72,9 @@ $(function() {
 	$('#createRoom').submit(function() {
 		var text = $('#createRoom input').val();
 		$('#createRoom input').val('');
-		$('#create').fadeOut(500);
-		$('#channelList').animate({opacity: 1}, 300);
-		$('#chat').animate({opacity: 1}, 300);
+		$('#create').fadeOut(300);
+		$('#channelList').animate({opacity: 1}, 500);
+		$('#chat').animate({opacity: 1}, 500);
 		Chat.join(text);
 		return false;
 	});
