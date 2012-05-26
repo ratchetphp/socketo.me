@@ -1,6 +1,4 @@
-var Chat = function() {
-    var sess;
-
+ChatRoom = function() {
     var onError = function(error) {
         Debug('Error: ' + error);
     }
@@ -120,38 +118,29 @@ var Chat = function() {
         }
     }
 
-    $(function() {
-        /*
-        ab._debug       = true;
-        ab._debugrpc    = true;
-        ab._debugpubsub = true;
-        ab._debugws     = true;
-        /**/
+    var sess = new ab.Session(
+        'ws://192.168.1.120:8000'
+      , function() {
+            Debug('Connected!');
 
-        sess = new ab.Session(
-            'ws://192.168.1.120:8000'
-          , function() {
-                Debug('Connected!');
+            sess.subscribe('ctrl:rooms', function(room, msg) {
+                if (1 == msg[1]) {
+                    $(api).trigger('openRoom', [msg[0]]);
+                } else {
+                    $(api).trigger('closeRoom', [msg[0]]);
+                }
+            });
 
-                sess.subscribe('ctrl:rooms', function(room, msg) {
-                    if (1 == msg[1]) {
-                        $(api).trigger('openRoom', [msg[0]]);
-                    } else {
-                        $(api).trigger('closeRoom', [msg[0]]);
-                    }
-                });
-
-                $(api).trigger('connect');
-            }
-          , function() {
-                Debug('Connection closed');
-                $(api).trigger('close');
-            }
-          , {
-                'skipSubprotocolCheck': true
-            }
-        );
-    });
+            $(api).trigger('connect');
+        }
+      , function() {
+            Debug('Connection closed');
+            $(api).trigger('close');
+        }
+      , {
+            'skipSubprotocolCheck': true
+        }
+    );
 
     return api;
-}();
+};
