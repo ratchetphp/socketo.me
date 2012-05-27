@@ -14,6 +14,35 @@ var GUI = function() {
         $('<li data-channel="' + room + '"><a href="#">' + roomName + '<span>Join</span></a></li>').hide().prependTo('#channelList ul').fadeIn('slow');
     }
 
+    var status = function() {
+        var btnStatus;
+
+        return {
+            init: function() {
+                btnStatus = $('#chat-status');
+            }
+
+          , update: function(status) {
+                btnStatus.removeClass().addClass('btn');
+
+                switch (status) {
+                    case 'online':
+                        btnStatus.addClass('btn-success').html('Online');
+                    break;
+                    case 'connecting':
+                        btnStatus.addClass('btn-warning').html('Connecting');
+                    break;
+                    case 'offline':
+                        btnStatus.addClass('btn-inverse').html('Offline');
+                    break;
+                    case 'error':
+                        btnStatus.addClass('btn-danger').html('Offline');
+                    break;
+                }
+            }
+        }
+    }();
+
     function focusChannel(channel) {
         var objAccordian = $('.groupHead[data-channel="' + channel + '"]');
 
@@ -35,6 +64,9 @@ var GUI = function() {
 		focusRoom = channel;
 		$('#textbox input').focus();
 		$(this).children('.notifications').addClass('none').html(0);
+    }
+
+    function join(id) {
     }
 
     $(function() {
@@ -90,12 +122,19 @@ var GUI = function() {
     		return false;
     	});
 
-    	var Chat = new ChatRoom();
+    	status.init();
+    	status.update('connecting');
+    	var Chat  = new ChatRoom();
 
         $(Chat).bind('connect', function(e) {
             Chat.join('General');
             createAccordian('General');
             focusChannel('General');
+            status.update('online');
+        });
+
+        $(Chat).bind('close', function(e) {
+            status.update('error');
         });
 
         $(Chat).bind('message', function(e, room, from, msg) {

@@ -1,10 +1,12 @@
 <section id="create">
 	<form id="createRoom">
-			<input type="text" placeholder="Enter room name..." />
+			<input type="text" placeholder="Enter room name..." maxlength="32" />
 	</form>
 </section>
 
 <section id="channelList">
+    <button id="chat-status" class="btn btn-inverse">Offline</button>
+
 	<ul>
 	</ul>
 </section>
@@ -21,7 +23,7 @@
 	
 	<div id="colB">
 		<form id="textbox">
-			<input type="text" placeholder="Type here…" maxlength="140" />
+			<input type="text" placeholder="Type here..." maxlength="140" />
 		</form>
 	</div>
 
