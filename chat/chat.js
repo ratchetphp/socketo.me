@@ -1,16 +1,17 @@
 var GUI = function() {
+    var Chat;
     var focusRoom = '';
 
-    function createAccordian(roomName) {
-        var room = roomName; // Keep here, will change API to pass a room ID at a later point
+    var Channels = {};
+
+    function createAccordian(room) {
+        var roomName = Chat.rooms[room];
 
         $('<a href="#" class="groupHead" data-channel="' + room + '">' + roomName + '<span class="notifications none">0</span></a><ul class="users"></ul>').appendTo('.rooms');
         $('<div id="' + room + '" class="chatWindow"></div>').prependTo('#colB');
     }
 
-    function createTab(roomName) {
-        var room = roomName; // Keep here, will change API to pass a room ID at a later point
-
+    function createTab(room, roomName) {
         $('<li data-channel="' + room + '"><a href="#">' + roomName + '<span>Join</span></a></li>').hide().prependTo('#channelList ul').fadeIn('slow');
     }
 
@@ -67,6 +68,11 @@ var GUI = function() {
     }
 
     function join(id) {
+        $('li[data-channel="' + id + '"]').addClass('joined');
+
+        Chat.join(id);
+        createAccordian(id);
+        focusChannel(id);
     }
 
     $(function() {
@@ -79,16 +85,9 @@ var GUI = function() {
     	}); 
 
     	$('#channelList ul li a').live('click', function() {
-    		$(this).parent('li').addClass('joined');
+        	join($(this).parent('li').data('channel'));
 
-            var id = $(this).parent('li').data('channel');
-
-            Chat.join(id);
-            createAccordian(id);
-
-            focusChannel(id);
-
-    		return false;
+        	return false;
     	});
 
     	$('.add').live('click',function() {
@@ -101,7 +100,6 @@ var GUI = function() {
 
     	$('#channelList ul li').each(function() {
     		listWidth = (listWidth + $(this).width()) + 15;
-    		console.log(listWidth);
     		$('#channelList ul').width(listWidth);
     	});
 
@@ -118,19 +116,24 @@ var GUI = function() {
     		$('#create').fadeOut(300);
     		$('#channelList').animate({opacity: 1}, 500);
     		$('#chat').animate({opacity: 1}, 500);
-    		Chat.join(text);
+
+            Chat.create(text, function(id, disp) {
+                join(id);
+            });
+
     		return false;
     	});
 
     	status.init();
     	status.update('connecting');
-    	var Chat  = new ChatRoom();
+    	Chat  = new ChatRoom();
 
         $(Chat).bind('connect', function(e) {
-            Chat.join('General');
-            createAccordian('General');
-            focusChannel('General');
             status.update('online');
+
+            Chat.create('General', function(id, display) {
+                join(id);
+            });
         });
 
         $(Chat).bind('close', function(e) {
@@ -149,8 +152,8 @@ var GUI = function() {
             $('<div class="comment"><h2>' + from + '<br /><span>3 min ago</span></h2><p>' + msg + '</p></div>').hide().prependTo('#' + room).fadeIn('slow');
         });
 
-        $(Chat).bind('openRoom', function(e, roomName) {
-            createTab(roomName);
+        $(Chat).bind('openRoom', function(e, roomId, roomName) {
+            createTab(roomId, roomName);
         });
 
         $(Chat).bind('closeRoom', function(e, room) {

@@ -54,14 +54,6 @@ ChatRoom = function() {
           , 'joinRoom'
 
             /**
-             * Lists all the users in a specific room
-             * @event inRoom
-             * @param string Room name
-             * @param array [{id:display}] Array of users in the room
-             */
-          , 'inRoom'
-
-            /**
              * Another use has left one of the rooms this user is in
              * @event leftRoom
              * @param string Room name
@@ -79,7 +71,7 @@ ChatRoom = function() {
           , 'message'
         ]
 
-      , debug: true
+      , debug: false
 
       , setName: function(name) {
             // Name can not be longer than 32 characters
@@ -116,7 +108,21 @@ ChatRoom = function() {
       , end: function() {
             sess.close();
         }
+
+      , create: function(name, callback) {
+            sess.call('createRoom', name).then(function(args) {
+                callback(args.id, args.display);
+            }, function(args) {
+                callback(args.id, args.display);
+            });
+        }
+
+      , rooms: {}
     }
+
+    ab._debugrpc    = api.debug;
+    ab._debugpubsub = api.debug;
+    ab._debugws     = api.debug;
 
     var sess = new ab.Session(
         'ws://192.168.1.120:8000'
@@ -124,10 +130,15 @@ ChatRoom = function() {
             Debug('Connected!');
 
             sess.subscribe('ctrl:rooms', function(room, msg) {
-                if (1 == msg[1]) {
-                    $(api).trigger('openRoom', [msg[0]]);
+                Debug('ctrl:rooms: ' + msg);
+                var state = msg.pop();
+
+                if (1 == state) {
+                    api.rooms[msg[0]] = msg[1];
+                    $(api).trigger('openRoom', msg);
                 } else {
-                    $(api).trigger('closeRoom', [msg[0]]);
+                    delete api.rooms[msg[0]];
+                    $(api).trigger('closeRoom', msg);
                 }
             });
 
