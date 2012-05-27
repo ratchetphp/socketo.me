@@ -54,7 +54,7 @@ var GUI = function() {
 		$(objAccordian).next('.users').slideToggle();
 		$(objAccordian).toggleClass('open');
 
-		$('.active').each(function() {
+		$('#chat .active').each(function() {
 			$(this).fadeOut();
 			$(this).removeClass('active');
 		});
@@ -73,7 +73,7 @@ var GUI = function() {
     	var listWidth = 0; 
 
     	$('.groupHead').live('click', function() {
-            focusChannel($(this).attr('data-channel'));
+            focusChannel($(this).data('channel'));
 
     		return false;
     	}); 
@@ -139,9 +139,9 @@ var GUI = function() {
 
         $(Chat).bind('message', function(e, room, from, msg) {
             if (focusRoom != room) {
-            	var number = $('.groupHead[data-channel=' + room + '] .notifications').html();
+            	var number = $('.groupHead[data-channel="' + room + '"] .notifications').html();
             	number = parseInt(number) + 1;
-            	$('.groupHead[data-channel=' + room + '] .notifications').html(number).removeClass('none');
+            	$('.groupHead[data-channel="' + room + '"] .notifications').html(number).removeClass('none');
                 // update counter
             }
 
@@ -155,8 +155,8 @@ var GUI = function() {
 
         $(Chat).bind('closeRoom', function(e, room) {
         	$('#' + room).remove();
-        	$('.groupHead[data-channel=' + room + ']').next('.users').remove();
-        	$('.groupHead[data-channel=' + room + ']').remove();
+        	$('.groupHead[data-channel="' + room + '"]').next('.users').remove();
+        	$('.groupHead[data-channel="' + room + '"]').remove();
         });
 
         $(Chat).bind('leftRoom', function(e, room, id) {
@@ -166,7 +166,7 @@ var GUI = function() {
 
         $(Chat).bind('joinRoom', function(e, room, id, name) {
             // name has joined room
-            $('<li id="' + id + room +'"><span>Indicator</span>' + name + '</li>').appendTo($('.groupHead[data-channel=' + room + ']').next('.users'));
+            $('<li id="' + id + room +'"><span>Indicator</span>' + name + '</li>').appendTo($('.groupHead[data-channel="' + room + '"]').next('.users'));
         });
     });
 

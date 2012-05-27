@@ -79,7 +79,7 @@ ChatRoom = function() {
           , 'message'
         ]
 
-      , debug: false
+      , debug: true
 
       , setName: function(name) {
             // Name can not be longer than 32 characters
