@@ -160,7 +160,7 @@ var GUI = function() {
             status.update('error');
         });
 
-        $(Chat).bind('message', function(e, room, from, msg) {
+        $(Chat).bind('message', function(e, room, from, msg, time) {
             if (focusRoom != room) {
             	var number = $('.groupHead[data-channel="' + room + '"] .notifications').html();
             	number = parseInt(number) + 1;
@@ -169,7 +169,8 @@ var GUI = function() {
             }
 
             // create div, put in box
-            $('<div class="comment"><h2>' + from + '<br /><span>3 min ago</span></h2><p>' + msg + '</p></div>').hide().prependTo('#' + room).fadeIn('slow');
+            $('<div class="comment"><h2>' + from + '<br /><span class="timeago" title="' + time + '">' + time + '</span></h2><p>' + msg + '</p></div>').hide().prependTo('#' + room).fadeIn('slow');
+            $('.timeago').removeClass('timeago').timeago();
         });
 
         $(Chat).bind('openRoom', function(e, roomId, roomName) {
