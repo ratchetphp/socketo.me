@@ -2,7 +2,7 @@ var GUI = function() {
     var Chat;
     var focusRoom = '';
 
-    var Channels = {};
+    var Joined = [];
 
     function createAccordian(room) {
         var roomName = Chat.rooms[room];
@@ -64,7 +64,7 @@ var GUI = function() {
 		$('#' + channel).addClass('active');
 		focusRoom = channel;
 		$('#textbox input').focus();
-		$(this).children('.notifications').addClass('none').html(0);
+		objAccordian.children('.notifications').addClass('none').html(0);
     }
 
     function join(id) {
@@ -73,6 +73,20 @@ var GUI = function() {
         Chat.join(id);
         createAccordian(id);
         focusChannel(id);
+
+        Joined.push(id);
+    }
+
+    function leave(room) {
+        $('li[data-channel="' + room + '"]').removeClass('joined');
+
+        Chat.leave(room);
+
+    	$('#' + room).remove();
+    	$('.groupHead[data-channel="' + room + '"]').next('.users').remove();
+    	$('.groupHead[data-channel="' + room + '"]').remove();
+
+    	delete Joined[$.inArray(room, Joined)];
     }
 
     $(function() {
@@ -85,7 +99,13 @@ var GUI = function() {
     	}); 
 
     	$('#channelList ul li a').live('click', function() {
-        	join($(this).parent('li').data('channel'));
+        	roomId = $(this).parent('li').data('channel');
+
+        	if (-1 != $.inArray(roomId, Joined)) {
+            	leave(roomId);
+            } else {
+            	join(roomId);
+            }
 
         	return false;
     	});
@@ -160,6 +180,7 @@ var GUI = function() {
         	$('#' + room).remove();
         	$('.groupHead[data-channel="' + room + '"]').next('.users').remove();
         	$('.groupHead[data-channel="' + room + '"]').remove();
+        	$('#channelList ul li[data-channel="' + room + '"]').remove();
         });
 
         $(Chat).bind('leftRoom', function(e, room, id) {
