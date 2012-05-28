@@ -68,6 +68,10 @@ var GUI = function() {
     }
 
     function join(id) {
+        if (-1 !== $.inArray(id, Joined)) {
+            return false;
+        }
+
         $('li[data-channel="' + id + '"]').addClass('joined');
 
         Chat.join(id);
@@ -82,9 +86,9 @@ var GUI = function() {
 
         Chat.leave(room);
 
-    	$('#' + room).remove();
-    	$('.groupHead[data-channel="' + room + '"]').next('.users').remove();
-    	$('.groupHead[data-channel="' + room + '"]').remove();
+    	$('#' + room).fadeOut('fast', function() { $(this).remove(); });
+    	$('.groupHead[data-channel="' + room + '"]').next('.users').fadeOut('fast', function() { $(this).remove(); });
+    	$('.groupHead[data-channel="' + room + '"]').fadeOut('fast', function() { $(this).remove() });
 
     	delete Joined[$.inArray(room, Joined)];
     }
@@ -178,10 +182,10 @@ var GUI = function() {
         });
 
         $(Chat).bind('closeRoom', function(e, room) {
-        	$('#' + room).remove();
-        	$('.groupHead[data-channel="' + room + '"]').next('.users').remove();
-        	$('.groupHead[data-channel="' + room + '"]').remove();
-        	$('#channelList ul li[data-channel="' + room + '"]').remove();
+        	$('#' + room).fadeOut('fast', function() { $(this).remove(); });
+        	$('.groupHead[data-channel="' + room + '"]').next('.users').fadeOut('fast', function() { $(this).remove(); });
+        	$('.groupHead[data-channel="' + room + '"]').fadeOut('fast', function() { $(this).remove(); });
+        	$('#channelList ul li[data-channel="' + room + '"]').fadeOut('slow', function() { $(this).remove(); });
         });
 
         $(Chat).bind('leftRoom', function(e, room, id) {
