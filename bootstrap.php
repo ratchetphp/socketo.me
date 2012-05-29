@@ -1,6 +1,6 @@
 <?php
 
-    require_once __DIR__ . '/vendor/.composer/autoload.php';
+    require_once __DIR__ . '/vendor/autoload.php';
 
     $sr = Symfony\Component\HttpFoundation\Request::createFromGlobals();
 
@@ -13,7 +13,7 @@ function wamp() {
             '/'      => 'Home'
           , '/docs/'  => 'Documentation'
           , '/api/namespace-Ratchet.html' => 'API Docs'
-//          , '/demos' => 'Demos'
+//          , '/demo' => 'Demo'
           , 'https://groups.google.com/forum/#!forum/ratchet-php' => 'Mailing List'
         )
 
@@ -92,7 +92,12 @@ function wamp() {
                 continue;
             }
 
-            $markup($link, $label, $nots($link) == $nots($sr->getBasePath()));
+            $path = $sr->getBasePath();
+            if (empty($path)) {
+                $path = $sr->getRequestUri();
+            }
+
+            $markup($link, $label, ($nots($link) == $nots($path)));
 /*
             $class = ($nots($link) == $nots($sr->getBasePath()) ? ' class="active"' : '');
             echo '<li' . $class . '><a href="' . $link . '">' . $label . '</a></li>';
