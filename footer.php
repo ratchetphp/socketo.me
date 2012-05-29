@@ -21,7 +21,7 @@
         });
     </script>
 
-    <?php if ($sr->getPathInfo() == '/demo/'): ?>
+    <?php if (strstr($sr->getPathInfo(), '/demo')): ?>
         <script src="/assets/js/jquery.timeago.js"></script>
         <script src="/vendor/gimite/web-socket-js/swfobject.js"></script>
         <script src="/vendor/gimite/web-socket-js/web_socket.js"></script>
