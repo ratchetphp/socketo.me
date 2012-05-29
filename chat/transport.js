@@ -125,7 +125,7 @@ ChatRoom = function() {
     ab._debugws     = api.debug;
 
     var sess = new ab.Session(
-        'ws://192.168.1.120:8000'
+        'ws://demo.socketo.me'
       , function() {
             Debug('Connected!');
 
