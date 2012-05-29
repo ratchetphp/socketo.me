@@ -16,6 +16,7 @@
     <!-- Le styles -->
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
     <link href="/assets/css/site.css" rel="stylesheet">
+    <link href="/chat/chat.css" rel="stylesheet">
     <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
     
@@ -24,6 +25,12 @@
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+    <script>
+        if (typeof MozWebSocket == 'function') {
+            window.WebSocket = MozWebSocket;
+        }
+    </script>
 
     <?php if ('127.0.0.1' != $_SERVER['SERVER_ADDR']): ?>
     <script type="text/javascript">

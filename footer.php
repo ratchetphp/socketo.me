@@ -21,6 +21,22 @@
         });
     </script>
 
+    <?php if (strstr($sr->getPathInfo(), '/demo')): ?>
+        <script src="/assets/js/jquery.timeago.js"></script>
+        <script src="/vendor/gimite/web-socket-js/swfobject.js"></script>
+        <script src="/vendor/gimite/web-socket-js/web_socket.js"></script>
+
+        <script>
+            // Set URL of your WebSocketMain.swf here:
+            WEB_SOCKET_SWF_LOCATION = "/vendor/gimite/web-socket-js/WebSocketMain.swf";
+        </script>
+
+        <script src="/vendor/cujojs/when/when.js"></script>
+        <script src="/vendor/tavendo/AutobahnJS/autobahn/autobahn.js"></script>
+        <script src="/chat/transport.js"></script>
+        <script src="/chat/chat.js"></script>
+    <?php endif; ?>
+
     <footer id="banner" class="well">
         <div id="banner-logos" class="pull-left"><a href="http://dev.w3.org/html5/websockets/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity.png" width="133" height="64" alt="HTML5 Powered with Connectivity / Realtime" title="HTML5 Powered with Connectivity / Realtime"></a><a href="http://wamp.ws/"><img src="/assets/img/wamp_logo.png"></a></div>
         <div class="pull-right">"<abbr title="WebSocket Application Messaging Protocol">WAMP</abbr>" and the WAMP logo are trademarks of Tavendo GmbH.</div>
