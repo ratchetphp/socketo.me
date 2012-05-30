@@ -117,6 +117,8 @@ ChatRoom = function() {
             });
         }
 
+      , sessionId: ''
+
       , rooms: {}
     }
 
@@ -127,6 +129,8 @@ ChatRoom = function() {
     var sess = new ab.Session(
         'ws://demo.socketo.me'
       , function() {
+            api.sessionId = sess._session_id;
+
             Debug('Connected!');
 
             sess.subscribe('ctrl:rooms', function(room, msg) {

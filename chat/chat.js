@@ -3,6 +3,7 @@ var GUI = function() {
     var focusRoom = '';
 
     var Joined = [];
+    var Names  = {};
 
     function createAccordian(room) {
         var roomName = Chat.rooms[room];
@@ -153,6 +154,8 @@ var GUI = function() {
     	Chat  = new ChatRoom();
 
         $(Chat).bind('connect', function(e) {
+            Names[Chat.sessionId] = 'Me';
+
             status.update('online');
 
             Chat.create('General', function(id, display) {
@@ -173,7 +176,8 @@ var GUI = function() {
             }
 
             // create div, put in box
-            $('<div class="comment"><h2>' + from + '<br /><span class="timeago" title="' + time + '">' + time + '</span></h2><p>' + msg + '</p></div>').hide().prependTo('#' + room).fadeIn('slow');
+            var isMine = (Chat.sessionId == from ? ' mine' : '');
+            $('<div class="comment' + isMine + '"><h2>' + Names[from] + '<br /><span class="timeago" title="' + time + '">' + time + '</span></h2><p>' + msg + '</p></div>').hide().prependTo('#' + room).fadeIn('slow');
             $('.timeago').removeClass('timeago').timeago();
         });
 
@@ -194,21 +198,8 @@ var GUI = function() {
         });
 
         $(Chat).bind('joinRoom', function(e, room, id, name) {
-            // name has joined room
+            Names[id] = name;
             $('<li id="' + id + room +'"><span>Indicator</span>' + name + '</li>').appendTo($('.groupHead[data-channel="' + room + '"]').next('.users'));
         });
     });
-
 }();
-
-// Testing code
-/*
-$(Chat).trigger('connect');
-$(Chat).trigger('disconnect');
-$(Chat).trigger('error', ['An error has occurred!']);
-$(Chat).trigger('openRoom', ['Room Name']);
-$(Chat).trigger('closeRoom', ['Room Name']);
-$(Chat).trigger('joinRoom', ['Room Name', 'uid12345', 'Chris']);
-$(Chat).trigger('leftRoom', ['Room Name', 'uid12345']);
-$(Chat).trigger('message', ['Room Name', 'uid12345', 'Hello World!']);
-*/
