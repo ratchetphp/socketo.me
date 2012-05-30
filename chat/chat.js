@@ -151,55 +151,72 @@ var GUI = function() {
 
     	status.init();
     	status.update('connecting');
-    	Chat  = new ChatRoom();
 
-        $(Chat).bind('connect', function(e) {
-            Names[Chat.sessionId] = 'Me';
+   		$('#giveName').fadeIn(500);
+   		$('#channelList').animate({opacity: 0}, 300);
+   		$('#chat').animate({opacity: 0}, 300);
+   		$('#giveName input').focus();
 
-            status.update('online');
+   		$('#setName').submit(function(e) {
+            e.preventDefault();
+            var Name = $('#setName input').val();
+            $.cookie('name', Name, {domain: '.ratchet.cb'});
 
-            Chat.create('General', function(id, display) {
-                join(id);
+    		$('#giveName input').val('');
+    		$('#giveName').fadeOut(300);
+    		$('#channelList').animate({opacity: 1}, 500);
+    		$('#chat').animate({opacity: 1}, 500);
+
+        	Chat  = new ChatRoom();
+    
+            $(Chat).bind('connect', function(e) {
+                Names[Chat.sessionId] = 'Me';
+    
+                status.update('online');
+    
+                Chat.create('General', function(id, display) {
+                    join(id);
+                });
             });
-        });
-
-        $(Chat).bind('close', function(e) {
-            status.update('error');
-        });
-
-        $(Chat).bind('message', function(e, room, from, msg, time) {
-            if (focusRoom != room) {
-            	var number = $('.groupHead[data-channel="' + room + '"] .notifications').html();
-            	number = parseInt(number) + 1;
-            	$('.groupHead[data-channel="' + room + '"] .notifications').html(number).removeClass('none');
-                // update counter
-            }
-
-            // create div, put in box
-            var isMine = (Chat.sessionId == from ? ' mine' : '');
-            $('<div class="comment' + isMine + '"><h2>' + Names[from] + '<br /><span class="timeago" title="' + time + '">' + time + '</span></h2><p>' + msg + '</p></div>').hide().prependTo('#' + room).fadeIn('slow');
-            $('.timeago').removeClass('timeago').timeago();
-        });
-
-        $(Chat).bind('openRoom', function(e, roomId, roomName) {
-            createTab(roomId, roomName);
-        });
-
-        $(Chat).bind('closeRoom', function(e, room) {
-        	$('#' + room).fadeOut('fast', function() { $(this).remove(); });
-        	$('.groupHead[data-channel="' + room + '"]').next('.users').fadeOut('fast', function() { $(this).remove(); });
-        	$('.groupHead[data-channel="' + room + '"]').fadeOut('fast', function() { $(this).remove(); });
-        	$('#channelList ul li[data-channel="' + room + '"]').fadeOut('slow', function() { $(this).remove(); });
-        });
-
-        $(Chat).bind('leftRoom', function(e, room, id) {
-            // name has left room
-            $('#' + id + room).remove();
-        });
-
-        $(Chat).bind('joinRoom', function(e, room, id, name) {
-            Names[id] = name;
-            $('<li id="' + id + room +'"><span>Indicator</span>' + name + '</li>').appendTo($('.groupHead[data-channel="' + room + '"]').next('.users'));
+    
+            $(Chat).bind('close', function(e) {
+                status.update('error');
+            });
+    
+            $(Chat).bind('message', function(e, room, from, msg, time) {
+                if (focusRoom != room) {
+                	var number = $('.groupHead[data-channel="' + room + '"] .notifications').html();
+                	number = parseInt(number) + 1;
+                	$('.groupHead[data-channel="' + room + '"] .notifications').html(number).removeClass('none');
+                    // update counter
+                }
+    
+                // create div, put in box
+                var isMine = (Chat.sessionId == from ? ' mine' : '');
+                $('<div class="comment' + isMine + '"><h2>' + Names[from] + '<br /><span class="timeago" title="' + time + '">' + time + '</span></h2><p>' + msg + '</p></div>').hide().prependTo('#' + room).fadeIn('slow');
+                $('.timeago').removeClass('timeago').timeago();
+            });
+    
+            $(Chat).bind('openRoom', function(e, roomId, roomName) {
+                createTab(roomId, roomName);
+            });
+    
+            $(Chat).bind('closeRoom', function(e, room) {
+            	$('#' + room).fadeOut('fast', function() { $(this).remove(); });
+            	$('.groupHead[data-channel="' + room + '"]').next('.users').fadeOut('fast', function() { $(this).remove(); });
+            	$('.groupHead[data-channel="' + room + '"]').fadeOut('fast', function() { $(this).remove(); });
+            	$('#channelList ul li[data-channel="' + room + '"]').fadeOut('slow', function() { $(this).remove(); });
+            });
+    
+            $(Chat).bind('leftRoom', function(e, room, id) {
+                // name has left room
+                $('#' + id + room).remove();
+            });
+    
+            $(Chat).bind('joinRoom', function(e, room, id, name) {
+                Names[id] = name;
+                $('<li id="' + id + room +'"><span>Indicator</span>' + name + '</li>').appendTo($('.groupHead[data-channel="' + room + '"]').next('.users'));
+            });
         });
     });
 }();
