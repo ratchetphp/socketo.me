@@ -152,6 +152,8 @@ var GUI = function() {
     	status.init();
     	status.update('connecting');
 
+    	$('#giveName input').val($.cookie('name'));
+
    		$('#giveName').fadeIn(500);
    		$('#channelList').animate({opacity: 0}, 300);
    		$('#chat').animate({opacity: 0}, 300);
@@ -160,7 +162,7 @@ var GUI = function() {
    		$('#setName').submit(function(e) {
             e.preventDefault();
             var Name = $('#setName input').val();
-            $.cookie('name', Name, {domain: '.ratchet.cb'});
+            $.cookie('name', Name, {domain: '.socketo.me'});
 
     		$('#giveName input').val('');
     		$('#giveName').fadeOut(300);
