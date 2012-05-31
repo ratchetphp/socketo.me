@@ -1,4 +1,4 @@
-ChatRoom = function() {
+ChatRoom = function(optDebug) {
     var onError = function(error) {
         Debug('Error: ' + error);
     }
@@ -71,7 +71,7 @@ ChatRoom = function() {
           , 'message'
         ]
 
-      , debug: false
+      , debug: optDebug | false
 
       , setName: function(name) {
             // Name can not be longer than 32 characters
@@ -131,7 +131,7 @@ ChatRoom = function() {
       , function() {
             api.sessionId = sess._session_id;
 
-            Debug('Connected!');
+            Debug('Connected! ' + api.sessionId);
 
             sess.subscribe('ctrl:rooms', function(room, msg) {
                 Debug('ctrl:rooms: ' + msg);
