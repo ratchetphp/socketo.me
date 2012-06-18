@@ -13,7 +13,7 @@ function wamp() {
             '/'      => 'Home'
           , '/docs/'  => 'Documentation'
           , '/api/namespace-Ratchet.html' => 'API Docs'
-//          , '/demo' => 'Demo'
+          , '/demo' => 'Demo'
           , 'https://groups.google.com/forum/#!forum/ratchet-php' => 'Mailing List'
         )
 

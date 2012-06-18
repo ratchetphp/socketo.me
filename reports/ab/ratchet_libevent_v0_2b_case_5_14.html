@@ -202,16 +202,16 @@ pre.wirelog_tcp_closed_by_peer {color: #fff; margin: 0; background-color: #000; 
       <center><a href="http://autobahn.ws/testsuite" title="Autobahn WebSockets Testsuite"><img src="http://autobahn.ws/static/img/ws_protocol_test_report.png"          border="0" width="820" height="46" alt="Autobahn WebSockets Testsuite Report"></img></a></center>
       <center><a href="http://autobahn.ws"           title="Autobahn WebSockets">          <img src="http://autobahn.ws/static/img/ws_protocol_test_report_autobahn.png" border="0" width="300" height="68" alt="Autobahn WebSockets">                 </img></a></center>
       <br/>
-      <p class="case case_failed">Ratchet-libevent/v0.2b - <span style="font-size: 1.3em;"><b>Case 5.14</b></span> : Fail - <span style="font-size: 0.9em;"><b>2003</b> ms @ 2012-05-21T14:35:49Z</a></p>
+      <p class="case case_ok">Ratchet-libevent/v0.2b - <span style="font-size: 1.3em;"><b>Case 5.14</b></span> : Pass - <span style="font-size: 0.9em;"><b>4</b> ms @ 2012-06-17T20:59:49Z</a></p>
       <p class="case_text_block case_desc"><b>Case Description</b><br/><br/>Send unfragmented Text Message after Continuation Frame with FIN = false, where there is nothing to continue, sent in octet-wise chops.</p>
       <p class="case_text_block case_expect"><b>Case Expectation</b><br/><br/>The connection is failed immediately, since there is no message to continue.</p>
 
       <p class="case_text_block case_outcome">
-         <b>Case Outcome</b><br/><br/>Actual events differ from any expected.<br/><br/>
+         <b>Case Outcome</b><br/><br/>Actual events match at least one expected.<br/><br/>
          <i>Expected:</i><br/><span class="case_pickle">{'OK': []}</span><br/><br/>
-         <i>Observed:</i><br><span class="case_pickle">[('message', 'non-continuation payloadHello, world!', False)]</span>
+         <i>Observed:</i><br><span class="case_pickle">[]</span>
       </p>
-      <p class="case_text_block case_closing_beh"><b>Case Closing Behavior</b><br/><br/>The connection was failed by the wrong endpoint (FAILED)</p>
+      <p class="case_text_block case_closing_beh"><b>Case Closing Behavior</b><br/><br/>Connection was properly closed (OK)</p>
       <br/><hr/>
       <h2>Opening Handshake</h2>
       <pre class="http_dump">GET / HTTP/1.1
@@ -219,51 +219,50 @@ User-Agent: AutobahnTestSuite/0.5.1-0.5.1
 Host: localhost:8000
 Upgrade: WebSocket
 Connection: Upgrade
-Sec-WebSocket-Key: bOnDKEy8VurTpYhhO4UqMA==
+Sec-WebSocket-Key: s7nMLMAvW/y3IJsTCCJzZQ==
 Sec-WebSocket-Version: 13</pre>
       <pre class="http_dump">HTTP/1.1 101 Switching Protocols
 Upgrade: websocket
 Connection: Upgrade
-Sec-WebSocket-Accept: DrOZIuVPoCVhgBP+GVxNxK1+7JQ=
+Sec-WebSocket-Accept: R1eaGnvOpVw6MW6jYwQVxoXPPBE=
 X-Powered-By: Ratchet/0.2b</pre>
       <br/><hr/>
       <h2>Closing Behavior</h2>
       <table>
          <tr class="stats_header"><td>Key</td><td class="left">Value</td><td class="left">Description</td></tr>
          <tr class="stats_row"><td>isServer</td><td class="left">False</td><td class="left">True, iff I (the fuzzer) am a server, and the peer is a client.</td></tr>
-         <tr class="stats_row"><td>closedByMe</td><td class="left">True</td><td class="left">True, iff I have initiated closing handshake (that is, did send close first).</td></tr>
-         <tr class="stats_row"><td>failedByMe</td><td class="left">True</td><td class="left">True, iff I have failed the WS connection (i.e. due to protocol error). Failing can be either by initiating closing handshake or brutal drop TCP.</td></tr>
-         <tr class="stats_row"><td>droppedByMe</td><td class="left">True</td><td class="left">True, iff I dropped the TCP connection.</td></tr>
-         <tr class="stats_row"><td>wasClean</td><td class="left">False</td><td class="left">True, iff full WebSockets closing handshake was performed (close frame sent and received) _and_ the server dropped the TCP (which is its responsibility).</td></tr>
-         <tr class="stats_row"><td>wasNotCleanReason</td><td class="left">peer did not respond (in time) in closing handshake</td><td class="left">When wasClean == False, the reason what happened.</td></tr>
+         <tr class="stats_row"><td>closedByMe</td><td class="left">False</td><td class="left">True, iff I have initiated closing handshake (that is, did send close first).</td></tr>
+         <tr class="stats_row"><td>failedByMe</td><td class="left">False</td><td class="left">True, iff I have failed the WS connection (i.e. due to protocol error). Failing can be either by initiating closing handshake or brutal drop TCP.</td></tr>
+         <tr class="stats_row"><td>droppedByMe</td><td class="left">False</td><td class="left">True, iff I dropped the TCP connection.</td></tr>
+         <tr class="stats_row"><td>wasClean</td><td class="left">True</td><td class="left">True, iff full WebSockets closing handshake was performed (close frame sent and received) _and_ the server dropped the TCP (which is its responsibility).</td></tr>
+         <tr class="stats_row"><td>wasNotCleanReason</td><td class="left">None</td><td class="left">When wasClean == False, the reason what happened.</td></tr>
          <tr class="stats_row"><td>wasServerConnectionDropTimeout</td><td class="left">False</td><td class="left">When we are a client, and we expected the server to drop the TCP, but that didn't happen in time, this gets True.</td></tr>
          <tr class="stats_row"><td>wasOpenHandshakeTimeout</td><td class="left">False</td><td class="left">When performing the opening handshake, but the peer did not finish in time, this gets True.</td></tr>
-         <tr class="stats_row"><td>wasCloseHandshakeTimeout</td><td class="left">True</td><td class="left">When we initiated a closing handshake, but the peer did not respond in time, this gets True.</td></tr>
-         <tr class="stats_row"><td>localCloseCode</td><td class="left">1001</td><td class="left">The close code I sent in close frame (if any).</td></tr>
-         <tr class="stats_row"><td>localCloseReason</td><td class="left">Going Away</td><td class="left">The close reason I sent in close frame (if any).</td></tr>
-         <tr class="stats_row"><td>remoteCloseCode</td><td class="left">None</td><td class="left">The close code the peer sent me in close frame (if any).</td></tr>
+         <tr class="stats_row"><td>wasCloseHandshakeTimeout</td><td class="left">False</td><td class="left">When we initiated a closing handshake, but the peer did not respond in time, this gets True.</td></tr>
+         <tr class="stats_row"><td>localCloseCode</td><td class="left">1000</td><td class="left">The close code I sent in close frame (if any).</td></tr>
+         <tr class="stats_row"><td>localCloseReason</td><td class="left">None</td><td class="left">The close reason I sent in close frame (if any).</td></tr>
+         <tr class="stats_row"><td>remoteCloseCode</td><td class="left">1002</td><td class="left">The close code the peer sent me in close frame (if any).</td></tr>
          <tr class="stats_row"><td>remoteCloseReason</td><td class="left">None</td><td class="left">The close reason the peer sent me in close frame (if any).</td></tr>
       </table>      <br/><hr/>
       <h2>Wire Statistics</h2>
       <h3>Octets Received by Chop Size</h3>
       <table>
          <tr class="stats_header"><td>Chop Size</td><td>Count</td><td>Octets</td></tr>
-         <tr class="stats_row"><td>39</td><td>1</td><td>39</td></tr>
+         <tr class="stats_row"><td>4</td><td>1</td><td>4</td></tr>
          <tr class="stats_row"><td>157</td><td>1</td><td>157</td></tr>
-         <tr class="stats_total"><td>Total</td><td>2</td><td>196</td></tr>
+         <tr class="stats_total"><td>Total</td><td>2</td><td>161</td></tr>
       </table>
       <h3>Octets Transmitted by Chop Size</h3>
       <table>
          <tr class="stats_header"><td>Chop Size</td><td>Count</td><td>Octets</td></tr>
-         <tr class="stats_row"><td>1</td><td>49</td><td>49</td></tr>
-         <tr class="stats_row"><td>18</td><td>1</td><td>18</td></tr>
+         <tr class="stats_row"><td>1</td><td>44</td><td>44</td></tr>
          <tr class="stats_row"><td>196</td><td>1</td><td>196</td></tr>
-         <tr class="stats_total"><td>Total</td><td>51</td><td>263</td></tr>
+         <tr class="stats_total"><td>Total</td><td>45</td><td>240</td></tr>
       </table>
       <h3>Frames Received by Opcode</h3>
       <table>
          <tr class="stats_header"><td>Opcode</td><td>Count</td></tr>
-         <tr class="stats_row"><td>1</td><td>1</td></tr>
+         <tr class="stats_row"><td>8</td><td>1</td></tr>
          <tr class="stats_total"><td>Total</td><td>1</td></tr>
       </table>
       <h3>Frames Transmitted by Opcode</h3>
@@ -279,74 +278,67 @@ X-Powered-By: Ratchet/0.2b</pre>
       <div id="wirelog">
          <pre class="wirelog_tx_octets">000 TX OCTETS: 474554202f20485454502f312e310d0a557365722d4167656e743a204175746f6261686e5465737453756974652f302e352e</pre>
          <pre class="wirelog_tx_octets">               312d302e352e310d0a486f73743a206c6f63616c686f73743a383030300d0a557067726164653a20576562536f636b65740d</pre>
-         <pre class="wirelog_tx_octets">               0a436f6e6e656374696f6e3a20557067726164650d0a5365632d576562536f636b65742d4b65793a20624f6e444b45793856</pre>
-         <pre class="wirelog_tx_octets">               757254705968684f3455714d413d3d0d0a5365632d576562536f636b65742d56657273696f6e3a2031330d0a0d0a</pre>
+         <pre class="wirelog_tx_octets">               0a436f6e6e656374696f6e3a20557067726164650d0a5365632d576562536f636b65742d4b65793a2073376e4d4c4d417657</pre>
+         <pre class="wirelog_tx_octets">               2f7933494a735443434a7a5a513d3d0d0a5365632d576562536f636b65742d56657273696f6e3a2031330d0a0d0a</pre>
          <pre class="wirelog_rx_octets">001 RX OCTETS: 485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a557067726164653a20776562736f636b</pre>
-         <pre class="wirelog_rx_octets">               65740d0a436f6e6e656374696f6e3a20557067726164650d0a5365632d576562536f636b65742d4163636570743a2044724f</pre>
-         <pre class="wirelog_rx_octets">               5a497556506f4356686742502b4756784e784b312b374a513d0d0a582d506f77657265642d42793a20526174636865742f30</pre>
+         <pre class="wirelog_rx_octets">               65740d0a436f6e6e656374696f6e3a20557067726164650d0a5365632d576562536f636b65742d4163636570743a20523165</pre>
+         <pre class="wirelog_rx_octets">               61476e764f705677364d57366a59775156786f58505042453d0d0a582d506f77657265642d42793a20526174636865742f30</pre>
          <pre class="wirelog_rx_octets">               2e32620d0a0d0a</pre>
-         <pre class="wirelog_tx_frame_sync">002 TX FRAME : OPCODE=0, FIN=False, RSV=0, MASK=12d124c8, PAYLOAD-REPEAT-LEN=None, CHOPSIZE=1, SYNC=False</pre>
+         <pre class="wirelog_tx_frame_sync">002 TX FRAME : OPCODE=0, FIN=False, RSV=0, MASK=7f3b1886, PAYLOAD-REPEAT-LEN=None, CHOPSIZE=1, SYNC=False</pre>
          <pre class="wirelog_tx_frame_sync">               non-continuation payload</pre>
          <pre class="wirelog_tx_octets_sync">003 TX OCTETS: 00</pre>
-         <pre class="wirelog_tx_frame_sync">004 TX FRAME : OPCODE=1, FIN=True, RSV=0, MASK=9e2ac79a, PAYLOAD-REPEAT-LEN=None, CHOPSIZE=1, SYNC=False</pre>
+         <pre class="wirelog_tx_frame_sync">004 TX FRAME : OPCODE=1, FIN=True, RSV=0, MASK=7c82f24e, PAYLOAD-REPEAT-LEN=None, CHOPSIZE=1, SYNC=False</pre>
          <pre class="wirelog_tx_frame_sync">               Hello, world!</pre>
          <pre class="wirelog_kill_after">005 FAIL CONNECTION AFTER 1.000000 sec</pre>
          <pre class="wirelog_tx_octets_sync">006 TX OCTETS: 98</pre>
-         <pre class="wirelog_tx_octets_sync">007 TX OCTETS: 12</pre>
-         <pre class="wirelog_tx_octets_sync">008 TX OCTETS: d1</pre>
-         <pre class="wirelog_tx_octets_sync">009 TX OCTETS: 24</pre>
-         <pre class="wirelog_tx_octets_sync">010 TX OCTETS: c8</pre>
-         <pre class="wirelog_tx_octets_sync">011 TX OCTETS: 7c</pre>
-         <pre class="wirelog_tx_octets_sync">012 TX OCTETS: be</pre>
-         <pre class="wirelog_tx_octets_sync">013 TX OCTETS: 4a</pre>
-         <pre class="wirelog_tx_octets_sync">014 TX OCTETS: e5</pre>
-         <pre class="wirelog_tx_octets_sync">015 TX OCTETS: 71</pre>
-         <pre class="wirelog_tx_octets_sync">016 TX OCTETS: be</pre>
-         <pre class="wirelog_tx_octets_sync">017 TX OCTETS: 4a</pre>
-         <pre class="wirelog_tx_octets_sync">018 TX OCTETS: bc</pre>
-         <pre class="wirelog_tx_octets_sync">019 TX OCTETS: 7b</pre>
-         <pre class="wirelog_tx_octets_sync">020 TX OCTETS: bf</pre>
-         <pre class="wirelog_tx_octets_sync">021 TX OCTETS: 51</pre>
-         <pre class="wirelog_tx_octets_sync">022 TX OCTETS: a9</pre>
-         <pre class="wirelog_tx_octets_sync">023 TX OCTETS: 66</pre>
-         <pre class="wirelog_tx_octets_sync">024 TX OCTETS: b8</pre>
-         <pre class="wirelog_tx_octets_sync">025 TX OCTETS: 4b</pre>
-         <pre class="wirelog_tx_octets_sync">026 TX OCTETS: a6</pre>
-         <pre class="wirelog_tx_octets_sync">027 TX OCTETS: 32</pre>
-         <pre class="wirelog_tx_octets_sync">028 TX OCTETS: a1</pre>
-         <pre class="wirelog_tx_octets_sync">029 TX OCTETS: 45</pre>
-         <pre class="wirelog_tx_octets_sync">030 TX OCTETS: b1</pre>
-         <pre class="wirelog_tx_octets_sync">031 TX OCTETS: 7e</pre>
-         <pre class="wirelog_tx_octets_sync">032 TX OCTETS: be</pre>
-         <pre class="wirelog_tx_octets_sync">033 TX OCTETS: 45</pre>
-         <pre class="wirelog_tx_octets_sync">034 TX OCTETS: ac</pre>
+         <pre class="wirelog_tx_octets_sync">007 TX OCTETS: 7f</pre>
+         <pre class="wirelog_tx_octets_sync">008 TX OCTETS: 3b</pre>
+         <pre class="wirelog_tx_octets_sync">009 TX OCTETS: 18</pre>
+         <pre class="wirelog_tx_octets_sync">010 TX OCTETS: 86</pre>
+         <pre class="wirelog_tx_octets_sync">011 TX OCTETS: 11</pre>
+         <pre class="wirelog_tx_octets_sync">012 TX OCTETS: 54</pre>
+         <pre class="wirelog_tx_octets_sync">013 TX OCTETS: 76</pre>
+         <pre class="wirelog_tx_octets_sync">014 TX OCTETS: ab</pre>
+         <pre class="wirelog_tx_octets_sync">015 TX OCTETS: 1c</pre>
+         <pre class="wirelog_tx_octets_sync">016 TX OCTETS: 54</pre>
+         <pre class="wirelog_tx_octets_sync">017 TX OCTETS: 76</pre>
+         <pre class="wirelog_tx_octets_sync">018 TX OCTETS: f2</pre>
+         <pre class="wirelog_tx_octets_sync">019 TX OCTETS: 16</pre>
+         <pre class="wirelog_tx_octets_sync">020 TX OCTETS: 55</pre>
+         <pre class="wirelog_tx_octets_sync">021 TX OCTETS: 6d</pre>
+         <pre class="wirelog_tx_octets_sync">022 TX OCTETS: e7</pre>
+         <pre class="wirelog_tx_octets_sync">023 TX OCTETS: 0b</pre>
+         <pre class="wirelog_tx_octets_sync">024 TX OCTETS: 52</pre>
+         <pre class="wirelog_tx_octets_sync">025 TX OCTETS: 77</pre>
+         <pre class="wirelog_tx_octets_sync">026 TX OCTETS: e8</pre>
+         <pre class="wirelog_tx_octets_sync">027 TX OCTETS: 5f</pre>
+         <pre class="wirelog_tx_octets_sync">028 TX OCTETS: 4b</pre>
+         <pre class="wirelog_tx_octets_sync">029 TX OCTETS: 79</pre>
+         <pre class="wirelog_tx_octets_sync">030 TX OCTETS: ff</pre>
+         <pre class="wirelog_tx_octets_sync">031 TX OCTETS: 13</pre>
+         <pre class="wirelog_tx_octets_sync">032 TX OCTETS: 54</pre>
+         <pre class="wirelog_tx_octets_sync">033 TX OCTETS: 79</pre>
+         <pre class="wirelog_tx_octets_sync">034 TX OCTETS: e2</pre>
          <pre class="wirelog_tx_octets_sync">035 TX OCTETS: 81</pre>
          <pre class="wirelog_tx_octets_sync">036 TX OCTETS: 8d</pre>
-         <pre class="wirelog_tx_octets_sync">037 TX OCTETS: 9e</pre>
-         <pre class="wirelog_tx_octets_sync">038 TX OCTETS: 2a</pre>
-         <pre class="wirelog_tx_octets_sync">039 TX OCTETS: c7</pre>
-         <pre class="wirelog_tx_octets_sync">040 TX OCTETS: 9a</pre>
-         <pre class="wirelog_tx_octets_sync">041 TX OCTETS: d6</pre>
-         <pre class="wirelog_tx_octets_sync">042 TX OCTETS: 4f</pre>
-         <pre class="wirelog_tx_octets_sync">043 TX OCTETS: ab</pre>
-         <pre class="wirelog_tx_octets_sync">044 TX OCTETS: f6</pre>
-         <pre class="wirelog_tx_octets_sync">045 TX OCTETS: f1</pre>
-         <pre class="wirelog_tx_octets_sync">046 TX OCTETS: 06</pre>
-         <pre class="wirelog_tx_octets_sync">047 TX OCTETS: e7</pre>
-         <pre class="wirelog_tx_octets_sync">048 TX OCTETS: ed</pre>
-         <pre class="wirelog_tx_octets_sync">049 TX OCTETS: f1</pre>
-         <pre class="wirelog_tx_octets_sync">050 TX OCTETS: 58</pre>
-         <pre class="wirelog_tx_octets_sync">051 TX OCTETS: ab</pre>
-         <pre class="wirelog_tx_octets_sync">052 TX OCTETS: fe</pre>
-         <pre class="wirelog_tx_octets_sync">053 TX OCTETS: bf</pre>
-         <pre class="wirelog_rx_octets">054 RX OCTETS: 81256e6f6e2d636f6e74696e756174696f6e207061796c6f616448656c6c6f2c20776f726c6421</pre>
-         <pre class="wirelog_rx_frame">055 RX FRAME : OPCODE=1, FIN=True, RSV=0, MASKED=False, MASK=None</pre>
-         <pre class="wirelog_rx_frame">               non-continuation payloadHello, world!</pre>
-         <pre class="wirelog_kill_after">056 FAILING CONNECTION</pre>
-         <pre class="wirelog_tx_frame">057 TX FRAME : OPCODE=8, FIN=True, RSV=0, MASK=02243188, PAYLOAD-REPEAT-LEN=None, CHOPSIZE=None, SYNC=False</pre>
-         <pre class="wirelog_tx_frame">               ÈGoing Away</pre>
-         <pre class="wirelog_tx_octets">058 TX OCTETS: 888c0224318801cd76e76b4a56a8435350f1</pre>
-         <pre class="wirelog_tcp_closed_by_me">059 TCP DROPPED BY ME</pre>
+         <pre class="wirelog_tx_octets_sync">037 TX OCTETS: 7c</pre>
+         <pre class="wirelog_tx_octets_sync">038 TX OCTETS: 82</pre>
+         <pre class="wirelog_tx_octets_sync">039 TX OCTETS: f2</pre>
+         <pre class="wirelog_tx_octets_sync">040 TX OCTETS: 4e</pre>
+         <pre class="wirelog_tx_octets_sync">041 TX OCTETS: 34</pre>
+         <pre class="wirelog_tx_octets_sync">042 TX OCTETS: e7</pre>
+         <pre class="wirelog_tx_octets_sync">043 TX OCTETS: 9e</pre>
+         <pre class="wirelog_tx_octets_sync">044 TX OCTETS: 22</pre>
+         <pre class="wirelog_tx_octets_sync">045 TX OCTETS: 13</pre>
+         <pre class="wirelog_tx_octets_sync">046 TX OCTETS: ae</pre>
+         <pre class="wirelog_tx_octets_sync">047 TX OCTETS: d2</pre>
+         <pre class="wirelog_rx_octets">048 RX OCTETS: 880203ea</pre>
+         <pre class="wirelog_rx_frame">049 RX FRAME : OPCODE=8, FIN=True, RSV=0, MASKED=False, MASK=None</pre>
+         <pre class="wirelog_rx_frame">               Í</pre>
+         <pre class="wirelog_tx_frame">050 TX FRAME : OPCODE=8, FIN=True, RSV=0, MASK=7a7b3463, PAYLOAD-REPEAT-LEN=None, CHOPSIZE=None, SYNC=False</pre>
+         <pre class="wirelog_tx_frame">               Ë</pre>
+         <pre class="wirelog_tx_octets_sync">051 TX OCTETS: 39</pre>
+         <pre class="wirelog_tcp_closed_by_peer">052 TCP DROPPED BY PEER</pre>
       </div>
       <br/><hr/>
    </body>
