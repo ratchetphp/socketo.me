@@ -1,7 +1,13 @@
-<section id="create">
+<section id="create" class="create">
 	<form id="createRoom">
 			<input type="text" placeholder="Enter room name..." maxlength="32" />
 	</form>
+</section>
+
+<section id="giveName" class="create">
+    <form id="setName">
+        <input type="text" placeholder="Enter your name..." maxlength="32" />
+    </form>
 </section>
 
 <section id="channelList">

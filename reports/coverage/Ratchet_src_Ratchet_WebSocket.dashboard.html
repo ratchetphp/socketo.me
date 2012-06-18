@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>WebSocket</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery.min.js" type="text/javascript"></script>
+    <script src="highcharts.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+          var classCoverageDistribution = new Highcharts.Chart({
+             chart: {
+                renderTo: 'classCoverageDistribution',
+                type: 'column'
+             },
+             title: {text: ''},
+             legend: {enabled: false},
+             credits: {enabled: false},
+             tooltip: {enabled: false},
+             xAxis: {
+                 labels: {style: {fontSize: '8px'}},
+                 categories: [
+                 '0%','0-10%','10-20%','20-30%','30-40%','40-50%','50-60%','60-70%','70-80%','80-90%','90-100%','100%'
+                 ]
+            },
+            yAxis: {
+                title: '',
+                labels: {style: {fontSize: '8px'}},
+            },
+            series: [{
+                data: [1,1,0,1,1,0,1,0,2,0,1,2]
+            }],
+          });
+
+        var classComplexity = new Highcharts.Chart({
+            chart: {
+              renderTo: 'classComplexity',
+              type: 'scatter'
+            },
+            title: {text: ''},
+            legend: {enabled: false},
+            credits: {enabled: false},
+            xAxis: {
+               labels: {enabled: false},
+            },
+            yAxis: {
+              title: '',
+              labels: {enabled: false},
+            },
+            tooltip: {
+                formatter: function() {
+                    return this.point.config[2];
+                }
+            },
+            series: [{
+              data: [[100,2,"<a href=\"Ratchet_src_Ratchet_WebSocket_Guzzle_Http_Message_RequestFactory.php.html#6\">RequestFactory<\/a>"],[75,5,"<a href=\"Ratchet_src_Ratchet_WebSocket_HttpRequestParser.php.html#9\">HttpRequestParser<\/a>"],[9.5238095238095,14,"<a href=\"Ratchet_src_Ratchet_WebSocket_Version_Hixie76.php.html#21\">Hixie76<\/a>"],[0,3,"<a href=\"Ratchet_src_Ratchet_WebSocket_Version_HyBi10.php.html#5\">HyBi10<\/a>"],[20.547945205479,30,"<a href=\"Ratchet_src_Ratchet_WebSocket_Version_RFC6455.php.html#16\">RFC6455<\/a>"],[95.522388059701,53,"<a href=\"Ratchet_src_Ratchet_WebSocket_Version_RFC6455_Frame.php.html#5\">Frame<\/a>"],[53.333333333333,16,"<a href=\"Ratchet_src_Ratchet_WebSocket_Version_RFC6455_HandshakeVerifier.php.html#10\">HandshakeVerifier<\/a>"],[75,17,"<a href=\"Ratchet_src_Ratchet_WebSocket_Version_RFC6455_Message.php.html#6\">Message<\/a>"],[100,10,"<a href=\"Ratchet_src_Ratchet_WebSocket_VersionManager.php.html#6\">VersionManager<\/a>"],[35.211267605634,22,"<a href=\"Ratchet_src_Ratchet_WebSocket_WsServer.php.html#14\">WsServer<\/a>"]],
+              marker: {
+                  symbol: 'diamond'
+              }
+            }],
+        });
+    });
+    </script>
+  </head>
+
+  <body>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr><td class="title">WebSocket</td></tr>
+      <tr><td><div align="center"><p><a href="Ratchet_src_Ratchet_WebSocket.html">Back to Code Coverage report</a></p></div></td></tr>
+      <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
+    </table>
+
+    <br />
+
+    <center>
+      <table width="90%" cellpadding="2" cellspacing="1" border="0">
+        <tr>
+          <td valign="top">
+            <h2>Class Coverage Distribution</h2>
+            <div id="classCoverageDistribution"></div>
+          </td>
+
+          <td valign="top">
+            <h2>Class Complexity</h2>
+            <div id="classComplexity"></div>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <h2>Top Project Risks</h2>
+            <ul>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_Version_RFC6455.php.html#16">RFC6455</a> (481)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_Version_Hixie76.php.html#21">Hixie76</a> (159)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_WsServer.php.html#14">WsServer</a> (153)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_Version_RFC6455_Frame.php.html#5">Frame</a> (53)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_Version_RFC6455_HandshakeVerifier.php.html#10">HandshakeVerifier</a> (42)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_Version_RFC6455_Message.php.html#6">Message</a> (21)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_Version_HyBi10.php.html#5">HyBi10</a> (12)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_HttpRequestParser.php.html#9">HttpRequestParser</a> (5)</li>
+
+            </ul>
+          </td>
+
+          <td valign="top">
+            <h2>Least Tested Methods</h2>
+            <ul>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_WsServer.php.html#145">WsServer::onError</a> (0%)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_WsServer.php.html#194">WsServer::close</a> (0%)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_WsServer.php.html#75">WsServer::onOpen</a> (0%)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_Version_RFC6455.php.html#180">RFC6455::frame</a> (0%)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_WsServer.php.html#129">WsServer::onClose</a> (0%)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_Version_RFC6455_HandshakeVerifier.php.html#16">HandshakeVerifier::verifyAll</a> (0%)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_Version_RFC6455_Message.php.html#19">Message::count</a> (0%)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_Version_RFC6455_HandshakeVerifier.php.html#147">HandshakeVerifier::verifyExtensions</a> (0%)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_Version_RFC6455_HandshakeVerifier.php.html#141">HandshakeVerifier::verifyProtocol</a> (0%)</li>
+              <li><a href="Ratchet_src_Ratchet_WebSocket_Version_RFC6455_HandshakeVerifier.php.html#119">HandshakeVerifier::verifyOrigin</a> (0%)</li>
+
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </center>
+
+    <br />
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.1.1</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.10</a> and PHPUnit 3.6.10 at Sun Jun 17 19:12:07 EDT 2012.</td></tr>
+    </table>
+
+    <br/>
+  </body>
+</html>
