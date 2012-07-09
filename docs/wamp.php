@@ -18,9 +18,9 @@
 
                 <p>
                     If you choose to build your application on the <?php wamp(); ?> spec (highly recommended) you will need a JavaScript library to implement the client side. 
-                    <a rel="external" href="https://github.com/tavendo/AutobahnJS">AutobahnJS</a> is a client to interact with <?php wamp(); ?> servers and is highly recommended to use with Ratchet. 
-                    Using AutobahnJS has a requirement of a deferred library.  They recommend using <a rel="external" href="https://github.com/cujojs/when">when</a> but jQuery's deferred library should work (not officially supported though).
-                    The programming reference for AutobahnJS can be found on <a rel="external" href="http://autobahn.ws/developers/autobahnjs/reference">Autobahn website</a>.
+                    <a rel="external" href="http://autobahn.ws/js">AutobahnJS</a> is a client to interact with <?php wamp(); ?> servers and is highly recommended to use with Ratchet. 
+                    Using AutobahnJS has a requirement of a deferred library.  They recommend using <a rel="external" href="https://github.com/cujojs/when">when</a> or <a rel="external" href="http://api.jquery.com/category/deferred-object/">jQuery's deferred library</a>.
+                    The programming reference for AutobahnJS can be found on <a rel="external" href="http://autobahn.ws/js/reference">Autobahn website</a>.
                 </p>
 
                 <p><strong>Note:</strong> Although the documentation specified to use URI's as context, there is no enforcement on client or server; you can use any string to identify these channels.</p>

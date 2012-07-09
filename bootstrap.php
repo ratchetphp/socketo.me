@@ -22,15 +22,7 @@ function wamp() {
                 '_title' => 'Getting Started'
               , '/docs/flow'           => '!refresh Process Flow'
               , '/docs/design'         => '!picture Design Philosophy'
-              , '/docs/install'        => '!download-alt Installation'
-              , '/docs/hello-world'    => '!camera Hello World!'
-//              , '/docs/hello-universe' => '!facetime-video Hello Universe!'
-            )
-
-          , 'resources' => array(
-                '_title'            => 'Resources'
               , '/docs/connections' => '!share-alt Connections'
-//              , '/docs/commands'    => '!play Commands/Actions'
             )
 
           , 'components' => array(
@@ -41,6 +33,13 @@ function wamp() {
               , '/docs/server'    => '!off IoServer'
               , '/docs/flash'     => '!cog FlashPolicy'
               , '/docs/black'     => '!ban-circle IpBlackList'
+            )
+
+          , 'tutorials' => array(
+                '_title' => 'Tutorials'
+              , '/docs/install'        => '!download-alt Installation'
+              , '/docs/hello-world'    => '!camera Hello World!'
+//              , '/docs/hello-universe' => '!facetime-video Hello Universe!'
             )
         )
 
