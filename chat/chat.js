@@ -74,6 +74,7 @@ var GUI = function() {
         }
 
         $('li[data-channel="' + id + '"]').addClass('joined');
+        $('li[data-channel="' + id + '"] span').html('Leave');
 
         Chat.join(id);
         createAccordian(id);
@@ -84,6 +85,7 @@ var GUI = function() {
 
     function leave(room) {
         $('li[data-channel="' + room + '"]').removeClass('joined');
+        $('li[data-channel="' + room + '"] span').html('Join');
 
         Chat.leave(room);
 
