@@ -93,7 +93,7 @@ use Ratchet\WebSocket\WsServer;
 use Ratchet\Server\IoServer;
 
     $ws = new WsServer(new MyChat);
-    $ws->disableVersion('Hixie76'); // old, bad, protocol version
+    $ws->disableVersion(0); // old, bad, protocol version
 
     // Make sure you're running this as root
     $server = IoServer::factory($ws);
