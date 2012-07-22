@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ratchet - WebSockets for PHP</title>
+    <title>Ratchet | WebSockets for PHP</title>
     <meta name="description" content="WebSocket development in PHP">
     <meta name="author" content="Chris Boden">
 
@@ -14,10 +14,10 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/css/site.css" rel="stylesheet">
     <link href="/chat/chat.css" rel="stylesheet">
-    <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
     
     <!-- Le fav and touch icons -->

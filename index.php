@@ -7,7 +7,7 @@
       <div class="hero-unit">
         <h1>Ratchet</h1>
         <h2>WebSockets for PHP</h2>
-        <p>Ratchet is a component library for PHP that provides developers with the tools to create real time, <span class="nobr">bi-directional</span> applications between clients and servers. This is not your Grandfather's Internet. </p>
+        <p>Ratchet is a PHP library providing developers with the tools to create real time, <span class="nobr">bi-directional</span> applications between clients and servers over WebSockets. This is not your Grandfather's Internet. </p>
         <p><a class="btn btn-primary btn-large" href="/docs">Learn more &raquo;</a></p>
       </div>
 

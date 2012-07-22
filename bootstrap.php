@@ -25,6 +25,12 @@ function wamp() {
               , '/docs/connections' => '!share-alt Connections'
             )
 
+          , 'tutorials' => array(
+                '_title' => 'Tutorials'
+              , '/docs/install'        => '!download-alt Installation'
+              , '/docs/hello-world'    => '!globe Hello World!'
+            )
+
           , 'components' => array(
                 '_title' => 'Components'
               , '/docs/websocket' => '!random WsServer'
@@ -33,13 +39,6 @@ function wamp() {
               , '/docs/server'    => '!off IoServer'
               , '/docs/flash'     => '!cog FlashPolicy'
               , '/docs/black'     => '!ban-circle IpBlackList'
-            )
-
-          , 'tutorials' => array(
-                '_title' => 'Tutorials'
-              , '/docs/install'        => '!download-alt Installation'
-              , '/docs/hello-world'    => '!camera Hello World!'
-//              , '/docs/hello-universe' => '!facetime-video Hello Universe!'
             )
         )
 

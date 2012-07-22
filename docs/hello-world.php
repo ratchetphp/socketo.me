@@ -19,7 +19,7 @@
             <section>
                 <h3>The Chat class</h3>
 
-                <p><strong>Note:</strong> This document assumes you have a PSR-0 autoloader present and have registered <em>Ratchet</em> as well as <em>MyApp</em> which is the namespace where we will put our demo class.</p>
+                <p><strong>Note:</strong> This document assumes you are familiar with PSR-0 and have loaded Composer's autoload file as well as registered <em>MyApp</em> which is the namespace where we will put our demo class.  See <a href="/docs/install">Installation</a> if you're not yet familiar with this.</p>
 
                 <p>
                     We'll start off by creating the class.  

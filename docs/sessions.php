@@ -107,7 +107,7 @@ use Symfony\Component\HttpFoundation\Session\Storage\Handler;
                 <pre class="prettyprint">&lt;?php
 // Inside your MyApp class
     public function onOpen($conn) {
-        $conn->send('Hello ' . $conn->session->get('name'));
+        $conn->send('Hello ' . $conn->Session->get('name'));
     }</pre>
             </section>
         </div>

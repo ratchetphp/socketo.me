@@ -9,7 +9,9 @@
             <h3>Components: <small>Architecting your Application</small></h3>
 
             <p>
-                The core of Ratchet is made up of <em>Components</em>.  Each component implements a version of the <em>ComponentInterface</em>. 
+                The core of Ratchet is made up of <em>Components</em>. 
+                Each component implements a version of the <em><a href="/api/class-Ratchet.MessageComponentInterface.html">ComponentInterface</a></em>. 
+                If you follow that link you can see each of the classes that implement <em>ComponentInterface</em>. 
             </p>
 
             <p>Each class is instantiated when the script is launched, then enters an event loop, where I/O listens and calls the class on top of it. (it does not trigger a global event, it passes the event on to one class attached to [below] it).</p>
