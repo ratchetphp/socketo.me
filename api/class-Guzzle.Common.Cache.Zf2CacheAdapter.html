@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Common\Cache\Zf2CacheAdapter | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,9 +27,13 @@
 						<ul>
 				<li class="active"><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li class="active"><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -47,6 +51,17 @@
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -68,6 +83,8 @@
 						</li>
 				<li><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -216,7 +233,7 @@
 
 				<b>Link:</b>
 				<a href="http://packages.zendframework.com/docs/latest/manual/en/zend.cache.html">http://packages.zendframework.com/docs/latest/manual/en/zend.cache.html</a><br />
-		<b>Located at</b> <a href="source-class-Guzzle.Common.Cache.Zf2CacheAdapter.html#7" title="Go to source code">Cache/Zf2CacheAdapter.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Common.Cache.Zf2CacheAdapter.html#7" title="Go to source code">common/Guzzle/Common/Cache/Zf2CacheAdapter.php</a><br />
 	</div>
 
 
@@ -233,7 +250,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Guzzle.Common.Cache.Zf2CacheAdapter.html#19" title="Go to source code">__construct</a>( <span>Zend\Cache\Storage\Adapter <var>$cache</var></span>, <span>array <var>$defaultOptions</var> = <span class="php-keyword1">array</span>()</span> )</code>
+		<code><a href="source-class-Guzzle.Common.Cache.Zf2CacheAdapter.html#19" title="Go to source code">__construct</a>( <span>Zend\Cache\Storage\Adapter\AdapterInterface <var>$cache</var></span>, <span>array <var>$defaultOptions</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 		<div class="description short">
 			
@@ -246,12 +263,12 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$cache</var></dt>
-					<dd><code>Zend\Cache\Storage\Adapter</code><br> Zend Framework 2 cache adapter</dd>
+					<dd><code>Zend\Cache\Storage\Adapter\AdapterInterface</code><br> Zend Framework 2 cache adapter</dd>
 					<dt><var>$defaultOptions</var></dt>
-					<dd><code>array</code><br>$options (optional) Hash of default options for each cache method. Array can
-contain for 'contains', 'delete', 'fetch', and 'save'. Each key must map to an
-associative array of options to merge into the options argument passed into each
-respective call.</dd>
+					<dd><code>array</code><br>$options Hash of default options for each cache method. Can contain for
+'contains', 'delete', 'fetch', and 'save'. Each key must map to an associative
+array of options to merge into the options argument passed into each respective
+call.</dd>
 				</dl></div>
 
 
@@ -271,7 +288,7 @@ respective call.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_contains">#</a>
-		<code><a href="source-class-Guzzle.Common.Cache.Zf2CacheAdapter.html#37" title="Go to source code">contains</a>( <span>string <var>$id</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Cache.Zf2CacheAdapter.html#38" title="Go to source code">contains</a>( <span>string <var>$id</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -290,12 +307,12 @@ respective call.</dd>
 					<dt><var>$id</var></dt>
 					<dd><code>string</code><br> cache id The cache id of the entry to check for.</dd>
 					<dt><var>$options</var></dt>
-					<dd><code>array</code><br> (optional) Array of cache adapter options</dd>
+					<dd><code>array</code><br> Array of cache adapter options</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>boolean</code><br>TRUE if a cache entry exists for the given cache id, FALSE otherwise.<br />
+					<code>boolean</code><br>Returns TRUE if a cache entry exists for the given cache id, FALSE otherwise.<br />
 				</div>
 
 
@@ -316,7 +333,7 @@ respective call.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_delete">#</a>
-		<code><a href="source-class-Guzzle.Common.Cache.Zf2CacheAdapter.html#49" title="Go to source code">delete</a>( <span>string <var>$id</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Cache.Zf2CacheAdapter.html#50" title="Go to source code">delete</a>( <span>string <var>$id</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -335,7 +352,7 @@ respective call.</dd>
 					<dt><var>$id</var></dt>
 					<dd><code>string</code><br> cache id</dd>
 					<dt><var>$options</var></dt>
-					<dd><code>array</code><br> (optional) Array of cache adapter options</dd>
+					<dd><code>array</code><br> Array of cache adapter options</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -361,7 +378,7 @@ respective call.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_fetch">#</a>
-		<code><a href="source-class-Guzzle.Common.Cache.Zf2CacheAdapter.html#61" title="Go to source code">fetch</a>( <span>string <var>$id</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Cache.Zf2CacheAdapter.html#62" title="Go to source code">fetch</a>( <span>string <var>$id</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -380,7 +397,7 @@ respective call.</dd>
 					<dt><var>$id</var></dt>
 					<dd><code>string</code><br> cache id The id of the cache entry to fetch.</dd>
 					<dt><var>$options</var></dt>
-					<dd><code>array</code><br> (optional) Array of cache adapter options</dd>
+					<dd><code>array</code><br> Array of cache adapter options</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -406,7 +423,7 @@ respective call.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_save">#</a>
-		<code><a href="source-class-Guzzle.Common.Cache.Zf2CacheAdapter.html#73" title="Go to source code">save</a>( <span>string <var>$id</var></span>, <span>string <var>$data</var></span>, <span>integer <var>$lifeTime</var> = <span class="php-keyword1">false</span></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Cache.Zf2CacheAdapter.html#74" title="Go to source code">save</a>( <span>string <var>$id</var></span>, <span>string <var>$data</var></span>, <span>integer <var>$lifeTime</var> = <span class="php-keyword1">false</span></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -427,10 +444,10 @@ respective call.</dd>
 					<dt><var>$data</var></dt>
 					<dd><code>string</code><br> The cache entry/data.</dd>
 					<dt><var>$lifeTime</var></dt>
-					<dd><code>integer</code><br> The lifetime. If != false, sets a specific lifetime for this cache entry (null
-=&gt; infinite lifeTime).</dd>
+					<dd><code>integer</code><br> The lifetime. If != false, sets a specific lifetime for this cache entry. Set
+to null to give an infinite lifetime.</dd>
 					<dt><var>$options</var></dt>
-					<dd><code>array</code><br> (optional) Array of cache adapter options</dd>
+					<dd><code>array</code><br> Array of cache adapter options</dd>
 				</dl></div>
 
 				<h4>Returns</h4>

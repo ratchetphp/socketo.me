@@ -8,7 +8,7 @@
 	<title>File Ratchet/WebSocket/Version/RFC6455/HandshakeVerifier.php | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -28,9 +28,13 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -48,6 +52,17 @@
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -69,6 +84,8 @@
 						</li>
 				<li class="active"><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -230,94 +247,98 @@
 <a href="#59" id="59" class="l"> 59: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">false</span>;
 <a href="#60" id="60" class="l"> 60: </a>        }
 <a href="#61" id="61" class="l"> 61: </a>
-<a href="#62" id="62" class="l"> 62: </a>        <span class="php-keyword1">return</span> <span class="php-keyword2">mb_check_encoding</span>(<span class="php-var">$val</span>, <span class="php-quote">'US-ASCII'</span>);
-<a href="#63" id="63" class="l"> 63: </a>    }
-<a href="#64" id="64" class="l"> 64: </a>
-<a href="#65" id="65" class="l"> 65: </a>    <span class="php-comment">/**
-</span><a href="#66" id="66" class="l"> 66: </a><span class="php-comment">     * @param string|null
-</span><a href="#67" id="67" class="l"> 67: </a><span class="php-comment">     * @return bool
-</span><a href="#68" id="68" class="l"> 68: </a><span class="php-comment">     * @todo Find out if I can find the master socket, ensure the port is attached to header if not 80 or 443 - not sure if this is possible, as I tried to hide it
-</span><a href="#69" id="69" class="l"> 69: </a><span class="php-comment">     * @todo Once I fix HTTP::getHeaders just verify this isn't NULL or empty...or manybe need to verify it's a valid domin??? Or should it equal $_SERVER['HOST'] ?
-</span><a href="#70" id="70" class="l"> 70: </a><span class="php-comment">     */</span>
-<a href="#71" id="71" class="l"> 71: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyHost(<span class="php-var">$val</span>) {
-<a href="#72" id="72" class="l"> 72: </a>        <span class="php-keyword1">return</span> (<span class="php-keyword1">null</span> !== <span class="php-var">$val</span>);
-<a href="#73" id="73" class="l"> 73: </a>    }
-<a href="#74" id="74" class="l"> 74: </a>
-<a href="#75" id="75" class="l"> 75: </a>    <span class="php-comment">/**
-</span><a href="#76" id="76" class="l"> 76: </a><span class="php-comment">     * Verify the Upgrade request to WebSockets.
-</span><a href="#77" id="77" class="l"> 77: </a><span class="php-comment">     * @param string MUST equal &quot;websocket&quot;
-</span><a href="#78" id="78" class="l"> 78: </a><span class="php-comment">     * @return bool
-</span><a href="#79" id="79" class="l"> 79: </a><span class="php-comment">     */</span>
-<a href="#80" id="80" class="l"> 80: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyUpgradeRequest(<span class="php-var">$val</span>) {
-<a href="#81" id="81" class="l"> 81: </a>        <span class="php-keyword1">return</span> (<span class="php-quote">'websocket'</span> === <span class="php-keyword2">strtolower</span>(<span class="php-var">$val</span>));
-<a href="#82" id="82" class="l"> 82: </a>    }
-<a href="#83" id="83" class="l"> 83: </a>
-<a href="#84" id="84" class="l"> 84: </a>    <span class="php-comment">/**
-</span><a href="#85" id="85" class="l"> 85: </a><span class="php-comment">     * Verify the Connection header
-</span><a href="#86" id="86" class="l"> 86: </a><span class="php-comment">     * @param string MUST equal &quot;Upgrade&quot;
-</span><a href="#87" id="87" class="l"> 87: </a><span class="php-comment">     * @return bool
-</span><a href="#88" id="88" class="l"> 88: </a><span class="php-comment">     */</span>
-<a href="#89" id="89" class="l"> 89: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyConnection(<span class="php-var">$val</span>) {
-<a href="#90" id="90" class="l"> 90: </a>        <span class="php-var">$val</span> = <span class="php-keyword2">strtolower</span>(<span class="php-var">$val</span>);
-<a href="#91" id="91" class="l"> 91: </a>
-<a href="#92" id="92" class="l"> 92: </a>        <span class="php-keyword1">if</span> (<span class="php-quote">'upgrade'</span> === <span class="php-var">$val</span>) {
-<a href="#93" id="93" class="l"> 93: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">true</span>;
-<a href="#94" id="94" class="l"> 94: </a>        }
+<a href="#62" id="62" class="l"> 62: </a>        <span class="php-keyword1">if</span> (!<span class="php-keyword2">extension_loaded</span>(<span class="php-quote">'mbstring'</span>)) {
+<a href="#63" id="63" class="l"> 63: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">true</span>;
+<a href="#64" id="64" class="l"> 64: </a>        }
+<a href="#65" id="65" class="l"> 65: </a>
+<a href="#66" id="66" class="l"> 66: </a>        <span class="php-keyword1">return</span> <span class="php-keyword2">mb_check_encoding</span>(<span class="php-var">$val</span>, <span class="php-quote">'US-ASCII'</span>);
+<a href="#67" id="67" class="l"> 67: </a>    }
+<a href="#68" id="68" class="l"> 68: </a>
+<a href="#69" id="69" class="l"> 69: </a>    <span class="php-comment">/**
+</span><a href="#70" id="70" class="l"> 70: </a><span class="php-comment">     * @param string|null
+</span><a href="#71" id="71" class="l"> 71: </a><span class="php-comment">     * @return bool
+</span><a href="#72" id="72" class="l"> 72: </a><span class="php-comment">     * @todo Find out if I can find the master socket, ensure the port is attached to header if not 80 or 443 - not sure if this is possible, as I tried to hide it
+</span><a href="#73" id="73" class="l"> 73: </a><span class="php-comment">     * @todo Once I fix HTTP::getHeaders just verify this isn't NULL or empty...or manybe need to verify it's a valid domin??? Or should it equal $_SERVER['HOST'] ?
+</span><a href="#74" id="74" class="l"> 74: </a><span class="php-comment">     */</span>
+<a href="#75" id="75" class="l"> 75: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyHost(<span class="php-var">$val</span>) {
+<a href="#76" id="76" class="l"> 76: </a>        <span class="php-keyword1">return</span> (<span class="php-keyword1">null</span> !== <span class="php-var">$val</span>);
+<a href="#77" id="77" class="l"> 77: </a>    }
+<a href="#78" id="78" class="l"> 78: </a>
+<a href="#79" id="79" class="l"> 79: </a>    <span class="php-comment">/**
+</span><a href="#80" id="80" class="l"> 80: </a><span class="php-comment">     * Verify the Upgrade request to WebSockets.
+</span><a href="#81" id="81" class="l"> 81: </a><span class="php-comment">     * @param string MUST equal &quot;websocket&quot;
+</span><a href="#82" id="82" class="l"> 82: </a><span class="php-comment">     * @return bool
+</span><a href="#83" id="83" class="l"> 83: </a><span class="php-comment">     */</span>
+<a href="#84" id="84" class="l"> 84: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyUpgradeRequest(<span class="php-var">$val</span>) {
+<a href="#85" id="85" class="l"> 85: </a>        <span class="php-keyword1">return</span> (<span class="php-quote">'websocket'</span> === <span class="php-keyword2">strtolower</span>(<span class="php-var">$val</span>));
+<a href="#86" id="86" class="l"> 86: </a>    }
+<a href="#87" id="87" class="l"> 87: </a>
+<a href="#88" id="88" class="l"> 88: </a>    <span class="php-comment">/**
+</span><a href="#89" id="89" class="l"> 89: </a><span class="php-comment">     * Verify the Connection header
+</span><a href="#90" id="90" class="l"> 90: </a><span class="php-comment">     * @param string MUST equal &quot;Upgrade&quot;
+</span><a href="#91" id="91" class="l"> 91: </a><span class="php-comment">     * @return bool
+</span><a href="#92" id="92" class="l"> 92: </a><span class="php-comment">     */</span>
+<a href="#93" id="93" class="l"> 93: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyConnection(<span class="php-var">$val</span>) {
+<a href="#94" id="94" class="l"> 94: </a>        <span class="php-var">$val</span> = <span class="php-keyword2">strtolower</span>(<span class="php-var">$val</span>);
 <a href="#95" id="95" class="l"> 95: </a>
-<a href="#96" id="96" class="l"> 96: </a>        <span class="php-var">$vals</span> = <span class="php-keyword2">explode</span>(<span class="php-quote">','</span>, <span class="php-keyword2">str_replace</span>(<span class="php-quote">', '</span>, <span class="php-quote">','</span>, <span class="php-var">$val</span>));
-<a href="#97" id="97" class="l"> 97: </a>
-<a href="#98" id="98" class="l"> 98: </a>        <span class="php-keyword1">return</span> (<span class="php-keyword1">false</span> !== <span class="php-keyword2">array_search</span>(<span class="php-quote">'upgrade'</span>, <span class="php-var">$vals</span>));
-<a href="#99" id="99" class="l"> 99: </a>    }
-<a href="#100" id="100" class="l">100: </a>
-<a href="#101" id="101" class="l">101: </a>    <span class="php-comment">/**
-</span><a href="#102" id="102" class="l">102: </a><span class="php-comment">     * This function verifyies the nonce is valid (64 big encoded, 16 bytes random string)
-</span><a href="#103" id="103" class="l">103: </a><span class="php-comment">     * @param string|null
-</span><a href="#104" id="104" class="l">104: </a><span class="php-comment">     * @return bool
-</span><a href="#105" id="105" class="l">105: </a><span class="php-comment">     * @todo The spec says we don't need to base64_decode - can I just check if the length is 24 and not decode?
-</span><a href="#106" id="106" class="l">106: </a><span class="php-comment">     * @todo Check the spec to see what the encoding of the key could be
-</span><a href="#107" id="107" class="l">107: </a><span class="php-comment">     */</span>
-<a href="#108" id="108" class="l">108: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyKey(<span class="php-var">$val</span>) {
-<a href="#109" id="109" class="l">109: </a>        <span class="php-keyword1">return</span> (<span class="php-num">16</span> === <span class="php-keyword2">strlen</span>(<span class="php-keyword2">base64_decode</span>((string)<span class="php-var">$val</span>)));
-<a href="#110" id="110" class="l">110: </a>    }
-<a href="#111" id="111" class="l">111: </a>
-<a href="#112" id="112" class="l">112: </a>    <span class="php-comment">/**
-</span><a href="#113" id="113" class="l">113: </a><span class="php-comment">     * Verify Origin matches RFC6454 IF it is set
-</span><a href="#114" id="114" class="l">114: </a><span class="php-comment">     * Origin is an optional field
-</span><a href="#115" id="115" class="l">115: </a><span class="php-comment">     * @param string|null
-</span><a href="#116" id="116" class="l">116: </a><span class="php-comment">     * @return bool
-</span><a href="#117" id="117" class="l">117: </a><span class="php-comment">     * @todo Implement verification functality - see section 4.2.1.7
-</span><a href="#118" id="118" class="l">118: </a><span class="php-comment">     */</span>
-<a href="#119" id="119" class="l">119: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyOrigin(<span class="php-var">$val</span>) {
-<a href="#120" id="120" class="l">120: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">null</span> === <span class="php-var">$val</span>) {
-<a href="#121" id="121" class="l">121: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">true</span>;
-<a href="#122" id="122" class="l">122: </a>        }
-<a href="#123" id="123" class="l">123: </a>
-<a href="#124" id="124" class="l">124: </a>        <span class="php-comment">// logic here</span>
-<a href="#125" id="125" class="l">125: </a>        <span class="php-keyword1">return</span> <span class="php-keyword1">true</span>;
-<a href="#126" id="126" class="l">126: </a>    }
+<a href="#96" id="96" class="l"> 96: </a>        <span class="php-keyword1">if</span> (<span class="php-quote">'upgrade'</span> === <span class="php-var">$val</span>) {
+<a href="#97" id="97" class="l"> 97: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">true</span>;
+<a href="#98" id="98" class="l"> 98: </a>        }
+<a href="#99" id="99" class="l"> 99: </a>
+<a href="#100" id="100" class="l">100: </a>        <span class="php-var">$vals</span> = <span class="php-keyword2">explode</span>(<span class="php-quote">','</span>, <span class="php-keyword2">str_replace</span>(<span class="php-quote">', '</span>, <span class="php-quote">','</span>, <span class="php-var">$val</span>));
+<a href="#101" id="101" class="l">101: </a>
+<a href="#102" id="102" class="l">102: </a>        <span class="php-keyword1">return</span> (<span class="php-keyword1">false</span> !== <span class="php-keyword2">array_search</span>(<span class="php-quote">'upgrade'</span>, <span class="php-var">$vals</span>));
+<a href="#103" id="103" class="l">103: </a>    }
+<a href="#104" id="104" class="l">104: </a>
+<a href="#105" id="105" class="l">105: </a>    <span class="php-comment">/**
+</span><a href="#106" id="106" class="l">106: </a><span class="php-comment">     * This function verifyies the nonce is valid (64 big encoded, 16 bytes random string)
+</span><a href="#107" id="107" class="l">107: </a><span class="php-comment">     * @param string|null
+</span><a href="#108" id="108" class="l">108: </a><span class="php-comment">     * @return bool
+</span><a href="#109" id="109" class="l">109: </a><span class="php-comment">     * @todo The spec says we don't need to base64_decode - can I just check if the length is 24 and not decode?
+</span><a href="#110" id="110" class="l">110: </a><span class="php-comment">     * @todo Check the spec to see what the encoding of the key could be
+</span><a href="#111" id="111" class="l">111: </a><span class="php-comment">     */</span>
+<a href="#112" id="112" class="l">112: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyKey(<span class="php-var">$val</span>) {
+<a href="#113" id="113" class="l">113: </a>        <span class="php-keyword1">return</span> (<span class="php-num">16</span> === <span class="php-keyword2">strlen</span>(<span class="php-keyword2">base64_decode</span>((string)<span class="php-var">$val</span>)));
+<a href="#114" id="114" class="l">114: </a>    }
+<a href="#115" id="115" class="l">115: </a>
+<a href="#116" id="116" class="l">116: </a>    <span class="php-comment">/**
+</span><a href="#117" id="117" class="l">117: </a><span class="php-comment">     * Verify Origin matches RFC6454 IF it is set
+</span><a href="#118" id="118" class="l">118: </a><span class="php-comment">     * Origin is an optional field
+</span><a href="#119" id="119" class="l">119: </a><span class="php-comment">     * @param string|null
+</span><a href="#120" id="120" class="l">120: </a><span class="php-comment">     * @return bool
+</span><a href="#121" id="121" class="l">121: </a><span class="php-comment">     * @todo Implement verification functality - see section 4.2.1.7
+</span><a href="#122" id="122" class="l">122: </a><span class="php-comment">     */</span>
+<a href="#123" id="123" class="l">123: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyOrigin(<span class="php-var">$val</span>) {
+<a href="#124" id="124" class="l">124: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">null</span> === <span class="php-var">$val</span>) {
+<a href="#125" id="125" class="l">125: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">true</span>;
+<a href="#126" id="126" class="l">126: </a>        }
 <a href="#127" id="127" class="l">127: </a>
-<a href="#128" id="128" class="l">128: </a>    <span class="php-comment">/**
-</span><a href="#129" id="129" class="l">129: </a><span class="php-comment">     * Verify the version passed matches this RFC
-</span><a href="#130" id="130" class="l">130: </a><span class="php-comment">     * @param string|int MUST equal 13|&quot;13&quot;
-</span><a href="#131" id="131" class="l">131: </a><span class="php-comment">     * @return bool
-</span><a href="#132" id="132" class="l">132: </a><span class="php-comment">     * @todo Ran in to a problem here...I'm having HyBi use the RFC files, this breaks it!  oops
-</span><a href="#133" id="133" class="l">133: </a><span class="php-comment">     */</span>
-<a href="#134" id="134" class="l">134: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyVersion(<span class="php-var">$val</span>) {
-<a href="#135" id="135" class="l">135: </a>        <span class="php-keyword1">return</span> (<span class="php-num">13</span> === (int)<span class="php-var">$val</span>);
-<a href="#136" id="136" class="l">136: </a>    }
-<a href="#137" id="137" class="l">137: </a>
-<a href="#138" id="138" class="l">138: </a>    <span class="php-comment">/**
-</span><a href="#139" id="139" class="l">139: </a><span class="php-comment">     * @todo Write logic for this method.  See section 4.2.1.8
-</span><a href="#140" id="140" class="l">140: </a><span class="php-comment">     */</span>
-<a href="#141" id="141" class="l">141: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyProtocol(<span class="php-var">$val</span>) {
-<a href="#142" id="142" class="l">142: </a>    }
-<a href="#143" id="143" class="l">143: </a>
-<a href="#144" id="144" class="l">144: </a>    <span class="php-comment">/**
-</span><a href="#145" id="145" class="l">145: </a><span class="php-comment">     * @todo Write logic for this method.  See section 4.2.1.9
-</span><a href="#146" id="146" class="l">146: </a><span class="php-comment">     */</span>
-<a href="#147" id="147" class="l">147: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyExtensions(<span class="php-var">$val</span>) {
-<a href="#148" id="148" class="l">148: </a>    }
-<a href="#149" id="149" class="l">149: </a>}</code></pre>
+<a href="#128" id="128" class="l">128: </a>        <span class="php-comment">// logic here</span>
+<a href="#129" id="129" class="l">129: </a>        <span class="php-keyword1">return</span> <span class="php-keyword1">true</span>;
+<a href="#130" id="130" class="l">130: </a>    }
+<a href="#131" id="131" class="l">131: </a>
+<a href="#132" id="132" class="l">132: </a>    <span class="php-comment">/**
+</span><a href="#133" id="133" class="l">133: </a><span class="php-comment">     * Verify the version passed matches this RFC
+</span><a href="#134" id="134" class="l">134: </a><span class="php-comment">     * @param string|int MUST equal 13|&quot;13&quot;
+</span><a href="#135" id="135" class="l">135: </a><span class="php-comment">     * @return bool
+</span><a href="#136" id="136" class="l">136: </a><span class="php-comment">     * @todo Ran in to a problem here...I'm having HyBi use the RFC files, this breaks it!  oops
+</span><a href="#137" id="137" class="l">137: </a><span class="php-comment">     */</span>
+<a href="#138" id="138" class="l">138: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyVersion(<span class="php-var">$val</span>) {
+<a href="#139" id="139" class="l">139: </a>        <span class="php-keyword1">return</span> (<span class="php-num">13</span> === (int)<span class="php-var">$val</span>);
+<a href="#140" id="140" class="l">140: </a>    }
+<a href="#141" id="141" class="l">141: </a>
+<a href="#142" id="142" class="l">142: </a>    <span class="php-comment">/**
+</span><a href="#143" id="143" class="l">143: </a><span class="php-comment">     * @todo Write logic for this method.  See section 4.2.1.8
+</span><a href="#144" id="144" class="l">144: </a><span class="php-comment">     */</span>
+<a href="#145" id="145" class="l">145: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyProtocol(<span class="php-var">$val</span>) {
+<a href="#146" id="146" class="l">146: </a>    }
+<a href="#147" id="147" class="l">147: </a>
+<a href="#148" id="148" class="l">148: </a>    <span class="php-comment">/**
+</span><a href="#149" id="149" class="l">149: </a><span class="php-comment">     * @todo Write logic for this method.  See section 4.2.1.9
+</span><a href="#150" id="150" class="l">150: </a><span class="php-comment">     */</span>
+<a href="#151" id="151" class="l">151: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> verifyExtensions(<span class="php-var">$val</span>) {
+<a href="#152" id="152" class="l">152: </a>    }
+<a href="#153" id="153" class="l">153: </a>}</code></pre>
 
 	<div id="footer">
 		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>

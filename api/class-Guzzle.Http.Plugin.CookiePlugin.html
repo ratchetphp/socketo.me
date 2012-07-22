@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Plugin\CookiePlugin | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,9 +27,13 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -47,6 +51,17 @@
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li class="active"><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -68,6 +83,8 @@
 						</li>
 				<li><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -122,7 +139,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Guzzle.Http.Plugin.BatchQueuePlugin.html">BatchQueuePlugin</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.AsyncPlugin.html">AsyncPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CachePlugin.html">CachePlugin</a></li>
 				<li class="active"><a href="class-Guzzle.Http.Plugin.CookiePlugin.html">CookiePlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CurlAuthPlugin.html">CurlAuthPlugin</a></li>
@@ -206,7 +223,7 @@
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.Plugin.html">Plugin</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#11" title="Go to source code">Plugin/CookiePlugin.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#9" title="Go to source code">http/Guzzle/Http/Plugin/CookiePlugin.php</a><br />
 	</div>
 
 
@@ -223,57 +240,21 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#21" title="Go to source code">__construct</a>( <span><code><a href="class-Guzzle.Http.CookieJar.CookieJarInterface.html">Guzzle\Http\CookieJar\CookieJarInterface</a></code> <var>$storage</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#19" title="Go to source code">__construct</a>( <span><code><a href="class-Guzzle.Http.CookieJar.CookieJarInterface.html">Guzzle\Http\CookieJar\CookieJarInterface</a></code> <var>$cookieJar</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Create a new CookiePlugin</p>
-
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Create a new CookiePlugin</p>
-
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$storage</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.CookieJar.CookieJarInterface.html">Guzzle\Http\CookieJar\CookieJarInterface</a></code></code><br> Object used to persist cookies</dd>
+					<dt><var>$cookieJar</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.CookieJar.CookieJarInterface.html">Guzzle\Http\CookieJar\CookieJarInterface</a></code></code><br> Cookie jar used to hold cookies</dd>
 				</dl></div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="__destruct" id="___destruct">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#___destruct">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#31" title="Go to source code">__destruct</a>( )</code>
-
-		<div class="description short">
-			
-<p>Clears temporary cookies</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Clears temporary cookies</p>
-
-
-
 
 
 
@@ -292,7 +273,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSubscribedEvents">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#39" title="Go to source code">getSubscribedEvents</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#27" title="Go to source code">getSubscribedEvents</a>( )</code>
 
 		<div class="description short">
 			
@@ -309,231 +290,35 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="parseCookie" id="_parseCookie">
-
-		<td class="attributes"><code>
-			 public static
-			array|boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_parseCookie">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#51" title="Go to source code">parseCookie</a>( <span>string <var>$cookie</var></span>, <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$decode</var> = <span class="php-keyword1">true</span></span> )</code>
-
-		<div class="description short">
-			
-<p>Parse a cookie string as set in a Set-Cookie HTTP header and return data
-about the cookie</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Parse a cookie string as set in a Set-Cookie HTTP header and return data
-about the cookie</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$cookie</var></dt>
-					<dd><code>string</code><br> Cookie header value to parse</dd>
-					<dt><var>$request</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br> (optional) Used to get path and domain when not using Cookie-2</dd>
-					<dt><var>$decode</var></dt>
-					<dd><code>boolean</code><br> (optional) Set to FALSE to not urldecode the values</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array|boolean</code><br>Returns FALSE on failure or returns an array of arrays, with each of the sub
-arrays including: domain (string) - Domain of the cookie path (string) - Path of
-the cookie cookies (array) - Associative array of cookie names and values
-max_age (int) - Lifetime of the cookie in seconds version (int) - Version of the
-cookie specification. RFC 2965 is 1 secure (bool) - Whether or not this is a
-secure cookie discard (bool) - Whether or not this is a discardable cookie
-custom (string) - Custom cookie data array comment (string) - How the cookie is
-intended to be used comment_url (str)- URL that contains info on how it will be
-used port (array|str) - Array of ports or null http_only (bool) - HTTP only
-cookie<br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="addCookies" id="_addCookies">
+	<tr data-order="getCookieJar" id="_getCookieJar">
 
 		<td class="attributes"><code>
 			 public 
-			array
+			<code><a href="class-Guzzle.Http.CookieJar.CookieJarInterface.html">Guzzle\Http\CookieJar\CookieJarInterface</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_addCookies">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#184" title="Go to source code">addCookies</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+		<a class="anchor" href="#_getCookieJar">#</a>
+		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#39" title="Go to source code">getCookieJar</a>( )</code>
 
 		<div class="description short">
 			
-<p>Add cookies to a request based on the destination of the request and the
-cookies stored in the storage backend. Any previously set cookies will be
-removed.</p>
+<p>Get the cookie cookieJar</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Add cookies to a request based on the destination of the request and the
-cookies stored in the storage backend. Any previously set cookies will be
-removed.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$request</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br> Request to add cookies to. If the request object already has a cookie header,
-then no further cookies will be added.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br>Returns an array of the cookies that were added<br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="extractCookies" id="_extractCookies">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_extractCookies">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#227" title="Go to source code">extractCookies</a>( <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Extracts cookies from an HTTP Response object, looking for Set-Cookie: and
-Set-Cookie2: headers and persists them to the cookie storage.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Extracts cookies from an HTTP Response object, looking for Set-Cookie: and
-Set-Cookie2: headers and persists them to the cookie storage.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$response</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code></dd>
-				</dl></div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="clearCookies" id="_clearCookies">
-
-		<td class="attributes"><code>
-			 public 
-			integer
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_clearCookies">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#275" title="Go to source code">clearCookies</a>( <span>string <var>$domain</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$path</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$name</var> = <span class="php-keyword1">null</span></span> )</code>
-
-		<div class="description short">
-			
-<p>Clear cookies currently held in the Cookie storage.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Clear cookies currently held in the Cookie storage.</p>
-
-<p>Invoking this method without arguments will empty the whole Cookie storage.
-If given a $domain argument only cookies belonging to that domain will be
-removed. If given a $domain and $path argument, cookies belonging to the
-specified path within that domain are removed. If given all three arguments,
-then the cookie with the specified name, path and domain is removed.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$domain</var></dt>
-					<dd><code>string</code><br> (optional) Set to clear only cookies matching a domain</dd>
-					<dt><var>$path</var></dt>
-					<dd><code>string</code><br> (optional) Set to clear only cookies matching a domain and path</dd>
-					<dt><var>$name</var></dt>
-					<dd><code>string</code><br> (optional) Set to clear only cookies matching a domain, path, and name</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>integer</code><br>Returns the number of deleted cookies<br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="clearTemporaryCookies" id="_clearTemporaryCookies">
-
-		<td class="attributes"><code>
-			 public 
-			integer
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_clearTemporaryCookies">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#296" title="Go to source code">clearTemporaryCookies</a>( )</code>
-
-		<div class="description short">
-			
-<p>Discard all temporary cookies.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Discard all temporary cookies.</p>
-
-<p>Scans for all cookies in the storage with either no expire field or a true
-discard flag. To be called when the user agent shuts down according to RFC
-2965.</p>
+<p>Get the cookie cookieJar</p>
 
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>integer</code><br>Returns the number of deleted cookies<br />
+					<code><code><a href="class-Guzzle.Http.CookieJar.CookieJarInterface.html">Guzzle\Http\CookieJar\CookieJarInterface</a></code></code><br />
 				</div>
 
 
@@ -552,7 +337,7 @@ discard flag. To be called when the user agent shuts down according to RFC
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onRequestBeforeSend">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#310" title="Go to source code">onRequestBeforeSend</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#49" title="Go to source code">onRequestBeforeSend</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
 
 		<div class="description short">
 			
@@ -589,7 +374,7 @@ discard flag. To be called when the user agent shuts down according to RFC
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onRequestSent">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#323" title="Go to source code">onRequestSent</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#66" title="Go to source code">onRequestSent</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
 
 		<div class="description short">
 			
@@ -626,7 +411,7 @@ discard flag. To be called when the user agent shuts down according to RFC
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onRequestReceiveStatusLine">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#333" title="Go to source code">onRequestReceiveStatusLine</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#76" title="Go to source code">onRequestReceiveStatusLine</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
 
 		<div class="description short">
 			
@@ -662,7 +447,7 @@ discard flag. To be called when the user agent shuts down according to RFC
 
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
-	<tr data-order="jar" id="$jar">
+	<tr data-order="cookieJar" id="$cookieJar">
 
 		<td class="attributes"><code>
 			protected 
@@ -670,18 +455,22 @@ discard flag. To be called when the user agent shuts down according to RFC
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#16" title="Go to source code"><var>$jar</var></a>
+				<a href="source-class-Guzzle.Http.Plugin.CookiePlugin.html#14" title="Go to source code"><var>$cookieJar</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
-			<a href="#$jar" class="anchor">#</a>
+			<a href="#$cookieJar" class="anchor">#</a>
 
 			<div class="description short">
 				
+<p>Cookie cookieJar used to hold cookies</p>
+
 			</div>
 
 			<div class="description detailed hidden">
 				
+<p>Cookie cookieJar used to hold cookies</p>
+
 
 			</div>
 		</div></td>

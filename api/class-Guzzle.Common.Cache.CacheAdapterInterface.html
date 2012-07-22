@@ -7,7 +7,7 @@
 	<title>Interface Guzzle\Common\Cache\CacheAdapterInterface | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,9 +27,13 @@
 						<ul>
 				<li class="active"><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li class="active"><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -47,6 +51,17 @@
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -68,6 +83,8 @@
 						</li>
 				<li><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -182,10 +199,8 @@
 	
 <p>Interface for cache adapters.</p>
 
-<p>Cache adapters allow Guzzle to utilze various frameworks for caching HTTP
+<p>Cache adapters allow Guzzle to utilize various frameworks for caching HTTP
 responses.</p>
-
-<p>The CacheAdapter interface was inspired by the Doctrine 2 ORM:</p>
 
 	</div>
 
@@ -216,8 +231,8 @@ responses.</p>
 		
 
 				<b>Link:</b>
-				<a href="http://www.doctrine-project.org/">http://www.doctrine-project.org/</a><br />
-		<b>Located at</b> <a href="source-class-Guzzle.Common.Cache.CacheAdapterInterface.html#5" title="Go to source code">Cache/CacheAdapterInterface.php</a><br />
+				<a href="http://www.doctrine-project.org/">Inspired by Doctrine 2</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Common.Cache.CacheAdapterInterface.html#5" title="Go to source code">common/Guzzle/Common/Cache/CacheAdapterInterface.php</a><br />
 	</div>
 
 
@@ -234,7 +249,7 @@ responses.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_contains">#</a>
-		<code><a href="source-class-Guzzle.Common.Cache.CacheAdapterInterface.html#16" title="Go to source code">contains</a>( <span>string <var>$id</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Cache.CacheAdapterInterface.html#15" title="Go to source code">contains</a>( <span>string <var>$id</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -253,12 +268,12 @@ responses.</p>
 					<dt><var>$id</var></dt>
 					<dd><code>string</code><br> cache id The cache id of the entry to check for.</dd>
 					<dt><var>$options</var></dt>
-					<dd><code>array</code><br> (optional) Array of cache adapter options</dd>
+					<dd><code>array</code><br> Array of cache adapter options</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>boolean</code><br>TRUE if a cache entry exists for the given cache id, FALSE otherwise.<br />
+					<code>boolean</code><br>Returns TRUE if a cache entry exists for the given cache id, FALSE otherwise.<br />
 				</div>
 
 
@@ -277,7 +292,7 @@ responses.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_delete">#</a>
-		<code><a href="source-class-Guzzle.Common.Cache.CacheAdapterInterface.html#27" title="Go to source code">delete</a>( <span>string <var>$id</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Cache.CacheAdapterInterface.html#26" title="Go to source code">delete</a>( <span>string <var>$id</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -296,7 +311,7 @@ responses.</p>
 					<dt><var>$id</var></dt>
 					<dd><code>string</code><br> cache id</dd>
 					<dt><var>$options</var></dt>
-					<dd><code>array</code><br> (optional) Array of cache adapter options</dd>
+					<dd><code>array</code><br> Array of cache adapter options</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -320,7 +335,7 @@ responses.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_fetch">#</a>
-		<code><a href="source-class-Guzzle.Common.Cache.CacheAdapterInterface.html#37" title="Go to source code">fetch</a>( <span>string <var>$id</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Cache.CacheAdapterInterface.html#36" title="Go to source code">fetch</a>( <span>string <var>$id</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -339,7 +354,7 @@ responses.</p>
 					<dt><var>$id</var></dt>
 					<dd><code>string</code><br> cache id The id of the cache entry to fetch.</dd>
 					<dt><var>$options</var></dt>
-					<dd><code>array</code><br> (optional) Array of cache adapter options</dd>
+					<dd><code>array</code><br> Array of cache adapter options</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -363,7 +378,7 @@ responses.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_save">#</a>
-		<code><a href="source-class-Guzzle.Common.Cache.CacheAdapterInterface.html#48" title="Go to source code">save</a>( <span>string <var>$id</var></span>, <span>string <var>$data</var></span>, <span>integer <var>$lifeTime</var> = <span class="php-keyword1">false</span></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Cache.CacheAdapterInterface.html#47" title="Go to source code">save</a>( <span>string <var>$id</var></span>, <span>string <var>$data</var></span>, <span>integer <var>$lifeTime</var> = <span class="php-keyword1">false</span></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -384,10 +399,10 @@ responses.</p>
 					<dt><var>$data</var></dt>
 					<dd><code>string</code><br> The cache entry/data.</dd>
 					<dt><var>$lifeTime</var></dt>
-					<dd><code>integer</code><br> The lifetime. If != false, sets a specific lifetime for this cache entry (null
-=&gt; infinite lifeTime).</dd>
+					<dd><code>integer</code><br> The lifetime. If != false, sets a specific lifetime for this cache entry. Set
+to null to give an infinite lifetime.</dd>
 					<dt><var>$options</var></dt>
-					<dd><code>array</code><br> (optional) Array of cache adapter options</dd>
+					<dd><code>array</code><br> Array of cache adapter options</dd>
 				</dl></div>
 
 				<h4>Returns</h4>

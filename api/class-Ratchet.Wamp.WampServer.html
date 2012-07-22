@@ -7,7 +7,7 @@
 	<title>Class Ratchet\Wamp\WampServer | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,9 +27,13 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -47,6 +51,17 @@
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -68,6 +83,8 @@
 						</li>
 				<li><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -122,6 +139,9 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-Ratchet.Wamp.ServerProtocol.html">ServerProtocol</a></li>
+				<li><a href="class-Ratchet.Wamp.Topic.html">Topic</a></li>
+				<li><a href="class-Ratchet.Wamp.TopicManager.html">TopicManager</a></li>
 				<li><a href="class-Ratchet.Wamp.WampConnection.html">WampConnection</a></li>
 				<li class="active"><a href="class-Ratchet.Wamp.WampServer.html">WampServer</a></li>
 			</ul>
@@ -180,7 +200,8 @@
 
 	<div class="description">
 	
-<p>WebSocket Application Messaging Protocol</p>
+<p>Enable support for the offical WAMP sub-protocol in your application WAMP
+allows for Pub/Sub and RPC</p>
 
 	</div>
 
@@ -210,21 +231,11 @@
 		
 
 				<b>Link:</b>
-				<a href="http://wamp.ws/spec">http://wamp.ws/spec</a><br />
+				<a href="http://wamp.ws">The WAMP specification</a><br />
 				<b>Link:</b>
-				<a href="https://github.com/oberstet/AutobahnJS">+--------------+----+------------------+
-| Message Type | ID | DIRECTION        |
-|--------------+----+------------------+
-| WELCOME      | 0  | Server-to-Client |
-| PREFIX       | 1  | Bi-Directional   |
-| CALL         | 2  | Client-to-Server |
-| CALL RESULT  | 3  | Server-to-Client |
-| CALL ERROR   | 4  | Server-to-Client |
-| SUBSCRIBE    | 5  | Client-to-Server |
-| UNSUBSCRIBE  | 6  | Client-to-Server |
-| PUBLISH      | 7  | Client-to-Server |
-| EVENT        | 8  | Server-to-Client |
-+--------------+----+------------------+</a><br />
+				<a href="https://github.com/oberstet/AutobahnJS">Souce for client side library</a><br />
+				<b>Link:</b>
+				<a href="http://autobahn.s3.amazonaws.com/js/autobahn.min.js">Minified client side library</a><br />
 		<b>Located at</b> <a href="source-class-Ratchet.Wamp.WampServer.html#7" title="Go to source code">Ratchet/Wamp/WampServer.php</a><br />
 	</div>
 
@@ -242,65 +253,28 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Ratchet.Wamp.WampServer.html#48" title="Go to source code">__construct</a>( <span><code><a href="class-Ratchet.Wamp.WampServerInterface.html">Ratchet\Wamp\WampServerInterface</a></code> <var>$server_component</var></span> )</code>
+		<code><a href="source-class-Ratchet.Wamp.WampServer.html#20" title="Go to source code">__construct</a>( <span><code><a href="class-Ratchet.Wamp.WampServerInterface.html">Ratchet\Wamp\WampServerInterface</a></code> <var>$app</var></span> )</code>
 
 		<div class="description short">
 			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$server_component</var></dt>
-					<dd><code><code><a href="class-Ratchet.Wamp.WampServerInterface.html">Ratchet\Wamp\WampServerInterface</a></code></code><br>An class to propagate calls through</dd>
-				</dl></div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getSubProtocols" id="_getSubProtocols">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getSubProtocols">#</a>
-		<code><a href="source-class-Ratchet.Wamp.WampServer.html#56" title="Go to source code">getSubProtocols</a>( )</code>
-
-		<div class="description short">
-			
-<p>If any component in a stack supports a WebSocket sub-protocol return each
-supported in an array</p>
+<p>This class just makes it 1 step easier to use Topic objects in WAMP If you're
+looking at the source code, look in the __construct of this<br />
+class and use that to make your application instead of using this</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>If any component in a stack supports a WebSocket sub-protocol return each
-supported in an array</p>
+<p>This class just makes it 1 step easier to use Topic objects in WAMP If you're
+looking at the source code, look in the __construct of this class and use that
+to make your application instead of using this</p>
 
 
 
 
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br />
-				</div>
 
 
 
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Ratchet.WebSocket.WsServerInterface.html#_getSubProtocols">Ratchet\WebSocket\WsServerInterface::getSubProtocols</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -315,7 +289,7 @@ supported in an array</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onOpen">#</a>
-		<code><a href="source-class-Ratchet.Wamp.WampServer.html#70" title="Go to source code">onOpen</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span> )</code>
+		<code><a href="source-class-Ratchet.Wamp.WampServer.html#29" title="Go to source code">onOpen</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span> )</code>
 
 		<div class="description short">
 			
@@ -358,7 +332,7 @@ supported in an array</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onMessage">#</a>
-		<code><a href="source-class-Ratchet.Wamp.WampServer.html#80" title="Go to source code">onMessage</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$from</var></span>, <span>string <var>$msg</var></span> )</code>
+		<code><a href="source-class-Ratchet.Wamp.WampServer.html#36" title="Go to source code">onMessage</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>string <var>$msg</var></span> )</code>
 
 		<div class="description short">
 			
@@ -374,7 +348,7 @@ supported in an array</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$from</var></dt>
+					<dt><var>$conn</var></dt>
 					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code><br>The socket/connection that sent the message to your application</dd>
 					<dt><var>$msg</var></dt>
 					<dd><code>string</code><br>The message received</dd>
@@ -384,7 +358,6 @@ supported in an array</p>
 				<h4>Throws</h4>
 				<div class="list">
 					<code><code><a href="class-Ratchet.Wamp.Exception.html">Ratchet\Wamp\Exception</a></code></code><br />
-					<code><code><a href="class-Ratchet.Wamp.JsonException.html">Ratchet\Wamp\JsonException</a></code></code><br />
 				</div>
 
 
@@ -404,7 +377,7 @@ supported in an array</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onClose">#</a>
-		<code><a href="source-class-Ratchet.Wamp.WampServer.html#137" title="Go to source code">onClose</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span> )</code>
+		<code><a href="source-class-Ratchet.Wamp.WampServer.html#43" title="Go to source code">onClose</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span> )</code>
 
 		<div class="description short">
 			
@@ -451,7 +424,7 @@ closed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onError">#</a>
-		<code><a href="source-class-Ratchet.Wamp.WampServer.html#147" title="Go to source code">onError</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span><code><a href="class-Ratchet.Wamp.Exception.html">Ratchet\Wamp\Exception</a></code> <var>$e</var></span> )</code>
+		<code><a href="source-class-Ratchet.Wamp.WampServer.html#50" title="Go to source code">onError</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span><code><a href="class-Ratchet.Wamp.Exception.html">Ratchet\Wamp\Exception</a></code> <var>$e</var></span> )</code>
 
 		<div class="description short">
 			
@@ -489,266 +462,54 @@ by the Server and bubbled back up the application through this method</p>
 		</div>
 		</div></td>
 	</tr>
-	</table>
-
-
-
-
-	<table class="summary" id="constants">
-	<caption>Constants summary</caption>
-	<tr data-order="MSG_WELCOME" id="MSG_WELCOME">
+	<tr data-order="getSubProtocols" id="_getSubProtocols">
 
 		<td class="attributes"><code>
-			integer
-		</code></td>
-		<td class="name"><code>
-				<a href="source-class-Ratchet.Wamp.WampServer.html#28" title="Go to source code"><b>MSG_WELCOME</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-num">0</span></code></td>
-		<td class="description"><div>
-			<a href="#MSG_WELCOME" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="MSG_PREFIX" id="MSG_PREFIX">
-
-		<td class="attributes"><code>
-			integer
-		</code></td>
-		<td class="name"><code>
-				<a href="source-class-Ratchet.Wamp.WampServer.html#29" title="Go to source code"><b>MSG_PREFIX</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-num">1</span></code></td>
-		<td class="description"><div>
-			<a href="#MSG_PREFIX" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="MSG_CALL" id="MSG_CALL">
-
-		<td class="attributes"><code>
-			integer
-		</code></td>
-		<td class="name"><code>
-				<a href="source-class-Ratchet.Wamp.WampServer.html#30" title="Go to source code"><b>MSG_CALL</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-num">2</span></code></td>
-		<td class="description"><div>
-			<a href="#MSG_CALL" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="MSG_CALL_RESULT" id="MSG_CALL_RESULT">
-
-		<td class="attributes"><code>
-			integer
-		</code></td>
-		<td class="name"><code>
-				<a href="source-class-Ratchet.Wamp.WampServer.html#31" title="Go to source code"><b>MSG_CALL_RESULT</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-num">3</span></code></td>
-		<td class="description"><div>
-			<a href="#MSG_CALL_RESULT" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="MSG_CALL_ERROR" id="MSG_CALL_ERROR">
-
-		<td class="attributes"><code>
-			integer
-		</code></td>
-		<td class="name"><code>
-				<a href="source-class-Ratchet.Wamp.WampServer.html#32" title="Go to source code"><b>MSG_CALL_ERROR</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-num">4</span></code></td>
-		<td class="description"><div>
-			<a href="#MSG_CALL_ERROR" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="MSG_SUBSCRIBE" id="MSG_SUBSCRIBE">
-
-		<td class="attributes"><code>
-			integer
-		</code></td>
-		<td class="name"><code>
-				<a href="source-class-Ratchet.Wamp.WampServer.html#33" title="Go to source code"><b>MSG_SUBSCRIBE</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-num">5</span></code></td>
-		<td class="description"><div>
-			<a href="#MSG_SUBSCRIBE" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="MSG_UNSUBSCRIBE" id="MSG_UNSUBSCRIBE">
-
-		<td class="attributes"><code>
-			integer
-		</code></td>
-		<td class="name"><code>
-				<a href="source-class-Ratchet.Wamp.WampServer.html#34" title="Go to source code"><b>MSG_UNSUBSCRIBE</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-num">6</span></code></td>
-		<td class="description"><div>
-			<a href="#MSG_UNSUBSCRIBE" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="MSG_PUBLISH" id="MSG_PUBLISH">
-
-		<td class="attributes"><code>
-			integer
-		</code></td>
-		<td class="name"><code>
-				<a href="source-class-Ratchet.Wamp.WampServer.html#35" title="Go to source code"><b>MSG_PUBLISH</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-num">7</span></code></td>
-		<td class="description"><div>
-			<a href="#MSG_PUBLISH" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="MSG_EVENT" id="MSG_EVENT">
-
-		<td class="attributes"><code>
-			integer
-		</code></td>
-		<td class="name"><code>
-				<a href="source-class-Ratchet.Wamp.WampServer.html#36" title="Go to source code"><b>MSG_EVENT</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-num">8</span></code></td>
-		<td class="description"><div>
-			<a href="#MSG_EVENT" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
-	</table>
-
-
-
-	<table class="summary" id="properties">
-	<caption>Properties summary</caption>
-	<tr data-order="_decorating" id="$_decorating">
-
-		<td class="attributes"><code>
-			protected 
-			<code><a href="class-Ratchet.Wamp.WampServerInterface.html">Ratchet\Wamp\WampServerInterface</a></code>
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-Ratchet.Wamp.WampServer.html#38" title="Go to source code"><var>$_decorating</var></a>
+			 public 
+			array
+			
+			</code>
 		</td>
-		<td class="value"><code></code></td>
-		<td class="description"><div>
-			<a href="#$_decorating" class="anchor">#</a>
 
-			<div class="description short">
-				
-			</div>
+		<td class="name"><div>
+		<a class="anchor" href="#_getSubProtocols">#</a>
+		<code><a href="source-class-Ratchet.Wamp.WampServer.html#57" title="Go to source code">getSubProtocols</a>( )</code>
 
-			<div class="description detailed hidden">
-				
+		<div class="description short">
+			
+<p>If any component in a stack supports a WebSocket sub-protocol return each
+supported in an array</p>
 
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="connections" id="$connections">
+		</div>
 
-		<td class="attributes"><code>
-			protected 
-			SplObjectStorage
-		</code></td>
+		<div class="description detailed hidden">
+			
+<p>If any component in a stack supports a WebSocket sub-protocol return each
+supported in an array</p>
 
-		<td class="name">
-				<a href="source-class-Ratchet.Wamp.WampServer.html#43" title="Go to source code"><var>$connections</var></a>
-		</td>
-		<td class="value"><code></code></td>
-		<td class="description"><div>
-			<a href="#$connections" class="anchor">#</a>
 
-			<div class="description short">
-				
-			</div>
 
-			<div class="description detailed hidden">
-				
 
-			</div>
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Ratchet.WebSocket.WsServerInterface.html#_getSubProtocols">Ratchet\WebSocket\WsServerInterface::getSubProtocols</a></code></div>
+		</div>
 		</div></td>
 	</tr>
 	</table>
+
+
+
+
+
+
+
 
 
 

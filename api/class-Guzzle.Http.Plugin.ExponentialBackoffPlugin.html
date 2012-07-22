@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Plugin\ExponentialBackoffPlugin | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,9 +27,13 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -47,6 +51,17 @@
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li class="active"><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -68,6 +83,8 @@
 						</li>
 				<li><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -122,7 +139,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Guzzle.Http.Plugin.BatchQueuePlugin.html">BatchQueuePlugin</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.AsyncPlugin.html">AsyncPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CachePlugin.html">CachePlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CookiePlugin.html">CookiePlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CurlAuthPlugin.html">CurlAuthPlugin</a></li>
@@ -207,7 +224,7 @@ exponential backoff.</p>
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.Plugin.html">Plugin</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#14" title="Go to source code">Plugin/ExponentialBackoffPlugin.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#13" title="Go to source code">http/Guzzle/Http/Plugin/ExponentialBackoffPlugin.php</a><br />
 	</div>
 
 
@@ -224,7 +241,7 @@ exponential backoff.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#57" title="Go to source code">__construct</a>( <span>integer <var>$maxRetries</var> = <span class="php-num">3</span></span>, <span>array|callable <var>$failureCodes</var> = <span class="php-keyword1">null</span></span>, <span>callable <var>$delayFunction</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#56" title="Go to source code">__construct</a>( <span>integer <var>$maxRetries</var> = <span class="php-num">3</span></span>, <span>array|callable <var>$failureCodes</var> = <span class="php-keyword1">null</span></span>, <span>callable <var>$delayFunction</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -236,23 +253,26 @@ exponential backoff.</p>
 			
 <p>Construct a new exponential backoff plugin</p>
 
+<p>$failureCodes can be a list of numeric codes that match the response code, a
+list of reason phrases that can match the reason phrase of a request, or a list
+of cURL error code integers. By default, this plugin retries 500 and 503
+responses as well as various CURL connection errors. You can pass in a callable
+that will be used to determine if a response failed and must be retried.</p>
+
+<p>A custom callback function for $delayFunction must accept an integer
+containing the current number of retries and return an integer representing
+representing how many seconds to delay</p>
+
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$maxRetries</var></dt>
-					<dd><code>integer</code><br> (optional) The maximum number of time to retry a request</dd>
+					<dd><code>integer</code><br> The maximum number of time to retry a request</dd>
 					<dt><var>$failureCodes</var></dt>
-					<dd><code>array|callable</code><br> (optional) Pass a custom list of failure codes. This can be a list of numeric
-codes that match the response code, a list of reason phrases that can match the
-reason phrase of a request, or a list of cURL error code integers. By default,
-this plugin retries 500 and 503 responses as well as various CURL connection
-errors. You can pass in a callable that will be used to determine if a response
-failed and must be retried.</dd>
+					<dd><code>array|callable</code><br> List of failure codes or function.</dd>
 					<dt><var>$delayFunction</var></dt>
-					<dd><code>callable</code><br> (optional) Method used to calculate the delay between requests. The method must
-accept an integer containing the current number of retries and return an integer
-representing how many seconds to delay</dd>
+					<dd><code>callable</code><br> Method used to calculate the delay between requests.</dd>
 				</dl></div>
 
 
@@ -272,7 +292,7 @@ representing how many seconds to delay</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDefaultFailureCodes">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#91" title="Go to source code">getDefaultFailureCodes</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#92" title="Go to source code">getDefaultFailureCodes</a>( )</code>
 
 		<div class="description short">
 			
@@ -308,7 +328,7 @@ representing how many seconds to delay</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSubscribedEvents">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#101" title="Go to source code">getSubscribedEvents</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#102" title="Go to source code">getSubscribedEvents</a>( )</code>
 
 		<div class="description short">
 			
@@ -336,7 +356,7 @@ representing how many seconds to delay</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setMaxRetries">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#113" title="Go to source code">setMaxRetries</a>( <span>integer <var>$maxRetries</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#114" title="Go to source code">setMaxRetries</a>( <span>integer <var>$maxRetries</var></span> )</code>
 
 		<div class="description short">
 			
@@ -379,7 +399,7 @@ request</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMaxRetries">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#128" title="Go to source code">getMaxRetries</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#129" title="Go to source code">getMaxRetries</a>( )</code>
 
 		<div class="description short">
 			
@@ -415,7 +435,7 @@ request</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getFailureCodes">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#138" title="Go to source code">getFailureCodes</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#139" title="Go to source code">getFailureCodes</a>( )</code>
 
 		<div class="description short">
 			
@@ -453,7 +473,7 @@ exponential backoff</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setFailureCodes">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#149" title="Go to source code">setFailureCodes</a>( <span>mixed <var>$codes</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#150" title="Go to source code">setFailureCodes</a>( <span>mixed <var>$codes</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -496,7 +516,7 @@ exponential backoff</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_calculateWait">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#172" title="Go to source code">calculateWait</a>( <span>integer <var>$retries</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#173" title="Go to source code">calculateWait</a>( <span>integer <var>$retries</var></span> )</code>
 
 		<div class="description short">
 			
@@ -537,7 +557,7 @@ exponential backoff</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onRequestSent">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#184" title="Go to source code">onRequestSent</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#185" title="Go to source code">onRequestSent</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
 
 		<div class="description short">
 			
@@ -574,7 +594,7 @@ exponential backoff</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onRequestPoll">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#222" title="Go to source code">onRequestPoll</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#223" title="Go to source code">onRequestPoll</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
 
 		<div class="description short">
 			
@@ -611,7 +631,7 @@ exponential backoff</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_retryRequest">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#248" title="Go to source code">retryRequest</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#249" title="Go to source code">retryRequest</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
 
 		<div class="description short">
 			
@@ -650,7 +670,7 @@ exponential backoff</p>
 			string
 		</code></td>
 		<td class="name"><code>
-				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#20" title="Go to source code"><b>DELAY_PARAM</b></a>
+				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#19" title="Go to source code"><b>DELAY_PARAM</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'plugins.exponential_backoff.retry_time'</span></code></td>
 		<td class="description"><div>
@@ -672,7 +692,7 @@ exponential backoff</p>
 			string
 		</code></td>
 		<td class="name"><code>
-				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#21" title="Go to source code"><b>RETRY_PARAM</b></a>
+				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#20" title="Go to source code"><b>RETRY_PARAM</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'plugins.exponential_backoff.retry_count'</span></code></td>
 		<td class="description"><div>
@@ -702,7 +722,7 @@ exponential backoff</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#23" title="Go to source code"><var>$failureCodes</var></a>
+				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#22" title="Go to source code"><var>$failureCodes</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -730,7 +750,7 @@ exponential backoff</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#28" title="Go to source code"><var>$callableFailureCodes</var></a>
+				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#27" title="Go to source code"><var>$callableFailureCodes</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -758,7 +778,7 @@ exponential backoff</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#33" title="Go to source code"><var>$maxRetries</var></a>
+				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#32" title="Go to source code"><var>$maxRetries</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -786,7 +806,7 @@ exponential backoff</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#38" title="Go to source code"><var>$delayClosure</var></a>
+				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#37" title="Go to source code"><var>$delayClosure</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -810,7 +830,7 @@ exponential backoff</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#43" title="Go to source code"><var>$defaultFailureCodes</var></a>
+				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#42" title="Go to source code"><var>$defaultFailureCodes</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>(<span class="php-num">500</span>, <span class="php-num">503</span>,
     CURLE_COULDNT_RESOLVE_HOST, CURLE_COULDNT_CONNECT, CURLE_WRITE_ERROR,
@@ -842,7 +862,7 @@ exponential backoff</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#52" title="Go to source code"><var>$defaultFailureCodesHash</var></a>
+				<a href="source-class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html#51" title="Go to source code"><var>$defaultFailureCodesHash</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>

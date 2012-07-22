@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Common\Collection | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,9 +27,13 @@
 						<ul>
 				<li class="active"><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -47,6 +51,17 @@
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -68,6 +83,8 @@
 						</li>
 				<li><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -125,13 +142,13 @@
 				<li><a href="class-Guzzle.Common.AbstractHasDispatcher.html">AbstractHasDispatcher</a></li>
 				<li class="active"><a href="class-Guzzle.Common.Collection.html">Collection</a></li>
 				<li><a href="class-Guzzle.Common.Event.html">Event</a></li>
-				<li><a href="class-Guzzle.Common.NullObject.html">NullObject</a></li>
 				<li><a href="class-Guzzle.Common.Stream.html">Stream</a></li>
-				<li><a href="class-Guzzle.Common.XmlElement.html">XmlElement</a></li>
+				<li><a href="class-Guzzle.Common.Version.html">Version</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
 			<ul>
+				<li><a href="class-Guzzle.Common.FromConfigInterface.html">FromConfigInterface</a></li>
 				<li><a href="class-Guzzle.Common.GuzzleException.html">GuzzleException</a></li>
 				<li><a href="class-Guzzle.Common.HasDispatcherInterface.html">HasDispatcherInterface</a></li>
 			</ul>
@@ -204,10 +221,6 @@
 			<a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a>
 	</div>
 
-	<div>
-		<h4>Indirect known subclasses</h4>
-			<a href="class-Guzzle.Http.Cookie.html">Guzzle\Http\Cookie</a>
-	</div>
 
 
 
@@ -219,7 +232,7 @@
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Common.html">Common</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Common.Collection.html#5" title="Go to source code">Collection.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Common.Collection.html#5" title="Go to source code">common/Guzzle/Common/Collection.php</a><br />
 	</div>
 
 
@@ -539,7 +552,7 @@ Collection object</dd>
 					<dt><var>$key</var></dt>
 					<dd><code>string</code><br> Key to retrieve.</dd>
 					<dt><var>$default</var></dt>
-					<dd><code>mixed</code><br> (optional) If the key is not found, set this value to specify a default</dd>
+					<dd><code>mixed</code><br> If the key is not found, set this value to specify a default</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -580,8 +593,8 @@ Collection object</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$keys</var></dt>
-					<dd><code>array</code><br> (optional) Pass a single key or an array of keys to retrieve only a particular
-subset of kvp.</dd>
+					<dd><code>array</code><br> Pass a single key or an array of keys to retrieve only a particular subset of
+key value pair.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -671,6 +684,47 @@ subset of kvp.</dd>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="keySearch" id="_keySearch">
+
+		<td class="attributes"><code>
+			 public 
+			false|string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_keySearch">#</a>
+		<code><a href="source-class-Guzzle.Common.Collection.html#186" title="Go to source code">keySearch</a>( <span>string <var>$key</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Case insensitive search the keys in the collection</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Case insensitive search the keys in the collection</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>string</code><br> Key to search for</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>false|string</code><br>Returns false if not found, otherwise returns the key<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="hasValue" id="_hasValue">
 
 		<td class="attributes"><code>
@@ -682,7 +736,7 @@ subset of kvp.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_hasValue">#</a>
-		<code><a href="source-class-Guzzle.Common.Collection.html#186" title="Go to source code">hasValue</a>( <span>string <var>$value</var></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Collection.html#204" title="Go to source code">hasValue</a>( <span>string <var>$value</var></span> )</code>
 
 		<div class="description short">
 			
@@ -723,7 +777,7 @@ subset of kvp.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_map">#</a>
-		<code><a href="source-class-Guzzle.Common.Collection.html#199" title="Go to source code">map</a>( <span><code><a href="class-Closure.html">Closure</a></code> <var>$closure</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span>, <span>boolean <var>$static</var> = <span class="php-keyword1">true</span></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Collection.html#217" title="Go to source code">map</a>( <span><code><a href="class-Closure.html">Closure</a></code> <var>$closure</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span>, <span>boolean <var>$static</var> = <span class="php-keyword1">true</span></span> )</code>
 
 		<div class="description short">
 			
@@ -748,7 +802,7 @@ modified value</p>
 					<dt><var>$closure</var></dt>
 					<dd><code><code><a href="class-Closure.html">Closure</a></code></code><br> Closure to apply</dd>
 					<dt><var>$context</var></dt>
-					<dd><code>array</code><br> (optional) Context to pass to the closure</dd>
+					<dd><code>array</code><br> Context to pass to the closure</dd>
 					<dt><var>$static</var></dt>
 					<dd><code>boolean</code><br> Set to TRUE to use the same class as the return rather than returning a
 Collection object</dd>
@@ -775,7 +829,7 @@ Collection object</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_merge">#</a>
-		<code><a href="source-class-Guzzle.Common.Collection.html#222" title="Go to source code">merge</a>( <span><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|array <var>$data</var></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Collection.html#240" title="Go to source code">merge</a>( <span><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|array <var>$data</var></span> )</code>
 
 		<div class="description short">
 			
@@ -818,7 +872,7 @@ Collection object</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetExists">#</a>
-		<code><a href="source-class-Guzzle.Common.Collection.html#252" title="Go to source code">offsetExists</a>( <span>string <var>$offset</var></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Collection.html#268" title="Go to source code">offsetExists</a>( <span>string <var>$offset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -861,7 +915,7 @@ Collection object</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetGet">#</a>
-		<code><a href="source-class-Guzzle.Common.Collection.html#264" title="Go to source code">offsetGet</a>( <span>string <var>$offset</var></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Collection.html#280" title="Go to source code">offsetGet</a>( <span>string <var>$offset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -904,7 +958,7 @@ Collection object</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetSet">#</a>
-		<code><a href="source-class-Guzzle.Common.Collection.html#276" title="Go to source code">offsetSet</a>( <span>string <var>$offset</var></span>, <span>mixed <var>$value</var></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Collection.html#292" title="Go to source code">offsetSet</a>( <span>string <var>$offset</var></span>, <span>mixed <var>$value</var></span> )</code>
 
 		<div class="description short">
 			
@@ -945,7 +999,7 @@ Collection object</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_offsetUnset">#</a>
-		<code><a href="source-class-Guzzle.Common.Collection.html#287" title="Go to source code">offsetUnset</a>( <span>string <var>$offset</var></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Collection.html#303" title="Go to source code">offsetUnset</a>( <span>string <var>$offset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -984,7 +1038,7 @@ Collection object</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_remove">#</a>
-		<code><a href="source-class-Guzzle.Common.Collection.html#297" title="Go to source code">remove</a>( <span>string <var>$key</var></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Collection.html#313" title="Go to source code">remove</a>( <span>string <var>$key</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1025,7 +1079,7 @@ Collection object</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_replace">#</a>
-		<code><a href="source-class-Guzzle.Common.Collection.html#311" title="Go to source code">replace</a>( <span>array <var>$data</var></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Collection.html#327" title="Go to source code">replace</a>( <span>array <var>$data</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1066,7 +1120,7 @@ Collection object</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_set">#</a>
-		<code><a href="source-class-Guzzle.Common.Collection.html#325" title="Go to source code">set</a>( <span>string <var>$key</var></span>, <span>mixed <var>$value</var></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Collection.html#341" title="Go to source code">set</a>( <span>string <var>$key</var></span>, <span>mixed <var>$value</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1098,6 +1152,47 @@ Collection object</dd>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="inject" id="_inject">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_inject">#</a>
+		<code><a href="source-class-Guzzle.Common.Collection.html#356" title="Go to source code">inject</a>( <span>string <var>$input</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Inject configuration settings into an input string</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Inject configuration settings into an input string</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$input</var></dt>
+					<dd><code>string</code><br> Input to inject</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="getPregMatchValue" id="_getPregMatchValue">
 
 		<td class="attributes"><code>
@@ -1109,7 +1204,7 @@ Collection object</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getPregMatchValue">#</a>
-		<code><a href="source-class-Guzzle.Common.Collection.html#340" title="Go to source code">getPregMatchValue</a>( <span>array <var>$matches</var></span> )</code>
+		<code><a href="source-class-Guzzle.Common.Collection.html#374" title="Go to source code">getPregMatchValue</a>( <span>array <var>$matches</var></span> )</code>
 
 		<div class="description short">
 			

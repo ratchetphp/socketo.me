@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Plugin\OauthPlugin | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,9 +27,13 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -47,6 +51,17 @@
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li class="active"><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -68,6 +83,8 @@
 						</li>
 				<li><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -122,7 +139,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Guzzle.Http.Plugin.BatchQueuePlugin.html">BatchQueuePlugin</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.AsyncPlugin.html">AsyncPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CachePlugin.html">CachePlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CookiePlugin.html">CookiePlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CurlAuthPlugin.html">CurlAuthPlugin</a></li>
@@ -206,10 +223,9 @@
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.Plugin.html">Plugin</a><br />
 		
 
-				<b>See:</b>
-				<a
-href="http://oauth.net/core/1.0/#rfc.section.9.1.1">http://oauth.net/core/1.0/#rfc.section.9.1.1</a><br />
-		<b>Located at</b> <a href="source-class-Guzzle.Http.Plugin.OauthPlugin.html#13" title="Go to source code">Plugin/OauthPlugin.php</a><br />
+				<b>Link:</b>
+				<a href="http://oauth.net/core/1.0/#rfc.section.9.1.1">http://oauth.net/core/1.0/#rfc.section.9.1.1</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.Plugin.OauthPlugin.html#13" title="Go to source code">http/Guzzle/Http/Plugin/OauthPlugin.php</a><br />
 	</div>
 
 
@@ -243,12 +259,12 @@ href="http://oauth.net/core/1.0/#rfc.section.9.1.1">http://oauth.net/core/1.0/#r
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$config</var></dt>
-					<dd><code>array</code><br> Configuration array containing these parameters: string 'consumer_key' Consumer
-key string 'consumer_secret' Consumer secret string 'token' Token string
-'token_secret' Token secret string 'version' (optional) OAuth version. Defaults
-to 1.0 string 'signature_method' (optional) Custom signature method
-array|Closure 'signature_callback' (optional) Custom signature callback that
-accepts a string to sign and a signing key</dd>
+					<dd><code>array</code><br> Configuration array containing these parameters: - string 'consumer_key'
+Consumer key - string 'consumer_secret' Consumer secret - string 'token' Token -
+string 'token_secret' Token secret - string 'version' OAuth version. Defaults to
+1.0 - string 'signature_method' Custom signature method - array|Closure
+'signature_callback' Custom signature callback that accepts a string to sign and
+a signing key</dd>
 				</dl></div>
 
 
@@ -268,7 +284,7 @@ accepts a string to sign and a signing key</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSubscribedEvents">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.OauthPlugin.html#53" title="Go to source code">getSubscribedEvents</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.OauthPlugin.html#52" title="Go to source code">getSubscribedEvents</a>( )</code>
 
 		<div class="description short">
 			
@@ -296,7 +312,7 @@ accepts a string to sign and a signing key</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onRequestBeforeSend">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.OauthPlugin.html#63" title="Go to source code">onRequestBeforeSend</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.OauthPlugin.html#62" title="Go to source code">onRequestBeforeSend</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
 
 		<div class="description short">
 			
@@ -333,7 +349,7 @@ accepts a string to sign and a signing key</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSignature">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.OauthPlugin.html#90" title="Go to source code">getSignature</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>integer <var>$timestamp</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.OauthPlugin.html#89" title="Go to source code">getSignature</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>integer <var>$timestamp</var></span> )</code>
 
 		<div class="description short">
 			
@@ -376,7 +392,7 @@ accepts a string to sign and a signing key</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getStringToSign">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.OauthPlugin.html#106" title="Go to source code">getStringToSign</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>integer <var>$timestamp</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.OauthPlugin.html#105" title="Go to source code">getStringToSign</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>integer <var>$timestamp</var></span> )</code>
 
 		<div class="description short">
 			
@@ -419,7 +435,7 @@ accepts a string to sign and a signing key</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_generateNonce">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.OauthPlugin.html#157" title="Go to source code">generateNonce</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>integer <var>$timestamp</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.OauthPlugin.html#156" title="Go to source code">generateNonce</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>integer <var>$timestamp</var></span> )</code>
 
 		<div class="description short">
 			

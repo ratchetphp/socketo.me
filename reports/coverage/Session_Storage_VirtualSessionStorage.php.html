@@ -231,11 +231,11 @@
 <span class="lineNum" id="container16"><a name="16"></a><a href="#16" id="line16">      16</a> </span>                :      * @param Ratchet\Session\Serialize\HandlerInterface                                                      
 <span class="lineNum" id="container17"><a name="17"></a><a href="#17" id="line17">      17</a> </span>                :      */                                                                                                       
 <span class="lineNum" id="container18"><a name="18"></a><a href="#18" id="line18">      18</a> </span>                :     public function __construct(\SessionHandlerInterface $handler, $sessionId, HandlerInterface $serializer) {
-<span class="lineNum" id="container19"><a name="19"></a><a href="#19" id="line19">      19</a> </span><span class="lineCov">              2 :         $this-&gt;setSaveHandler($handler);                                                                      </span>
-<span class="lineNum" id="container20"><a name="20"></a><a href="#20" id="line20">      20</a> </span><span class="lineCov">              2 :         $this-&gt;saveHandler-&gt;setId($sessionId);                                                                </span>
-<span class="lineNum" id="container21"><a name="21"></a><a href="#21" id="line21">      21</a> </span><span class="lineCov">              2 :         $this-&gt;_serializer = $serializer;                                                                     </span>
-<span class="lineNum" id="container22"><a name="22"></a><a href="#22" id="line22">      22</a> </span><span class="lineCov">              2 :         $this-&gt;setMetadataBag(null);                                                                          </span>
-<span class="lineNum" id="container23"><a name="23"></a><a href="#23" id="line23">      23</a> </span><span class="lineCov">              2 :     }                                                                                                         </span>
+<span class="lineNum" id="container19"><a name="19"></a><a href="#19" id="line19">      19</a> </span><span class="lineCov">              5 :         $this-&gt;setSaveHandler($handler);                                                                      </span>
+<span class="lineNum" id="container20"><a name="20"></a><a href="#20" id="line20">      20</a> </span><span class="lineCov">              5 :         $this-&gt;saveHandler-&gt;setId($sessionId);                                                                </span>
+<span class="lineNum" id="container21"><a name="21"></a><a href="#21" id="line21">      21</a> </span><span class="lineCov">              5 :         $this-&gt;_serializer = $serializer;                                                                     </span>
+<span class="lineNum" id="container22"><a name="22"></a><a href="#22" id="line22">      22</a> </span><span class="lineCov">              5 :         $this-&gt;setMetadataBag(null);                                                                          </span>
+<span class="lineNum" id="container23"><a name="23"></a><a href="#23" id="line23">      23</a> </span><span class="lineCov">              5 :     }                                                                                                         </span>
 <span class="lineNum" id="container24"><a name="24"></a><a href="#24" id="line24">      24</a> </span>                :                                                                                                               
 <span class="lineNum" id="container25"><a name="25"></a><a href="#25" id="line25">      25</a> </span>                :     /**                                                                                                       
 <span class="lineNum" id="container26"><a name="26"></a><a href="#26" id="line26">      26</a> </span>                :      * {@inheritdoc}                                                                                          
@@ -284,16 +284,16 @@
 <span class="lineNum" id="container69"><a name="69"></a><a href="#69" id="line69">      69</a> </span>                :      * {@inheritdoc}                                                                                          
 <span class="lineNum" id="container70"><a name="70"></a><a href="#70" id="line70">      70</a> </span>                :      */                                                                                                       
 <span class="lineNum" id="container71"><a name="71"></a><a href="#71" id="line71">      71</a> </span>                :     public function setSaveHandler($saveHandler = null) {                                                     
-<span class="lineNum" id="container72"><a name="72"></a><a href="#72" id="line72">      72</a> </span><span class="lineCov">              2 :         if (!($saveHandler instanceof \SessionHandlerInterface)) {                                            </span>
+<span class="lineNum" id="container72"><a name="72"></a><a href="#72" id="line72">      72</a> </span><span class="lineCov">              5 :         if (!($saveHandler instanceof \SessionHandlerInterface)) {                                            </span>
 <span class="lineNum" id="container73"><a name="73"></a><a href="#73" id="line73">      73</a> </span><span class="lineNoCov">              0 :             throw new \InvalidArgumentException('Handler must be instance of SessionHandlerInterface');       </span>
 <span class="lineNum" id="container74"><a name="74"></a><a href="#74" id="line74">      74</a> </span>                :         }                                                                                                     
 <span class="lineNum" id="container75"><a name="75"></a><a href="#75" id="line75">      75</a> </span>                :                                                                                                               
-<span class="lineNum" id="container76"><a name="76"></a><a href="#76" id="line76">      76</a> </span><span class="lineCov">              2 :         if (!($saveHandler instanceof \VirtualProxy)) {                                                       </span>
-<span class="lineNum" id="container77"><a name="77"></a><a href="#77" id="line77">      77</a> </span><span class="lineCov">              2 :             $saveHandler = new VirtualProxy($saveHandler);                                                    </span>
-<span class="lineNum" id="container78"><a name="78"></a><a href="#78" id="line78">      78</a> </span><span class="lineCov">              2 :         }                                                                                                     </span>
+<span class="lineNum" id="container76"><a name="76"></a><a href="#76" id="line76">      76</a> </span><span class="lineCov">              5 :         if (!($saveHandler instanceof \VirtualProxy)) {                                                       </span>
+<span class="lineNum" id="container77"><a name="77"></a><a href="#77" id="line77">      77</a> </span><span class="lineCov">              5 :             $saveHandler = new VirtualProxy($saveHandler);                                                    </span>
+<span class="lineNum" id="container78"><a name="78"></a><a href="#78" id="line78">      78</a> </span><span class="lineCov">              5 :         }                                                                                                     </span>
 <span class="lineNum" id="container79"><a name="79"></a><a href="#79" id="line79">      79</a> </span>                :                                                                                                               
-<span class="lineNum" id="container80"><a name="80"></a><a href="#80" id="line80">      80</a> </span><span class="lineCov">              2 :         $this-&gt;saveHandler = $saveHandler;                                                                    </span>
-<span class="lineNum" id="container81"><a name="81"></a><a href="#81" id="line81">      81</a> </span><span class="lineCov">              2 :     }                                                                                                         </span>
+<span class="lineNum" id="container80"><a name="80"></a><a href="#80" id="line80">      80</a> </span><span class="lineCov">              5 :         $this-&gt;saveHandler = $saveHandler;                                                                    </span>
+<span class="lineNum" id="container81"><a name="81"></a><a href="#81" id="line81">      81</a> </span><span class="lineCov">              5 :     }                                                                                                         </span>
 
 </pre>
         </td>
@@ -302,7 +302,7 @@
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.1.2</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.10</a> and PHPUnit 3.6.11 at Thu Jul 12 12:47:25 EDT 2012.</td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.1.2</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.10</a> and PHPUnit 3.6.11 at Fri Jul 20 10:26:06 EDT 2012.</td></tr>
     </table>
 
     <br />
@@ -313,28 +313,28 @@
       YAHOO.namespace("phpunit.container");
       YAHOO.phpunit.container.panelsData = {
         "panel19": {
-          "header": "2 tests cover line 19",
-          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testDecoratingMethods</li></ul>",
+          "header": "5 tests cover line 19",
+          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnOpenBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnMessageBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnCloseBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnErrorBubbles</li></ul>",
           "footer": ""
         },
         "panel20": {
-          "header": "2 tests cover line 20",
-          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testDecoratingMethods</li></ul>",
+          "header": "5 tests cover line 20",
+          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnOpenBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnMessageBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnCloseBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnErrorBubbles</li></ul>",
           "footer": ""
         },
         "panel21": {
-          "header": "2 tests cover line 21",
-          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testDecoratingMethods</li></ul>",
+          "header": "5 tests cover line 21",
+          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnOpenBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnMessageBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnCloseBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnErrorBubbles</li></ul>",
           "footer": ""
         },
         "panel22": {
-          "header": "2 tests cover line 22",
-          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testDecoratingMethods</li></ul>",
+          "header": "5 tests cover line 22",
+          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnOpenBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnMessageBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnCloseBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnErrorBubbles</li></ul>",
           "footer": ""
         },
         "panel23": {
-          "header": "2 tests cover line 23",
-          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testDecoratingMethods</li></ul>",
+          "header": "5 tests cover line 23",
+          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnOpenBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnMessageBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnCloseBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnErrorBubbles</li></ul>",
           "footer": ""
         },
         "panel29": {
@@ -368,33 +368,33 @@
           "footer": ""
         },
         "panel72": {
-          "header": "2 tests cover line 72",
-          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testDecoratingMethods</li></ul>",
+          "header": "5 tests cover line 72",
+          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnOpenBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnMessageBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnCloseBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnErrorBubbles</li></ul>",
           "footer": ""
         },
         "panel76": {
-          "header": "2 tests cover line 76",
-          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testDecoratingMethods</li></ul>",
+          "header": "5 tests cover line 76",
+          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnOpenBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnMessageBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnCloseBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnErrorBubbles</li></ul>",
           "footer": ""
         },
         "panel77": {
-          "header": "2 tests cover line 77",
-          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testDecoratingMethods</li></ul>",
+          "header": "5 tests cover line 77",
+          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnOpenBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnMessageBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnCloseBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnErrorBubbles</li></ul>",
           "footer": ""
         },
         "panel78": {
-          "header": "2 tests cover line 78",
-          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testDecoratingMethods</li></ul>",
+          "header": "5 tests cover line 78",
+          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnOpenBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnMessageBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnCloseBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnErrorBubbles</li></ul>",
           "footer": ""
         },
         "panel80": {
-          "header": "2 tests cover line 80",
-          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testDecoratingMethods</li></ul>",
+          "header": "5 tests cover line 80",
+          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnOpenBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnMessageBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnCloseBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnErrorBubbles</li></ul>",
           "footer": ""
         },
         "panel81": {
-          "header": "2 tests cover line 81",
-          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testDecoratingMethods</li></ul>",
+          "header": "5 tests cover line 81",
+          "body": "<ul><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testConnectionValueFromPdo</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnOpenBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnMessageBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnCloseBubbles</li><li class=\"testPassed\">Ratchet\\Tests\\Session\\SessionProviderTest::testOnErrorBubbles</li></ul>",
           "footer": ""
         },
       "dummy": ""

@@ -8,7 +8,7 @@
 	<title>File Ratchet/ConnectionInterface.php | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -28,9 +28,13 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -48,6 +52,17 @@
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -69,6 +84,8 @@
 						</li>
 				<li><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -180,24 +197,29 @@
 <pre><code><a href="#1" id="1" class="l"> 1: </a><span class="xlang">&lt;?php</span>
 <a href="#2" id="2" class="l"> 2: </a><span class="php-keyword1">namespace</span> Ratchet;
 <a href="#3" id="3" class="l"> 3: </a>
-<a href="#4" id="4" class="l"> 4: </a><span class="php-keyword1">const</span> VERSION = <span class="php-quote">'Ratchet/0.2b'</span>;
-<a href="#5" id="5" class="l"> 5: </a>
-<a href="#6" id="6" class="l"> 6: </a><span class="php-comment">/**
-</span><a href="#7" id="7" class="l"> 7: </a><span class="php-comment"> * A proxy object representing a connection to the application
-</span><a href="#8" id="8" class="l"> 8: </a><span class="php-comment"> * This acts as a container to storm data (in memory) about the connection
-</span><a href="#9" id="9" class="l"> 9: </a><span class="php-comment"> */</span>
-<a href="#10" id="10" class="l">10: </a><span class="php-keyword1">interface</span> ConnectionInterface {
-<a href="#11" id="11" class="l">11: </a>    <span class="php-comment">/**
-</span><a href="#12" id="12" class="l">12: </a><span class="php-comment">     * Send data to the connection
-</span><a href="#13" id="13" class="l">13: </a><span class="php-comment">     * @param string
-</span><a href="#14" id="14" class="l">14: </a><span class="php-comment">     */</span>
-<a href="#15" id="15" class="l">15: </a>    <span class="php-keyword1">function</span> send(<span class="php-var">$data</span>);
-<a href="#16" id="16" class="l">16: </a>
-<a href="#17" id="17" class="l">17: </a>    <span class="php-comment">/**
-</span><a href="#18" id="18" class="l">18: </a><span class="php-comment">     * Close the connection
+<a href="#4" id="4" class="l"> 4: </a><span class="php-comment">/**
+</span><a href="#5" id="5" class="l"> 5: </a><span class="php-comment"> * The version of Ratchet being used
+</span><a href="#6" id="6" class="l"> 6: </a><span class="php-comment"> * @var string
+</span><a href="#7" id="7" class="l"> 7: </a><span class="php-comment"> */</span>
+<a href="#8" id="8" class="l"> 8: </a><span class="php-keyword1">const</span> VERSION = <span class="php-quote">'Ratchet/0.2b'</span>;
+<a href="#9" id="9" class="l"> 9: </a>
+<a href="#10" id="10" class="l">10: </a><span class="php-comment">/**
+</span><a href="#11" id="11" class="l">11: </a><span class="php-comment"> * A proxy object representing a connection to the application
+</span><a href="#12" id="12" class="l">12: </a><span class="php-comment"> * This acts as a container to store data (in memory) about the connection
+</span><a href="#13" id="13" class="l">13: </a><span class="php-comment"> */</span>
+<a href="#14" id="14" class="l">14: </a><span class="php-keyword1">interface</span> ConnectionInterface {
+<a href="#15" id="15" class="l">15: </a>    <span class="php-comment">/**
+</span><a href="#16" id="16" class="l">16: </a><span class="php-comment">     * Send data to the connection
+</span><a href="#17" id="17" class="l">17: </a><span class="php-comment">     * @param string
+</span><a href="#18" id="18" class="l">18: </a><span class="php-comment">     * @return ConnectionInterface
 </span><a href="#19" id="19" class="l">19: </a><span class="php-comment">     */</span>
-<a href="#20" id="20" class="l">20: </a>    <span class="php-keyword1">function</span> close();
-<a href="#21" id="21" class="l">21: </a>}</code></pre>
+<a href="#20" id="20" class="l">20: </a>    <span class="php-keyword1">function</span> send(<span class="php-var">$data</span>);
+<a href="#21" id="21" class="l">21: </a>
+<a href="#22" id="22" class="l">22: </a>    <span class="php-comment">/**
+</span><a href="#23" id="23" class="l">23: </a><span class="php-comment">     * Close the connection
+</span><a href="#24" id="24" class="l">24: </a><span class="php-comment">     */</span>
+<a href="#25" id="25" class="l">25: </a>    <span class="php-keyword1">function</span> close();
+<a href="#26" id="26" class="l">26: </a>}</code></pre>
 
 	<div id="footer">
 		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>

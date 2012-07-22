@@ -7,7 +7,7 @@
 	<title>Interface Ratchet\Wamp\WampServerInterface | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,9 +27,13 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -47,6 +51,17 @@
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -68,6 +83,8 @@
 						</li>
 				<li><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -122,6 +139,9 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-Ratchet.Wamp.ServerProtocol.html">ServerProtocol</a></li>
+				<li><a href="class-Ratchet.Wamp.Topic.html">Topic</a></li>
+				<li><a href="class-Ratchet.Wamp.TopicManager.html">TopicManager</a></li>
 				<li><a href="class-Ratchet.Wamp.WampConnection.html">WampConnection</a></li>
 				<li><a href="class-Ratchet.Wamp.WampServer.html">WampServer</a></li>
 			</ul>
@@ -180,8 +200,9 @@
 
 	<div class="description">
 	
-<p>A (not literal) extension of Ratchet\ConnectionInterface onMessage is
-replaced by various types of messages for this protocol (pub/sub or rpc)</p>
+<p>An extension of Ratchet\ComponentInterface to server a WAMP application
+onMessage is replaced by various types of messages for this protocol (pub/sub or
+rpc)</p>
 
 	</div>
 
@@ -198,6 +219,10 @@ replaced by various types of messages for this protocol (pub/sub or rpc)</p>
 
 
 
+	<div>
+		<h4>Direct known implementers</h4>
+			<a href="class-Ratchet.Wamp.TopicManager.html">Ratchet\Wamp\TopicManager</a>
+	</div>
 
 
 
@@ -225,7 +250,7 @@ replaced by various types of messages for this protocol (pub/sub or rpc)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onCall">#</a>
-		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#11" title="Go to source code">onCall</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>string <var>$id</var></span>, <span>string <var>$topic</var></span>, <span>array <var>$params</var></span> )</code>
+		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#11" title="Go to source code">onCall</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>string <var>$id</var></span>, <span>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code> <var>$topic</var></span>, <span>array <var>$params</var></span> )</code>
 
 		<div class="description short">
 			
@@ -246,7 +271,7 @@ replaced by various types of messages for this protocol (pub/sub or rpc)</p>
 					<dt><var>$id</var></dt>
 					<dd><code>string</code><br>The unique ID of the RPC, required to respond to</dd>
 					<dt><var>$topic</var></dt>
-					<dd><code>string</code><br>The topic to execute the call against</dd>
+					<dd><code>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code></code><br>The topic to execute the call against</dd>
 					<dt><var>$params</var></dt>
 					<dd><code>array</code><br>Call parameters received from the client</dd>
 				</dl></div>
@@ -268,7 +293,7 @@ replaced by various types of messages for this protocol (pub/sub or rpc)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onSubscribe">#</a>
-		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#20" title="Go to source code">onSubscribe</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>string <var>$topic</var></span> )</code>
+		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#20" title="Go to source code">onSubscribe</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code> <var>$topic</var></span> )</code>
 
 		<div class="description short">
 			
@@ -287,7 +312,7 @@ replaced by various types of messages for this protocol (pub/sub or rpc)</p>
 					<dt><var>$conn</var></dt>
 					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code></dd>
 					<dt><var>$topic</var></dt>
-					<dd><code>string</code><br>The topic to subscribe to</dd>
+					<dd><code>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code></code><br>The topic to subscribe to</dd>
 				</dl></div>
 
 
@@ -307,7 +332,7 @@ replaced by various types of messages for this protocol (pub/sub or rpc)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onUnSubscribe">#</a>
-		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#27" title="Go to source code">onUnSubscribe</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>The <var>$topic</var></span> )</code>
+		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#27" title="Go to source code">onUnSubscribe</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code> <var>$topic</var></span> )</code>
 
 		<div class="description short">
 			
@@ -326,7 +351,7 @@ replaced by various types of messages for this protocol (pub/sub or rpc)</p>
 					<dt><var>$conn</var></dt>
 					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code></dd>
 					<dt><var>$topic</var></dt>
-					<dd><code>The</code><br>topic to unsubscribe from</dd>
+					<dd><code>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code></code><br>The topic to unsubscribe from</dd>
 				</dl></div>
 
 
@@ -346,7 +371,7 @@ replaced by various types of messages for this protocol (pub/sub or rpc)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onPublish">#</a>
-		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#34" title="Go to source code">onPublish</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>The <var>$topic</var></span>, <span>string <var>$event</var></span>, <span>array <var>$exclude</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$eligible</var> = <span class="php-keyword1">array</span>()</span> )</code>
+		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#34" title="Go to source code">onPublish</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code> <var>$topic</var></span>, <span>string <var>$event</var></span>, <span>array <var>$exclude</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$eligible</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 		<div class="description short">
 			
@@ -367,7 +392,7 @@ URI</p>
 					<dt><var>$conn</var></dt>
 					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code></dd>
 					<dt><var>$topic</var></dt>
-					<dd><code>The</code><br>topic the user has attempted to publish to</dd>
+					<dd><code>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code></code><br>The topic the user has attempted to publish to</dd>
 					<dt><var>$event</var></dt>
 					<dd><code>string</code><br>Payload of the publish</dd>
 					<dt><var>$exclude</var></dt>

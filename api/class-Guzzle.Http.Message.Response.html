@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Message\Response | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,9 +27,13 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -47,6 +51,17 @@
 				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -68,6 +83,8 @@
 						</li>
 				<li><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -125,6 +142,8 @@
 				<li><a href="class-Guzzle.Http.Message.AbstractMessage.html">AbstractMessage</a></li>
 				<li><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">EntityEnclosingRequest</a></li>
 				<li><a href="class-Guzzle.Http.Message.Header.html">Header</a></li>
+				<li><a href="class-Guzzle.Http.Message.HeaderComparison.html">HeaderComparison</a></li>
+				<li><a href="class-Guzzle.Http.Message.PostFile.html">PostFile</a></li>
 				<li><a href="class-Guzzle.Http.Message.Request.html">Request</a></li>
 				<li><a href="class-Guzzle.Http.Message.RequestFactory.html">RequestFactory</a></li>
 				<li class="active"><a href="class-Guzzle.Http.Message.Response.html">Response</a></li>
@@ -134,6 +153,7 @@
 			<ul>
 				<li><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html">EntityEnclosingRequestInterface</a></li>
 				<li><a href="class-Guzzle.Http.Message.MessageInterface.html">MessageInterface</a></li>
+				<li><a href="class-Guzzle.Http.Message.PostFileInterface.html">PostFileInterface</a></li>
 				<li><a href="class-Guzzle.Http.Message.RequestFactoryInterface.html">RequestFactoryInterface</a></li>
 				<li><a href="class-Guzzle.Http.Message.RequestInterface.html">RequestInterface</a></li>
 			</ul>
@@ -216,7 +236,7 @@
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.Message.html">Message</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.Message.Response.html#10" title="Go to source code">Message/Response.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.Message.Response.html#10" title="Go to source code">http/Guzzle/Http/Message/Response.php</a><br />
 	</div>
 
 
@@ -226,7 +246,7 @@
 
 		<td class="attributes"><code>
 			 public static
-			<code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code>
+			<code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code>|boolean
 			
 			</code>
 		</td>
@@ -255,13 +275,9 @@
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br />
+					<code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code>|boolean</code><br>Returns false on error<br />
 				</div>
 
-				<h4>Throws</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Common.Exception.InvalidArgumentException.html">Guzzle\Common\Exception\InvalidArgumentException</a></code></code><br>if an empty $message is provided<br />
-				</div>
 
 
 		</div>
@@ -278,7 +294,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#146" title="Go to source code">__construct</a>( <span>string <var>$statusCode</var></span>, <span><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|array <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#123" title="Go to source code">__construct</a>( <span>string <var>$statusCode</var></span>, <span><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|array <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -297,9 +313,9 @@
 					<dt><var>$statusCode</var></dt>
 					<dd><code>string</code><br> The response status code (e.g. 200, 404, etc)</dd>
 					<dt><var>$headers</var></dt>
-					<dd><code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|array</code><br> (optional) The response headers</dd>
+					<dd><code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|array</code><br> The response headers</dd>
 					<dt><var>$body</var></dt>
-					<dd><code>string|resource|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code></code><br> (optional) The body of the response</dd>
+					<dd><code>string|resource|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code></code><br> The body of the response</dd>
 				</dl></div>
 
 
@@ -323,7 +339,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#181" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#148" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -359,7 +375,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getBody">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#191" title="Go to source code">getBody</a>( <span>boolean <var>$asString</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#158" title="Go to source code">getBody</a>( <span>boolean <var>$asString</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
@@ -400,7 +416,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setProtocol">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#204" title="Go to source code">setProtocol</a>( <span>string <var>$protocol</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#171" title="Go to source code">setProtocol</a>( <span>string <var>$protocol</var></span>, <span>string <var>$version</var></span> )</code>
 
 		<div class="description short">
 			
@@ -417,7 +433,9 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$protocol</var></dt>
-					<dd><code>string</code><br> Response protocol and version (e.g. HTTP/1.1)</dd>
+					<dd><code>string</code><br> Response protocol</dd>
+					<dt><var>$version</var></dt>
+					<dd><code>string</code><br> Protocol version</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -441,7 +459,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getProtocol">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#218" title="Go to source code">getProtocol</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#187" title="Go to source code">getProtocol</a>( )</code>
 
 		<div class="description short">
 			
@@ -477,7 +495,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getProtocolVersion">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#228" title="Go to source code">getProtocolVersion</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#197" title="Go to source code">getProtocolVersion</a>( )</code>
 
 		<div class="description short">
 			
@@ -513,7 +531,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getInfo">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#238" title="Go to source code">getInfo</a>( <span>string <var>$key</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#207" title="Go to source code">getInfo</a>( <span>string <var>$key</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -530,7 +548,7 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$key</var></dt>
-					<dd><code>string</code><br> (optional) A single statistic to check</dd>
+					<dd><code>string</code><br> A single statistic to check</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -559,7 +577,7 @@ key is set and not found<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setInfo">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#258" title="Go to source code">setInfo</a>( <span>array <var>$info</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#227" title="Go to source code">setInfo</a>( <span>array <var>$info</var></span> )</code>
 
 		<div class="description short">
 			
@@ -600,7 +618,7 @@ key is set and not found<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setStatus">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#272" title="Go to source code">setStatus</a>( <span>integer <var>$statusCode</var></span>, <span>string <var>$reasonPhrase</var> = <span class="php-quote">''</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#241" title="Go to source code">setStatus</a>( <span>integer <var>$statusCode</var></span>, <span>string <var>$reasonPhrase</var> = <span class="php-quote">''</span></span> )</code>
 
 		<div class="description short">
 			
@@ -619,7 +637,7 @@ key is set and not found<br />
 					<dt><var>$statusCode</var></dt>
 					<dd><code>integer</code><br> Response status code to set</dd>
 					<dt><var>$reasonPhrase</var></dt>
-					<dd><code>string</code><br> (optional) Response reason phrase</dd>
+					<dd><code>string</code><br> Response reason phrase</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -647,7 +665,7 @@ key is set and not found<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getStatusCode">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#295" title="Go to source code">getStatusCode</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#263" title="Go to source code">getStatusCode</a>( )</code>
 
 		<div class="description short">
 			
@@ -683,7 +701,7 @@ key is set and not found<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMessage">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#305" title="Go to source code">getMessage</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#273" title="Go to source code">getMessage</a>( )</code>
 
 		<div class="description short">
 			
@@ -719,7 +737,7 @@ key is set and not found<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRawHeaders">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#323" title="Go to source code">getRawHeaders</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#291" title="Go to source code">getRawHeaders</a>( )</code>
 
 		<div class="description short">
 			
@@ -757,7 +775,7 @@ key is set and not found<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRequest">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#336" title="Go to source code">getRequest</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#307" title="Go to source code">getRequest</a>( )</code>
 
 		<div class="description short">
 			
@@ -793,7 +811,7 @@ key is set and not found<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getReasonPhrase">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#346" title="Go to source code">getReasonPhrase</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#317" title="Go to source code">getReasonPhrase</a>( )</code>
 
 		<div class="description short">
 			
@@ -831,7 +849,7 @@ status code</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAcceptRanges">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#357" title="Go to source code">getAcceptRanges</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#328" title="Go to source code">getAcceptRanges</a>( )</code>
 
 		<div class="description short">
 			
@@ -867,7 +885,7 @@ status code</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAge">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#368" title="Go to source code">getAge</a>( <span>boolean <var>$headerOnly</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#339" title="Go to source code">getAge</a>( <span>boolean <var>$headerOnly</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
@@ -884,8 +902,7 @@ status code</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$headerOnly</var></dt>
-					<dd><code>boolean</code><br> (optional) Set to TRUE to only retrieve the Age header rather than calculating
-the age</dd>
+					<dd><code>boolean</code><br> Set to TRUE to only retrieve the Age header rather than calculating the age</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -909,7 +926,7 @@ the age</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAllow">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#388" title="Go to source code">getAllow</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#359" title="Go to source code">getAllow</a>( )</code>
 
 		<div class="description short">
 			
@@ -946,7 +963,7 @@ allowed.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isMethodAllowed">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#399" title="Go to source code">isMethodAllowed</a>( <span>string <var>$method</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#370" title="Go to source code">isMethodAllowed</a>( <span>string <var>$method</var></span> )</code>
 
 		<div class="description short">
 			
@@ -987,7 +1004,7 @@ allowed.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getCacheControl">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#420" title="Go to source code">getCacheControl</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#391" title="Go to source code">getCacheControl</a>( )</code>
 
 		<div class="description short">
 			
@@ -1024,7 +1041,7 @@ whether they may cache this object.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getConnection">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#431" title="Go to source code">getConnection</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#402" title="Go to source code">getConnection</a>( )</code>
 
 		<div class="description short">
 			
@@ -1060,7 +1077,7 @@ whether they may cache this object.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentEncoding">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#441" title="Go to source code">getContentEncoding</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#412" title="Go to source code">getContentEncoding</a>( )</code>
 
 		<div class="description short">
 			
@@ -1097,7 +1114,7 @@ identity.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentLanguage">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#452" title="Go to source code">getContentLanguage</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#423" title="Go to source code">getContentLanguage</a>( )</code>
 
 		<div class="description short">
 			
@@ -1133,7 +1150,7 @@ identity.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentLength">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#462" title="Go to source code">getContentLength</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#433" title="Go to source code">getContentLength</a>( )</code>
 
 		<div class="description short">
 			
@@ -1169,7 +1186,7 @@ identity.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentLocation">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#472" title="Go to source code">getContentLocation</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#443" title="Go to source code">getContentLocation</a>( )</code>
 
 		<div class="description short">
 			
@@ -1205,7 +1222,7 @@ identity.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentDisposition">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#483" title="Go to source code">getContentDisposition</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#454" title="Go to source code">getContentDisposition</a>( )</code>
 
 		<div class="description short">
 			
@@ -1241,7 +1258,7 @@ identity.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentMd5">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#493" title="Go to source code">getContentMd5</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#464" title="Go to source code">getContentMd5</a>( )</code>
 
 		<div class="description short">
 			
@@ -1277,7 +1294,7 @@ identity.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentRange">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#504" title="Go to source code">getContentRange</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#475" title="Go to source code">getContentRange</a>( )</code>
 
 		<div class="description short">
 			
@@ -1314,7 +1331,7 @@ identity.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentType">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#515" title="Go to source code">getContentType</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#486" title="Go to source code">getContentType</a>( )</code>
 
 		<div class="description short">
 			
@@ -1350,7 +1367,7 @@ identity.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isContentType">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#525" title="Go to source code">isContentType</a>( <span>string <var>$type</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#496" title="Go to source code">isContentType</a>( <span>string <var>$type</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1395,7 +1412,7 @@ Content-Type matches a particular type.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDate">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#539" title="Go to source code">getDate</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#510" title="Go to source code">getDate</a>( )</code>
 
 		<div class="description short">
 			
@@ -1431,7 +1448,7 @@ Content-Type matches a particular type.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getEtag">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#549" title="Go to source code">getEtag</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#520" title="Go to source code">getEtag</a>( )</code>
 
 		<div class="description short">
 			
@@ -1468,7 +1485,7 @@ digest.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getExpires">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#562" title="Go to source code">getExpires</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#533" title="Go to source code">getExpires</a>( )</code>
 
 		<div class="description short">
 			
@@ -1504,7 +1521,7 @@ digest.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getLastModified">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#573" title="Go to source code">getLastModified</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#544" title="Go to source code">getLastModified</a>( )</code>
 
 		<div class="description short">
 			
@@ -1541,7 +1558,7 @@ digest.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getLocation">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#584" title="Go to source code">getLocation</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#555" title="Go to source code">getLocation</a>( )</code>
 
 		<div class="description short">
 			
@@ -1578,7 +1595,7 @@ href="http://www.w3.org/pub/WWW/People.html">http://www.w3.org/pub/WWW/People.ht
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getPragma">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#595" title="Go to source code">getPragma</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#566" title="Go to source code">getPragma</a>( )</code>
 
 		<div class="description short">
 			
@@ -1615,7 +1632,7 @@ anywhere along the request-response chain.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getProxyAuthenticate">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#606" title="Go to source code">getProxyAuthenticate</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#577" title="Go to source code">getProxyAuthenticate</a>( )</code>
 
 		<div class="description short">
 			
@@ -1651,7 +1668,7 @@ anywhere along the request-response chain.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRetryAfter">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#616" title="Go to source code">getRetryAfter</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#587" title="Go to source code">getRetryAfter</a>( )</code>
 
 		<div class="description short">
 			
@@ -1688,7 +1705,7 @@ after a specified period of time.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServer">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#636" title="Go to source code">getServer</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#607" title="Go to source code">getServer</a>( )</code>
 
 		<div class="description short">
 			
@@ -1724,7 +1741,7 @@ after a specified period of time.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSetCookie">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#646" title="Go to source code">getSetCookie</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#617" title="Go to source code">getSetCookie</a>( )</code>
 
 		<div class="description short">
 			
@@ -1760,7 +1777,7 @@ after a specified period of time.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getTrailer">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#656" title="Go to source code">getTrailer</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#627" title="Go to source code">getTrailer</a>( )</code>
 
 		<div class="description short">
 			
@@ -1797,7 +1814,7 @@ present in the trailer of a message encoded with chunked transfer-coding.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getTransferEncoding">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#668" title="Go to source code">getTransferEncoding</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#639" title="Go to source code">getTransferEncoding</a>( )</code>
 
 		<div class="description short">
 			
@@ -1834,7 +1851,7 @@ defined methods are: chunked<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getVary">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#679" title="Go to source code">getVary</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#650" title="Go to source code">getVary</a>( )</code>
 
 		<div class="description short">
 			
@@ -1872,7 +1889,7 @@ origin server.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getVia">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#691" title="Go to source code">getVia</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#662" title="Go to source code">getVia</a>( )</code>
 
 		<div class="description short">
 			
@@ -1909,7 +1926,7 @@ fred, 1.1 nowhere.com (Apache/1.1))<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getWarning">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#702" title="Go to source code">getWarning</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#673" title="Go to source code">getWarning</a>( )</code>
 
 		<div class="description short">
 			
@@ -1946,7 +1963,7 @@ Miscellaneous warning)<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getWwwAuthenticate">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#713" title="Go to source code">getWwwAuthenticate</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#684" title="Go to source code">getWwwAuthenticate</a>( )</code>
 
 		<div class="description short">
 			
@@ -1983,7 +2000,7 @@ entity (e.g. Basic)<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isClientError">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#724" title="Go to source code">isClientError</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#695" title="Go to source code">isClientError</a>( )</code>
 
 		<div class="description short">
 			
@@ -2019,7 +2036,7 @@ entity (e.g. Basic)<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isError">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#734" title="Go to source code">isError</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#705" title="Go to source code">isError</a>( )</code>
 
 		<div class="description short">
 			
@@ -2055,7 +2072,7 @@ entity (e.g. Basic)<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isInformational">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#744" title="Go to source code">isInformational</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#715" title="Go to source code">isInformational</a>( )</code>
 
 		<div class="description short">
 			
@@ -2091,7 +2108,7 @@ entity (e.g. Basic)<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isRedirect">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#754" title="Go to source code">isRedirect</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#725" title="Go to source code">isRedirect</a>( )</code>
 
 		<div class="description short">
 			
@@ -2127,7 +2144,7 @@ entity (e.g. Basic)<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isServerError">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#764" title="Go to source code">isServerError</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#735" title="Go to source code">isServerError</a>( )</code>
 
 		<div class="description short">
 			
@@ -2163,7 +2180,7 @@ entity (e.g. Basic)<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isSuccessful">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#774" title="Go to source code">isSuccessful</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#745" title="Go to source code">isSuccessful</a>( )</code>
 
 		<div class="description short">
 			
@@ -2199,7 +2216,7 @@ entity (e.g. Basic)<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setRequest">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#784" title="Go to source code">setRequest</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#755" title="Go to source code">setRequest</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
 
 		<div class="description short">
 			
@@ -2240,7 +2257,7 @@ entity (e.g. Basic)<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_canCache">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#798" title="Go to source code">canCache</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#769" title="Go to source code">canCache</a>( )</code>
 
 		<div class="description short">
 			
@@ -2276,7 +2293,7 @@ entity (e.g. Basic)<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMaxAge">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#830" title="Go to source code">getMaxAge</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#796" title="Go to source code">getMaxAge</a>( )</code>
 
 		<div class="description short">
 			
@@ -2314,7 +2331,7 @@ still considered fresh as specified in RFC 2616-13</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isFresh">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#854" title="Go to source code">isFresh</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#820" title="Go to source code">isFresh</a>( )</code>
 
 		<div class="description short">
 			
@@ -2353,7 +2370,7 @@ lifetime (maximum age) of the response.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_canValidate">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#869" title="Go to source code">canValidate</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#835" title="Go to source code">canValidate</a>( )</code>
 
 		<div class="description short">
 			
@@ -2391,7 +2408,7 @@ conditional GET request.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getFreshness">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.Response.html#880" title="Go to source code">getFreshness</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.Response.html#846" title="Go to source code">getFreshness</a>( )</code>
 
 		<div class="description short">
 			
@@ -2435,7 +2452,7 @@ that no freshness information is available.</p>
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_changedHeader">changedHeader()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getCacheControlDirective">getCacheControlDirective()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getHeader">getHeader()</a>, 
-			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getHeaderString">getHeaderString()</a>, 
+			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getHeaderLines">getHeaderLines()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getHeaders">getHeaders()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getParams">getParams()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getTokenizedHeader">getTokenizedHeader()</a>, 

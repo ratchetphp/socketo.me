@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Message\EntityEnclosingRequest | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,9 +27,13 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -47,6 +51,17 @@
 				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -68,6 +83,8 @@
 						</li>
 				<li><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -125,6 +142,8 @@
 				<li><a href="class-Guzzle.Http.Message.AbstractMessage.html">AbstractMessage</a></li>
 				<li class="active"><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">EntityEnclosingRequest</a></li>
 				<li><a href="class-Guzzle.Http.Message.Header.html">Header</a></li>
+				<li><a href="class-Guzzle.Http.Message.HeaderComparison.html">HeaderComparison</a></li>
+				<li><a href="class-Guzzle.Http.Message.PostFile.html">PostFile</a></li>
 				<li><a href="class-Guzzle.Http.Message.Request.html">Request</a></li>
 				<li><a href="class-Guzzle.Http.Message.RequestFactory.html">RequestFactory</a></li>
 				<li><a href="class-Guzzle.Http.Message.Response.html">Response</a></li>
@@ -134,6 +153,7 @@
 			<ul>
 				<li><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html">EntityEnclosingRequestInterface</a></li>
 				<li><a href="class-Guzzle.Http.Message.MessageInterface.html">MessageInterface</a></li>
+				<li><a href="class-Guzzle.Http.Message.PostFileInterface.html">PostFileInterface</a></li>
 				<li><a href="class-Guzzle.Http.Message.RequestFactoryInterface.html">RequestFactoryInterface</a></li>
 				<li><a href="class-Guzzle.Http.Message.RequestInterface.html">RequestInterface</a></li>
 			</ul>
@@ -227,7 +247,7 @@
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.Message.html">Message</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#10" title="Go to source code">Message/EntityEnclosingRequest.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#9" title="Go to source code">http/Guzzle/Http/Message/EntityEnclosingRequest.php</a><br />
 	</div>
 
 
@@ -244,7 +264,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#25" title="Go to source code">__construct</a>( <span>string <var>$method</var></span>, <span>string|Url <var>$url</var></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">array</span>()</span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#29" title="Go to source code">__construct</a>( <span>string <var>$method</var></span>, <span>string|Url <var>$url</var></span>, <span>array|Collection <var>$headers</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 		<div class="description short">
 			
@@ -267,7 +287,7 @@
 the full URL. If query string parameters are present they will be parsed as
 well.</dd>
 					<dt><var>$headers</var></dt>
-					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br> (optional) HTTP headers</dd>
+					<dd><code>array|Collection</code><br> HTTP headers</dd>
 				</dl></div>
 
 
@@ -289,7 +309,7 @@ well.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#35" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#39" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -316,6 +336,49 @@ well.</dd>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="setState" id="_setState">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.Request.html">Guzzle\Http\Message\Request</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setState">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#54" title="Go to source code">setState</a>( <span>string <var>$state</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the state of the request</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the state of the request</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$state</var></dt>
+					<dd><code>string</code><br> State of the request (complete, sending, or new)</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.Request.html">Guzzle\Http\Message\Request</a></code></code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.RequestInterface.html#_setState">Guzzle\Http\Message\RequestInterface::setState</a></code></div>
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="setBody" id="_setBody">
 
 		<td class="attributes"><code>
@@ -327,7 +390,7 @@ well.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setBody">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#46" title="Go to source code">setBody</a>( <span>string|resource|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code> <var>$body</var></span>, <span>string <var>$contentType</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$tryChunkedTransfer</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#67" title="Go to source code">setBody</a>( <span>string|resource|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code> <var>$body</var></span>, <span>string <var>$contentType</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$tryChunkedTransfer</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
@@ -346,10 +409,10 @@ well.</dd>
 					<dt><var>$body</var></dt>
 					<dd><code>string|resource|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code></code><br> Body to use in the entity body of the request</dd>
 					<dt><var>$contentType</var></dt>
-					<dd><code>string</code><br> (optional) Content-Type to set. Leave null to use an existing Content-Type or
-to guess the Content-Type</dd>
+					<dd><code>string</code><br> Content-Type to set. Leave null to use an existing Content-Type or to guess the
+Content-Type</dd>
 					<dt><var>$tryChunkedTransfer</var></dt>
-					<dd><code>boolean</code><br> (optional) Set to TRUE to try to use Tranfer-Encoding chunked</dd>
+					<dd><code>boolean</code><br> Set to TRUE to try to use Transfer-Encoding chunked</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -379,7 +442,7 @@ to guess the Content-Type</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getBody">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#91" title="Go to source code">getBody</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#108" title="Go to source code">getBody</a>( )</code>
 
 		<div class="description short">
 			
@@ -417,7 +480,7 @@ to guess the Content-Type</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getPostField">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#101" title="Go to source code">getPostField</a>( <span>string <var>$field</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#118" title="Go to source code">getPostField</a>( <span>string <var>$field</var></span> )</code>
 
 		<div class="description short">
 			
@@ -434,7 +497,7 @@ to guess the Content-Type</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$field</var></dt>
-					<dd><code>string</code><br> Field to retrive</dd>
+					<dd><code>string</code><br> Field to retrieve</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -453,14 +516,14 @@ to guess the Content-Type</dd>
 
 		<td class="attributes"><code>
 			 public 
-			array
+			<code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getPostFields">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#113" title="Go to source code">getPostFields</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#130" title="Go to source code">getPostFields</a>( )</code>
 
 		<div class="description short">
 			
@@ -477,94 +540,13 @@ to guess the Content-Type</dd>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>array</code><br />
+					<code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code></code><br />
 				</div>
 
 
 
 				<h4>Implementation of</h4>
 				<div class="list"><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html#_getPostFields">Guzzle\Http\Message\EntityEnclosingRequestInterface::getPostFields</a></code></div>
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getPostFiles" id="_getPostFiles">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getPostFiles">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#123" title="Go to source code">getPostFiles</a>( )</code>
-
-		<div class="description short">
-			
-<p>Returns an associative array of POST field names and file paths</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Returns an associative array of POST field names and file paths</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br />
-				</div>
-
-
-
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html#_getPostFiles">Guzzle\Http\Message\EntityEnclosingRequestInterface::getPostFiles</a></code></div>
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="addPostFields" id="_addPostFields">
-
-		<td class="attributes"><code>
-			 public 
-			<code><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">Guzzle\Http\Message\EntityEnclosingRequest</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_addPostFields">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#137" title="Go to source code">addPostFields</a>( <span><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>|array <var>$fields</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Add POST fields to use in the request</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Add POST fields to use in the request</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$fields</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>|array</code><br> POST fields</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">Guzzle\Http\Message\EntityEnclosingRequest</a></code></code><br />
-				</div>
-
-
-
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html#_addPostFields">Guzzle\Http\Message\EntityEnclosingRequestInterface::addPostFields</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -579,7 +561,7 @@ to guess the Content-Type</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setPostField">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#152" title="Go to source code">setPostField</a>( <span>string <var>$key</var></span>, <span>string <var>$value</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#140" title="Go to source code">setPostField</a>( <span>string <var>$key</var></span>, <span>string <var>$value</var></span> )</code>
 
 		<div class="description short">
 			
@@ -613,7 +595,7 @@ to guess the Content-Type</dd>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="addPostFiles" id="_addPostFiles">
+	<tr data-order="addPostFields" id="_addPostFields">
 
 		<td class="attributes"><code>
 			 public 
@@ -623,25 +605,25 @@ to guess the Content-Type</dd>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_addPostFiles">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#168" title="Go to source code">addPostFiles</a>( <span>array <var>$files</var></span> )</code>
+		<a class="anchor" href="#_addPostFields">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#156" title="Go to source code">addPostFields</a>( <span><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>|array <var>$fields</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Add POST files to use in the upload</p>
+<p>Add POST fields to use in the request</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Add POST files to use in the upload</p>
+<p>Add POST fields to use in the request</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$files</var></dt>
-					<dd><code>array</code><br> An array of filenames to POST</dd>
+					<dt><var>$fields</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>|array</code><br> POST fields</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -649,14 +631,10 @@ to guess the Content-Type</dd>
 					<code><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">Guzzle\Http\Message\EntityEnclosingRequest</a></code></code><br />
 				</div>
 
-				<h4>Throws</h4>
-				<div class="list">
-					<code>BodyException</code><br>if the file cannot be read<br />
-				</div>
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html#_addPostFiles">Guzzle\Http\Message\EntityEnclosingRequestInterface::addPostFiles</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html#_addPostFields">Guzzle\Http\Message\EntityEnclosingRequestInterface::addPostFields</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -671,7 +649,7 @@ to guess the Content-Type</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_removePostField">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#201" title="Go to source code">removePostField</a>( <span>string <var>$field</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#171" title="Go to source code">removePostField</a>( <span>string <var>$field</var></span> )</code>
 
 		<div class="description short">
 			
@@ -703,6 +681,232 @@ to guess the Content-Type</dd>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="getPostFiles" id="_getPostFiles">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getPostFiles">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#186" title="Go to source code">getPostFiles</a>( )</code>
+
+		<div class="description short">
+			
+<p>Returns an associative array of POST field names to an array of
+PostFileInterface objects</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns an associative array of POST field names to an array of
+PostFileInterface objects</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html#_getPostFiles">Guzzle\Http\Message\EntityEnclosingRequestInterface::getPostFiles</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getPostFile" id="_getPostFile">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.PostFileInterface.html">Guzzle\Http\Message\PostFileInterface</a></code>|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getPostFile">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#196" title="Go to source code">getPostFile</a>( <span>string <var>$fieldName</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Get a POST file from the request</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get a POST file from the request</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$fieldName</var></dt>
+					<dd><code>string</code><br> POST fields to retrieve</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.PostFileInterface.html">Guzzle\Http\Message\PostFileInterface</a></code>|null</code><br>Returns an array wrapping PostFileInterface objects<br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html#_getPostFile">Guzzle\Http\Message\EntityEnclosingRequestInterface::getPostFile</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="removePostFile" id="_removePostFile">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">Guzzle\Http\Message\EntityEnclosingRequest</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_removePostFile">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#208" title="Go to source code">removePostFile</a>( <span>string <var>$fieldName</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Remove a POST file from the request</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Remove a POST file from the request</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$fieldName</var></dt>
+					<dd><code>string</code><br> POST file field name to remove</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">Guzzle\Http\Message\EntityEnclosingRequest</a></code></code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html#_removePostFile">Guzzle\Http\Message\EntityEnclosingRequestInterface::removePostFile</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addPostFile" id="_addPostFile">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">Guzzle\Http\Message\EntityEnclosingRequest</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addPostFile">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#223" title="Go to source code">addPostFile</a>( <span>string|PostFileUpload <var>$field</var></span>, <span>string <var>$filename</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$contentType</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Add a POST file to the upload</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Add a POST file to the upload</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$field</var></dt>
+					<dd><code>string|PostFileUpload</code><br> POST field to use (e.g. file) or PostFileInterface object.</dd>
+					<dt><var>$filename</var></dt>
+					<dd><code>string</code><br> Full path to the file. Do not include the @ symbol.</dd>
+					<dt><var>$contentType</var></dt>
+					<dd><code>string</code><br> Optional Content-Type to add to the Content-Disposition. Default behavior is to
+guess. Set to false to not specify.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">Guzzle\Http\Message\EntityEnclosingRequest</a></code></code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Exception.RequestException.html">Guzzle\Http\Exception\RequestException</a></code></code><br>if the file cannot be read<br />
+				</div>
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html#_addPostFile">Guzzle\Http\Message\EntityEnclosingRequestInterface::addPostFile</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addPostFiles" id="_addPostFiles">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">Guzzle\Http\Message\EntityEnclosingRequest</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addPostFiles">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#259" title="Go to source code">addPostFiles</a>( <span>array <var>$files</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Add POST files to use in the upload</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Add POST files to use in the upload</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$files</var></dt>
+					<dd><code>array</code><br> An array of POST fields =&gt; filenames where filename can be a string or
+PostFileInterfaces</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">Guzzle\Http\Message\EntityEnclosingRequest</a></code></code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Exception.RequestException.html">Guzzle\Http\Exception\RequestException</a></code></code><br>if the file cannot be read<br />
+				</div>
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html#_addPostFiles">Guzzle\Http\Message\EntityEnclosingRequestInterface::addPostFiles</a></code></div>
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="processPostFields" id="_processPostFields">
 
 		<td class="attributes"><code>
@@ -714,7 +918,7 @@ to guess the Content-Type</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_processPostFields">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#216" title="Go to source code">processPostFields</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#286" title="Go to source code">processPostFields</a>( )</code>
 
 		<div class="description short">
 			
@@ -743,12 +947,14 @@ to guess the Content-Type</dd>
 		<td><code>
 			<a href="class-Guzzle.Http.Message.Request.html#___clone">__clone()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_addCookie">addCookie()</a>, 
+			<a href="class-Guzzle.Http.Message.Request.html#_addSubscriber">addSubscriber()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_canCache">canCache()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_changedHeader">changedHeader()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_dispatch">dispatch()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_getAllEvents">getAllEvents()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_getClient">getClient()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_getCookie">getCookie()</a>, 
+			<a href="class-Guzzle.Http.Message.Request.html#_getCookies">getCookies()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_getCurlOptions">getCurlOptions()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_getEventArray">getEventArray()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_getEventDispatcher">getEventDispatcher()</a>, 
@@ -760,7 +966,7 @@ to guess the Content-Type</dd>
 			<a href="class-Guzzle.Http.Message.Request.html#_getProtocolVersion">getProtocolVersion()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_getQuery">getQuery()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_getRawHeaders">getRawHeaders()</a>, 
-			<a href="class-Guzzle.Http.Message.Request.html#_getResourceUri">getResourceUri()</a>, 
+			<a href="class-Guzzle.Http.Message.Request.html#_getResource">getResource()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_getResponse">getResponse()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_getResponseBody">getResponseBody()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_getScheme">getScheme()</a>, 
@@ -775,7 +981,6 @@ to guess the Content-Type</dd>
 			<a href="class-Guzzle.Http.Message.Request.html#_send">send()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_setAuth">setAuth()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_setClient">setClient()</a>, 
-			<a href="class-Guzzle.Http.Message.Request.html#_setCookie">setCookie()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_setEventDispatcher">setEventDispatcher()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_setHost">setHost()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_setPath">setPath()</a>, 
@@ -784,7 +989,6 @@ to guess the Content-Type</dd>
 			<a href="class-Guzzle.Http.Message.Request.html#_setResponse">setResponse()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_setResponseBody">setResponseBody()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_setScheme">setScheme()</a>, 
-			<a href="class-Guzzle.Http.Message.Request.html#_setState">setState()</a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#_setUrl">setUrl()</a>
 		</code></td>
 	</tr>
@@ -798,7 +1002,7 @@ to guess the Content-Type</dd>
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_addHeaders">addHeaders()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getCacheControlDirective">getCacheControlDirective()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getHeader">getHeader()</a>, 
-			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getHeaderString">getHeaderString()</a>, 
+			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getHeaderLines">getHeaderLines()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getHeaders">getHeaders()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getParams">getParams()</a>, 
 			<a href="class-Guzzle.Http.Message.AbstractMessage.html#_getTokenizedHeader">getTokenizedHeader()</a>, 
@@ -820,8 +1024,6 @@ to guess the Content-Type</dd>
 	<caption>Constants inherited from <a href="class-Guzzle.Http.Message.RequestInterface.html#constants">Guzzle\Http\Message\RequestInterface</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-Guzzle.Http.Message.RequestInterface.html#AUTH_BASIC"><b>AUTH_BASIC</b></a>, 
-			<a href="class-Guzzle.Http.Message.RequestInterface.html#AUTH_DIGEST"><b>AUTH_DIGEST</b></a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#CONNECT"><b>CONNECT</b></a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#DELETE"><b>DELETE</b></a>, 
 			<a href="class-Guzzle.Http.Message.RequestInterface.html#GET"><b>GET</b></a>, 
@@ -838,6 +1040,15 @@ to guess the Content-Type</dd>
 		</code></td>
 	</tr>
 	</table>
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html#constants">Guzzle\Http\Message\EntityEnclosingRequestInterface</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html#MULTIPART"><b>MULTIPART</b></a>, 
+			<a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html#URL_ENCODED"><b>URL_ENCODED</b></a>
+		</code></td>
+	</tr>
+	</table>
 
 
 	<table class="summary" id="properties">
@@ -850,7 +1061,7 @@ to guess the Content-Type</dd>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#15" title="Go to source code"><var>$body</var></a>
+				<a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#14" title="Go to source code"><var>$body</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -878,7 +1089,7 @@ to guess the Content-Type</dd>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#20" title="Go to source code"><var>$postFields</var></a>
+				<a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#19" title="Go to source code"><var>$postFields</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -898,6 +1109,34 @@ to guess the Content-Type</dd>
 			</div>
 		</div></td>
 	</tr>
+	<tr data-order="postFiles" id="$postFiles">
+
+		<td class="attributes"><code>
+			protected 
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Http.Message.EntityEnclosingRequest.html#24" title="Go to source code"><var>$postFiles</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$postFiles" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>POST files to send with the request</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>POST files to send with the request</p>
+
+
+			</div>
+		</div></td>
+	</tr>
 	</table>
 
 	<table class="summary inherited">
@@ -905,7 +1144,6 @@ to guess the Content-Type</dd>
 	<tr>
 		<td><code>
 			<a href="class-Guzzle.Http.Message.Request.html#$client"><var>$client</var></a>, 
-			<a href="class-Guzzle.Http.Message.Request.html#$cookie"><var>$cookie</var></a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#$curlOptions"><var>$curlOptions</var></a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#$eventDispatcher"><var>$eventDispatcher</var></a>, 
 			<a href="class-Guzzle.Http.Message.Request.html#$method"><var>$method</var></a>, 

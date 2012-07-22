@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Plugin\Md5ValidatorPlugin | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,9 +27,13 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -47,6 +51,17 @@
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li class="active"><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -68,6 +83,8 @@
 						</li>
 				<li><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -122,7 +139,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Guzzle.Http.Plugin.BatchQueuePlugin.html">BatchQueuePlugin</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.AsyncPlugin.html">AsyncPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CachePlugin.html">CachePlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CookiePlugin.html">CookiePlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CurlAuthPlugin.html">CurlAuthPlugin</a></li>
@@ -208,7 +225,7 @@ not match the expected MD5.</p>
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.Plugin.html">Plugin</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.Plugin.Md5ValidatorPlugin.html#11" title="Go to source code">Plugin/Md5ValidatorPlugin.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.Plugin.Md5ValidatorPlugin.html#10" title="Go to source code">http/Guzzle/Http/Plugin/Md5ValidatorPlugin.php</a><br />
 	</div>
 
 
@@ -225,7 +242,7 @@ not match the expected MD5.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.Md5ValidatorPlugin.html#28" title="Go to source code">__construct</a>( <span>boolean <var>$contentEncoded</var> = <span class="php-keyword1">true</span></span>, <span>integer <var>$contentLengthCutoff</var> = <span class="php-num">2097152</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.Md5ValidatorPlugin.html#27" title="Go to source code">__construct</a>( <span>boolean <var>$contentEncoded</var> = <span class="php-keyword1">true</span></span>, <span>integer <var>$contentLengthCutoff</var> = <span class="php-num">2097152</span></span> )</code>
 
 		<div class="description short">
 			
@@ -242,14 +259,14 @@ not match the expected MD5.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$contentEncoded</var></dt>
-					<dd><code>boolean</code><br>$calcContentEncoded (optional) Calculating the MD5 hash of an entity body where
-a Content-Encoding was applied is a more expensive comparison because the entity
+					<dd><code>boolean</code><br>$calcContentEncoded Calculating the MD5 hash of an entity body where a
+Content-Encoding was applied is a more expensive comparison because the entity
 body will need to be compressed in order to get the correct hash. Set to FALSE
 to not validate the MD5 hash of an entity body with an applied Content-Encoding.</dd>
 					<dt><var>$contentLengthCutoff</var></dt>
-					<dd><code>integer</code><br> (optional) Maximum Content-Length (bytes) in which a MD5 hash will be
-validated. Any response with a Content-Length greater than this value will not
-be validated because it will be deemed too memory intensive</dd>
+					<dd><code>integer</code><br> Maximum Content-Length (bytes) in which a MD5 hash will be validated. Any
+response with a Content-Length greater than this value will not be validated
+because it will be deemed too memory intensive</dd>
 				</dl></div>
 
 
@@ -269,7 +286,7 @@ be validated because it will be deemed too memory intensive</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSubscribedEvents">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.Md5ValidatorPlugin.html#47" title="Go to source code">getSubscribedEvents</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.Md5ValidatorPlugin.html#46" title="Go to source code">getSubscribedEvents</a>( )</code>
 
 		<div class="description short">
 			
@@ -297,7 +314,7 @@ be validated because it will be deemed too memory intensive</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onRequestComplete">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.Md5ValidatorPlugin.html#55" title="Go to source code">onRequestComplete</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.Md5ValidatorPlugin.html#54" title="Go to source code">onRequestComplete</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
 
 		<div class="description short">
 			
@@ -336,7 +353,7 @@ be validated because it will be deemed too memory intensive</dd>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Plugin.Md5ValidatorPlugin.html#18" title="Go to source code"><var>$contentLengthCutoff</var></a>
+				<a href="source-class-Guzzle.Http.Plugin.Md5ValidatorPlugin.html#17" title="Go to source code"><var>$contentLengthCutoff</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -364,7 +381,7 @@ be validated because it will be deemed too memory intensive</dd>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Plugin.Md5ValidatorPlugin.html#23" title="Go to source code"><var>$contentEncoded</var></a>
+				<a href="source-class-Guzzle.Http.Plugin.Md5ValidatorPlugin.html#22" title="Go to source code"><var>$contentEncoded</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>

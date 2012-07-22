@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Plugin\CachePlugin | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,9 +27,13 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -47,6 +51,17 @@
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li class="active"><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -68,6 +83,8 @@
 						</li>
 				<li><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -122,7 +139,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Guzzle.Http.Plugin.BatchQueuePlugin.html">BatchQueuePlugin</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.AsyncPlugin.html">AsyncPlugin</a></li>
 				<li class="active"><a href="class-Guzzle.Http.Plugin.CachePlugin.html">CachePlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CookiePlugin.html">CookiePlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CurlAuthPlugin.html">CurlAuthPlugin</a></li>
@@ -185,6 +202,17 @@ cacheable response headers. This is a simple implementation of RFC 2616 and
 should be considered a private transparent proxy cache (authorization and
 private data can be cached).</p>
 
+<p>Various params can be set on a request to modify the behavior of the cache
+plugin:</p>
+
+<ul>
+	<li>cache.key_filter: Filtered headers and query string parameters to remove
+	from a request when creating a cache key</li>
+
+	<li>cache.filter_strategy: Method to invoke when determining if a request can be
+	cached. Must accept a request object and return boolean.</li>
+</ul>
+
 	</div>
 
 	<dl class="tree">
@@ -210,7 +238,7 @@ private data can be cached).</p>
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.Plugin.html">Plugin</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#16" title="Go to source code">Plugin/CachePlugin.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#13" title="Go to source code">http/Guzzle/Http/Plugin/CachePlugin.php</a><br />
 	</div>
 
 
@@ -227,7 +255,7 @@ private data can be cached).</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#54" title="Go to source code">__construct</a>( <span><code><a href="class-Guzzle.Common.Cache.CacheAdapterInterface.html">Guzzle\Common\Cache\CacheAdapterInterface</a></code> <var>$adapter</var></span>, <span>boolean <var>$serialize</var> = <span class="php-keyword1">false</span></span>, <span>integer <var>$defaultLifetime</var> = <span class="php-num">3600</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#51" title="Go to source code">__construct</a>( <span><code><a href="class-Guzzle.Common.Cache.CacheAdapterInterface.html">Guzzle\Common\Cache\CacheAdapterInterface</a></code> <var>$adapter</var></span>, <span>integer <var>$defaultLifetime</var> = <span class="php-num">3600</span></span> )</code>
 
 		<div class="description short">
 			
@@ -245,12 +273,10 @@ private data can be cached).</p>
 				<div class="list"><dl>
 					<dt><var>$adapter</var></dt>
 					<dd><code><code><a href="class-Guzzle.Common.Cache.CacheAdapterInterface.html">Guzzle\Common\Cache\CacheAdapterInterface</a></code></code><br> Cache adapter to write and read cache data</dd>
-					<dt><var>$serialize</var></dt>
-					<dd><code>boolean</code><br> (optional) Set to TRUE to serialize data before writing</dd>
 					<dt><var>$defaultLifetime</var></dt>
-					<dd><code>integer</code><br> (optional) The number of seconds that a cache entry should be considered fresh
-when no explicit freshness information is provided in a response. Explicit
-Cache-Control or Expires headers override this value</dd>
+					<dd><code>integer</code><br> Number of seconds that a cache entry should be considered fresh when no
+explicit freshness information is provided in a response. Explicit Cache-Control
+or Expires headers override this value.</dd>
 				</dl></div>
 
 
@@ -270,7 +296,7 @@ Cache-Control or Expires headers override this value</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSubscribedEvents">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#70" title="Go to source code">getSubscribedEvents</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#66" title="Go to source code">getSubscribedEvents</a>( )</code>
 
 		<div class="description short">
 			
@@ -281,42 +307,6 @@ Cache-Control or Expires headers override this value</dd>
 
 
 
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getCacheAdapter" id="_getCacheAdapter">
-
-		<td class="attributes"><code>
-			 public 
-			CacheAdapter
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getCacheAdapter">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#81" title="Go to source code">getCacheAdapter</a>( )</code>
-
-		<div class="description short">
-			
-<p>Get the cache adapter object</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get the cache adapter object</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>CacheAdapter</code><br />
-				</div>
 
 
 
@@ -334,7 +324,7 @@ Cache-Control or Expires headers override this value</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getCacheKey">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#91" title="Go to source code">getCacheKey</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>string <var>$raw</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#77" title="Go to source code">getCacheKey</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>string <var>$raw</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
@@ -377,7 +367,7 @@ Cache-Control or Expires headers override this value</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onRequestBeforeSend">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#148" title="Go to source code">onRequestBeforeSend</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#134" title="Go to source code">onRequestBeforeSend</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
 
 		<div class="description short">
 			
@@ -414,7 +404,7 @@ Cache-Control or Expires headers override this value</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onRequestSent">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#184" title="Go to source code">onRequestSent</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#173" title="Go to source code">onRequestSent</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
 
 		<div class="description short">
 			
@@ -451,7 +441,7 @@ Cache-Control or Expires headers override this value</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_revalidate">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#212" title="Go to source code">revalidate</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#200" title="Go to source code">revalidate</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
 
 		<div class="description short">
 			
@@ -494,7 +484,7 @@ Cache-Control or Expires headers override this value</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_canResponseSatisfyRequest">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#282" title="Go to source code">canResponseSatisfyRequest</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#273" title="Go to source code">canResponseSatisfyRequest</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
 
 		<div class="description short">
 			
@@ -537,7 +527,7 @@ Cache-Control or Expires headers override this value</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_saveCache">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#344" title="Go to source code">saveCache</a>( <span>string <var>$key</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span>, <span>integer <var>$lifetime</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#335" title="Go to source code">saveCache</a>( <span>string <var>$key</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span>, <span>integer <var>$lifetime</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -558,7 +548,7 @@ Cache-Control or Expires headers override this value</dd>
 					<dt><var>$response</var></dt>
 					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br> The response to cache</dd>
 					<dt><var>$lifetime</var></dt>
-					<dd><code>integer</code><br> (optional) Amount of seconds to cache</dd>
+					<dd><code>integer</code><br> Amount of seconds to cache</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -589,12 +579,11 @@ Cache-Control or Expires headers override this value</dd>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#45" title="Go to source code"><var>$excludeResponseHeaders</var></a>
+				<a href="source-class-Guzzle.Http.Plugin.CachePlugin.html#43" title="Go to source code"><var>$excludeResponseHeaders</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>(
     <span class="php-quote">'Connection'</span>, <span class="php-quote">'Keep-Alive'</span>, <span class="php-quote">'Proxy-Authenticate'</span>, <span class="php-quote">'Proxy-Authorization'</span>,
-    <span class="php-quote">'TE'</span>, <span class="php-quote">'Trailers'</span>, <span class="php-quote">'Transfer-Encoding'</span>, <span class="php-quote">'Upgrade'</span>, <span class="php-quote">'Set-Cookie'</span>,
-    <span class="php-quote">'Set-Cookie2'</span>
+    <span class="php-quote">'TE'</span>, <span class="php-quote">'Trailers'</span>, <span class="php-quote">'Transfer-Encoding'</span>, <span class="php-quote">'Upgrade'</span>, <span class="php-quote">'Set-Cookie'</span>, <span class="php-quote">'Set-Cookie2'</span>
 )</code></td>
 		<td class="description"><div>
 			<a href="#$excludeResponseHeaders" class="anchor">#</a>

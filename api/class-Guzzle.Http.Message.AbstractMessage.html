@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Message\AbstractMessage | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,9 +27,13 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -47,6 +51,17 @@
 				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -68,6 +83,8 @@
 						</li>
 				<li><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -125,6 +142,8 @@
 				<li class="active"><a href="class-Guzzle.Http.Message.AbstractMessage.html">AbstractMessage</a></li>
 				<li><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">EntityEnclosingRequest</a></li>
 				<li><a href="class-Guzzle.Http.Message.Header.html">Header</a></li>
+				<li><a href="class-Guzzle.Http.Message.HeaderComparison.html">HeaderComparison</a></li>
+				<li><a href="class-Guzzle.Http.Message.PostFile.html">PostFile</a></li>
 				<li><a href="class-Guzzle.Http.Message.Request.html">Request</a></li>
 				<li><a href="class-Guzzle.Http.Message.RequestFactory.html">RequestFactory</a></li>
 				<li><a href="class-Guzzle.Http.Message.Response.html">Response</a></li>
@@ -134,6 +153,7 @@
 			<ul>
 				<li><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html">EntityEnclosingRequestInterface</a></li>
 				<li><a href="class-Guzzle.Http.Message.MessageInterface.html">MessageInterface</a></li>
+				<li><a href="class-Guzzle.Http.Message.PostFileInterface.html">PostFileInterface</a></li>
 				<li><a href="class-Guzzle.Http.Message.RequestFactoryInterface.html">RequestFactoryInterface</a></li>
 				<li><a href="class-Guzzle.Http.Message.RequestInterface.html">RequestInterface</a></li>
 			</ul>
@@ -219,7 +239,7 @@ and response messages that carry back data from the server to the client.</p>
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.Message.html">Message</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.Message.AbstractMessage.html#8" title="Go to source code">Message/AbstractMessage.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.Message.AbstractMessage.html#8" title="Go to source code">http/Guzzle/Http/Message/AbstractMessage.php</a><br />
 	</div>
 
 
@@ -385,7 +405,7 @@ headers.</p>
 					<dt><var>$header</var></dt>
 					<dd><code>string</code><br> Header to retrieve.</dd>
 					<dt><var>$string</var></dt>
-					<dd><code>boolean</code><br> (optional) Set to true to get the header as a string</dd>
+					<dd><code>boolean</code><br> Set to true to get the header as a string</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -412,7 +432,7 @@ to TRUE. Returns a Header object if a matching header is found.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getHeaders">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#103" title="Go to source code">getHeaders</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#103" title="Go to source code">getHeaders</a>( <span>$asObjects <var>$asObjects</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
@@ -426,6 +446,11 @@ to TRUE. Returns a Header object if a matching header is found.<br />
 
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$asObjects</var></dt>
+					<dd><code>$asObjects</code><br>Set to true to retrieve a collection of Header objects</dd>
+				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
@@ -436,6 +461,44 @@ to TRUE. Returns a Header object if a matching header is found.<br />
 
 				<h4>Implementation of</h4>
 				<div class="list"><code><a href="class-Guzzle.Http.Message.MessageInterface.html#_getHeaders">Guzzle\Http\Message\MessageInterface::getHeaders</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getHeaderLines" id="_getHeaderLines">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getHeaderLines">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#127" title="Go to source code">getHeaderLines</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get an array of message header lines</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get an array of message header lines</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.Message.MessageInterface.html#_getHeaderLines">Guzzle\Http\Message\MessageInterface::getHeaderLines</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -450,7 +513,7 @@ to TRUE. Returns a Header object if a matching header is found.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setHeader">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#122" title="Go to source code">setHeader</a>( <span>string <var>$header</var></span>, <span>mixed <var>$value</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#145" title="Go to source code">setHeader</a>( <span>string <var>$header</var></span>, <span>mixed <var>$value</var></span> )</code>
 
 		<div class="description short">
 			
@@ -495,7 +558,7 @@ to TRUE. Returns a Header object if a matching header is found.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setHeaders">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#150" title="Go to source code">setHeaders</a>( <span>array <var>$headers</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#173" title="Go to source code">setHeaders</a>( <span>array <var>$headers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -538,7 +601,7 @@ to TRUE. Returns a Header object if a matching header is found.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_hasHeader">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#177" title="Go to source code">hasHeader</a>( <span>string <var>$header</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#200" title="Go to source code">hasHeader</a>( <span>string <var>$header</var></span> )</code>
 
 		<div class="description short">
 			
@@ -581,7 +644,7 @@ to TRUE. Returns a Header object if a matching header is found.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_removeHeader">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#189" title="Go to source code">removeHeader</a>( <span>string <var>$header</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#212" title="Go to source code">removeHeader</a>( <span>string <var>$header</var></span> )</code>
 
 		<div class="description short">
 			
@@ -624,7 +687,7 @@ to TRUE. Returns a Header object if a matching header is found.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getTokenizedHeader">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#205" title="Go to source code">getTokenizedHeader</a>( <span>string <var>$header</var></span>, <span>string <var>$token</var> = <span class="php-quote">';'</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#228" title="Go to source code">getTokenizedHeader</a>( <span>string <var>$header</var></span>, <span>string <var>$token</var> = <span class="php-quote">';'</span></span> )</code>
 
 		<div class="description short">
 			
@@ -643,13 +706,12 @@ to TRUE. Returns a Header object if a matching header is found.<br />
 					<dt><var>$header</var></dt>
 					<dd><code>string</code><br> Header to retrieve</dd>
 					<dt><var>$token</var></dt>
-					<dd><code>string</code><br> (optional) Token separator</dd>
+					<dd><code>string</code><br> Token separator</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|null</code><br>Returns a Collection object containing the tokenized values if the header was
-found. Returns NULL otherwise.<br />
+					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|null</code><br />
 				</div>
 
 
@@ -670,7 +732,7 @@ found. Returns NULL otherwise.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setTokenizedHeader">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#238" title="Go to source code">setTokenizedHeader</a>( <span>string <var>$header</var></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$data</var></span>, <span>string <var>$token</var> = <span class="php-quote">';'</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#264" title="Go to source code">setTokenizedHeader</a>( <span>string <var>$header</var></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$data</var></span>, <span>string <var>$token</var> = <span class="php-quote">';'</span></span> )</code>
 
 		<div class="description short">
 			
@@ -693,7 +755,7 @@ a string separated by a token</p>
 					<dt><var>$data</var></dt>
 					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br> Header data</dd>
 					<dt><var>$token</var></dt>
-					<dd><code>string</code><br> (optional) Token delimiter</dd>
+					<dd><code>string</code><br> Token delimiter</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -723,7 +785,7 @@ a string separated by a token</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getCacheControlDirective">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#265" title="Go to source code">getCacheControlDirective</a>( <span>string <var>$directive</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#291" title="Go to source code">getCacheControlDirective</a>( <span>string <var>$directive</var></span> )</code>
 
 		<div class="description short">
 			
@@ -766,7 +828,7 @@ a string separated by a token</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_hasCacheControlDirective">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#277" title="Go to source code">hasCacheControlDirective</a>( <span>string <var>$directive</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#303" title="Go to source code">hasCacheControlDirective</a>( <span>string <var>$directive</var></span> )</code>
 
 		<div class="description short">
 			
@@ -809,7 +871,7 @@ a string separated by a token</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addCacheControlDirective">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#289" title="Go to source code">addCacheControlDirective</a>( <span>string <var>$directive</var></span>, <span>boolean|string <var>$value</var> = <span class="php-keyword1">true</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#315" title="Go to source code">addCacheControlDirective</a>( <span>string <var>$directive</var></span>, <span>boolean|string <var>$value</var> = <span class="php-keyword1">true</span></span> )</code>
 
 		<div class="description short">
 			
@@ -828,7 +890,7 @@ a string separated by a token</p>
 					<dt><var>$directive</var></dt>
 					<dd><code>string</code><br> Directive to set</dd>
 					<dt><var>$value</var></dt>
-					<dd><code>boolean|string</code><br> (optional) Value to set</dd>
+					<dd><code>boolean|string</code><br> Value to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -854,7 +916,7 @@ a string separated by a token</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_removeCacheControlDirective">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#305" title="Go to source code">removeCacheControlDirective</a>( <span>string <var>$directive</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#331" title="Go to source code">removeCacheControlDirective</a>( <span>string <var>$directive</var></span> )</code>
 
 		<div class="description short">
 			
@@ -897,7 +959,7 @@ a string separated by a token</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_changedHeader">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#322" title="Go to source code">changedHeader</a>( <span>string <var>$action</var></span>, <span>string <var>$header</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#348" title="Go to source code">changedHeader</a>( <span>string <var>$header</var></span> )</code>
 
 		<div class="description short">
 			
@@ -915,48 +977,10 @@ like cache-control</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$action</var></dt>
-					<dd><code>string</code><br> One of set or remove</dd>
 					<dt><var>$header</var></dt>
 					<dd><code>string</code><br> Header that changed</dd>
 				</dl></div>
 
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getHeaderString" id="_getHeaderString">
-
-		<td class="attributes"><code>
-			 protected 
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getHeaderString">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.AbstractMessage.html#369" title="Go to source code">getHeaderString</a>( )</code>
-
-		<div class="description short">
-			
-<p>Get headers as a string</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get headers as a string</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br />
-				</div>
 
 
 

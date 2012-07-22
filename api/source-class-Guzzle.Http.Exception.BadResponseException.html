@@ -5,10 +5,10 @@
 	<meta name="generator" content="ApiGen 2.6.1" />
 	<meta name="robots" content="noindex" />
 
-	<title>File Exception/BadResponseException.php | Ratchet</title>
+	<title>File http/Guzzle/Http/Exception/BadResponseException.php | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?1977260093"></script>
+	<script type="text/javascript" src="elementlist.js?2329513799"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -28,9 +28,13 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
+				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
+						</li>
 				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
 						</li>
 				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
 						</li>
@@ -48,6 +52,17 @@
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
 							</ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
@@ -69,6 +84,8 @@
 						</li>
 				<li><a href="namespace-Ratchet.WebSocket.html">WebSocket<span></span></a>
 						<ul>
+				<li><a href="namespace-Ratchet.WebSocket.Encoding.html">Encoding</a>
+						</li>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.html">Guzzle<span></span></a>
 						<ul>
 				<li><a href="namespace-Ratchet.WebSocket.Guzzle.Http.html">Http<span></span></a>
@@ -190,8 +207,8 @@
 <a href="#18" id="18" class="l">18: </a>    <span class="php-comment">/**
 </span><a href="#19" id="19" class="l">19: </a><span class="php-comment">     * Factory method to create a new response exception based on the response code.
 </span><a href="#20" id="20" class="l">20: </a><span class="php-comment">     *
-</span><a href="#21" id="21" class="l">21: </a><span class="php-comment">     * @param RequestInterface $request Request
-</span><a href="#22" id="22" class="l">22: </a><span class="php-comment">     * @param Response $response Response received
+</span><a href="#21" id="21" class="l">21: </a><span class="php-comment">     * @param RequestInterface $request  Request
+</span><a href="#22" id="22" class="l">22: </a><span class="php-comment">     * @param Response         $response Response received
 </span><a href="#23" id="23" class="l">23: </a><span class="php-comment">     *
 </span><a href="#24" id="24" class="l">24: </a><span class="php-comment">     * @return BadResponseException
 </span><a href="#25" id="25" class="l">25: </a><span class="php-comment">     */</span>
@@ -200,7 +217,7 @@
 <a href="#28" id="28" class="l">28: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$response</span>-&gt;isClientError()) {
 <a href="#29" id="29" class="l">29: </a>            <span class="php-var">$label</span> = <span class="php-quote">'Client error response'</span>;
 <a href="#30" id="30" class="l">30: </a>            <span class="php-var">$class</span> = __NAMESPACE__ . <span class="php-quote">'\\ClientErrorResponseException'</span>;
-<a href="#31" id="31" class="l">31: </a>        } <span class="php-keyword1">else</span> <span class="php-keyword1">if</span> (<span class="php-var">$response</span>-&gt;isServerError()) {
+<a href="#31" id="31" class="l">31: </a>        } <span class="php-keyword1">elseif</span> (<span class="php-var">$response</span>-&gt;isServerError()) {
 <a href="#32" id="32" class="l">32: </a>            <span class="php-var">$label</span> = <span class="php-quote">'Server error response'</span>;
 <a href="#33" id="33" class="l">33: </a>            <span class="php-var">$class</span> = __NAMESPACE__ . <span class="php-quote">'\\ServerErrorResponseException'</span>;
 <a href="#34" id="34" class="l">34: </a>        } <span class="php-keyword1">else</span> {
