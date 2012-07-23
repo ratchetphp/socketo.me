@@ -1,4 +1,7 @@
 <?php
+    $metaTitle = "A WebSocket's Lifecycle on your Website";
+    $metaDesc  = 'Long running, open ended connections work differently than Apache/Nginx CGI you may be used to';
+
     require dirname(__DIR__) . '/header.php';
     require __DIR__ . '/menu.php';
 ?>

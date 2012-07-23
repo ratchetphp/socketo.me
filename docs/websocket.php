@@ -1,4 +1,7 @@
 <?php
+    $metaTitle = 'Component: WsServer | WebSocket Protocol';
+    $metaDesc  = 'The WsServer component allows your application to speak the WebSocket protocol to clients';
+
     require dirname(__DIR__) . '/header.php';
     require __DIR__ . '/menu.php';
 ?>

@@ -1,4 +1,7 @@
 <?php
+    $metaTitle = 'PHP WebSockets';
+    $metaDesc  = 'Ratchet is a PHP WebSocket library for serving real-time bi-directional messages between clients and server';
+
     require __DIR__ . '/header.php';
 ?>
     <div class="container">

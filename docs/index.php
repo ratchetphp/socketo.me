@@ -1,4 +1,7 @@
 <?php
+    $metaTitle = 'What is a WebSocket?';
+    $metaDesc  = 'Learn what makes WebSockets different from the traditional HTTP request/response pattern';
+
     require dirname(__DIR__) . '/header.php';
     require __DIR__ . '/menu.php';
 ?>

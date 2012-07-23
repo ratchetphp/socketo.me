@@ -1,4 +1,7 @@
 <?php
+    $metaTitle = 'The WAMP sub-protocol';
+    $metaDesc  = 'WAMP (WebSocket Application Messaging Protocol) is an official WebSocket sub-protocol giving developers access Pub/Sub and RPC patterns over WebSockets';
+
     require dirname(__DIR__) . '/header.php';
     require __DIR__ . '/menu.php';
 ?>

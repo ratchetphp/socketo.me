@@ -1,11 +1,14 @@
 <?php
+    $metaTitle = (isset($metaTitle) ? $metaTitle : 'WebSockets for PHP');
+    $metaDesc  = (isset($metaDesc) ? $metaDesc : 'PHP WebSocket development');
+
     require_once __DIR__ . '/bootstrap.php';
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ratchet | WebSockets for PHP</title>
-    <meta name="description" content="WebSocket development in PHP">
+    <title>Ratchet - <?php echo $metaTitle; ?></title>
+    <meta name="description" content="<?php echo $metaDesc; ?>">
     <meta name="author" content="Chris Boden">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->

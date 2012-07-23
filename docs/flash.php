@@ -1,4 +1,7 @@
 <?php
+    $metaTitle = 'Component: FlashPolicy | "yes" to IE';
+    $metaDesc  = 'The FlashPolicy component will allow non-native WebSocket browsers to connect to your application';
+
     require dirname(__DIR__) . '/header.php';
     require __DIR__ . '/menu.php';
 ?>

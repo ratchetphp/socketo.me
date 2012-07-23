@@ -1,4 +1,7 @@
 <?php
+    $metaTitle = 'Tutorial: Installation';
+    $metaDesc  = 'Learn how to easily install Ratchet with Composer';
+
     require dirname(__DIR__) . '/header.php';
     require __DIR__ . '/menu.php';
 ?>

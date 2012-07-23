@@ -1,4 +1,7 @@
 <?php
+    $metaTitle = 'Handling Client Connections';
+    $metaDesc  = 'Learn how to handle multiple client connections in one running instance';
+
     require dirname(__DIR__) . '/header.php';
     require __DIR__ . '/menu.php';
 ?>

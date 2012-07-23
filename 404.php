@@ -1,4 +1,7 @@
 <?php
+    $metaTitle = 'Page not found';
+    $metaDesc  = 'The page you are looking for does not exist';
+
     require __DIR__ . '/header.php';
 ?>
 

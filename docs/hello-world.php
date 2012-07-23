@@ -1,4 +1,7 @@
 <?php
+    $metaTitle = 'Tutorial: Your first app';
+    $metaDesc  = 'Learn to write a live chat room with Ratchet';
+
     require dirname(__DIR__) . '/header.php';
     require __DIR__ . '/menu.php';
 ?>

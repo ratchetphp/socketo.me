@@ -1,4 +1,7 @@
 <?php
+    $metaTitle = 'Component: Sessions | Symfony love';
+    $metaDesc  = "Access session data from your website by wrapping Symfony2 HttpFoundation's Session tools";
+
     require dirname(__DIR__) . '/header.php';
     require __DIR__ . '/menu.php';
 ?>

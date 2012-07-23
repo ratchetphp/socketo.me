@@ -1,4 +1,7 @@
 <?php
+    $metaTitle = 'Component: IpBlackList';
+    $metaDesc  = 'IpBlackList will help you prevent malicious visitors from connection to your application';
+
     require dirname(__DIR__) . '/header.php';
     require __DIR__ . '/menu.php';
 ?>

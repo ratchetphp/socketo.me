@@ -1,4 +1,7 @@
 <?php
+    $metaTitle = 'Component: IoServer';
+    $metaDesc  = 'IoServer provides basic I/O connectivity to clients';
+
     require dirname(__DIR__) . '/header.php';
     require __DIR__ . '/menu.php';
 ?>

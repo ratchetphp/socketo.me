@@ -1,4 +1,7 @@
 <?php
+    $metaTitle = 'A New Architecture';
+    $metaDesc  = 'Utilizing proven design patterns, learn how to architect your WebSocket application on Ratchet';
+
     require dirname(__DIR__) . '/header.php';
     require __DIR__ . '/menu.php';
 ?>
