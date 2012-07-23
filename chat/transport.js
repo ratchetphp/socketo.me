@@ -157,5 +157,11 @@ ChatRoom = function(optDebug) {
         }
     );
 
+    var portCheck = new WebSocket('ws://demo.socketo.me:9000');
+    portCheck.onOpen = function() {
+        console.log('success');
+        portCheck.close();
+    }
+
     return api;
 };
