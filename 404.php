@@ -7,7 +7,7 @@
 
     <div class="container">
       <div class="hero-unit" style="text-align: center">
-        <img src="/404.png" width="319" height="402">
+        <img src="/404.png" alt="404: Page not found" width="319" height="402">
       </div>
 
       <footer>

@@ -31,7 +31,7 @@
                 <h3>Connection Functions/Methods</h3>
 
                 <p>
-                    From the <a href="/class-Ratchet.ConnectionInterface.html">ConnectionInterface</a> you can see each Connection will contain a <code>send</code> and <code>close</code> method. 
+                    From the <a href="/api/class-Ratchet.ConnectionInterface.html">ConnectionInterface</a> you can see each Connection will contain a <code>send</code> and <code>close</code> method. 
                     These two methods will send a string to the client or close the connection, respectively.
                 </p>
 

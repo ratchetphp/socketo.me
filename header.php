@@ -2,14 +2,27 @@
     $metaTitle = (isset($metaTitle) ? $metaTitle : 'WebSockets for PHP');
     $metaDesc  = (isset($metaDesc) ? $metaDesc : 'PHP WebSocket development');
 
+    $addHtml = $addDesc = $addAuth = '';
+    if (isset($isIndex)) {
+        $addHtml = ' itemscope itemtype="http://schema.org/WebApplication"';
+        $addDesc = ' itemprop="description"';
+        $addAuth = ' itemprop="author" itemscope itemtype="http://schema.org/Person" itemprop="name"';
+    } else {
+        $isIndex = false;
+    }
+
     require_once __DIR__ . '/bootstrap.php';
 ?><!DOCTYPE html>
-<html lang="en">
+<html lang="en"<?php echo $addHtml; ?>>
   <head>
     <meta charset="utf-8">
     <title>Ratchet - <?php echo $metaTitle; ?></title>
-    <meta name="description" content="<?php echo $metaDesc; ?>">
-    <meta name="author" content="Chris Boden">
+    <meta name="description"<?php echo $addDesc; ?> content="<?php echo $metaDesc; ?>">
+    <meta name="author"<?php echo $addAuth; ?> content="Chris Boden">
+
+    <?php if ($isIndex): ?>
+    <meta itemprop="version" content="0.2">
+    <?php endif; ?>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>

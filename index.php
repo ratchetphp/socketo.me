@@ -1,6 +1,7 @@
 <?php
     $metaTitle = 'PHP WebSockets';
     $metaDesc  = 'Ratchet is a PHP WebSocket library for serving real-time bi-directional messages between clients and server';
+    $isIndex   = true;
 
     require __DIR__ . '/header.php';
 ?>
@@ -8,9 +9,9 @@
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>Ratchet</h1>
-        <h2>WebSockets for PHP</h2>
-        <p>Ratchet is a PHP library providing developers with the tools to create real time, <span class="nobr">bi-directional</span> applications between clients and servers over WebSockets. This is not your Grandfather's Internet. </p>
+        <h1 itemprop="name">Ratchet</h1>
+        <h2 itemprop="description">WebSockets for PHP</h2>
+        <p itemprop="about">Ratchet is a PHP library providing developers with the tools to create real time, <span class="nobr">bi-directional</span> applications between clients and servers over WebSockets. This is not your Grandfather's Internet. </p>
         <p><a class="btn btn-primary btn-large" href="/docs">Learn more &raquo;</a></p>
       </div>
 

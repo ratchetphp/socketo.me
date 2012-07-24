@@ -27,7 +27,7 @@
 
                 <p>Below, the diagram illustrates the order of execution beginning with a client requesting a web page on your site:</p>
 
-                <p><img src="/assets/img/RatchetFlow.png"></p>
+                <p><img src="/assets/img/RatchetFlow.png" alt="Network architecture timeline"></p>
 
                 <p>
                     As you can see, once the webpage has been loaded a WebSocket connection is made back to your Ratchet application, where if everything goes correctly, a connection remains open where either the server or client can send data to the other one at any given time.

@@ -28,7 +28,7 @@
                     Below is a network diagram of how the various connections interact to access data:
                 </p>
 
-                <p><img src="/assets/img/RatchetSessions.png"></p>
+                <p><img src="/assets/img/RatchetSessions.png" alt="Session Network Architecture"></p>
             </section>
 
             <section>
@@ -71,7 +71,7 @@
                 <h3>Wraps <small>other components nicely</small></h3>
 
                 <ul>
-                    <li><a href="/docs/WampServer">WampServer</a></li>
+                    <li><a href="/docs/wamp">WampServer</a></li>
                     <li>Your application</li>
                 </ul>
             </section>
