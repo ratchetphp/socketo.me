@@ -29,6 +29,8 @@ function wamp() {
                 '_title' => 'Tutorials'
               , '/docs/install'        => '!download-alt Installation'
               , '/docs/hello-world'    => '!globe Hello World!'
+//              , '/docs/hello-universe' => '!tasks Pub/Sub & RPC'
+              , '/docs/push'           => '!chevron-right Push Integration'
             )
 
           , 'components' => array(
