@@ -1,4 +1,7 @@
 <?php
+    $metaTitle = 'Tutorial: Pub/Sub & RPC with WAMP';
+    $metaDesc  = 'This tutorial will show you how easy WAMP is and how it will make your development life easy';
+
     require dirname(__DIR__) . '/header.php';
     require __DIR__ . '/menu.php';
 ?>
@@ -43,26 +46,26 @@
 
                 <pre class="prettyprint">&lt;?php
 namespace MyApp;
-use Ratchet\Component\WAMP\WAMPComponentInterface;
-use Ratchet\Resource\ConnectionInterface;
+use Ratchet\Component\Wamp\WampServerInterface;
+use Ratchet\ConnectionInterface;
 
-class ChatRoom implements WAMPComponentInterface {
+class ChatRoom implements WampServerInterface {
     public function onOpen(ConnectionInterface $conn) {
     }
 
     public function onClose(ConnectionInterface $conn) {
     }
 
-    public function onCall(ConnectionInterface $conn, $id, $procUri, array $params) {
+    public function onCall(ConnectionInterface $conn, $id, $topic, array $params) {
     }
 
-    public function onSubscribe(ConnectionInterface $conn, $uri) {
+    public function onSubscribe(ConnectionInterface $conn, $topic) {
     }
 
-    public function onUnSubscribe(ConnectionInterface $conn, $uri) {
+    public function onUnSubscribe(ConnectionInterface $conn, $topic) {
     }
 
-    public function onPublish(ConnectionInterface, $conn, $uri, $event) {
+    public function onPublish(ConnectionInterface, $conn, $topic, $event) {
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e) {
