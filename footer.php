@@ -39,8 +39,31 @@
     <?php endif; ?>
 
     <footer id="banner" class="well">
-        <div id="banner-logos" class="pull-left"><a href="http://dev.w3.org/html5/websockets/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity.png" width="133" height="64" alt="HTML5 Powered with Connectivity / Realtime" title="HTML5 Powered with Connectivity / Realtime"></a><a href="http://wamp.ws/"><img src="/assets/img/wamp_logo.png"></a></div>
-        <div class="pull-right">"<abbr title="WebSocket Application Messaging Protocol">WAMP</abbr>" and the WAMP logo are trademarks of Tavendo GmbH.</div>
+        <div id="banner-logos">
+            <a class="pull-left" href="http://dev.w3.org/html5/websockets/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity.png" width="133" height="64" alt="HTML5 Powered with Connectivity / Realtime" title="HTML5 Powered with Connectivity / Realtime"></a>
+
+            <div id="wamp-tm" class="pull-left">
+                <a class="pull-left" href="http://wamp.ws/"><img src="/assets/img/wamp_logo.png"></a>
+                <br /><span class="pull-left legal">&quot;<?php wamp(); ?>&quot; and the WAMP logo are trademarks of Tavendo GmbH.</span>
+            </div>
+        </div>
+
+        <div class="pull-right">
+            <!-- Place this tag where you want the +1 button to render. -->
+            <div class="g-plusone" data-size="tall" data-annotation="none"></div>
+
+            <!-- Place this tag after the last +1 button tag. -->
+            <script type="text/javascript">
+              (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+              })();
+            </script>
+
+            <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="twitterapi" data-hashtags="ratchetphp">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
 
         <div style="clear: both;"></div>
     </footer>
