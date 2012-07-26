@@ -95,7 +95,7 @@
                 <h3>Wraps <small>other components nicely</small></h3>
 
                 <ul>
-                    <li>Your application</li>
+                    <li>Your app class implementing <a href="/api/class-Ratchet.Wamp.WampServerInterface.html">WampServerInterface</a></li>
                 </ul>
             </section>
 

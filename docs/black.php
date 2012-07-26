@@ -58,7 +58,7 @@
             <section>
                 <h3>Wraps <small>other components nicely</small></h3>
 
-                    <li>Your application (for testing, or making a telnet application)</li>
+                    <li>Your app class (for testing, or making a telnet application) implementing <a href="/api/class-Ratchet.MessageComponentInterface.html">MessageComponentInterface</a></li>
                     <li><a href="/docs/flash">FlashPolicy</a></li>
                     <li><a href="/docs/websocket">WsServer</a></li>
             </section>

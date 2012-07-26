@@ -74,7 +74,7 @@
                 <ul>
                     <li><a href="/docs/wamp">WampServer</a></li>
                     <li><a href="/docs/sessions">SessionProvider</a></li>
-                    <li>Your application</li>
+                    <li>Your app class implementing <a href="/api/class-Ratchet.MessageComponentInterface.html">MessageComponentInterface</a></li>
                     <li><a rel="external" href="https://github.com/cboden/Ratchet-examples/blob/master/src/Ratchet/Examples/Cookbook/MessageLogger.php">MessageLogger</a> (found in example repo)</li>
                 </ul>
             </section>

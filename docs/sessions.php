@@ -72,7 +72,7 @@
 
                 <ul>
                     <li><a href="/docs/wamp">WampServer</a></li>
-                    <li>Your application</li>
+                    <li>Your app class implementing <a href="/api/class-Ratchet.MessageComponentInterface.html">MessageComponentInterface</a></li>
                 </ul>
             </section>
 

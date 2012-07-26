@@ -33,14 +33,17 @@
                     <li>
                         <img src="/assets/img/push-1.png" alt="Step 1">
                         <p>
-                            A client make a request and receives a response from the web server and renders the page.
+                            A client makes a request and receives a response from the web server and renders the page.
                             It then establishes an open WebSocket connection (client 2 and 3 do the same thing).
                         </p>
                     </li>
 
                     <li>
                         <img src="/assets/img/push-2.png" alt="Step 2">
-                        <p>Client 1 does a POST back, through form submission or AJAX, to the web server.</p>
+                        <p>
+                            Client 1 does a POST back, through form submission or AJAX, to the web server.
+                            (Notice the still open WebSocket connection)
+                        </p>
                     </li>
 
                     <li>

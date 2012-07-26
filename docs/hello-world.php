@@ -173,7 +173,7 @@ class Chat implements MessageComponentInterface {
             <p>
                 Now that we have a basic working Chat application, let's make that work in a web browser (Chrome, FireFox, or Safari [for now]).
                 First, let's go back to our <em>chat-server.php</em> script. 
-                We're going to utilize another component of <em>Ratchet</em>; the WebSocketComponent:
+                We're going to utilize another component of Ratchet; the <em>WsServer</em> class:
             </p>
 
             <pre class="prettyprint">&lt;?php
