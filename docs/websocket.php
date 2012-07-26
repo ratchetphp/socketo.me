@@ -11,7 +11,11 @@
             <section>
                 <h3>Purpose <small>of this <em>Component</em></small></h3>
 
-                <p>This component (when used with IoServer) allows your server to communicate with web browsers that use the <a rel="external" href="http://dev.w3.org/html5/websockets/">W3C WebSocket API</a>.</p>
+                <p>
+                    This component (when used with IoServer) allows your server to communicate with web browsers that use the <a rel="external" href="http://dev.w3.org/html5/websockets/">W3C WebSocket API</a>. 
+                    It is compatible with each of the different WebSocket protocol versions browsers use: RFC6455, HyBi, and Hixie76. 
+                    Ratchet <a href="/reports/ab/" target="_blank">passes</a> all (non-binary) WebSocket protocol tests from the <a href="http://autobahn.ws/testsuite" rel="external">Autobahn Testsuite</a>.
+                </p>
             </section>
 
             <section>
@@ -36,9 +40,6 @@
                 <ul>
                     <li>void <strong>disableVersion</strong> (string $versionId) - Disable a specific version of the WebSocket protocol. Sometimes you'll want to disable Hixie76, which you can do by passing <em>0</em> to this method. </li>
                     <li>void <strong>setEncodingChecks</strong> (boolean $opt) - Turn UTF-8 checks on or off. The WebSocket spec says to check incoming messages for UTF-8 encoding, but all web browsers do this. Turning off this check will boost performance. </li>
-<?php /*
-                    <li>void <strong>setMaskPayload</strong> (bool $opt) - Enable or disable the server response being framed with the WebSocket framing protocol. Off by default, as per the spec.</li>
-*/ ?>
                 </ul>
             </section>
 
@@ -64,7 +65,9 @@
                 <dl>
                     <dt>WebSocket</dt>
                     <dd>(Guzzle\Http\Message\RequestInterface <em>$headers</em>) - A Guzzle Request object containing all the information from the initial HTTP connection</dd>
+<?php /*
                     <dd>(Ratchet\WebSocket\Version\VersionInterface <em>$version</em>) - Not used by your application, but stores information/data about the WebSocket version the client is connected with. The object is a re-entrant, re-used on other connections, so don't mess with it  :)</dd>
+*/ ?>
                 </ul>
             </section>
 
