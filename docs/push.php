@@ -24,6 +24,8 @@
                     When a user, be it yourself in your admin or a user posting a comment on your blog, does a POST through a form submission or AJAX we want that change to immedietly be pushed to all other visitors on that page. 
                     We'll add real time updates to your existing site without disrupting your code base or affecting its current stability.
                 </p>
+
+                <p>For this tutorial we're going to pretend you're publishing a blog article on your website and the visitors will see the story pop up as soon as you publish it.</p>
             </section>
 
             <section class="diagram">
@@ -64,6 +66,86 @@
                     This workflow is un-obtrusive; it is easy to introduce into existing websites.  
                     The only changes to the site are adding a 1 liner of ZeroMQ to the server and a Javascript file on the client to handle incoming message from the WebSocket server.
                 </p>
+            </section>
+
+            <section>
+                <h3>What is ZMQ/ZeroMQ/ØMQ?</h3>
+
+                <p>
+                    To communicate with a running script it needs to be listening on an open socket. 
+                    Our application will be listening to port 80 for incoming WebSocket connections...but how will it also get updates from another PHP script?
+                    Enter <a href="http://http://www.zeromq.org" rel="external">ZeroMQ</a>. 
+                    We could use raw sockets, like the ones Ratchet is built on, but ZeroMQ is a library that just makes socket easier. 
+                </p>
+
+                <p>
+                    ZeroMQ is a library (libzmq) you will need to install, as well as a PECL extension for PHP bindings. 
+                    Installation is easy and is provided for many operating systems on <a href="http://www.zeromq.org" rel="external">their website</a>.
+                </p>
+            </section>
+
+            <section>
+                <h3>Start your coding</h3>
+
+                <p>
+                    Let's get to some code!  We'll start by stubbing out our class application. 
+                    We're going to use <?php wamp(); ?> for it's ease of use with the Pub/Sub pattern. 
+                    This will allow clients to subscribe to updates on a specific page and we'll only push updates to those who have subscribed.
+                </p>
+
+                <pre class="prettyprint">&lt;?php
+use Ratchet\ConnectionInterface;
+use Ratchet\Wamp\WampServer;
+
+class Pusher implements WampServer {
+    public function onSubscribe(ConnectionInterface $conn, $topic) {
+    }
+    public function onUnSubscribe(ConnectionInterface $conn, $topic) {
+    }
+    public function onOpen(ConnectionInterface $conn) {
+    }
+    public function onClose(ConnectionInterface $conn) {
+    }
+    public function onCall(ConnectionInterface $conn, $id, $topic, array $params) {
+        // In this application if clients send data it's because the user hacked around in console
+        $conn->callError($id, $topic, 'You are not allowed to make calls')->close();
+    }
+    public function onPublish(ConnectionInterface, $conn, $topic, $event) {
+        // In this application if clients send data it's because the user hacked around in console
+        $conn->close();
+    }
+    public function onError(ConnectionInterface $conn, \Exception $e) {
+    }
+}</pre>
+
+                <p>
+                    Simple enough? We just made the methods required for <?php wamp(); ?> and made sure no one tries to send data, closing the connection if they do.
+                    We're making a push application and not accepting any incoming messages, those will all be coming from AJAX.
+                </p>
+            </section>
+
+            <section>
+                <h3>Editing your blog submission</h3>
+
+                <p>
+                    Next we're going to add a little ZeroMQ magic into your existing website's code where you handle a new blog post. 
+                    The code here may be a little basic and archaic compared to the advanced architecture your actual blog is, sitting on Drupal or WordPress, but we're focusing on the fundamentals. 
+                </p>
+
+                <pre class="prettyprint">&lt;?php
+    $title   = $_POST['title'];
+    $article = $_POST['article'];
+    $when    = time();
+
+    $pdo->prepare("INSERT INTO `blogs` (`title`, `article`, `published`) VALUES (?, ?, ?)")
+        ->execute($title, $article, $when);
+
+    $context = new ZMQContext();
+    $socket = $context->getSocket(ZMQ::SOCKET_REQ, 'my pusher');
+    $socket->connect("tcp://localhost:5555");
+
+    $socket->send(json_encode(array($title, $article, $when)));
+</pre>
             </section>
         </div>
     </div>
