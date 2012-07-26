@@ -26,6 +26,14 @@
                 </p>
 
                 <p>For this tutorial we're going to pretend you're publishing a blog article on your website and the visitors will see the story pop up as soon as you publish it.</p>
+
+                <h3>Givens</h3>
+
+                <p>
+                    Your blog is hosted on <em>example.com</em> with an internal IP address of <em>192.168.1.100</em>
+                    and you have another server <em>sock.example.com</em> with an internal IP address of <em>192.168.1.101</em> that will run your Ratchet application. 
+                    This saves us having to do authentication between our two servers. 
+                </p>
             </section>
 
             <section class="diagram">
@@ -69,19 +77,39 @@
             </section>
 
             <section>
-                <h3>What is ZMQ/ZeroMQ/ØMQ?</h3>
+                <h3>Requirements</h3>
+
+                <h4>ZMQ/ZeroMQ/ØMQ</h4>
 
                 <p>
                     To communicate with a running script it needs to be listening on an open socket. 
                     Our application will be listening to port 80 for incoming WebSocket connections...but how will it also get updates from another PHP script?
                     Enter <a href="http://http://www.zeromq.org" rel="external">ZeroMQ</a>. 
-                    We could use raw sockets, like the ones Ratchet is built on, but ZeroMQ is a library that just makes socket easier. 
+                    We could use raw sockets, like the ones Ratchet is built on, but ZeroMQ is a library that just makes sockets easier. 
                 </p>
 
                 <p>
                     ZeroMQ is a library (libzmq) you will need to install, as well as a PECL extension for PHP bindings. 
                     Installation is easy and is provided for many operating systems on <a href="http://www.zeromq.org" rel="external">their website</a>.
                 </p>
+
+                <h4>React/ZMQ</h4>
+
+                <p>
+                    Ratchet is a Websocket library built on top of a socket library called <a href="http://reactphp.org" rel="external">React</a>. 
+                    React handles connections and the raw I/O for Ratchet. 
+                    In addition to React, which comes with Ratchet, we need another library that is part of the React suite: React/ZMQ.
+                    This library will bind ZeroMQ sockets to the Reactor core enabling us to handle both WebSockets and ZeroMQ sockets. 
+                    To install, your <em>composer.json</em> file should look like this:
+                </p>
+
+                <pre class="prettprint json javascript">{
+    "minimum-stability": "dev",
+    "require": {
+        "cboden/Ratchet": "dev-master"
+      , "react/zmq": "dev-master"
+    }
+}</pre>
             </section>
 
             <section>
@@ -93,7 +121,7 @@
                     This will allow clients to subscribe to updates on a specific page and we'll only push updates to those who have subscribed.
                 </p>
 
-                <pre class="prettyprint">&lt;?php
+                <pre class="prettyprint php">&lt;?php
 use Ratchet\ConnectionInterface;
 use Ratchet\Wamp\WampServer;
 
@@ -132,19 +160,89 @@ class Pusher implements WampServer {
                     The code here may be a little basic and archaic compared to the advanced architecture your actual blog is, sitting on Drupal or WordPress, but we're focusing on the fundamentals. 
                 </p>
 
-                <pre class="prettyprint">&lt;?php
-    $title   = $_POST['title'];
-    $article = $_POST['article'];
-    $when    = time();
+                <pre class="prettyprint php">&lt;?php
+    // This all was here before  ;)
+    $entryData = array(
+        'cat'     => $_POST['category']
+      , 'title'   => $_POST['title']
+      , 'article' => $_POST['article']
+      , 'when'    => time()
+    );
 
-    $pdo->prepare("INSERT INTO `blogs` (`title`, `article`, `published`) VALUES (?, ?, ?)")
-        ->execute($title, $article, $when);
+    $pdo->prepare("INSERT INTO blogs (title, article, category, published) VALUES (?, ?, ?, ?)")
+        ->execute($entryData['title'], $entryData['article'], $entryData['cat'], $entryData['when']);
 
+    // This is our new stuff
     $context = new ZMQContext();
     $socket = $context->getSocket(ZMQ::SOCKET_REQ, 'my pusher');
-    $socket->connect("tcp://localhost:5555");
+    $socket->connect("tcp://192.168.1.101:5555");
 
-    $socket->send(json_encode(array($title, $article, $when)));
+    $socket->send(json_encode($entryData));
+</pre>
+                <p>
+                    After we logged your blog entry in the database we've opened a ZeroMQ connection to our socket server and delivered a serialized message with the same information.
+                    (note: please do proper sanatization, htmlspecialchars() is just a quick and dirty example)
+                </p>
+            </section>
+
+            <section>
+                <h3>Handlling ZMQ messages</h3>
+
+                <p>
+                    Let's go back to our application stub class. 
+                    As we left it, it was only handling WebSocket connections. 
+                    We're going to add handling a ZMQ message as well as re-sending it to our WebSocket clients. 
+                </p>
+
+                <pre class="prettyprint php">&lt;?php
+use Ratchet\ConnectionInterface;
+use Ratchet\Wamp\WampServer;
+
+class Pusher implements WampServer {
+    /**
+     * A lookup of all the topics clients have subscribed to
+     */
+    protected $subscribedTopics = array();
+
+    public function onSubscribe(ConnectionInterface $conn, $topic) {
+        if (!array_key_exists($topic->getId(), $this->subscribedTopics)) {
+            $this->subscribedTopics[$topic->getId()] = $topic;
+        }
+    }
+
+    /**
+     * @param string JSON'ified string we'll receive from ZeroMQ
+     */
+    public function onBlogEntry($entry) {
+        $entryData = json_decode($entry, true);
+
+        if (!array_key_exists($entryData['cat'])) {
+            return;
+        }
+
+        $topic = $this->subscribedTopics[$entryData['cat']];
+
+        // re-send the serailized json to all the clients subscribed to that category
+        $topic->broadcast($entry);
+    }
+
+    /* The rest of our methods were as they were, omitted from docs to save space */
+}
+</pre>
+            </section>
+
+            <section>
+                <h3>Tying it all together <small>Creating our executable</small></h3>
+
+                <p>
+                    So far we've covered all the logic of sending, receiving, and handling messages. 
+                    Now, we're going to bind it all together and create our executable script that manages everything.
+                    We're going to build our Ratchet application with I/O, WebSockets, Wamp, and ZeroMQ components and run the event loop.
+                </p>
+
+                <pre class="prettyprint php">&lt;?php
+    require __DIR__ . '/vendor/autoload.php';
+
 </pre>
             </section>
         </div>
