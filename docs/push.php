@@ -30,9 +30,9 @@
                 <h3>Givens</h3>
 
                 <p>
-                    Your blog is hosted on <em>example.com</em> with an internal IP address of <em>192.168.1.100</em>
-                    and you have another server <em>sock.example.com</em> with an internal IP address of <em>192.168.1.101</em> that will run your Ratchet application. 
-                    This saves us having to do authentication between our two servers. 
+                    Your blog is hosted on <em>example.com</em> with an internal IP address of <em>192.168.56.101</em>
+                    and you have another server <em>sock.example.com</em> with an internal IP address of <em>192.168.56.102</em> that will run your Ratchet application. 
+                    With our servers on the same local network we can restrict access to non-public ports so they can communicate with eachother without having to authenticate.
                 </p>
             </section>
 
@@ -123,9 +123,9 @@
 
                 <pre class="prettyprint php">&lt;?php
 use Ratchet\ConnectionInterface;
-use Ratchet\Wamp\WampServer;
+use Ratchet\Wamp\WampServerInterface;
 
-class Pusher implements WampServer {
+class Pusher implements WampServerInterface {
     public function onSubscribe(ConnectionInterface $conn, $topic) {
     }
     public function onUnSubscribe(ConnectionInterface $conn, $topic) {
@@ -175,7 +175,7 @@ class Pusher implements WampServer {
     // This is our new stuff
     $context = new ZMQContext();
     $socket = $context->getSocket(ZMQ::SOCKET_REQ, 'my pusher');
-    $socket->connect("tcp://192.168.1.101:5555");
+    $socket->connect("tcp://192.168.56.102:5555");
 
     $socket->send(json_encode($entryData));
 </pre>
@@ -196,15 +196,16 @@ class Pusher implements WampServer {
 
                 <pre class="prettyprint php">&lt;?php
 use Ratchet\ConnectionInterface;
-use Ratchet\Wamp\WampServer;
+use Ratchet\Wamp\WampServerInterface;
 
-class Pusher implements WampServer {
+class Pusher implements WampServerInterface {
     /**
      * A lookup of all the topics clients have subscribed to
      */
     protected $subscribedTopics = array();
 
     public function onSubscribe(ConnectionInterface $conn, $topic) {
+        // When a visitor subscribes to a topic link the Topic object ina  lookup array
         if (!array_key_exists($topic->getId(), $this->subscribedTopics)) {
             $this->subscribedTopics[$topic->getId()] = $topic;
         }
@@ -216,6 +217,7 @@ class Pusher implements WampServer {
     public function onBlogEntry($entry) {
         $entryData = json_decode($entry, true);
 
+        // If the lookup topic object isn't set there is no one to publish to
         if (!array_key_exists($entryData['cat'])) {
             return;
         }
@@ -243,7 +245,32 @@ class Pusher implements WampServer {
                 <pre class="prettyprint php">&lt;?php
     require __DIR__ . '/vendor/autoload.php';
 
+    $loop   = React\EventLoop\Factory::create();
+    $pusher = new Pusher();
+
+    $context = new React\ZMQ\Context($loop);
+    $pull = $context->getSocket(ZMQ::SOCKET_PULL);
+    $pull->bind('tcp://0.0.0.0:5555');
+    $pull->on('message', array($pusher, 'onBlogEntry'));
+
+    $webSock = new React\Socket\Server($loop);
+    $webSock->listen(80, '0.0.0.0');
+    $webServer = new Ratchet\Server\IoServer(
+        new Ratchet\WebSocket\WsServer(
+            new Ratchet\Wamp\WampServer(
+                $pusher
+            )
+        ),
+        $webSock
+    );
+
+    $loop->run();
 </pre>
+
+            <p>Save the code as "push-server.php" and run it:</p>
+
+            <pre># php push-server.php</pre>
+
             </section>
         </div>
     </div>
