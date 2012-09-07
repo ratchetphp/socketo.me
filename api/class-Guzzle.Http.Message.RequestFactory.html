@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Message\RequestFactory | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2329513799"></script>
+	<script type="text/javascript" src="elementlist.js?4060521299"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -331,7 +331,7 @@ objects.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_fromParts">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.RequestFactory.html#74" title="Go to source code">fromParts</a>( <span>string <var>$method</var></span>, <span>array <var>$urlParts</var></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|array|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$protocol</var> = <span class="php-quote">'HTTP'</span></span>, <span>string <var>$protocolVersion</var> = <span class="php-quote">'1.1'</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.RequestFactory.html#74" title="Go to source code">fromParts</a>( <span>string <var>$method</var></span>, <span>array <var>$urlParts</var></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|array|EntityBodyInterface <var>$body</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$protocol</var> = <span class="php-quote">'HTTP'</span></span>, <span>string <var>$protocolVersion</var> = <span class="php-quote">'1.1'</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -350,14 +350,14 @@ objects.</p>
 					<dt><var>$method</var></dt>
 					<dd><code>string</code><br> HTTP method (GET, POST, PUT, HEAD, DELETE, etc)</dd>
 					<dt><var>$urlParts</var></dt>
-					<dd><code>array</code><br> URL parts containing the same keys as parse_url() # scheme - e.g. http # host -
-e.g. <a href="http://www.guzzle-project.com">www.guzzle-project.com</a> # port -
-e.g. 80 # user - e.g. michael # pass - e.g. rocks # path - e.g. / OR /index.html
-# query - after the question mark ?</dd>
+					<dd><code>array</code><br> URL parts containing the same keys as parse_url() - scheme: e.g. http - host:
+e.g. <a href="http://www.guzzle-project.com">www.guzzle-project.com</a> - port:
+e.g. 80 - user: e.g. michael - pass: e.g. rocks - path: e.g. / OR /index.html -
+query: after the question mark ?</dd>
 					<dt><var>$headers</var></dt>
 					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br> HTTP headers</dd>
 					<dt><var>$body</var></dt>
-					<dd><code>string|resource|array|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code></code><br> Body to send in the request</dd>
+					<dd><code>string|resource|array|EntityBodyInterface</code><br> Body to send in the request</dd>
 					<dt><var>$protocol</var></dt>
 					<dd><code>string</code><br> Protocol (HTTP, SPYDY, etc)</dd>
 					<dt><var>$protocolVersion</var></dt>
@@ -387,7 +387,7 @@ e.g. 80 # user - e.g. michael # pass - e.g. rocks # path - e.g. / OR /index.html
 
 		<td class="name"><div>
 		<a class="anchor" href="#_create">#</a>
-		<code><a href="source-class-Guzzle.Http.Message.RequestFactory.html#83" title="Go to source code">create</a>( <span>string <var>$method</var></span>, <span>string <var>$url</var></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|array|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Message.RequestFactory.html#89" title="Go to source code">create</a>( <span>string <var>$method</var></span>, <span>string|<code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code> <var>$url</var></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|array|EntityBodyInterface <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -404,15 +404,13 @@ e.g. 80 # user - e.g. michael # pass - e.g. rocks # path - e.g. / OR /index.html
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$method</var></dt>
-					<dd><code>string</code><br> HTTP method (GET, POST, PUT, HEAD, DELETE, etc)</dd>
+					<dd><code>string</code><br> HTTP method (GET, POST, PUT, PATCH, HEAD, DELETE, ...)</dd>
 					<dt><var>$url</var></dt>
-					<dd><code>string</code><br>$url|Url HTTP URL to connect to. The URI scheme, host header, and URI are parsed
-from the full URL. If query string parameters are present they will be parsed as
-well.</dd>
+					<dd><code>string|<code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br> HTTP URL to connect to</dd>
 					<dt><var>$headers</var></dt>
 					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br> HTTP headers</dd>
 					<dt><var>$body</var></dt>
-					<dd><code>string|resource|array|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code></code><br> Body to send in the request</dd>
+					<dd><code>string|resource|array|EntityBodyInterface</code><br> Body to send in the request</dd>
 				</dl></div>
 
 				<h4>Returns</h4>

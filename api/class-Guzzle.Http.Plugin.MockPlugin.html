@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\Plugin\MockPlugin | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2329513799"></script>
+	<script type="text/javascript" src="elementlist.js?4060521299"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -143,6 +143,7 @@
 				<li><a href="class-Guzzle.Http.Plugin.CachePlugin.html">CachePlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CookiePlugin.html">CookiePlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CurlAuthPlugin.html">CurlAuthPlugin</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.ExponentialBackoffLogger.html">ExponentialBackoffLogger</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html">ExponentialBackoffPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.HistoryPlugin.html">HistoryPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.LogPlugin.html">LogPlugin</a></li>
@@ -234,7 +235,7 @@
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.Plugin.html">Plugin</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#12" title="Go to source code">http/Guzzle/Http/Plugin/MockPlugin.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#13" title="Go to source code">http/Guzzle/Http/Plugin/MockPlugin.php</a><br />
 	</div>
 
 
@@ -251,7 +252,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#32" title="Go to source code">__construct</a>( <span>array <var>$responses</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$temporary</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#38" title="Go to source code">__construct</a>( <span>array <var>$responses</var> = <span class="php-keyword1">null</span></span>, <span>boolean <var>$temporary</var> = <span class="php-keyword1">false</span></span>, <span>boolean <var>$readBodies</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
@@ -271,6 +272,8 @@
 					<dd><code>array</code><br> Array of responses to queue</dd>
 					<dt><var>$temporary</var></dt>
 					<dd><code>boolean</code><br> Set to TRUE to remove the plugin when the queue is empty</dd>
+					<dt><var>$readBodies</var></dt>
+					<dd><code>boolean</code><br> Set to TRUE to consume the entity body when a mock is serverd</dd>
 				</dl></div>
 
 
@@ -290,7 +293,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSubscribedEvents">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#49" title="Go to source code">getSubscribedEvents</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#56" title="Go to source code">getSubscribedEvents</a>( )</code>
 
 		<div class="description short">
 			
@@ -318,7 +321,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAllEvents">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#57" title="Go to source code">getAllEvents</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#64" title="Go to source code">getAllEvents</a>( )</code>
 
 		<div class="description short">
 			
@@ -356,7 +359,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMockFile">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#65" title="Go to source code">getMockFile</a>( <span>string <var>$path</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#72" title="Go to source code">getMockFile</a>( <span>string <var>$path</var></span> )</code>
 
 		<div class="description short">
 			
@@ -390,6 +393,49 @@
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="readBodies" id="_readBodies">
+
+		<td class="attributes"><code>
+			 public 
+			self
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_readBodies">#</a>
+		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#89" title="Go to source code">readBodies</a>( <span>boolean <var>$readBodies</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set whether or not to consume the entity body of a request when a mock
+response is used</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set whether or not to consume the entity body of a request when a mock
+response is used</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$readBodies</var></dt>
+					<dd><code>boolean</code><br>$consumeBody Set to true to read and consume entity bodies</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>self</code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="count" id="_count">
 
 		<td class="attributes"><code>
@@ -401,7 +447,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_count">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#82" title="Go to source code">count</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#104" title="Go to source code">count</a>( )</code>
 
 		<div class="description short">
 			
@@ -439,7 +485,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addResponse">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#92" title="Go to source code">addResponse</a>( <span>string|<code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#114" title="Go to source code">addResponse</a>( <span>string|<code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
 
 		<div class="description short">
 			
@@ -484,7 +530,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_clearQueue">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#114" title="Go to source code">clearQueue</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#136" title="Go to source code">clearQueue</a>( )</code>
 
 		<div class="description short">
 			
@@ -520,7 +566,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getQueue">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#126" title="Go to source code">getQueue</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#148" title="Go to source code">getQueue</a>( )</code>
 
 		<div class="description short">
 			
@@ -556,7 +602,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isTemporary">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#136" title="Go to source code">isTemporary</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#158" title="Go to source code">isTemporary</a>( )</code>
 
 		<div class="description short">
 			
@@ -592,7 +638,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_dequeue">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#146" title="Go to source code">dequeue</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#168" title="Go to source code">dequeue</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
 
 		<div class="description short">
 			
@@ -633,7 +679,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_flush">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#164" title="Go to source code">flush</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#193" title="Go to source code">flush</a>( )</code>
 
 		<div class="description short">
 			
@@ -665,7 +711,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getReceivedRequests">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#172" title="Go to source code">getReceivedRequests</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#201" title="Go to source code">getReceivedRequests</a>( )</code>
 
 		<div class="description short">
 			
@@ -701,7 +747,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onRequestCreate">#</a>
-		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#182" title="Go to source code">onRequestCreate</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#211" title="Go to source code">onRequestCreate</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
 
 		<div class="description short">
 			
@@ -756,7 +802,7 @@
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#17" title="Go to source code"><var>$queue</var></a>
+				<a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#18" title="Go to source code"><var>$queue</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
@@ -784,7 +830,7 @@
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#22" title="Go to source code"><var>$temporary</var></a>
+				<a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#23" title="Go to source code"><var>$temporary</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">false</span></code></td>
 		<td class="description"><div>
@@ -812,7 +858,7 @@
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#27" title="Go to source code"><var>$received</var></a>
+				<a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#28" title="Go to source code"><var>$received</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
@@ -827,6 +873,34 @@
 			<div class="description detailed hidden">
 				
 <p>Array of requests that were mocked</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="readBodies" id="$readBodies">
+
+		<td class="attributes"><code>
+			protected 
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Http.Plugin.MockPlugin.html#33" title="Go to source code"><var>$readBodies</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$readBodies" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Whether or not to consume an entity body when a mock response is served</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Whether or not to consume an entity body when a mock response is served</p>
 
 
 			</div>

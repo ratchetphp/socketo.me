@@ -8,7 +8,7 @@
 	<title>File Storage/NativeSessionStorage.php | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2329513799"></script>
+	<script type="text/javascript" src="elementlist.js?4060521299"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -365,7 +365,7 @@
 </span><a href="#173" id="173" class="l">173: </a><span class="php-comment">     */</span>
 <a href="#174" id="174" class="l">174: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> setId(<span class="php-var">$id</span>)
 <a href="#175" id="175" class="l">175: </a>    {
-<a href="#176" id="176" class="l">176: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;saveHandler-&gt;setId(<span class="php-var">$id</span>);
+<a href="#176" id="176" class="l">176: </a>        <span class="php-var">$this</span>-&gt;saveHandler-&gt;setId(<span class="php-var">$id</span>);
 <a href="#177" id="177" class="l">177: </a>    }
 <a href="#178" id="178" class="l">178: </a>
 <a href="#179" id="179" class="l">179: </a>    <span class="php-comment">/**
@@ -541,7 +541,7 @@
 <a href="#349" id="349" class="l">349: </a>        <span class="php-keyword1">if</span> (!<span class="php-var">$saveHandler</span> <span class="php-keyword1">instanceof</span> AbstractProxy &amp;&amp; <span class="php-var">$saveHandler</span> <span class="php-keyword1">instanceof</span> \SessionHandlerInterface) {
 <a href="#350" id="350" class="l">350: </a>            <span class="php-var">$saveHandler</span> = <span class="php-keyword1">new</span> SessionHandlerProxy(<span class="php-var">$saveHandler</span>);
 <a href="#351" id="351" class="l">351: </a>        } <span class="php-keyword1">elseif</span> (!<span class="php-var">$saveHandler</span> <span class="php-keyword1">instanceof</span> AbstractProxy) {
-<a href="#352" id="352" class="l">352: </a>            <span class="php-var">$saveHandler</span> = <span class="php-keyword1">new</span> NativeProxy(<span class="php-var">$saveHandler</span>);
+<a href="#352" id="352" class="l">352: </a>            <span class="php-var">$saveHandler</span> = <span class="php-keyword1">new</span> NativeProxy();
 <a href="#353" id="353" class="l">353: </a>        }
 <a href="#354" id="354" class="l">354: </a>
 <a href="#355" id="355" class="l">355: </a>        <span class="php-var">$this</span>-&gt;saveHandler = <span class="php-var">$saveHandler</span>;

@@ -8,7 +8,7 @@
 	<title>File http/Guzzle/Http/Plugin/LogPlugin.php | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2329513799"></script>
+	<script type="text/javascript" src="elementlist.js?4060521299"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -144,6 +144,7 @@
 				<li><a href="class-Guzzle.Http.Plugin.CachePlugin.html">CachePlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CookiePlugin.html">CookiePlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.CurlAuthPlugin.html">CurlAuthPlugin</a></li>
+				<li><a href="class-Guzzle.Http.Plugin.ExponentialBackoffLogger.html">ExponentialBackoffLogger</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.ExponentialBackoffPlugin.html">ExponentialBackoffPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Plugin.HistoryPlugin.html">HistoryPlugin</a></li>
 				<li class="active"><a href="class-Guzzle.Http.Plugin.LogPlugin.html">LogPlugin</a></li>
@@ -419,44 +420,44 @@
 <a href="#225" id="225" class="l">225: </a>        <span class="php-comment">// Send the log message to the adapter, adding a category and host</span>
 <a href="#226" id="226" class="l">226: </a>        <span class="php-var">$priority</span> = <span class="php-var">$response</span> &amp;&amp; !<span class="php-var">$response</span>-&gt;isSuccessful() ? LOG_ERR : LOG_DEBUG;
 <a href="#227" id="227" class="l">227: </a>        <span class="php-var">$this</span>-&gt;logAdapter-&gt;<span class="php-keyword2">log</span>(<span class="php-keyword2">trim</span>(<span class="php-var">$message</span>), <span class="php-var">$priority</span>, <span class="php-keyword1">array</span>(
-<a href="#228" id="228" class="l">228: </a>            <span class="php-quote">'category'</span> =&gt; <span class="php-quote">'guzzle.request'</span>,
-<a href="#229" id="229" class="l">229: </a>            <span class="php-quote">'host'</span>     =&gt; <span class="php-var">$this</span>-&gt;hostname
-<a href="#230" id="230" class="l">230: </a>        ));
-<a href="#231" id="231" class="l">231: </a>    }
-<a href="#232" id="232" class="l">232: </a>
-<a href="#233" id="233" class="l">233: </a>    <span class="php-comment">/**
-</span><a href="#234" id="234" class="l">234: </a><span class="php-comment">     * Parse cURL log messages
-</span><a href="#235" id="235" class="l">235: </a><span class="php-comment">     *
-</span><a href="#236" id="236" class="l">236: </a><span class="php-comment">     * @param RequestInterface $request Request that has a curl handle
+<a href="#228" id="228" class="l">228: </a>            <span class="php-quote">'category'</span>  =&gt; <span class="php-quote">'guzzle.request'</span>,
+<a href="#229" id="229" class="l">229: </a>            <span class="php-quote">'host'</span>      =&gt; <span class="php-var">$this</span>-&gt;hostname,
+<a href="#230" id="230" class="l">230: </a>            <span class="php-quote">'request'</span>   =&gt; <span class="php-var">$request</span>,
+<a href="#231" id="231" class="l">231: </a>            <span class="php-quote">'response'</span>  =&gt; <span class="php-var">$response</span>
+<a href="#232" id="232" class="l">232: </a>        ));
+<a href="#233" id="233" class="l">233: </a>    }
+<a href="#234" id="234" class="l">234: </a>
+<a href="#235" id="235" class="l">235: </a>    <span class="php-comment">/**
+</span><a href="#236" id="236" class="l">236: </a><span class="php-comment">     * Parse cURL log messages
 </span><a href="#237" id="237" class="l">237: </a><span class="php-comment">     *
-</span><a href="#238" id="238" class="l">238: </a><span class="php-comment">     * @return string
-</span><a href="#239" id="239" class="l">239: </a><span class="php-comment">     */</span>
-<a href="#240" id="240" class="l">240: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> parseCurlLog(RequestInterface <span class="php-var">$request</span>)
-<a href="#241" id="241" class="l">241: </a>    {
-<a href="#242" id="242" class="l">242: </a>        <span class="php-var">$message</span> = <span class="php-quote">''</span>;
-<a href="#243" id="243" class="l">243: </a>        <span class="php-var">$handle</span> = <span class="php-var">$request</span>-&gt;getParams()-&gt;get(<span class="php-quote">'curl_handle'</span>);
-<a href="#244" id="244" class="l">244: </a>        <span class="php-var">$stderr</span> = <span class="php-var">$handle</span>-&gt;getStderr(<span class="php-keyword1">true</span>);
-<a href="#245" id="245" class="l">245: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$stderr</span>) {
-<a href="#246" id="246" class="l">246: </a>            <span class="php-keyword2">rewind</span>(<span class="php-var">$stderr</span>);
-<a href="#247" id="247" class="l">247: </a>            <span class="php-var">$addedBody</span> = <span class="php-keyword1">false</span>;
-<a href="#248" id="248" class="l">248: </a>            <span class="php-keyword1">while</span> (<span class="php-var">$line</span> = <span class="php-keyword2">fgets</span>(<span class="php-var">$stderr</span>)) {
-<a href="#249" id="249" class="l">249: </a>                <span class="php-comment">// * - Debug | &lt; - Downstream | &gt; - Upstream</span>
-<a href="#250" id="250" class="l">250: </a>                <span class="php-keyword1">if</span> (<span class="php-var">$line</span>[<span class="php-num">0</span>] == <span class="php-quote">'*'</span>) {
-<a href="#251" id="251" class="l">251: </a>                    <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;settings &amp; self::LOG_DEBUG) {
-<a href="#252" id="252" class="l">252: </a>                        <span class="php-var">$message</span> .= <span class="php-var">$line</span>;
-<a href="#253" id="253" class="l">253: </a>                    }
-<a href="#254" id="254" class="l">254: </a>                } <span class="php-keyword1">elseif</span> (<span class="php-var">$this</span>-&gt;settings &amp; self::LOG_HEADERS) {
-<a href="#255" id="255" class="l">255: </a>                    <span class="php-var">$message</span> .= <span class="php-var">$line</span>;
-<a href="#256" id="256" class="l">256: </a>                }
-<a href="#257" id="257" class="l">257: </a>                <span class="php-comment">// Add the request body if needed</span>
-<a href="#258" id="258" class="l">258: </a>                <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;settings &amp; self::LOG_BODY) {
-<a href="#259" id="259" class="l">259: </a>                    <span class="php-keyword1">if</span> (<span class="php-keyword2">trim</span>(<span class="php-var">$line</span>) == <span class="php-quote">''</span> &amp;&amp; <span class="php-var">$request</span> <span class="php-keyword1">instanceof</span> EntityEnclosingRequestInterface) {
-<a href="#260" id="260" class="l">260: </a>                        <span class="php-keyword1">if</span> (<span class="php-var">$request</span>-&gt;getParams()-&gt;get(<span class="php-quote">'request_wire'</span>)) {
-<a href="#261" id="261" class="l">261: </a>                            <span class="php-var">$message</span> .= (string) <span class="php-var">$request</span>-&gt;getParams()-&gt;get(<span class="php-quote">'request_wire'</span>) . <span class="php-quote">&quot;\r\n&quot;</span>;
-<a href="#262" id="262" class="l">262: </a>                        } <span class="php-keyword1">else</span> {
-<a href="#263" id="263" class="l">263: </a>                            <span class="php-var">$message</span> .= (string) <span class="php-var">$request</span>-&gt;getBody() . <span class="php-quote">&quot;\r\n&quot;</span>;
-<a href="#264" id="264" class="l">264: </a>                        }
-<a href="#265" id="265" class="l">265: </a>                        <span class="php-var">$addedBody</span> = <span class="php-keyword1">true</span>;
+</span><a href="#238" id="238" class="l">238: </a><span class="php-comment">     * @param RequestInterface $request Request that has a curl handle
+</span><a href="#239" id="239" class="l">239: </a><span class="php-comment">     *
+</span><a href="#240" id="240" class="l">240: </a><span class="php-comment">     * @return string
+</span><a href="#241" id="241" class="l">241: </a><span class="php-comment">     */</span>
+<a href="#242" id="242" class="l">242: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> parseCurlLog(RequestInterface <span class="php-var">$request</span>)
+<a href="#243" id="243" class="l">243: </a>    {
+<a href="#244" id="244" class="l">244: </a>        <span class="php-var">$message</span> = <span class="php-quote">''</span>;
+<a href="#245" id="245" class="l">245: </a>        <span class="php-var">$handle</span> = <span class="php-var">$request</span>-&gt;getParams()-&gt;get(<span class="php-quote">'curl_handle'</span>);
+<a href="#246" id="246" class="l">246: </a>        <span class="php-var">$stderr</span> = <span class="php-var">$handle</span>-&gt;getStderr(<span class="php-keyword1">true</span>);
+<a href="#247" id="247" class="l">247: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$stderr</span>) {
+<a href="#248" id="248" class="l">248: </a>            <span class="php-keyword2">rewind</span>(<span class="php-var">$stderr</span>);
+<a href="#249" id="249" class="l">249: </a>            <span class="php-keyword1">while</span> (<span class="php-var">$line</span> = <span class="php-keyword2">fgets</span>(<span class="php-var">$stderr</span>)) {
+<a href="#250" id="250" class="l">250: </a>                <span class="php-comment">// * - Debug | &lt; - Downstream | &gt; - Upstream</span>
+<a href="#251" id="251" class="l">251: </a>                <span class="php-keyword1">if</span> (<span class="php-var">$line</span>[<span class="php-num">0</span>] == <span class="php-quote">'*'</span>) {
+<a href="#252" id="252" class="l">252: </a>                    <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;settings &amp; self::LOG_DEBUG) {
+<a href="#253" id="253" class="l">253: </a>                        <span class="php-var">$message</span> .= <span class="php-var">$line</span>;
+<a href="#254" id="254" class="l">254: </a>                    }
+<a href="#255" id="255" class="l">255: </a>                } <span class="php-keyword1">elseif</span> (<span class="php-var">$this</span>-&gt;settings &amp; self::LOG_HEADERS) {
+<a href="#256" id="256" class="l">256: </a>                    <span class="php-var">$message</span> .= <span class="php-var">$line</span>;
+<a href="#257" id="257" class="l">257: </a>                }
+<a href="#258" id="258" class="l">258: </a>                <span class="php-comment">// Add the request body if needed</span>
+<a href="#259" id="259" class="l">259: </a>                <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;settings &amp; self::LOG_BODY) {
+<a href="#260" id="260" class="l">260: </a>                    <span class="php-keyword1">if</span> (<span class="php-keyword2">trim</span>(<span class="php-var">$line</span>) == <span class="php-quote">''</span> &amp;&amp; <span class="php-var">$request</span> <span class="php-keyword1">instanceof</span> EntityEnclosingRequestInterface) {
+<a href="#261" id="261" class="l">261: </a>                        <span class="php-keyword1">if</span> (<span class="php-var">$request</span>-&gt;getParams()-&gt;get(<span class="php-quote">'request_wire'</span>)) {
+<a href="#262" id="262" class="l">262: </a>                            <span class="php-var">$message</span> .= (string) <span class="php-var">$request</span>-&gt;getParams()-&gt;get(<span class="php-quote">'request_wire'</span>) . <span class="php-quote">&quot;\r\n&quot;</span>;
+<a href="#263" id="263" class="l">263: </a>                        } <span class="php-keyword1">else</span> {
+<a href="#264" id="264" class="l">264: </a>                            <span class="php-var">$message</span> .= (string) <span class="php-var">$request</span>-&gt;getBody() . <span class="php-quote">&quot;\r\n&quot;</span>;
+<a href="#265" id="265" class="l">265: </a>                        }
 <a href="#266" id="266" class="l">266: </a>                    }
 <a href="#267" id="267" class="l">267: </a>                }
 <a href="#268" id="268" class="l">268: </a>            }

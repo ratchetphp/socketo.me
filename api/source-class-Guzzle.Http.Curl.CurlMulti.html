@@ -8,7 +8,7 @@
 	<title>File http/Guzzle/Http/Curl/CurlMulti.php | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2329513799"></script>
+	<script type="text/javascript" src="elementlist.js?4060521299"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -349,7 +349,7 @@
 </span><a href="#157" id="157" class="l">157: </a><span class="php-comment">     * @param RequestInterface $request Request to add
 </span><a href="#158" id="158" class="l">158: </a><span class="php-comment">     * @param bool             $async   Set to TRUE to add to the current scope
 </span><a href="#159" id="159" class="l">159: </a><span class="php-comment">     *
-</span><a href="#160" id="160" class="l">160: </a><span class="php-comment">     * @return CurlMutli
+</span><a href="#160" id="160" class="l">160: </a><span class="php-comment">     * @return self
 </span><a href="#161" id="161" class="l">161: </a><span class="php-comment">     */</span>
 <a href="#162" id="162" class="l">162: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> add(RequestInterface <span class="php-var">$request</span>, <span class="php-var">$async</span> = <span class="php-keyword1">false</span>)
 <a href="#163" id="163" class="l">163: </a>    {
@@ -612,7 +612,7 @@
 <a href="#420" id="420" class="l">420: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$active</span>) {
 <a href="#421" id="421" class="l">421: </a>                <span class="php-comment">// Select the curl handles until there is any activity on any of the open file descriptors</span>
 <a href="#422" id="422" class="l">422: </a>                <span class="php-comment">// See https://github.com/php/php-src/blob/master/ext/curl/multi.c#L170</span>
-<a href="#423" id="423" class="l">423: </a>                <span class="php-var">$active</span> = <span class="php-var">$this</span>-&gt;executeHandles(<span class="php-keyword1">true</span>, <span class="php-num">0.25</span>);
+<a href="#423" id="423" class="l">423: </a>                <span class="php-var">$active</span> = <span class="php-var">$this</span>-&gt;executeHandles(<span class="php-keyword1">true</span>, <span class="php-num">0.1</span>);
 <a href="#424" id="424" class="l">424: </a>            } <span class="php-keyword1">else</span> {
 <a href="#425" id="425" class="l">425: </a>                <span class="php-comment">// Sleep to prevent eating CPU because no requests are actually pending a select call</span>
 <a href="#426" id="426" class="l">426: </a>                <span class="php-keyword2">usleep</span>(<span class="php-num">500</span>);
@@ -654,7 +654,7 @@
 </span><a href="#462" id="462" class="l">462: </a><span class="php-comment">     * Remove a request that encountered an exception
 </span><a href="#463" id="463" class="l">463: </a><span class="php-comment">     *
 </span><a href="#464" id="464" class="l">464: </a><span class="php-comment">     * @param RequestInterface $request Request to remove
-</span><a href="#465" id="465" class="l">465: </a><span class="php-comment">     * @param Exception        $e       Exception encountered
+</span><a href="#465" id="465" class="l">465: </a><span class="php-comment">     * @param \Exception       $e       Exception encountered
 </span><a href="#466" id="466" class="l">466: </a><span class="php-comment">     */</span>
 <a href="#467" id="467" class="l">467: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> removeErroredRequest(RequestInterface <span class="php-var">$request</span>, \Exception <span class="php-var">$e</span>)
 <a href="#468" id="468" class="l">468: </a>    {
@@ -709,98 +709,99 @@
 <a href="#517" id="517" class="l">517: </a>            }
 <a href="#518" id="518" class="l">518: </a>            <span class="php-comment">// The error was not handled, so fail</span>
 <a href="#519" id="519" class="l">519: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$state</span> == RequestInterface::STATE_ERROR) {
-<a href="#520" id="520" class="l">520: </a>                <span class="php-keyword1">throw</span> <span class="php-var">$curlException</span>;
-<a href="#521" id="521" class="l">521: </a>            }
-<a href="#522" id="522" class="l">522: </a>        }
-<a href="#523" id="523" class="l">523: </a>    }
-<a href="#524" id="524" class="l">524: </a>
-<a href="#525" id="525" class="l">525: </a>    <span class="php-comment">/**
-</span><a href="#526" id="526" class="l">526: </a><span class="php-comment">     * Remove a curl handle from the curl multi object
-</span><a href="#527" id="527" class="l">527: </a><span class="php-comment">     *
-</span><a href="#528" id="528" class="l">528: </a><span class="php-comment">     * Nasty things (bus errors, segmentation faults) can sometimes occur when removing curl handles when in a callback
-</span><a href="#529" id="529" class="l">529: </a><span class="php-comment">     * or a recursive scope.  Here we are queueing all curl handles that need to be removed and closed so that this
-</span><a href="#530" id="530" class="l">530: </a><span class="php-comment">     * happens only in the outermost scope when everything has completed sending.
-</span><a href="#531" id="531" class="l">531: </a><span class="php-comment">     *
-</span><a href="#532" id="532" class="l">532: </a><span class="php-comment">     * @param RequestInterface $request Request that owns the handle
-</span><a href="#533" id="533" class="l">533: </a><span class="php-comment">     */</span>
-<a href="#534" id="534" class="l">534: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> removeHandle(RequestInterface <span class="php-var">$request</span>)
-<a href="#535" id="535" class="l">535: </a>    {
-<a href="#536" id="536" class="l">536: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;handles-&gt;contains(<span class="php-var">$request</span>)) {
-<a href="#537" id="537" class="l">537: </a>            <span class="php-var">$handle</span> = <span class="php-var">$this</span>-&gt;handles[<span class="php-var">$request</span>];
-<a href="#538" id="538" class="l">538: </a>            <span class="php-keyword1">unset</span>(<span class="php-var">$this</span>-&gt;resourceHash[(int) <span class="php-var">$handle</span>-&gt;getHandle()]);
-<a href="#539" id="539" class="l">539: </a>            <span class="php-keyword1">unset</span>(<span class="php-var">$this</span>-&gt;handles[<span class="php-var">$request</span>]);
-<a href="#540" id="540" class="l">540: </a>            <span class="php-var">$this</span>-&gt;removeHandles[] = <span class="php-var">$handle</span>;
-<a href="#541" id="541" class="l">541: </a>        }
-<a href="#542" id="542" class="l">542: </a>    }
-<a href="#543" id="543" class="l">543: </a>
-<a href="#544" id="544" class="l">544: </a>    <span class="php-comment">/**
-</span><a href="#545" id="545" class="l">545: </a><span class="php-comment">     * Check if a cURL transfer resulted in what should be an exception
-</span><a href="#546" id="546" class="l">546: </a><span class="php-comment">     *
-</span><a href="#547" id="547" class="l">547: </a><span class="php-comment">     * @param RequestInterface $request Request to check
-</span><a href="#548" id="548" class="l">548: </a><span class="php-comment">     * @param CurlHandle       $handle  Curl handle object
-</span><a href="#549" id="549" class="l">549: </a><span class="php-comment">     * @param array            $curl    Array returned from curl_multi_info_read
-</span><a href="#550" id="550" class="l">550: </a><span class="php-comment">     *
-</span><a href="#551" id="551" class="l">551: </a><span class="php-comment">     * @return Exception|bool
-</span><a href="#552" id="552" class="l">552: </a><span class="php-comment">     */</span>
-<a href="#553" id="553" class="l">553: </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> isCurlException(RequestInterface <span class="php-var">$request</span>, CurlHandle <span class="php-var">$handle</span>, <span class="php-keyword1">array</span> <span class="php-var">$curl</span>)
-<a href="#554" id="554" class="l">554: </a>    {
-<a href="#555" id="555" class="l">555: </a>        <span class="php-keyword1">if</span> (CURLE_OK == <span class="php-var">$curl</span>[<span class="php-quote">'result'</span>]) {
-<a href="#556" id="556" class="l">556: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">false</span>;
-<a href="#557" id="557" class="l">557: </a>        }
-<a href="#558" id="558" class="l">558: </a>
-<a href="#559" id="559" class="l">559: </a>        <span class="php-var">$handle</span>-&gt;setErrorNo(<span class="php-var">$curl</span>[<span class="php-quote">'result'</span>]);
-<a href="#560" id="560" class="l">560: </a>        <span class="php-var">$e</span> = <span class="php-keyword1">new</span> CurlException(<span class="php-keyword2">sprintf</span>(<span class="php-quote">'[curl] %s: %s [url] %s [info] %s [debug] %s'</span>,
-<a href="#561" id="561" class="l">561: </a>            <span class="php-var">$handle</span>-&gt;getErrorNo(), <span class="php-var">$handle</span>-&gt;getError(), <span class="php-var">$handle</span>-&gt;getUrl(),
-<a href="#562" id="562" class="l">562: </a>            <span class="php-keyword2">var_export</span>(<span class="php-var">$handle</span>-&gt;getInfo(), <span class="php-keyword1">true</span>), <span class="php-var">$handle</span>-&gt;getStderr()));
-<a href="#563" id="563" class="l">563: </a>        <span class="php-var">$e</span>-&gt;setCurlHandle(<span class="php-var">$handle</span>)
-<a href="#564" id="564" class="l">564: </a>          -&gt;setRequest(<span class="php-var">$request</span>)
-<a href="#565" id="565" class="l">565: </a>          -&gt;setError(<span class="php-var">$handle</span>-&gt;getError(), <span class="php-var">$handle</span>-&gt;getErrorNo());
-<a href="#566" id="566" class="l">566: </a>
-<a href="#567" id="567" class="l">567: </a>        <span class="php-keyword1">return</span> <span class="php-var">$e</span>;
-<a href="#568" id="568" class="l">568: </a>    }
-<a href="#569" id="569" class="l">569: </a>
-<a href="#570" id="570" class="l">570: </a>    <span class="php-comment">/**
-</span><a href="#571" id="571" class="l">571: </a><span class="php-comment">     * Throw an exception for a cURL multi response if needed
-</span><a href="#572" id="572" class="l">572: </a><span class="php-comment">     *
-</span><a href="#573" id="573" class="l">573: </a><span class="php-comment">     * @param int $code Curl response code
-</span><a href="#574" id="574" class="l">574: </a><span class="php-comment">     *
-</span><a href="#575" id="575" class="l">575: </a><span class="php-comment">     * @throws CurlException
-</span><a href="#576" id="576" class="l">576: </a><span class="php-comment">     */</span>
-<a href="#577" id="577" class="l">577: </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> checkCurlResult(<span class="php-var">$code</span>)
-<a href="#578" id="578" class="l">578: </a>    {
-<a href="#579" id="579" class="l">579: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$code</span> != CURLE_OK) {
-<a href="#580" id="580" class="l">580: </a>            <span class="php-keyword1">if</span> (<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;multiErrors[<span class="php-var">$code</span>])) {
-<a href="#581" id="581" class="l">581: </a>                <span class="php-var">$message</span> = <span class="php-quote">&quot;cURL error: </span><span class="php-var">{$code}</span><span class="php-quote"> (</span><span class="php-var">{$this-&gt;multiErrors[$code][0]}</span><span class="php-quote">): cURL message: </span><span class="php-var">{$this-&gt;multiErrors[$code][1]}</span><span class="php-quote">&quot;</span>;
-<a href="#582" id="582" class="l">582: </a>            } <span class="php-keyword1">else</span> {
-<a href="#583" id="583" class="l">583: </a>                <span class="php-var">$message</span> = <span class="php-quote">'Unexpected cURL error: '</span> . <span class="php-var">$code</span>;
-<a href="#584" id="584" class="l">584: </a>            }
-<a href="#585" id="585" class="l">585: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CurlException(<span class="php-var">$message</span>);
-<a href="#586" id="586" class="l">586: </a>        }
-<a href="#587" id="587" class="l">587: </a>    }
-<a href="#588" id="588" class="l">588: </a>
-<a href="#589" id="589" class="l">589: </a>    <span class="php-comment">/**
-</span><a href="#590" id="590" class="l">590: </a><span class="php-comment">     * Create the new cURL multi handle with error checking
-</span><a href="#591" id="591" class="l">591: </a><span class="php-comment">     */</span>
-<a href="#592" id="592" class="l">592: </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> createMutliHandle()
-<a href="#593" id="593" class="l">593: </a>    {
-<a href="#594" id="594" class="l">594: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;multiHandle &amp;&amp; <span class="php-keyword2">is_resource</span>(<span class="php-var">$this</span>-&gt;multiHandle)) {
-<a href="#595" id="595" class="l">595: </a>            <span class="php-keyword2">curl_multi_close</span>(<span class="php-var">$this</span>-&gt;multiHandle);
-<a href="#596" id="596" class="l">596: </a>        }
-<a href="#597" id="597" class="l">597: </a>
-<a href="#598" id="598" class="l">598: </a>        <span class="php-var">$this</span>-&gt;requests = <span class="php-keyword1">array</span>();
-<a href="#599" id="599" class="l">599: </a>        <span class="php-var">$this</span>-&gt;multiHandle = <span class="php-keyword2">curl_multi_init</span>();
-<a href="#600" id="600" class="l">600: </a>        <span class="php-var">$this</span>-&gt;handles = <span class="php-keyword1">new</span> \SplObjectStorage();
-<a href="#601" id="601" class="l">601: </a>        <span class="php-var">$this</span>-&gt;resourceHash = <span class="php-keyword1">array</span>();
-<a href="#602" id="602" class="l">602: </a>        <span class="php-var">$this</span>-&gt;removeHandles = <span class="php-keyword1">array</span>();
-<a href="#603" id="603" class="l">603: </a>
-<a href="#604" id="604" class="l">604: </a>        <span class="php-comment">// @codeCoverageIgnoreStart</span>
-<a href="#605" id="605" class="l">605: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;multiHandle === <span class="php-keyword1">false</span>) {
-<a href="#606" id="606" class="l">606: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CurlException(<span class="php-quote">'Unable to create multi handle'</span>);
-<a href="#607" id="607" class="l">607: </a>        }
-<a href="#608" id="608" class="l">608: </a>        <span class="php-comment">// @codeCoverageIgnoreEnd</span>
-<a href="#609" id="609" class="l">609: </a>    }
-<a href="#610" id="610" class="l">610: </a>}
-<a href="#611" id="611" class="l">611: </a></code></pre>
+<a href="#520" id="520" class="l">520: </a>                <span class="php-comment">/** @var $curlException \Exception */</span>
+<a href="#521" id="521" class="l">521: </a>                <span class="php-keyword1">throw</span> <span class="php-var">$curlException</span>;
+<a href="#522" id="522" class="l">522: </a>            }
+<a href="#523" id="523" class="l">523: </a>        }
+<a href="#524" id="524" class="l">524: </a>    }
+<a href="#525" id="525" class="l">525: </a>
+<a href="#526" id="526" class="l">526: </a>    <span class="php-comment">/**
+</span><a href="#527" id="527" class="l">527: </a><span class="php-comment">     * Remove a curl handle from the curl multi object
+</span><a href="#528" id="528" class="l">528: </a><span class="php-comment">     *
+</span><a href="#529" id="529" class="l">529: </a><span class="php-comment">     * Nasty things (bus errors, segmentation faults) can sometimes occur when removing curl handles when in a callback
+</span><a href="#530" id="530" class="l">530: </a><span class="php-comment">     * or a recursive scope.  Here we are queueing all curl handles that need to be removed and closed so that this
+</span><a href="#531" id="531" class="l">531: </a><span class="php-comment">     * happens only in the outermost scope when everything has completed sending.
+</span><a href="#532" id="532" class="l">532: </a><span class="php-comment">     *
+</span><a href="#533" id="533" class="l">533: </a><span class="php-comment">     * @param RequestInterface $request Request that owns the handle
+</span><a href="#534" id="534" class="l">534: </a><span class="php-comment">     */</span>
+<a href="#535" id="535" class="l">535: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> removeHandle(RequestInterface <span class="php-var">$request</span>)
+<a href="#536" id="536" class="l">536: </a>    {
+<a href="#537" id="537" class="l">537: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;handles-&gt;contains(<span class="php-var">$request</span>)) {
+<a href="#538" id="538" class="l">538: </a>            <span class="php-var">$handle</span> = <span class="php-var">$this</span>-&gt;handles[<span class="php-var">$request</span>];
+<a href="#539" id="539" class="l">539: </a>            <span class="php-keyword1">unset</span>(<span class="php-var">$this</span>-&gt;resourceHash[(int) <span class="php-var">$handle</span>-&gt;getHandle()]);
+<a href="#540" id="540" class="l">540: </a>            <span class="php-keyword1">unset</span>(<span class="php-var">$this</span>-&gt;handles[<span class="php-var">$request</span>]);
+<a href="#541" id="541" class="l">541: </a>            <span class="php-var">$this</span>-&gt;removeHandles[] = <span class="php-var">$handle</span>;
+<a href="#542" id="542" class="l">542: </a>        }
+<a href="#543" id="543" class="l">543: </a>    }
+<a href="#544" id="544" class="l">544: </a>
+<a href="#545" id="545" class="l">545: </a>    <span class="php-comment">/**
+</span><a href="#546" id="546" class="l">546: </a><span class="php-comment">     * Check if a cURL transfer resulted in what should be an exception
+</span><a href="#547" id="547" class="l">547: </a><span class="php-comment">     *
+</span><a href="#548" id="548" class="l">548: </a><span class="php-comment">     * @param RequestInterface $request Request to check
+</span><a href="#549" id="549" class="l">549: </a><span class="php-comment">     * @param CurlHandle       $handle  Curl handle object
+</span><a href="#550" id="550" class="l">550: </a><span class="php-comment">     * @param array            $curl    Array returned from curl_multi_info_read
+</span><a href="#551" id="551" class="l">551: </a><span class="php-comment">     *
+</span><a href="#552" id="552" class="l">552: </a><span class="php-comment">     * @return \Exception|bool
+</span><a href="#553" id="553" class="l">553: </a><span class="php-comment">     */</span>
+<a href="#554" id="554" class="l">554: </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> isCurlException(RequestInterface <span class="php-var">$request</span>, CurlHandle <span class="php-var">$handle</span>, <span class="php-keyword1">array</span> <span class="php-var">$curl</span>)
+<a href="#555" id="555" class="l">555: </a>    {
+<a href="#556" id="556" class="l">556: </a>        <span class="php-keyword1">if</span> (CURLE_OK == <span class="php-var">$curl</span>[<span class="php-quote">'result'</span>]) {
+<a href="#557" id="557" class="l">557: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">false</span>;
+<a href="#558" id="558" class="l">558: </a>        }
+<a href="#559" id="559" class="l">559: </a>
+<a href="#560" id="560" class="l">560: </a>        <span class="php-var">$handle</span>-&gt;setErrorNo(<span class="php-var">$curl</span>[<span class="php-quote">'result'</span>]);
+<a href="#561" id="561" class="l">561: </a>        <span class="php-var">$e</span> = <span class="php-keyword1">new</span> CurlException(<span class="php-keyword2">sprintf</span>(<span class="php-quote">'[curl] %s: %s [url] %s [info] %s [debug] %s'</span>,
+<a href="#562" id="562" class="l">562: </a>            <span class="php-var">$handle</span>-&gt;getErrorNo(), <span class="php-var">$handle</span>-&gt;getError(), <span class="php-var">$handle</span>-&gt;getUrl(),
+<a href="#563" id="563" class="l">563: </a>            <span class="php-keyword2">var_export</span>(<span class="php-var">$handle</span>-&gt;getInfo(), <span class="php-keyword1">true</span>), <span class="php-var">$handle</span>-&gt;getStderr()));
+<a href="#564" id="564" class="l">564: </a>        <span class="php-var">$e</span>-&gt;setCurlHandle(<span class="php-var">$handle</span>)
+<a href="#565" id="565" class="l">565: </a>          -&gt;setRequest(<span class="php-var">$request</span>)
+<a href="#566" id="566" class="l">566: </a>          -&gt;setError(<span class="php-var">$handle</span>-&gt;getError(), <span class="php-var">$handle</span>-&gt;getErrorNo());
+<a href="#567" id="567" class="l">567: </a>
+<a href="#568" id="568" class="l">568: </a>        <span class="php-keyword1">return</span> <span class="php-var">$e</span>;
+<a href="#569" id="569" class="l">569: </a>    }
+<a href="#570" id="570" class="l">570: </a>
+<a href="#571" id="571" class="l">571: </a>    <span class="php-comment">/**
+</span><a href="#572" id="572" class="l">572: </a><span class="php-comment">     * Throw an exception for a cURL multi response if needed
+</span><a href="#573" id="573" class="l">573: </a><span class="php-comment">     *
+</span><a href="#574" id="574" class="l">574: </a><span class="php-comment">     * @param int $code Curl response code
+</span><a href="#575" id="575" class="l">575: </a><span class="php-comment">     *
+</span><a href="#576" id="576" class="l">576: </a><span class="php-comment">     * @throws CurlException
+</span><a href="#577" id="577" class="l">577: </a><span class="php-comment">     */</span>
+<a href="#578" id="578" class="l">578: </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> checkCurlResult(<span class="php-var">$code</span>)
+<a href="#579" id="579" class="l">579: </a>    {
+<a href="#580" id="580" class="l">580: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$code</span> != CURLE_OK) {
+<a href="#581" id="581" class="l">581: </a>            <span class="php-keyword1">if</span> (<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;multiErrors[<span class="php-var">$code</span>])) {
+<a href="#582" id="582" class="l">582: </a>                <span class="php-var">$message</span> = <span class="php-quote">&quot;cURL error: </span><span class="php-var">{$code}</span><span class="php-quote"> (</span><span class="php-var">{$this-&gt;multiErrors[$code][0]}</span><span class="php-quote">): cURL message: </span><span class="php-var">{$this-&gt;multiErrors[$code][1]}</span><span class="php-quote">&quot;</span>;
+<a href="#583" id="583" class="l">583: </a>            } <span class="php-keyword1">else</span> {
+<a href="#584" id="584" class="l">584: </a>                <span class="php-var">$message</span> = <span class="php-quote">'Unexpected cURL error: '</span> . <span class="php-var">$code</span>;
+<a href="#585" id="585" class="l">585: </a>            }
+<a href="#586" id="586" class="l">586: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CurlException(<span class="php-var">$message</span>);
+<a href="#587" id="587" class="l">587: </a>        }
+<a href="#588" id="588" class="l">588: </a>    }
+<a href="#589" id="589" class="l">589: </a>
+<a href="#590" id="590" class="l">590: </a>    <span class="php-comment">/**
+</span><a href="#591" id="591" class="l">591: </a><span class="php-comment">     * Create the new cURL multi handle with error checking
+</span><a href="#592" id="592" class="l">592: </a><span class="php-comment">     */</span>
+<a href="#593" id="593" class="l">593: </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> createMutliHandle()
+<a href="#594" id="594" class="l">594: </a>    {
+<a href="#595" id="595" class="l">595: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;multiHandle &amp;&amp; <span class="php-keyword2">is_resource</span>(<span class="php-var">$this</span>-&gt;multiHandle)) {
+<a href="#596" id="596" class="l">596: </a>            <span class="php-keyword2">curl_multi_close</span>(<span class="php-var">$this</span>-&gt;multiHandle);
+<a href="#597" id="597" class="l">597: </a>        }
+<a href="#598" id="598" class="l">598: </a>
+<a href="#599" id="599" class="l">599: </a>        <span class="php-var">$this</span>-&gt;requests = <span class="php-keyword1">array</span>();
+<a href="#600" id="600" class="l">600: </a>        <span class="php-var">$this</span>-&gt;multiHandle = <span class="php-keyword2">curl_multi_init</span>();
+<a href="#601" id="601" class="l">601: </a>        <span class="php-var">$this</span>-&gt;handles = <span class="php-keyword1">new</span> \SplObjectStorage();
+<a href="#602" id="602" class="l">602: </a>        <span class="php-var">$this</span>-&gt;resourceHash = <span class="php-keyword1">array</span>();
+<a href="#603" id="603" class="l">603: </a>        <span class="php-var">$this</span>-&gt;removeHandles = <span class="php-keyword1">array</span>();
+<a href="#604" id="604" class="l">604: </a>
+<a href="#605" id="605" class="l">605: </a>        <span class="php-comment">// @codeCoverageIgnoreStart</span>
+<a href="#606" id="606" class="l">606: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;multiHandle === <span class="php-keyword1">false</span>) {
+<a href="#607" id="607" class="l">607: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CurlException(<span class="php-quote">'Unable to create multi handle'</span>);
+<a href="#608" id="608" class="l">608: </a>        }
+<a href="#609" id="609" class="l">609: </a>        <span class="php-comment">// @codeCoverageIgnoreEnd</span>
+<a href="#610" id="610" class="l">610: </a>    }
+<a href="#611" id="611" class="l">611: </a>}
+<a href="#612" id="612" class="l">612: </a></code></pre>
 
 	<div id="footer">
 		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
