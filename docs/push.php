@@ -96,7 +96,7 @@
                 <h4>React/ZMQ</h4>
 
                 <p>
-                    Ratchet is a Websocket library built on top of a socket library called <a href="http://reactphp.org" rel="external">React</a>. 
+                    Ratchet is a WebSocket library built on top of a socket library called <a href="http://reactphp.org" rel="external">React</a>. 
                     React handles connections and the raw I/O for Ratchet. 
                     In addition to React, which comes with Ratchet, we need another library that is part of the React suite: React/ZMQ.
                     This library will bind ZeroMQ sockets to the Reactor core enabling us to handle both WebSockets and ZeroMQ sockets. 
@@ -106,7 +106,7 @@
                 <pre class="prettprint json javascript">{
     "minimum-stability": "dev",
     "require": {
-        "cboden/Ratchet": "dev-master"
+        "cboden/Ratchet": "0.2.*"
       , "react/zmq": "dev-master"
     }
 }</pre>
@@ -181,7 +181,7 @@ class Pusher implements WampServerInterface {
 </pre>
                 <p>
                     After we logged your blog entry in the database we've opened a ZeroMQ connection to our socket server and delivered a serialized message with the same information.
-                    (note: please do proper sanatization, htmlspecialchars() is just a quick and dirty example)
+                    (note: please do proper sanatization, this is just a quick and dirty example)
                 </p>
             </section>
 
@@ -248,11 +248,13 @@ class Pusher implements WampServerInterface {
     $loop   = React\EventLoop\Factory::create();
     $pusher = new Pusher();
 
+    // Listen for the web server to make a ZeroMQ push after an ajax request
     $context = new React\ZMQ\Context($loop);
     $pull = $context->getSocket(ZMQ::SOCKET_PULL);
     $pull->bind('tcp://0.0.0.0:5555');
     $pull->on('message', array($pusher, 'onBlogEntry'));
 
+    // Set up our WebSocket server for clients wanting real-time updates
     $webSock = new React\Socket\Server($loop);
     $webSock->listen(80, '0.0.0.0');
     $webServer = new Ratchet\Server\IoServer(
@@ -271,6 +273,33 @@ class Pusher implements WampServerInterface {
 
             <pre># php push-server.php</pre>
 
+            </section>
+
+            <section>
+                <h3>Client side <small>Getting real-time updates</small></h3>
+
+                <p>Now that our server side code is complete as well as up and running it's time to get those real-time posts! What you do with those updates specifically is beyond the scope of this document, we're just going to put those messages into the debug console.</p>
+
+                <pre class="prettyprint javascript">&lt;script src="/scripts/when.js"&gt;&lt;/script&gt; //  You will have to download when.js
+&lt;script src="http://autobahn.s3.amazonaws.com/js/autobahn.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    var conn = new ab.Session(
+        'ws://sock.example.com' // The host (our Ratchet WebSocket server) to connect to
+      , function() {            // Once the connection has been established
+            sess.subscribe('kittensCategory', function(topic, data) {
+                // This is where you would add the new article to the DOM (beyond the scope of this tutorial)
+                console.log('New article published to category "' + topic + '": ' + data.title);
+            });
+        }
+      , function() {            // When the connection is closed
+            console.warn('WebSocket connection closed');
+        }
+      , {                       // Additional parameters, we're ignoring the WAMP sub-protocol for older browsers
+            'skipSubprotocolCheck': true
+        }
+    );
+&lt;/script&gt;
+</pre>
             </section>
         </div>
     </div>

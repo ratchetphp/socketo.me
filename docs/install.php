@@ -17,9 +17,8 @@
                 </p>
 
                 <pre class="prettprint">{
-    "minimum-stability": "dev",
     "require": {
-        "cboden/Ratchet": "dev-master"
+        "cboden/Ratchet": "0.2.*"
     }
 }</pre>
             </section>
