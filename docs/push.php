@@ -12,7 +12,7 @@
                 <h3>The Problem</h3>
 
                 <p>
-                    The previous tutorials were cool and all, but their focus was creating a long lived application where users intereacted with eachother. 
+                    The previous tutorials were cool and all, but their focus was creating a long lived application where users interacted with each other. 
                     That's a lot of work to incorporate into an already existing site.  
                     Code would need to be ported out of your repository and into a new Ratchet application. 
                     A whole new testing phase would need to happen to make sure previously functional pages still work.
@@ -21,8 +21,8 @@
                 <h3>Goal</h3>
 
                 <p>
-                    When a user, be it yourself in your admin or a user posting a comment on your blog, does a POST through a form submission or AJAX we want that change to immedietly be pushed to all other visitors on that page. 
-                    We'll add real time updates to your existing site without disrupting your code base or affecting its current stability.
+                    When a user, be it yourself in your admin or a user posting a comment on your blog, does a POST through a form submission or AJAX we want that change to immediately be pushed to all other visitors on that page. 
+                    We will add real-time updates to our site without disrupting your code base or affecting its current stability.
                 </p>
 
                 <p>For this tutorial we're going to pretend you're publishing a blog article on your website and the visitors will see the story pop up as soon as you publish it.</p>
@@ -32,7 +32,7 @@
                 <p>
                     Your blog is hosted on <em>example.com</em> with an internal IP address of <em>192.168.56.101</em>
                     and you have another server <em>sock.example.com</em> with an internal IP address of <em>192.168.56.102</em> that will run your Ratchet application. 
-                    With our servers on the same local network we can restrict access to non-public ports so they can communicate with eachother without having to authenticate.
+                    With our servers on the same local network we can restrict access to non-public ports so they can communicate with each other without having to authenticate.
                 </p>
             </section>
 
@@ -64,7 +64,7 @@
                     <li>
                         <img src="/assets/img/push-4.png" alt="Step 4">
                         <p>
-                            The WebSocket stack handles the ZMQ message and sends it to the appropriate clients through open WebSocket connections.
+                            The WebSocket stack handles the ZeroMQ message and sends it to the appropriate clients through open WebSocket connections.
                             The web browsers handle the incoming message and update the webpage with Javascript accordingly.
                         </p>
                     </li>
@@ -79,7 +79,7 @@
             <section>
                 <h3>Requirements</h3>
 
-                <h4>ZMQ/ZeroMQ/ØMQ</h4>
+                <h4>ZeroMQ</h4>
 
                 <p>
                     To communicate with a running script it needs to be listening on an open socket. 
@@ -181,17 +181,17 @@ class Pusher implements WampServerInterface {
 </pre>
                 <p>
                     After we logged your blog entry in the database we've opened a ZeroMQ connection to our socket server and delivered a serialized message with the same information.
-                    (note: please do proper sanatization, this is just a quick and dirty example)
+                    (note: please do proper sanitization, this is just a quick and dirty example)
                 </p>
             </section>
 
             <section>
-                <h3>Handlling ZMQ messages</h3>
+                <h3>Handling ZeroMQ messages</h3>
 
                 <p>
                     Let's go back to our application stub class. 
                     As we left it, it was only handling WebSocket connections. 
-                    We're going to add handling a ZMQ message as well as re-sending it to our WebSocket clients. 
+                    We're going to add handling a ZeroMQ message as well as re-sending it to our WebSocket clients. 
                 </p>
 
                 <pre class="prettyprint php">&lt;?php
@@ -205,7 +205,7 @@ class Pusher implements WampServerInterface {
     protected $subscribedTopics = array();
 
     public function onSubscribe(ConnectionInterface $conn, $topic) {
-        // When a visitor subscribes to a topic link the Topic object ina  lookup array
+        // When a visitor subscribes to a topic link the Topic object in a  lookup array
         if (!array_key_exists($topic->getId(), $this->subscribedTopics)) {
             $this->subscribedTopics[$topic->getId()] = $topic;
         }
@@ -224,7 +224,7 @@ class Pusher implements WampServerInterface {
 
         $topic = $this->subscribedTopics[$entryData['cat']];
 
-        // re-send the serailized json to all the clients subscribed to that category
+        // re-send the serialized json to all the clients subscribed to that category
         $topic->broadcast($entry);
     }
 
