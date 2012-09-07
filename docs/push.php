@@ -37,7 +37,7 @@
             </section>
 
             <section class="diagram">
-                <h3>Network Architecure</h3>
+                <h3>Network Architecture</h3>
 
                 <ol>
                     <li>
