@@ -391,15 +391,15 @@
 <a href="#200" id="200" class="l">200: </a>            <span class="php-keyword1">return</span> <span class="php-quote">''</span>;
 <a href="#201" id="201" class="l">201: </a>        }
 <a href="#202" id="202" class="l">202: </a>
-<a href="#203" id="203" class="l">203: </a>        <span class="php-var">$string</span> = <span class="php-quote">''</span>;
+<a href="#203" id="203" class="l">203: </a>        <span class="php-var">$result</span> = <span class="php-keyword1">array</span>();
 <a href="#204" id="204" class="l">204: </a>
 <a href="#205" id="205" class="l">205: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$requested</span> <span class="php-keyword1">as</span> <span class="php-var">$sub</span>) {
 <a href="#206" id="206" class="l">206: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;isSubProtocolSupported(<span class="php-var">$sub</span>)) {
-<a href="#207" id="207" class="l">207: </a>                <span class="php-var">$string</span> .= <span class="php-var">$sub</span> . <span class="php-quote">','</span>;
+<a href="#207" id="207" class="l">207: </a>                <span class="php-var">$result</span>[] = <span class="php-var">$sub</span>;
 <a href="#208" id="208" class="l">208: </a>            }
 <a href="#209" id="209" class="l">209: </a>        }
 <a href="#210" id="210" class="l">210: </a>
-<a href="#211" id="211" class="l">211: </a>        <span class="php-keyword1">return</span> <span class="php-keyword2">substr</span>(<span class="php-var">$string</span>, <span class="php-num">0</span>, -<span class="php-num">1</span>);
+<a href="#211" id="211" class="l">211: </a>        <span class="php-keyword1">return</span> <span class="php-keyword2">implode</span>(<span class="php-quote">','</span>, <span class="php-var">$result</span>);
 <a href="#212" id="212" class="l">212: </a>    }
 <a href="#213" id="213" class="l">213: </a>
 <a href="#214" id="214" class="l">214: </a>    <span class="php-comment">/**
