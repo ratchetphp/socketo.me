@@ -1,11 +1,20 @@
-<?php
-    $metaTitle = 'Component: FlashPolicy | "yes" to IE';
-    $metaDesc  = 'The FlashPolicy component will allow non-native WebSocket browsers to connect to your application';
+{% extends "layout.html.twig" %}
 
-    require dirname(__DIR__) . '/header.php';
-    require __DIR__ . '/menu.php';
-?>
-        <div class="span9 component-doc">
+{% import "macros.html.twig" as m %}
+
+{% block title %}Component: FlashPolicy | "yes" to IE{% endblock %}
+
+{% block description %}
+  The FlashPolicy component will allow non-native WebSocket browsers to connect to your application
+{% endblock %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="row-fluid">
+
+    {{ m.menu() }}
+
+      <div class="span9 component-doc">
             <h2>FlashPolicy</h2>
 
             <section>
@@ -16,7 +25,7 @@
                 <p>In your HTML include the JavaScript library <a href="https://github.com/gimite/web-socket-js">web-socket-js</a>, which is a client-side polyfill for the WebSocket API.</p>
 
                 <p>
-                    In order for Flash to communicate with a server through sockets, it must first gain permission via an XML response on the 843 port. 
+                    In order for Flash to communicate with a server through sockets, it must first gain permission via an XML response on the 843 port.
                     Flash will make this request automatically before it connects to your WebSocket application server.
                 </p>
 
@@ -63,5 +72,4 @@ use Ratchet\Server\IoServer;
             </section>
         </div>
     </div>
-<?php
-    require dirname(__DIR__) . '/footer.php';
+{% endblock %}

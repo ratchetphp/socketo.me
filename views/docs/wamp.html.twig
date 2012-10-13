@@ -1,27 +1,36 @@
-<?php
-    $metaTitle = 'The WAMP sub-protocol';
-    $metaDesc  = 'WAMP (WebSocket Application Messaging Protocol) is an official WebSocket sub-protocol giving developers access Pub/Sub and RPC patterns over WebSockets';
+{% extends "layout.html.twig" %}
 
-    require dirname(__DIR__) . '/header.php';
-    require __DIR__ . '/menu.php';
-?>
-        <div class="span9 component-doc">
+{% import "macros.html.twig" as m %}
+
+{% block title %}The WAMP sub-protocol{% endblock %}
+
+{% block description %}
+  WAMP (WebSocket Application Messaging Protocol) is an official WebSocket sub-protocol giving developers access Pub/Sub and RPC patterns over WebSockets
+{% endblock %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="row-fluid">
+
+    {{ m.menu() }}
+
+      <div class="span9 component-doc">
             <h2><abbr title="WebSocket Application Messaging Protocol">Wamp</abbr>Server <small>(Pub/Sub & RPC)</small></h2>
 
             <section>
                 <h3>Purpose <small>of this <em>Component</em></small></h3>
 
                 <p>
-                    The <a rel="external" href="http://wamp.ws/spec"><?php wamp(); ?></a> (WebSocket Application Messaging Protocol) specification
-                    gives developers (that's you!) a more structured and easy way for your client (JavaScript) and server (Ratchet-PHP) to interact. 
-                    <?php wamp(); ?> provides the <abbr title="Remote Procedure Call">RPC</abbr> and <abbr title="Publish and Subscribe">PubSub</abbr> patterns. 
-                    <?php wamp(); ?> specifies <abbr="Uniform Resource Identifier">URI</abbr>s for endpoint handles and <abbr title="JavaScript Object Notation">JSON</abbr> for payload transmissions. 
-                    It is recommended taking a quick read over the <a rel="external" href="http://wamp.ws/spec"><?php wamp(); ?> Specification</a> to get an understanding of how and why to use it. 
+                    The <a rel="external" href="http://wamp.ws/spec">{{ m.wamp() }}</a> (WebSocket Application Messaging Protocol) specification
+                    gives developers (that's you!) a more structured and easy way for your client (JavaScript) and server (Ratchet-PHP) to interact.
+                    {{ m.wamp() }} provides the <abbr title="Remote Procedure Call">RPC</abbr> and <abbr title="Publish and Subscribe">PubSub</abbr> patterns.
+                    {{ m.wamp() }} specifies <abbr="Uniform Resource Identifier">URI</abbr>s for endpoint handles and <abbr title="JavaScript Object Notation">JSON</abbr> for payload transmissions.
+                    It is recommended taking a quick read over the <a rel="external" href="http://wamp.ws/spec">{{ m.wamp() }} Specification</a> to get an understanding of how and why to use it.
                 </p>
 
                 <p>
-                    If you choose to build your application on the <?php wamp(); ?> spec (highly recommended) you will need a JavaScript library to implement the client side. 
-                    <a rel="external" href="http://autobahn.ws/js">AutobahnJS</a> is a client to interact with <?php wamp(); ?> servers and is highly recommended to use with Ratchet. 
+                    If you choose to build your application on the {{ m.wamp() }} spec (highly recommended) you will need a JavaScript library to implement the client side.
+                    <a rel="external" href="http://autobahn.ws/js">AutobahnJS</a> is a client to interact with {{ m.wamp() }} servers and is highly recommended to use with Ratchet.
                     Using AutobahnJS has a requirement of a deferred library.  They recommend using <a rel="external" href="https://github.com/cujojs/when">when</a> or <a rel="external" href="http://api.jquery.com/category/deferred-object/">jQuery's deferred library</a>.
                     The programming reference for AutobahnJS can be found on <a rel="external" href="http://autobahn.ws/js/reference">Autobahn website</a>.
                 </p>
@@ -33,9 +42,9 @@
                 <h3>Topics</h3>
 
                 <p>
-                    The WampServer componenet provides a new class that is passed to your application: the <a href="/api/class-Ratchet.Wamp.Topic.html">Topic</a> class. 
-                    This is a container that stores all of the <em>Connection</em>s who have subscribed to that topic. 
-                    It also features some useful methods such as <em>broadcast</em> to send a message to every one of its subscribers. 
+                    The WampServer componenet provides a new class that is passed to your application: the <a href="/api/class-Ratchet.Wamp.Topic.html">Topic</a> class.
+                    This is a container that stores all of the <em>Connection</em>s who have subscribed to that topic.
+                    It also features some useful methods such as <em>broadcast</em> to send a message to every one of its subscribers.
                 </p>
 
                 <p>When calling <em>Connection</em> methods that require "string $topic" you can pass the <em>Topic</em> class or it's id. </p>
@@ -73,9 +82,9 @@
                     <li><span class="label label-info">callResult</span> (string <em>$id</em>, array <em>$data</em>) - A response to a client <em>Call</em>. Make sure to pass the corresponding <em>$id</em> from the <em>onCall</em> event</li>
                     <li><span class="label label-info">callError</span> (string <em>$id</em>, string <em>$topic</em>, string <em>$desc</em> = '', string <em>$details</em> = null) - A response to the client after making a <em>Call</em> informing of an error processing the <em>Call</em>. Make sure to pass the corresponding <em>$id</em> from the <em>onCall</em> event</li>
                     <li><span class="label label-warning">close</span> - Gracefully close the connection to the client</span>
-<?php /*
+{#
                     <li><span class="label label-info">prefix</span> (string <em>$curie</em>, string <em>$uri</em>) - Agree with the client to shorten a URI into a CURIE (ex. "http://socketo.me" -> "sock") (<em>Note:</em> This feature is marked for deprecated, it is not recommended to use)</li>
-*/ ?>
+#}
                 </ul>
             </section>
 
@@ -86,8 +95,8 @@
                     <dt>WAMP</dt>
                     <dd>(string <em>$sessionId</em>) - A unique ID given to the client</dd>
                     <dd>(array <em>$subscriptions</em>) - A collection of Topics the client has subscribed to</dd>
-<?php /*                    <dd>(array <em>$prefixes</em>) - An associative array of CURIE/URI prefixes (aliases) agreed upon by client/server. You can not add entries to this directly, it has to be done on the client or through a Connection object</dd>
-*/ ?>
+{#                    <dd>(array <em>$prefixes</em>) - An associative array of CURIE/URI prefixes (aliases) agreed upon by client/server. You can not add entries to this directly, it has to be done on the client or through a Connection object</dd>
+#}
                 </dl>
             </section>
 
@@ -156,5 +165,4 @@ class BasicPubSub implements Ratchet\Wamp\WampServerInterface {
             </section>
         </div>
     </div>
-<?php
-    require dirname(__DIR__) . '/footer.php';
+{% endblock %}

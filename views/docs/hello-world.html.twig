@@ -1,20 +1,28 @@
-<?php
-    $metaTitle = 'Tutorial: Your first app';
-    $metaDesc  = 'Learn to write a live chat room with Ratchet';
+{% extends "layout.html.twig" %}
 
-    require dirname(__DIR__) . '/header.php';
-    require __DIR__ . '/menu.php';
-?>
+{% import "macros.html.twig" as m %}
 
-        <div class="span9">
+{% block title %}Tutorial: Your first app{% endblock %}
+
+{% block description %}
+  Learn to write a live chat room with Ratchet
+{% endblock %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="row-fluid">
+
+    {{ m.menu() }}
+
+      <div class="span9">
             <h2>Creating <em>Your</em> First Application</h2>
 
             <section>
                 <h3>Goal</h3>
 
                 <p>
-                    The goal of this application is to write a simple Chat application. 
-                    Chats in event-driven programming are the "Hello World!" of applications. 
+                    The goal of this application is to write a simple Chat application.
+                    Chats in event-driven programming are the "Hello World!" of applications.
                     The chat will accept all incoming messages and deliver that message to all other connections.
                 </p>
             </section>
@@ -25,7 +33,7 @@
                 <p><strong>Note:</strong> This document assumes you are familiar with PSR-0 and have loaded Composer's autoload file as well as registered <em>MyApp</em> which is the namespace where we will put our demo class.  See <a href="/docs/install">Installation</a> if you're not yet familiar with this.</p>
 
                 <p>
-                    We'll start off by creating the class.  
+                    We'll start off by creating the class.
                     This basic application will listen for 4 events:
 
                     <ul>
@@ -59,7 +67,7 @@ class Chat implements MessageComponentInterface {
             <p>
                 You'll notice, in addition from just implementing methods from the <em>MessageComponentInterface</em>, we've given our application a namespace and are accepting the <a href="/api/class-Ratchet.ConnectionInterface.html">ConnectionInterface</a> classes.
                 This class, usually implemented by a <a href="/api/class-Ratchet.Server.IoConnection.html">Connection</a> instance, is a representation of a client's connection on the other side of the socket.
-                On each of the four triggered events, the client <em>Connection</em> representation is passed. 
+                On each of the four triggered events, the client <em>Connection</em> representation is passed.
                 These objects are re-used, you will receive the same <em>Connection</em> sometimes.
             </p>
 
@@ -70,9 +78,9 @@ class Chat implements MessageComponentInterface {
             <h3>Instantiation</h3>
 
             <p>
-                Our <em>Chat</em> class will be our application logic. 
-                Next, we're going to piece together our binary script. 
-                This is the script/file we will call from the command line to launch our application. 
+                Our <em>Chat</em> class will be our application logic.
+                Next, we're going to piece together our binary script.
+                This is the script/file we will call from the command line to launch our application.
             </p>
 
         <pre class="prettyprint">&lt;?php
@@ -87,15 +95,15 @@ use MyApp\Chat;
     $server->run();</pre>
 
             <p>
-                Above, you'll see we create an I/O (Input/Output) server. 
-                This will handle direct communication with the client. 
+                Above, you'll see we create an I/O (Input/Output) server.
+                This will handle direct communication with the client.
                 It does things such as store all the connections, mediate data sent between each client and our <em>Chat</em> application, and catch errors.
-                We then take that I/O Server and wrap it around our a new instance of our <em>Chat</em> class. 
+                We then take that I/O Server and wrap it around our a new instance of our <em>Chat</em> class.
                 Finally, we tell the server to enter an event loop, listening for any incoming requests on port 8000.
             </p>
 
             <p>
-                Save this script as <em>chat-server.php</em>. 
+                Save this script as <em>chat-server.php</em>.
                 Now, we can run it with the following command in your terminal:
             </p>
 
@@ -111,9 +119,9 @@ use MyApp\Chat;
 
             <p>
                 Let's add some logic to our <em>Chat</em> class.  We'll incorporate the logic in our methods and use some <em>Command</em> classes to do this:
-                What we're going to do, is track all incoming <em>Connections</em>, in order to send them messages. 
-                Typically, you would store a collection of items in an array, but we're going to use something called <a rel="external" href="http://ca2.php.net/manual/en/class.splobjectstorage.php">SplObjectStorage</a>. 
-                These storage containers are built to store objects, which is what the incoming <em>Connections</em> are. 
+                What we're going to do, is track all incoming <em>Connections</em>, in order to send them messages.
+                Typically, you would store a collection of items in an array, but we're going to use something called <a rel="external" href="http://ca2.php.net/manual/en/class.splobjectstorage.php">SplObjectStorage</a>.
+                These storage containers are built to store objects, which is what the incoming <em>Connections</em> are.
             </p>
 
             <pre class="prettyprint">&lt;?php
@@ -172,7 +180,7 @@ class Chat implements MessageComponentInterface {
 
             <p>
                 Now that we have a basic working Chat application, let's make that work in a web browser (Chrome, FireFox, or Safari [for now]).
-                First, let's go back to our <em>chat-server.php</em> script. 
+                First, let's go back to our <em>chat-server.php</em> script.
                 We're going to utilize another component of Ratchet; the <em>WsServer</em> class:
             </p>
 
@@ -210,6 +218,4 @@ use MyApp\Chat;
 
         </div><!--/span-->
       </div><!--/row-->
-
-<?php
-    require dirname(__DIR__) . '/footer.php';
+{% endblock %}

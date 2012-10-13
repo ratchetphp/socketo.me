@@ -1,19 +1,28 @@
-<?php
-    $metaTitle = 'Component: WsServer | WebSocket Protocol';
-    $metaDesc  = 'The WsServer component allows your application to speak the WebSocket protocol to clients';
+{% extends "layout.html.twig" %}
 
-    require dirname(__DIR__) . '/header.php';
-    require __DIR__ . '/menu.php';
-?>
-        <div class="span9 component-doc">
+{% import "macros.html.twig" as m %}
+
+{% block title %}Component: WsServer | WebSocket Protocol{% endblock %}
+
+{% block description %}
+  The WsServer component allows your application to speak the WebSocket protocol to clients
+{% endblock %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="row-fluid">
+
+    {{ m.menu() }}
+
+      <div class="span9 component-doc">
             <h2>WsServer <small>(WebSocket server)</small></h2>
 
             <section>
                 <h3>Purpose <small>of this <em>Component</em></small></h3>
 
                 <p>
-                    This component (when used with IoServer) allows your server to communicate with web browsers that use the <a rel="external" href="http://dev.w3.org/html5/websockets/">W3C WebSocket API</a>. 
-                    It is compatible with each of the different WebSocket protocol versions browsers use: RFC6455, HyBi, and Hixie76. 
+                    This component (when used with IoServer) allows your server to communicate with web browsers that use the <a rel="external" href="http://dev.w3.org/html5/websockets/">W3C WebSocket API</a>.
+                    It is compatible with each of the different WebSocket protocol versions browsers use: RFC6455, HyBi, and Hixie76.
                     Ratchet <a href="/reports/ab/" target="_blank">passes</a> all (non-binary) WebSocket protocol tests from the <a href="http://autobahn.ws/testsuite" rel="external">Autobahn Testsuite</a>.
                 </p>
             </section>
@@ -28,9 +37,9 @@
                     <li><span class="label label-warning">onClose</span> (ConnectionInterface <em>$conn</em>) - A client connection is about to, or has closed</li>
                     <li><span class="label label-info">onMessage</span> (ConnectionInterface <em>$from</em>, string <em>$message</em>) - A data message has been received</li>
                     <li><span class="label label-important">onError</span> (ConnectionInterface <em>$from</em>, Exception <em>$error</em>) - An error has occurred with a <em>Connection</em></li>
-<?php /*
+{#
                     <li><span class="label label-inverse">onFile</span> (ConnectionInterface <em>$from</em>, object <em>$file</em>) - NOT IMPLEMENTED YET.  When coded, will be when a binary file is transferred to the server</li>
-*/ ?>
+#}
                 </ul>
             </section>
 
@@ -50,13 +59,13 @@
                     <li><span class="label label-info">send</span> (string <em>$message</em>) - Send a message (string) to the client</li>
                     <li><span class="label label-warning">close</span> - Gracefully close the connection to the client</span>
                 </ul>
-<?php /*
+{#
                 <ul>
                     <li><span class="label label-warning">Disconnect</span> - Notify the client of an intent to close the connection. All data currently being transferred will finish before the connection closes</li>
                     <li><span class="label">Pong</span> - Part of the WebSocket protocol, typically not needed by your application
                     <li><span class="label">Ping</span> - Part of the WebSocket protocol, typically not needed by your application
                 </ul>
-*/ ?>
+#}
             </section>
 
             <section>
@@ -65,9 +74,9 @@
                 <dl>
                     <dt>WebSocket</dt>
                     <dd>(Guzzle\Http\Message\RequestInterface <em>$headers</em>) - A Guzzle Request object containing all the information from the initial HTTP connection</dd>
-<?php /*
+{#
                     <dd>(Ratchet\WebSocket\Version\VersionInterface <em>$version</em>) - Not used by your application, but stores information/data about the WebSocket version the client is connected with. The object is a re-entrant, re-used on other connections, so don't mess with it  :)</dd>
-*/ ?>
+#}
                 </ul>
             </section>
 
@@ -108,5 +117,4 @@ use Ratchet\Server\IoServer;
             </section>
         </div>
     </div>
-<?php
-    require dirname(__DIR__) . '/footer.php';
+{% endblock %}

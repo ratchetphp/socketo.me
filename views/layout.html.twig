@@ -1,3 +1,80 @@
+{%- import "macros.html.twig" as m -%}
+
+<!DOCTYPE html>
+<html lang="en"{% block htmlAttributes %}{% endblock %}>
+  <head>
+    <meta charset="utf-8">
+    <title>Ratchet - {% block title %}WebSockets for PHP{% endblock %}</title>
+    <meta name="description"{% block descriptionAttributes %}{% endblock %} content="{% block description %}PHP WebSocket development{% endblock %}">
+    <meta name="author"{% block authorAttributes %}{% endblock %} content="Chris Boden">
+
+    {% block metaTags %}
+    {% endblock %}
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/site.css" rel="stylesheet">
+    <link href="/chat/chat.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+    <script>
+        if (typeof MozWebSocket == 'function') {
+            window.WebSocket = MozWebSocket;
+        }
+    </script>
+
+    {% if '127.0.0.1' != app.request.clientIp %}
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-16850356-4']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    {% endif %}
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">Ratchet</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                {{ app.menu.render('main') }}
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+{% block body %}
+{% endblock %}
+
     <a href="https://github.com/cboden/Ratchet"><img style="position: absolute; top: 0; left: 0; border: 0; z-index: 10000" src="https://a248.e.akamai.net/camo.github.com/6429057dfef9e98189338d22e7f6646c6694f032/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
 
     <script src="/assets/js/jquery.js"></script>
@@ -15,28 +92,15 @@
     <script src="/assets/js/bootstrap-carousel.js"></script>
     <script src="/assets/js/bootstrap-typeahead.js"></script>
     <script src="/assets/js/google-code-prettify/prettify.js"></script>
-    
+
     <script>
         $(function() {
             prettyPrint();
         });
     </script>
 
-    <?php if (strstr($sr->getPathInfo(), '/demo')): ?>
-        <script src="/assets/js/jquery.timeago.js"></script>
-        <script src="/vendor/gimite/web-socket-js/swfobject.js"></script>
-        <script src="/vendor/gimite/web-socket-js/web_socket.js"></script>
-
-        <script>
-            // Set URL of your WebSocketMain.swf here:
-            WEB_SOCKET_SWF_LOCATION = "/vendor/gimite/web-socket-js/WebSocketMain.swf";
-        </script>
-
-        <script src="/vendor/cujojs/when/when.js"></script>
-        <script src="/vendor/tavendo/AutobahnJS/autobahn/autobahn.js"></script>
-        <script src="/chat/transport.js"></script>
-        <script src="/chat/chat.js"></script>
-    <?php endif; ?>
+    {% block scripts %}
+    {% endblock %}
 
     <footer id="banner" class="well">
         <div id="banner-logos">
@@ -44,7 +108,7 @@
 
             <div id="wamp-tm" class="pull-left">
                 <a class="pull-left" href="http://wamp.ws/"><img src="/assets/img/wamp_logo.png"></a>
-                <br /><span class="pull-left legal">&quot;<?php wamp(); ?>&quot; and the WAMP logo are trademarks of Tavendo GmbH.</span>
+                <br /><span class="pull-left legal">&quot;{{ m.wamp() }}&quot; and the WAMP logo are trademarks of Tavendo GmbH.</span>
             </div>
         </div>
 

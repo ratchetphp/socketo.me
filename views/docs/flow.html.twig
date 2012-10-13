@@ -1,23 +1,32 @@
-<?php
-    $metaTitle = "A WebSocket's Lifecycle on your Website";
-    $metaDesc  = 'Long running, open ended connections work differently than Apache/Nginx CGI you may be used to';
+{% extends "layout.html.twig" %}
 
-    require dirname(__DIR__) . '/header.php';
-    require __DIR__ . '/menu.php';
-?>
-        <div class="span9">
+{% import "macros.html.twig" as m %}
+
+{% block title %}A WebSocket's Lifecycle on your Website{% endblock %}
+
+{% block description %}
+  Long running, open ended connections work differently than Apache/Nginx CGI you may be used to
+{% endblock %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="row-fluid">
+
+    {{ m.menu() }}
+
+    <div class="span9">
             <h2>Process Flow<small> - Not your usual PHP script</small></h2>
 
             <section>
                 <p>
-                    If you've been working with PHP for any length of time you're probably used to writing short lived scripts. 
-                    Each web page loaded on the client's side will, on the server side, launch a new PHP script, loads resources (such as a database connection), execute your code, close the resources and send the output (HTML) back to the client, and close the connection. 
-                    This is the tried and true nature of the HTTP protocol over the past several decades. 
+                    If you've been working with PHP for any length of time you're probably used to writing short lived scripts.
+                    Each web page loaded on the client's side will, on the server side, launch a new PHP script, loads resources (such as a database connection), execute your code, close the resources and send the output (HTML) back to the client, and close the connection.
+                    This is the tried and true nature of the HTTP protocol over the past several decades.
                 </p>
 
                 <p>
-                    WebSockets and as a result using PHP in Ratchet is a little different. 
-                    Only one script is executed and connections remain open. 
+                    WebSockets and as a result using PHP in Ratchet is a little different.
+                    Only one script is executed and connections remain open.
                     You may need to do things a little differently; you can't use any global variables as the context of the running process is not confined to a single connection.
                 </p>
             </section>
@@ -36,5 +45,4 @@
             </section>
         </div>
     </div>
-<?php
-    require dirname(__DIR__) . '/footer.php';
+{% endblock %}

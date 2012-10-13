@@ -1,11 +1,20 @@
-<?php
-    $metaTitle = 'Component: Sessions | Symfony love';
-    $metaDesc  = "Access session data from your website by wrapping Symfony2 HttpFoundation's Session tools";
+{% extends "layout.html.twig" %}
 
-    require dirname(__DIR__) . '/header.php';
-    require __DIR__ . '/menu.php';
-?>
-        <div class="span9 component-doc">
+{% import "macros.html.twig" as m %}
+
+{% block title %}Component: Sessions | Symfony love{% endblock %}
+
+{% block description %}
+  Access session data from your website by wrapping Symfony2 HttpFoundation's Session tools
+{% endblock %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="row-fluid">
+
+    {{ m.menu() }}
+
+      <div class="span9 component-doc">
             <h2>SessionProvider</h2>
 
             <section>
@@ -24,7 +33,7 @@
                 </ul>
 
                 <p>
-                    In order to access your session data in Ratchet, you must also use the same Symfony Session Handler on you website. 
+                    In order to access your session data in Ratchet, you must also use the same Symfony Session Handler on you website.
                     Below is a network diagram of how the various connections interact to access data:
                 </p>
 
@@ -115,5 +124,4 @@ use Symfony\Component\HttpFoundation\Session\Storage\Handler;
             </section>
         </div>
     </div>
-<?php
-    require dirname(__DIR__) . '/footer.php';
+{% endblock %}

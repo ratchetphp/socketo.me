@@ -1,19 +1,28 @@
-<?php
-    $metaTitle = 'Handling Client Connections';
-    $metaDesc  = 'Learn how to handle multiple client connections in one running instance';
+{% extends "layout.html.twig" %}
 
-    require dirname(__DIR__) . '/header.php';
-    require __DIR__ . '/menu.php';
-?>
-        <div class="span9">
+{% import "macros.html.twig" as m %}
+
+{% block title %}Handling Client Connections{% endblock %}
+
+{% block description %}
+  Learn how to handle multiple client connections in one running instance
+{% endblock %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="row-fluid">
+
+    {{ m.menu() }}
+
+      <div class="span9">
             <section>
                 <h2>Connections</h2>
 
                 <p>
-                    A <em>Connection</em> is a PHP object that represents a client connected to your server. 
-                    The object has properties that contain information about the client. 
-                    The more Component classes the <em>Connection</em> is passed through, the more properties will be attached to it. 
-                    For example, you may or may not use the <a href="/docs/sessions">SessionProvider</a> in your application stack. 
+                    A <em>Connection</em> is a PHP object that represents a client connected to your server.
+                    The object has properties that contain information about the client.
+                    The more Component classes the <em>Connection</em> is passed through, the more properties will be attached to it.
+                    For example, you may or may not use the <a href="/docs/sessions">SessionProvider</a> in your application stack.
                     If you choose to use it, each connection will have a <a rel="external" href="http://symfony.com/doc/master/components/http_foundation/sessions.html">Symfony2 Session</a> class attached to it you can access like this:
                 </p>
 
@@ -31,12 +40,12 @@
                 <h3>Connection Functions/Methods</h3>
 
                 <p>
-                    From the <a href="/api/class-Ratchet.ConnectionInterface.html">ConnectionInterface</a> you can see each Connection will contain a <code>send</code> and <code>close</code> method. 
+                    From the <a href="/api/class-Ratchet.ConnectionInterface.html">ConnectionInterface</a> you can see each Connection will contain a <code>send</code> and <code>close</code> method.
                     These two methods will send a string to the client or close the connection, respectively.
                 </p>
 
                 <p>
-                    However, depending on the <em>Components</em> you use in your application there could be more methods available to call on <em>Connections</em> 
+                    However, depending on the <em>Components</em> you use in your application there could be more methods available to call on <em>Connections</em>
                     This information is documented under each <em>Component</em>, accessible from the left menu bar.
                 </p>
             </section>
@@ -45,9 +54,9 @@
                 <h3>Containers</h3>
 
                 <p>
-                    Even though <em>Connection</em> objects are passed to your application on every event trigger, it's usually a good idea to store your connections in a container, to reference later. 
-                    The purpose of this is to interact, or push, to a <em>Connection</em> even though that <em>Connection</em> may not have triggered an event. 
-                    We suggest using a <a rel="external" href="http://ca2.php.net/manual/en/class.splobjectstorage.php">SplObjectStorage</a> to keep your connections; however, a standard array will do. 
+                    Even though <em>Connection</em> objects are passed to your application on every event trigger, it's usually a good idea to store your connections in a container, to reference later.
+                    The purpose of this is to interact, or push, to a <em>Connection</em> even though that <em>Connection</em> may not have triggered an event.
+                    We suggest using a <a rel="external" href="http://ca2.php.net/manual/en/class.splobjectstorage.php">SplObjectStorage</a> to keep your connections; however, a standard array will do.
                     SplObjectStorage classes are often easier to work with when dealing with objects, as there is no lookup required:
                 </p>
 
@@ -72,5 +81,4 @@ class MyApp {
             </section>
         </div>
     </div>
-<?php
-    require dirname(__DIR__) . '/footer.php';
+{% endblock %}
