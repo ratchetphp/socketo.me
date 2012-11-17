@@ -5,8 +5,5 @@ build:
 	cp -r vendor/gimite/web-socket-js web/vendor/web-socket-js
 	cp -r vendor/tavendo/autobahnjs web/vendor/autobahnjs
 
-	rm -rf web/api web/reports
-	cp -r api reports web
-
 .PHONY: build
 
