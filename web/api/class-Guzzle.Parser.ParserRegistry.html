@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Parser\ParserRegistry | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?4060521299"></script>
+	<script type="text/javascript" src="elementlist.js?2133861467"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,30 +27,16 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
-				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
-						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Validation.html">Validation</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Http.html">Http<span></span></a>
 						<ul>
-				<li><a href="namespace-Guzzle.Http.CookieJar.html">CookieJar</a>
-						</li>
 				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
-						</li>
-				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
 						</li>
 							</ul></li>
 				<li class="active"><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -63,7 +49,10 @@
 						</li>
 				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
-							</ul></li></ul></li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
 						</li>
 				<li><a href="namespace-Ratchet.html">Ratchet<span></span></a>
@@ -211,28 +200,101 @@
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="get" id="_get">
+	<tr data-order="getInstance" id="_getInstance">
 
 		<td class="attributes"><code>
 			 public static
+			self
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getInstance">#</a>
+		<code><a href="source-class-Guzzle.Parser.ParserRegistry.html#30" title="Go to source code">getInstance</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get a singleton instance</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get a singleton instance</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>self</code><br />
+				</div>
+
+
+				<h4>CodeCoverageIgnore</h4>
+				<div class="list">
+				</div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Guzzle.Parser.ParserRegistry.html#45" title="Go to source code">__construct</a>( )</code>
+
+		<div class="description short">
+			
+<p>Constructor used to apply the most performant parsers based on loaded
+extensions</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Constructor used to apply the most performant parsers based on loaded
+extensions</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getParser" id="_getParser">
+
+		<td class="attributes"><code>
+			 public 
 			mixed|null
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_get">#</a>
-		<code><a href="source-class-Guzzle.Parser.ParserRegistry.html#25" title="Go to source code">get</a>( <span>string <var>$name</var></span> )</code>
+		<a class="anchor" href="#_getParser">#</a>
+		<code><a href="source-class-Guzzle.Parser.ParserRegistry.html#56" title="Go to source code">getParser</a>( <span>string <var>$name</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Get a specific parser by handle name</p>
+<p>Get a parser by name from an instance</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Get a specific parser by handle name</p>
+<p>Get a parser by name from an instance</p>
 
 
 
@@ -244,7 +306,7 @@
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>mixed|null</code><br>Returns null if the parser is not found or cannot be instantiated<br />
+					<code>mixed|null</code><br />
 				</div>
 
 
@@ -252,18 +314,18 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="set" id="_set">
+	<tr data-order="registerParser" id="_registerParser">
 
 		<td class="attributes"><code>
-			 public static
+			 public 
 			
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_set">#</a>
-		<code><a href="source-class-Guzzle.Parser.ParserRegistry.html#45" title="Go to source code">set</a>( <span>string <var>$name</var></span>, <span>mixed <var>$parser</var></span> )</code>
+		<a class="anchor" href="#_registerParser">#</a>
+		<code><a href="source-class-Guzzle.Parser.ParserRegistry.html#76" title="Go to source code">registerParser</a>( <span>string <var>$name</var></span>, <span>mixed <var>$parser</var></span> )</code>
 
 		<div class="description short">
 			
@@ -301,15 +363,43 @@
 
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
-	<tr data-order="instances" id="$instances">
+	<tr data-order="instance" id="$instance">
 
 		<td class="attributes"><code>
 			protected static
+			<code><a href="class-Guzzle.Parser.ParserRegistry.html">Guzzle\Parser\ParserRegistry</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Parser.ParserRegistry.html#10" title="Go to source code"><var>$instance</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$instance" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Singleton instance</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Singleton instance</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="instances" id="$instances">
+
+		<td class="attributes"><code>
+			protected 
 			array
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Parser.ParserRegistry.html#10" title="Go to source code"><var>$instances</var></a>
+				<a href="source-class-Guzzle.Parser.ParserRegistry.html#15" title="Go to source code"><var>$instances</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
@@ -332,12 +422,12 @@
 	<tr data-order="mapping" id="$mapping">
 
 		<td class="attributes"><code>
-			protected static
+			protected 
 			array
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Parser.ParserRegistry.html#15" title="Go to source code"><var>$mapping</var></a>
+				<a href="source-class-Guzzle.Parser.ParserRegistry.html#20" title="Go to source code"><var>$mapping</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>(
     <span class="php-quote">'message'</span>      =&gt; <span class="php-quote">'Guzzle\\Parser\\Message\\MessageParser'</span>,

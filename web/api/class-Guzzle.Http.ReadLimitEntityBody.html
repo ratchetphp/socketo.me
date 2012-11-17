@@ -7,7 +7,7 @@
 	<title>Class Guzzle\Http\ReadLimitEntityBody | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?4060521299"></script>
+	<script type="text/javascript" src="elementlist.js?2133861467"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,30 +27,16 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
-				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
-						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Validation.html">Validation</a>
 						</li>
 							</ul></li>
 				<li class="active"><a href="namespace-Guzzle.Http.html">Http<span></span></a>
 						<ul>
-				<li><a href="namespace-Guzzle.Http.CookieJar.html">CookieJar</a>
-						</li>
 				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
-						</li>
-				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -63,7 +49,10 @@
 						</li>
 				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
-							</ul></li></ul></li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
 						</li>
 				<li><a href="namespace-Ratchet.html">Ratchet<span></span></a>
@@ -140,12 +129,11 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html">AbstractEntityBodyDecorator</a></li>
-				<li><a href="class-Guzzle.Http.BatchRequestTransfer.html">BatchRequestTransfer</a></li>
 				<li><a href="class-Guzzle.Http.Client.html">Client</a></li>
-				<li><a href="class-Guzzle.Http.Cookie.html">Cookie</a></li>
 				<li><a href="class-Guzzle.Http.EntityBody.html">EntityBody</a></li>
 				<li><a href="class-Guzzle.Http.QueryString.html">QueryString</a></li>
 				<li class="active"><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Url.html">Url</a></li>
 				<li><a href="class-Guzzle.Http.Utils.html">Utils</a></li>
 			</ul>
@@ -154,7 +142,6 @@
 			<ul>
 				<li><a href="class-Guzzle.Http.ClientInterface.html">ClientInterface</a></li>
 				<li><a href="class-Guzzle.Http.EntityBodyInterface.html">EntityBodyInterface</a></li>
-				<li><a href="class-Guzzle.Http.HttpException.html">HttpException</a></li>
 			</ul>
 
 
@@ -252,7 +239,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#20" title="Go to source code">__construct</a>( <span><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var></span>, <span>integer <var>$limit</var></span>, <span> <var>$offset</var> = <span class="php-num">0</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#20" title="Go to source code">__construct</a>( <span><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var></span>, <span>integer <var>$limit</var></span>, <span>integer <var>$offset</var> = <span class="php-num">0</span></span> )</code>
 
 		<div class="description short">
 			
@@ -265,11 +252,11 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$body</var></dt>
-					<dd><code>integer</code><br>$limit Total number of bytes to allow to be read from the stream</dd>
+					<dd><code><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br> Body to wrap</dd>
 					<dt><var>$limit</var></dt>
-					<dd><code>integer</code><br>$offset Position to seek to before reading (only works on seekable streams)</dd>
+					<dd><code>integer</code><br> Total number of bytes to allow to be read from the stream</dd>
 					<dt><var>$offset</var></dt>
-					<dd></dd>
+					<dd><code>integer</code><br> Position to seek to before reading (only works on seekable streams)</dd>
 				</dl></div>
 
 
@@ -289,14 +276,13 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#31" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#32" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
 <p>Returns only a subset of the decorated entity body when cast as a string
 Convert the stream to a string if the stream is readable and the stream is
-seekable. This logic is enforced to ensure that outputting the stream as a
-string does not affect an actual cURL request using non-repeatable streams.</p>
+seekable.</p>
 
 		</div>
 
@@ -304,8 +290,7 @@ string does not affect an actual cURL request using non-repeatable streams.</p>
 			
 <p>Returns only a subset of the decorated entity body when cast as a string
 Convert the stream to a string if the stream is readable and the stream is
-seekable. This logic is enforced to ensure that outputting the stream as a
-string does not affect an actual cURL request using non-repeatable streams.</p>
+seekable.</p>
 
 
 
@@ -318,7 +303,7 @@ string does not affect an actual cURL request using non-repeatable streams.</p>
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.StreamInterface.html#___toString">Guzzle\Common\StreamInterface::__toString</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#___toString">Guzzle\Stream\StreamInterface::__toString</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -333,7 +318,7 @@ string does not affect an actual cURL request using non-repeatable streams.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isConsumed">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#40" title="Go to source code">isConsumed</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#41" title="Go to source code">isConsumed</a>( )</code>
 
 		<div class="description short">
 			
@@ -356,7 +341,7 @@ string does not affect an actual cURL request using non-repeatable streams.</p>
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.StreamInterface.html#_isConsumed">Guzzle\Common\StreamInterface::isConsumed</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_isConsumed">Guzzle\Stream\StreamInterface::isConsumed</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -371,7 +356,7 @@ string does not affect an actual cURL request using non-repeatable streams.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentLength">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#48" title="Go to source code">getContentLength</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#49" title="Go to source code">getContentLength</a>( )</code>
 
 		<div class="description short">
 			
@@ -400,53 +385,6 @@ Content-Length of the entity body if possible (alias of getSize)</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getContentMd5" id="_getContentMd5">
-
-		<td class="attributes"><code>
-			 public 
-			boolean|string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getContentMd5">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#61" title="Go to source code">getContentMd5</a>( <span>boolean <var>$rawOutput</var> = <span class="php-keyword1">false</span></span>, <span>boolean <var>$base64Encode</var> = <span class="php-keyword1">false</span></span> )</code>
-
-		<div class="description short">
-			
-<p>Returns the Content-MD5 of the limited subset of data Get an MD5 checksum of
-the stream's contents</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Returns the Content-MD5 of the limited subset of data Get an MD5 checksum of
-the stream's contents</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$rawOutput</var></dt>
-					<dd><code>boolean</code><br> Whether or not to use raw output</dd>
-					<dt><var>$base64Encode</var></dt>
-					<dd><code>boolean</code><br> Whether or not to base64 encode raw output (only if raw output is true)</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>boolean|string</code><br>Returns an MD5 string on success or FALSE on failure<br />
-				</div>
-
-
-
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentMd5">Guzzle\Http\EntityBodyInterface::getContentMd5</a></code></div>
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="seek" id="_seek">
 
 		<td class="attributes"><code>
@@ -458,7 +396,7 @@ the stream's contents</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_seek">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#70" title="Go to source code">seek</a>( <span>integer <var>$offset</var></span>, <span>integer <var>$whence</var> = SEEK_SET</span> )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#62" title="Go to source code">seek</a>( <span>integer <var>$offset</var></span>, <span>integer <var>$whence</var> = SEEK_SET</span> )</code>
 
 		<div class="description short">
 			
@@ -490,7 +428,7 @@ in the stream</p>
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.StreamInterface.html#_seek">Guzzle\Common\StreamInterface::seek</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_seek">Guzzle\Stream\StreamInterface::seek</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -505,7 +443,7 @@ in the stream</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setOffset">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#81" title="Go to source code">setOffset</a>( <span>integer <var>$offset</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#73" title="Go to source code">setOffset</a>( <span>integer <var>$offset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -546,7 +484,7 @@ in the stream</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setLimit">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#96" title="Go to source code">setLimit</a>( <span>integer <var>$limit</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#88" title="Go to source code">setLimit</a>( <span>integer <var>$limit</var></span> )</code>
 
 		<div class="description short">
 			
@@ -589,7 +527,7 @@ stream</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_read">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#110" title="Go to source code">read</a>( <span>integer <var>$length</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#102" title="Go to source code">read</a>( <span>integer <var>$length</var></span> )</code>
 
 		<div class="description short">
 			
@@ -617,7 +555,7 @@ stream</p>
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Common.StreamInterface.html#_read">Guzzle\Common\StreamInterface::read</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_read">Guzzle\Stream\StreamInterface::read</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -631,6 +569,7 @@ stream</p>
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_compress">compress()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_ftell">ftell()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getContentEncoding">getContentEncoding()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getContentMd5">getContentMd5()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getContentType">getContentType()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getMetaData">getMetaData()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getSize">getSize()</a>, 
@@ -643,7 +582,10 @@ stream</p>
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_isReadable">isReadable()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_isSeekable">isSeekable()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_isWritable">isWritable()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_rewind">rewind()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_setRewindFunction">setRewindFunction()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_setSize">setSize()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_setStream">setStream()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_uncompress">uncompress()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_write">write()</a>
 		</code></td>

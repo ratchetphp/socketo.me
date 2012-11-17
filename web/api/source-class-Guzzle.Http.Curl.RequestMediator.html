@@ -8,7 +8,7 @@
 	<title>File http/Guzzle/Http/Curl/RequestMediator.php | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?4060521299"></script>
+	<script type="text/javascript" src="elementlist.js?2133861467"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -28,30 +28,16 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
-				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
-						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Validation.html">Validation</a>
 						</li>
 							</ul></li>
 				<li class="active"><a href="namespace-Guzzle.Http.html">Http<span></span></a>
 						<ul>
-				<li><a href="namespace-Guzzle.Http.CookieJar.html">CookieJar</a>
-						</li>
 				<li class="active"><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
-						</li>
-				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -64,7 +50,10 @@
 						</li>
 				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
-							</ul></li></ul></li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
 						</li>
 				<li><a href="namespace-Ratchet.html">Ratchet<span></span></a>
@@ -235,90 +224,91 @@
 <a href="#43" id="43" class="l"> 43: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> setCurlHandle(CurlHandle <span class="php-var">$handle</span>)
 <a href="#44" id="44" class="l"> 44: </a>    {
 <a href="#45" id="45" class="l"> 45: </a>        <span class="php-var">$this</span>-&gt;curlHandle = <span class="php-var">$handle</span>;
-<a href="#46" id="46" class="l"> 46: </a>
-<a href="#47" id="47" class="l"> 47: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
-<a href="#48" id="48" class="l"> 48: </a>    }
-<a href="#49" id="49" class="l"> 49: </a>
-<a href="#50" id="50" class="l"> 50: </a>    <span class="php-comment">/**
-</span><a href="#51" id="51" class="l"> 51: </a><span class="php-comment">     * Receive a response header from curl
-</span><a href="#52" id="52" class="l"> 52: </a><span class="php-comment">     *
-</span><a href="#53" id="53" class="l"> 53: </a><span class="php-comment">     * @param resource $curl   Curl handle
-</span><a href="#54" id="54" class="l"> 54: </a><span class="php-comment">     * @param string   $header Received header
-</span><a href="#55" id="55" class="l"> 55: </a><span class="php-comment">     *
-</span><a href="#56" id="56" class="l"> 56: </a><span class="php-comment">     * @return int
-</span><a href="#57" id="57" class="l"> 57: </a><span class="php-comment">     */</span>
-<a href="#58" id="58" class="l"> 58: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> receiveResponseHeader(<span class="php-var">$curl</span>, <span class="php-var">$header</span>)
-<a href="#59" id="59" class="l"> 59: </a>    {
-<a href="#60" id="60" class="l"> 60: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;request-&gt;receiveResponseHeader(<span class="php-var">$header</span>);
-<a href="#61" id="61" class="l"> 61: </a>    }
-<a href="#62" id="62" class="l"> 62: </a>
-<a href="#63" id="63" class="l"> 63: </a>    <span class="php-comment">/**
-</span><a href="#64" id="64" class="l"> 64: </a><span class="php-comment">     * Received a progress notification
-</span><a href="#65" id="65" class="l"> 65: </a><span class="php-comment">     *
-</span><a href="#66" id="66" class="l"> 66: </a><span class="php-comment">     * @param int $downloadSize Total download size
-</span><a href="#67" id="67" class="l"> 67: </a><span class="php-comment">     * @param int $downloaded   Amount of bytes downloaded
-</span><a href="#68" id="68" class="l"> 68: </a><span class="php-comment">     * @param int $uploadSize   Total upload size
-</span><a href="#69" id="69" class="l"> 69: </a><span class="php-comment">     * @param int $uploaded     Amount of bytes uploaded
-</span><a href="#70" id="70" class="l"> 70: </a><span class="php-comment">     */</span>
-<a href="#71" id="71" class="l"> 71: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> progress(<span class="php-var">$downloadSize</span>, <span class="php-var">$downloaded</span>, <span class="php-var">$uploadSize</span>, <span class="php-var">$uploaded</span>)
-<a href="#72" id="72" class="l"> 72: </a>    {
-<a href="#73" id="73" class="l"> 73: </a>        <span class="php-var">$this</span>-&gt;request-&gt;dispatch(<span class="php-quote">'curl.callback.progress'</span>, <span class="php-keyword1">array</span>(
-<a href="#74" id="74" class="l"> 74: </a>            <span class="php-quote">'request'</span>       =&gt; <span class="php-var">$this</span>-&gt;request,
-<a href="#75" id="75" class="l"> 75: </a>            <span class="php-quote">'handle'</span>        =&gt; <span class="php-var">$this</span>-&gt;curlHandle,
-<a href="#76" id="76" class="l"> 76: </a>            <span class="php-quote">'download_size'</span> =&gt; <span class="php-var">$downloadSize</span>,
-<a href="#77" id="77" class="l"> 77: </a>            <span class="php-quote">'downloaded'</span>    =&gt; <span class="php-var">$downloaded</span>,
-<a href="#78" id="78" class="l"> 78: </a>            <span class="php-quote">'upload_size'</span>   =&gt; <span class="php-var">$uploadSize</span>,
-<a href="#79" id="79" class="l"> 79: </a>            <span class="php-quote">'uploaded'</span>      =&gt; <span class="php-var">$uploaded</span>
-<a href="#80" id="80" class="l"> 80: </a>        ));
-<a href="#81" id="81" class="l"> 81: </a>    }
-<a href="#82" id="82" class="l"> 82: </a>
-<a href="#83" id="83" class="l"> 83: </a>    <span class="php-comment">/**
-</span><a href="#84" id="84" class="l"> 84: </a><span class="php-comment">     * Write data to the response body of a request
-</span><a href="#85" id="85" class="l"> 85: </a><span class="php-comment">     *
-</span><a href="#86" id="86" class="l"> 86: </a><span class="php-comment">     * @param resource $curl  Curl handle
-</span><a href="#87" id="87" class="l"> 87: </a><span class="php-comment">     * @param string   $write Data that was received
-</span><a href="#88" id="88" class="l"> 88: </a><span class="php-comment">     *
-</span><a href="#89" id="89" class="l"> 89: </a><span class="php-comment">     * @return int
-</span><a href="#90" id="90" class="l"> 90: </a><span class="php-comment">     */</span>
-<a href="#91" id="91" class="l"> 91: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> writeResponseBody(<span class="php-var">$curl</span>, <span class="php-var">$write</span>)
-<a href="#92" id="92" class="l"> 92: </a>    {
-<a href="#93" id="93" class="l"> 93: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;emitIo) {
-<a href="#94" id="94" class="l"> 94: </a>            <span class="php-var">$this</span>-&gt;request-&gt;dispatch(<span class="php-quote">'curl.callback.write'</span>, <span class="php-keyword1">array</span>(
-<a href="#95" id="95" class="l"> 95: </a>                <span class="php-quote">'request'</span> =&gt; <span class="php-var">$this</span>-&gt;request,
-<a href="#96" id="96" class="l"> 96: </a>                <span class="php-quote">'write'</span>   =&gt; <span class="php-var">$write</span>
-<a href="#97" id="97" class="l"> 97: </a>            ));
-<a href="#98" id="98" class="l"> 98: </a>        }
-<a href="#99" id="99" class="l"> 99: </a>
-<a href="#100" id="100" class="l">100: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;request-&gt;getResponse()-&gt;getBody()-&gt;write(<span class="php-var">$write</span>);
-<a href="#101" id="101" class="l">101: </a>    }
-<a href="#102" id="102" class="l">102: </a>
-<a href="#103" id="103" class="l">103: </a>    <span class="php-comment">/**
-</span><a href="#104" id="104" class="l">104: </a><span class="php-comment">     * Read data from the request body and send it to curl
-</span><a href="#105" id="105" class="l">105: </a><span class="php-comment">     *
-</span><a href="#106" id="106" class="l">106: </a><span class="php-comment">     * @param resource $ch     Curl handle
-</span><a href="#107" id="107" class="l">107: </a><span class="php-comment">     * @param resource $fd     File descriptor
-</span><a href="#108" id="108" class="l">108: </a><span class="php-comment">     * @param int      $length Amount of data to read
-</span><a href="#109" id="109" class="l">109: </a><span class="php-comment">     *
-</span><a href="#110" id="110" class="l">110: </a><span class="php-comment">     * @return string
-</span><a href="#111" id="111" class="l">111: </a><span class="php-comment">     */</span>
-<a href="#112" id="112" class="l">112: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> readRequestBody(<span class="php-var">$ch</span>, <span class="php-var">$fd</span>, <span class="php-var">$length</span>)
-<a href="#113" id="113" class="l">113: </a>    {
-<a href="#114" id="114" class="l">114: </a>        <span class="php-var">$read</span> = <span class="php-quote">''</span>;
-<a href="#115" id="115" class="l">115: </a>
-<a href="#116" id="116" class="l">116: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;request-&gt;getBody()) {
-<a href="#117" id="117" class="l">117: </a>            <span class="php-var">$read</span> = <span class="php-var">$this</span>-&gt;request-&gt;getBody()-&gt;read(<span class="php-var">$length</span>);
-<a href="#118" id="118" class="l">118: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;emitIo) {
-<a href="#119" id="119" class="l">119: </a>                <span class="php-var">$this</span>-&gt;request-&gt;dispatch(<span class="php-quote">'curl.callback.read'</span>, <span class="php-keyword1">array</span>(
-<a href="#120" id="120" class="l">120: </a>                    <span class="php-quote">'request'</span> =&gt; <span class="php-var">$this</span>-&gt;request,
-<a href="#121" id="121" class="l">121: </a>                    <span class="php-quote">'read'</span>    =&gt; <span class="php-var">$read</span>
-<a href="#122" id="122" class="l">122: </a>                ));
-<a href="#123" id="123" class="l">123: </a>            }
-<a href="#124" id="124" class="l">124: </a>        }
-<a href="#125" id="125" class="l">125: </a>
-<a href="#126" id="126" class="l">126: </a>        <span class="php-keyword1">return</span> !<span class="php-var">$read</span> ? <span class="php-quote">''</span> : <span class="php-var">$read</span>;
-<a href="#127" id="127" class="l">127: </a>    }
-<a href="#128" id="128" class="l">128: </a>}
-<a href="#129" id="129" class="l">129: </a></code></pre>
+<a href="#46" id="46" class="l"> 46: </a>        <span class="php-var">$this</span>-&gt;request-&gt;getParams()-&gt;set(<span class="php-quote">'curl_handle'</span>, <span class="php-var">$handle</span>);
+<a href="#47" id="47" class="l"> 47: </a>
+<a href="#48" id="48" class="l"> 48: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
+<a href="#49" id="49" class="l"> 49: </a>    }
+<a href="#50" id="50" class="l"> 50: </a>
+<a href="#51" id="51" class="l"> 51: </a>    <span class="php-comment">/**
+</span><a href="#52" id="52" class="l"> 52: </a><span class="php-comment">     * Receive a response header from curl
+</span><a href="#53" id="53" class="l"> 53: </a><span class="php-comment">     *
+</span><a href="#54" id="54" class="l"> 54: </a><span class="php-comment">     * @param resource $curl   Curl handle
+</span><a href="#55" id="55" class="l"> 55: </a><span class="php-comment">     * @param string   $header Received header
+</span><a href="#56" id="56" class="l"> 56: </a><span class="php-comment">     *
+</span><a href="#57" id="57" class="l"> 57: </a><span class="php-comment">     * @return int
+</span><a href="#58" id="58" class="l"> 58: </a><span class="php-comment">     */</span>
+<a href="#59" id="59" class="l"> 59: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> receiveResponseHeader(<span class="php-var">$curl</span>, <span class="php-var">$header</span>)
+<a href="#60" id="60" class="l"> 60: </a>    {
+<a href="#61" id="61" class="l"> 61: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;request-&gt;receiveResponseHeader(<span class="php-var">$header</span>);
+<a href="#62" id="62" class="l"> 62: </a>    }
+<a href="#63" id="63" class="l"> 63: </a>
+<a href="#64" id="64" class="l"> 64: </a>    <span class="php-comment">/**
+</span><a href="#65" id="65" class="l"> 65: </a><span class="php-comment">     * Received a progress notification
+</span><a href="#66" id="66" class="l"> 66: </a><span class="php-comment">     *
+</span><a href="#67" id="67" class="l"> 67: </a><span class="php-comment">     * @param int $downloadSize Total download size
+</span><a href="#68" id="68" class="l"> 68: </a><span class="php-comment">     * @param int $downloaded   Amount of bytes downloaded
+</span><a href="#69" id="69" class="l"> 69: </a><span class="php-comment">     * @param int $uploadSize   Total upload size
+</span><a href="#70" id="70" class="l"> 70: </a><span class="php-comment">     * @param int $uploaded     Amount of bytes uploaded
+</span><a href="#71" id="71" class="l"> 71: </a><span class="php-comment">     */</span>
+<a href="#72" id="72" class="l"> 72: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> progress(<span class="php-var">$downloadSize</span>, <span class="php-var">$downloaded</span>, <span class="php-var">$uploadSize</span>, <span class="php-var">$uploaded</span>)
+<a href="#73" id="73" class="l"> 73: </a>    {
+<a href="#74" id="74" class="l"> 74: </a>        <span class="php-var">$this</span>-&gt;request-&gt;dispatch(<span class="php-quote">'curl.callback.progress'</span>, <span class="php-keyword1">array</span>(
+<a href="#75" id="75" class="l"> 75: </a>            <span class="php-quote">'request'</span>       =&gt; <span class="php-var">$this</span>-&gt;request,
+<a href="#76" id="76" class="l"> 76: </a>            <span class="php-quote">'handle'</span>        =&gt; <span class="php-var">$this</span>-&gt;curlHandle,
+<a href="#77" id="77" class="l"> 77: </a>            <span class="php-quote">'download_size'</span> =&gt; <span class="php-var">$downloadSize</span>,
+<a href="#78" id="78" class="l"> 78: </a>            <span class="php-quote">'downloaded'</span>    =&gt; <span class="php-var">$downloaded</span>,
+<a href="#79" id="79" class="l"> 79: </a>            <span class="php-quote">'upload_size'</span>   =&gt; <span class="php-var">$uploadSize</span>,
+<a href="#80" id="80" class="l"> 80: </a>            <span class="php-quote">'uploaded'</span>      =&gt; <span class="php-var">$uploaded</span>
+<a href="#81" id="81" class="l"> 81: </a>        ));
+<a href="#82" id="82" class="l"> 82: </a>    }
+<a href="#83" id="83" class="l"> 83: </a>
+<a href="#84" id="84" class="l"> 84: </a>    <span class="php-comment">/**
+</span><a href="#85" id="85" class="l"> 85: </a><span class="php-comment">     * Write data to the response body of a request
+</span><a href="#86" id="86" class="l"> 86: </a><span class="php-comment">     *
+</span><a href="#87" id="87" class="l"> 87: </a><span class="php-comment">     * @param resource $curl  Curl handle
+</span><a href="#88" id="88" class="l"> 88: </a><span class="php-comment">     * @param string   $write Data that was received
+</span><a href="#89" id="89" class="l"> 89: </a><span class="php-comment">     *
+</span><a href="#90" id="90" class="l"> 90: </a><span class="php-comment">     * @return int
+</span><a href="#91" id="91" class="l"> 91: </a><span class="php-comment">     */</span>
+<a href="#92" id="92" class="l"> 92: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> writeResponseBody(<span class="php-var">$curl</span>, <span class="php-var">$write</span>)
+<a href="#93" id="93" class="l"> 93: </a>    {
+<a href="#94" id="94" class="l"> 94: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;emitIo) {
+<a href="#95" id="95" class="l"> 95: </a>            <span class="php-var">$this</span>-&gt;request-&gt;dispatch(<span class="php-quote">'curl.callback.write'</span>, <span class="php-keyword1">array</span>(
+<a href="#96" id="96" class="l"> 96: </a>                <span class="php-quote">'request'</span> =&gt; <span class="php-var">$this</span>-&gt;request,
+<a href="#97" id="97" class="l"> 97: </a>                <span class="php-quote">'write'</span>   =&gt; <span class="php-var">$write</span>
+<a href="#98" id="98" class="l"> 98: </a>            ));
+<a href="#99" id="99" class="l"> 99: </a>        }
+<a href="#100" id="100" class="l">100: </a>
+<a href="#101" id="101" class="l">101: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;request-&gt;getResponse()-&gt;getBody()-&gt;write(<span class="php-var">$write</span>);
+<a href="#102" id="102" class="l">102: </a>    }
+<a href="#103" id="103" class="l">103: </a>
+<a href="#104" id="104" class="l">104: </a>    <span class="php-comment">/**
+</span><a href="#105" id="105" class="l">105: </a><span class="php-comment">     * Read data from the request body and send it to curl
+</span><a href="#106" id="106" class="l">106: </a><span class="php-comment">     *
+</span><a href="#107" id="107" class="l">107: </a><span class="php-comment">     * @param resource $ch     Curl handle
+</span><a href="#108" id="108" class="l">108: </a><span class="php-comment">     * @param resource $fd     File descriptor
+</span><a href="#109" id="109" class="l">109: </a><span class="php-comment">     * @param int      $length Amount of data to read
+</span><a href="#110" id="110" class="l">110: </a><span class="php-comment">     *
+</span><a href="#111" id="111" class="l">111: </a><span class="php-comment">     * @return string
+</span><a href="#112" id="112" class="l">112: </a><span class="php-comment">     */</span>
+<a href="#113" id="113" class="l">113: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> readRequestBody(<span class="php-var">$ch</span>, <span class="php-var">$fd</span>, <span class="php-var">$length</span>)
+<a href="#114" id="114" class="l">114: </a>    {
+<a href="#115" id="115" class="l">115: </a>        <span class="php-var">$read</span> = <span class="php-quote">''</span>;
+<a href="#116" id="116" class="l">116: </a>
+<a href="#117" id="117" class="l">117: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;request-&gt;getBody()) {
+<a href="#118" id="118" class="l">118: </a>            <span class="php-var">$read</span> = <span class="php-var">$this</span>-&gt;request-&gt;getBody()-&gt;read(<span class="php-var">$length</span>);
+<a href="#119" id="119" class="l">119: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;emitIo) {
+<a href="#120" id="120" class="l">120: </a>                <span class="php-var">$this</span>-&gt;request-&gt;dispatch(<span class="php-quote">'curl.callback.read'</span>, <span class="php-keyword1">array</span>(
+<a href="#121" id="121" class="l">121: </a>                    <span class="php-quote">'request'</span> =&gt; <span class="php-var">$this</span>-&gt;request,
+<a href="#122" id="122" class="l">122: </a>                    <span class="php-quote">'read'</span>    =&gt; <span class="php-var">$read</span>
+<a href="#123" id="123" class="l">123: </a>                ));
+<a href="#124" id="124" class="l">124: </a>            }
+<a href="#125" id="125" class="l">125: </a>        }
+<a href="#126" id="126" class="l">126: </a>
+<a href="#127" id="127" class="l">127: </a>        <span class="php-keyword1">return</span> !<span class="php-var">$read</span> ? <span class="php-quote">''</span> : <span class="php-var">$read</span>;
+<a href="#128" id="128" class="l">128: </a>    }
+<a href="#129" id="129" class="l">129: </a>}
+<a href="#130" id="130" class="l">130: </a></code></pre>
 
 	<div id="footer">
 		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>

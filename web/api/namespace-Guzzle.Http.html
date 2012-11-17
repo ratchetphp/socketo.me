@@ -7,7 +7,7 @@
 	<title>Namespace Guzzle\Http | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?4060521299"></script>
+	<script type="text/javascript" src="elementlist.js?2133861467"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,30 +27,16 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
-				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
-						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Validation.html">Validation</a>
 						</li>
 							</ul></li>
 				<li class="active"><a href="namespace-Guzzle.Http.html">Http<span></span></a>
 						<ul>
-				<li><a href="namespace-Guzzle.Http.CookieJar.html">CookieJar</a>
-						</li>
 				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
-						</li>
-				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -63,7 +49,10 @@
 						</li>
 				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
-							</ul></li></ul></li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
 						</li>
 				<li><a href="namespace-Ratchet.html">Ratchet<span></span></a>
@@ -140,12 +129,11 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html">AbstractEntityBodyDecorator</a></li>
-				<li><a href="class-Guzzle.Http.BatchRequestTransfer.html">BatchRequestTransfer</a></li>
 				<li><a href="class-Guzzle.Http.Client.html">Client</a></li>
-				<li><a href="class-Guzzle.Http.Cookie.html">Cookie</a></li>
 				<li><a href="class-Guzzle.Http.EntityBody.html">EntityBody</a></li>
 				<li><a href="class-Guzzle.Http.QueryString.html">QueryString</a></li>
 				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Url.html">Url</a></li>
 				<li><a href="class-Guzzle.Http.Utils.html">Utils</a></li>
 			</ul>
@@ -154,7 +142,6 @@
 			<ul>
 				<li><a href="class-Guzzle.Http.ClientInterface.html">ClientInterface</a></li>
 				<li><a href="class-Guzzle.Http.EntityBodyInterface.html">EntityBodyInterface</a></li>
-				<li><a href="class-Guzzle.Http.HttpException.html">HttpException</a></li>
 			</ul>
 
 
@@ -200,9 +187,6 @@
 	<table class="summary" id="namespaces">
 	<caption>Namespaces summary</caption>
 	<tr>
-		<td class="name"><a href="namespace-Guzzle.Http.CookieJar.html">Guzzle\Http\CookieJar</a></td>
-	</tr>
-	<tr>
 		<td class="name"><a href="namespace-Guzzle.Http.Curl.html">Guzzle\Http\Curl</a></td>
 	</tr>
 	<tr>
@@ -210,9 +194,6 @@
 	</tr>
 	<tr>
 		<td class="name"><a href="namespace-Guzzle.Http.Message.html">Guzzle\Http\Message</a></td>
-	</tr>
-	<tr>
-		<td class="name"><a href="namespace-Guzzle.Http.Plugin.html">Guzzle\Http\Plugin</a></td>
 	</tr>
 	</table>
 
@@ -224,17 +205,8 @@
 	<td>Abstract decorator used to wrap entity bodies</td>
 </tr>
 <tr>
-	<td class="name"><a href="class-Guzzle.Http.BatchRequestTransfer.html">BatchRequestTransfer</a></td>
-	<td>Batch transfer strategy used to efficiently transfer a batch of requests. This
-class is to be used with <code><a href="class-Guzzle.Common.Batch.BatchInterface.html">Guzzle\Common\Batch\BatchInterface</a></code></td>
-</tr>
-<tr>
 	<td class="name"><a href="class-Guzzle.Http.Client.html">Client</a></td>
 	<td>HTTP client</td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Guzzle.Http.Cookie.html">Cookie</a></td>
-	<td>Set-Cookie object</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-Guzzle.Http.EntityBody.html">EntityBody</a></td>
@@ -248,6 +220,11 @@ those parameters together as a string.</td>
 <tr>
 	<td class="name"><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></td>
 	<td>EntityBody decorator used to return only a subset of an entity body</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></td>
+	<td>Plugin to implement HTTP redirects. Can redirect like a web browser or using
+strict RFC 2616 compliance</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-Guzzle.Http.Url.html">Url</a></td>
@@ -269,10 +246,6 @@ are not validated.</td>
 <tr>
 	<td class="name"><a href="class-Guzzle.Http.EntityBodyInterface.html">EntityBodyInterface</a></td>
 	<td>Entity body used with an HTTP request or response</td>
-</tr>
-<tr>
-	<td class="name"><a href="class-Guzzle.Http.HttpException.html">HttpException</a></td>
-	<td>Http exception interface</td>
 </tr>
 </table>
 

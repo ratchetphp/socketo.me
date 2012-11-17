@@ -8,7 +8,7 @@
 	<title>File http/Guzzle/Http/Message/RequestInterface.php | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?4060521299"></script>
+	<script type="text/javascript" src="elementlist.js?2133861467"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -28,30 +28,16 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
-				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
-						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Validation.html">Validation</a>
 						</li>
 							</ul></li>
 				<li class="active"><a href="namespace-Guzzle.Http.html">Http<span></span></a>
 						<ul>
-				<li><a href="namespace-Guzzle.Http.CookieJar.html">CookieJar</a>
-						</li>
 				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message</a>
-						</li>
-				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -64,7 +50,10 @@
 						</li>
 				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
-							</ul></li></ul></li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
 						</li>
 				<li><a href="namespace-Ratchet.html">Ratchet<span></span></a>
@@ -256,8 +245,8 @@
 <a href="#56" id="56" class="l"> 56: </a>    <span class="php-comment">/**
 </span><a href="#57" id="57" class="l"> 57: </a><span class="php-comment">     * Set the URL of the request
 </span><a href="#58" id="58" class="l"> 58: </a><span class="php-comment">     *
-</span><a href="#59" id="59" class="l"> 59: </a><span class="php-comment">     * Warning: Calling this method will modify headers, rewrite the  query
-</span><a href="#60" id="60" class="l"> 60: </a><span class="php-comment">     * string object, and set other data associated with the request.
+</span><a href="#59" id="59" class="l"> 59: </a><span class="php-comment">     * Warning: Calling this method will modify headers, rewrite the  query string object, and set other data
+</span><a href="#60" id="60" class="l"> 60: </a><span class="php-comment">     * associated with the request.
 </span><a href="#61" id="61" class="l"> 61: </a><span class="php-comment">     *
 </span><a href="#62" id="62" class="l"> 62: </a><span class="php-comment">     * @param string $url|Url Full URL to set including query string
 </span><a href="#63" id="63" class="l"> 63: </a><span class="php-comment">     *
@@ -458,82 +447,79 @@
 <a href="#258" id="258" class="l">258: </a>    <span class="php-comment">/**
 </span><a href="#259" id="259" class="l">259: </a><span class="php-comment">     * Set the EntityBody that will hold the response message's entity body.
 </span><a href="#260" id="260" class="l">260: </a><span class="php-comment">     *
-</span><a href="#261" id="261" class="l">261: </a><span class="php-comment">     * This method should be invoked when you need to send the response's
-</span><a href="#262" id="262" class="l">262: </a><span class="php-comment">     * entity body somewhere other than the normal php://temp buffer.  For
-</span><a href="#263" id="263" class="l">263: </a><span class="php-comment">     * example, you can send the entity body to a socket, file, or some other
-</span><a href="#264" id="264" class="l">264: </a><span class="php-comment">     * custom stream.
+</span><a href="#261" id="261" class="l">261: </a><span class="php-comment">     * This method should be invoked when you need to send the response's entity body somewhere other than the normal
+</span><a href="#262" id="262" class="l">262: </a><span class="php-comment">     * php://temp buffer. For example, you can send the entity body to a socket, file, or some other custom stream.
+</span><a href="#263" id="263" class="l">263: </a><span class="php-comment">     *
+</span><a href="#264" id="264" class="l">264: </a><span class="php-comment">     * @param EntityBodyInterface $body Response body object
 </span><a href="#265" id="265" class="l">265: </a><span class="php-comment">     *
-</span><a href="#266" id="266" class="l">266: </a><span class="php-comment">     * @param EntityBodyInterface $body Response body object
-</span><a href="#267" id="267" class="l">267: </a><span class="php-comment">     *
-</span><a href="#268" id="268" class="l">268: </a><span class="php-comment">     * @return Request
-</span><a href="#269" id="269" class="l">269: </a><span class="php-comment">     */</span>
-<a href="#270" id="270" class="l">270: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> setResponseBody(EntityBodyInterface <span class="php-var">$body</span>);
-<a href="#271" id="271" class="l">271: </a>
-<a href="#272" id="272" class="l">272: </a>    <span class="php-comment">/**
-</span><a href="#273" id="273" class="l">273: </a><span class="php-comment">     * Determine if the response body is repeatable (readable + seekable)
-</span><a href="#274" id="274" class="l">274: </a><span class="php-comment">     *
-</span><a href="#275" id="275" class="l">275: </a><span class="php-comment">     * @return bool
-</span><a href="#276" id="276" class="l">276: </a><span class="php-comment">     */</span>
-<a href="#277" id="277" class="l">277: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> isResponseBodyRepeatable();
-<a href="#278" id="278" class="l">278: </a>
-<a href="#279" id="279" class="l">279: </a>    <span class="php-comment">/**
-</span><a href="#280" id="280" class="l">280: </a><span class="php-comment">     * Manually set a response for the request.
-</span><a href="#281" id="281" class="l">281: </a><span class="php-comment">     *
-</span><a href="#282" id="282" class="l">282: </a><span class="php-comment">     * This method is useful for specifying a mock response for the request or
-</span><a href="#283" id="283" class="l">283: </a><span class="php-comment">     * setting the response using a cache.  Manually setting a response will
-</span><a href="#284" id="284" class="l">284: </a><span class="php-comment">     * bypass the actual sending of a request.
-</span><a href="#285" id="285" class="l">285: </a><span class="php-comment">     *
-</span><a href="#286" id="286" class="l">286: </a><span class="php-comment">     * @param Response $response Response object to set
-</span><a href="#287" id="287" class="l">287: </a><span class="php-comment">     * @param bool     $queued   Set to TRUE to keep the request in a stat of not having been sent, but queue the
-</span><a href="#288" id="288" class="l">288: </a><span class="php-comment">     *                           response for send()
-</span><a href="#289" id="289" class="l">289: </a><span class="php-comment">     *
-</span><a href="#290" id="290" class="l">290: </a><span class="php-comment">     * @return RequestInterface Returns a reference to the object.
-</span><a href="#291" id="291" class="l">291: </a><span class="php-comment">     */</span>
-<a href="#292" id="292" class="l">292: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> setResponse(Response <span class="php-var">$response</span>, <span class="php-var">$queued</span> = <span class="php-keyword1">false</span>);
-<a href="#293" id="293" class="l">293: </a>
-<a href="#294" id="294" class="l">294: </a>    <span class="php-comment">/**
-</span><a href="#295" id="295" class="l">295: </a><span class="php-comment">     * Get an array of Cookies
-</span><a href="#296" id="296" class="l">296: </a><span class="php-comment">     *
-</span><a href="#297" id="297" class="l">297: </a><span class="php-comment">     * @return array
-</span><a href="#298" id="298" class="l">298: </a><span class="php-comment">     */</span>
-<a href="#299" id="299" class="l">299: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> getCookies();
-<a href="#300" id="300" class="l">300: </a>
-<a href="#301" id="301" class="l">301: </a>    <span class="php-comment">/**
-</span><a href="#302" id="302" class="l">302: </a><span class="php-comment">     * Get a cookie value by name
-</span><a href="#303" id="303" class="l">303: </a><span class="php-comment">     *
-</span><a href="#304" id="304" class="l">304: </a><span class="php-comment">     * @param string $name Cookie to retrieve
-</span><a href="#305" id="305" class="l">305: </a><span class="php-comment">     *
-</span><a href="#306" id="306" class="l">306: </a><span class="php-comment">     * @return null|string
-</span><a href="#307" id="307" class="l">307: </a><span class="php-comment">     */</span>
-<a href="#308" id="308" class="l">308: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> getCookie(<span class="php-var">$name</span>);
-<a href="#309" id="309" class="l">309: </a>
-<a href="#310" id="310" class="l">310: </a>    <span class="php-comment">/**
-</span><a href="#311" id="311" class="l">311: </a><span class="php-comment">     * Add a Cookie value by name to the Cookie header
+</span><a href="#266" id="266" class="l">266: </a><span class="php-comment">     * @return Request
+</span><a href="#267" id="267" class="l">267: </a><span class="php-comment">     */</span>
+<a href="#268" id="268" class="l">268: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> setResponseBody(EntityBodyInterface <span class="php-var">$body</span>);
+<a href="#269" id="269" class="l">269: </a>
+<a href="#270" id="270" class="l">270: </a>    <span class="php-comment">/**
+</span><a href="#271" id="271" class="l">271: </a><span class="php-comment">     * Determine if the response body is repeatable (readable + seekable)
+</span><a href="#272" id="272" class="l">272: </a><span class="php-comment">     *
+</span><a href="#273" id="273" class="l">273: </a><span class="php-comment">     * @return bool
+</span><a href="#274" id="274" class="l">274: </a><span class="php-comment">     */</span>
+<a href="#275" id="275" class="l">275: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> isResponseBodyRepeatable();
+<a href="#276" id="276" class="l">276: </a>
+<a href="#277" id="277" class="l">277: </a>    <span class="php-comment">/**
+</span><a href="#278" id="278" class="l">278: </a><span class="php-comment">     * Manually set a response for the request.
+</span><a href="#279" id="279" class="l">279: </a><span class="php-comment">     *
+</span><a href="#280" id="280" class="l">280: </a><span class="php-comment">     * This method is useful for specifying a mock response for the request or setting the response using a cache.
+</span><a href="#281" id="281" class="l">281: </a><span class="php-comment">     * Manually setting a response will bypass the actual sending of a request.
+</span><a href="#282" id="282" class="l">282: </a><span class="php-comment">     *
+</span><a href="#283" id="283" class="l">283: </a><span class="php-comment">     * @param Response $response Response object to set
+</span><a href="#284" id="284" class="l">284: </a><span class="php-comment">     * @param bool     $queued   Set to TRUE to keep the request in a state of not having been sent, but queue the
+</span><a href="#285" id="285" class="l">285: </a><span class="php-comment">     *                           response for send()
+</span><a href="#286" id="286" class="l">286: </a><span class="php-comment">     *
+</span><a href="#287" id="287" class="l">287: </a><span class="php-comment">     * @return RequestInterface Returns a reference to the object.
+</span><a href="#288" id="288" class="l">288: </a><span class="php-comment">     */</span>
+<a href="#289" id="289" class="l">289: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> setResponse(Response <span class="php-var">$response</span>, <span class="php-var">$queued</span> = <span class="php-keyword1">false</span>);
+<a href="#290" id="290" class="l">290: </a>
+<a href="#291" id="291" class="l">291: </a>    <span class="php-comment">/**
+</span><a href="#292" id="292" class="l">292: </a><span class="php-comment">     * Get an array of Cookies
+</span><a href="#293" id="293" class="l">293: </a><span class="php-comment">     *
+</span><a href="#294" id="294" class="l">294: </a><span class="php-comment">     * @return array
+</span><a href="#295" id="295" class="l">295: </a><span class="php-comment">     */</span>
+<a href="#296" id="296" class="l">296: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> getCookies();
+<a href="#297" id="297" class="l">297: </a>
+<a href="#298" id="298" class="l">298: </a>    <span class="php-comment">/**
+</span><a href="#299" id="299" class="l">299: </a><span class="php-comment">     * Get a cookie value by name
+</span><a href="#300" id="300" class="l">300: </a><span class="php-comment">     *
+</span><a href="#301" id="301" class="l">301: </a><span class="php-comment">     * @param string $name Cookie to retrieve
+</span><a href="#302" id="302" class="l">302: </a><span class="php-comment">     *
+</span><a href="#303" id="303" class="l">303: </a><span class="php-comment">     * @return null|string
+</span><a href="#304" id="304" class="l">304: </a><span class="php-comment">     */</span>
+<a href="#305" id="305" class="l">305: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> getCookie(<span class="php-var">$name</span>);
+<a href="#306" id="306" class="l">306: </a>
+<a href="#307" id="307" class="l">307: </a>    <span class="php-comment">/**
+</span><a href="#308" id="308" class="l">308: </a><span class="php-comment">     * Add a Cookie value by name to the Cookie header
+</span><a href="#309" id="309" class="l">309: </a><span class="php-comment">     *
+</span><a href="#310" id="310" class="l">310: </a><span class="php-comment">     * @param string $name  Name of the cookie to add
+</span><a href="#311" id="311" class="l">311: </a><span class="php-comment">     * @param string $value Value to set
 </span><a href="#312" id="312" class="l">312: </a><span class="php-comment">     *
-</span><a href="#313" id="313" class="l">313: </a><span class="php-comment">     * @param string $name  Name of the cookie to add
-</span><a href="#314" id="314" class="l">314: </a><span class="php-comment">     * @param string $value Value to set
-</span><a href="#315" id="315" class="l">315: </a><span class="php-comment">     *
-</span><a href="#316" id="316" class="l">316: </a><span class="php-comment">     * @return RequestInterface
-</span><a href="#317" id="317" class="l">317: </a><span class="php-comment">     */</span>
-<a href="#318" id="318" class="l">318: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addCookie(<span class="php-var">$name</span>, <span class="php-var">$value</span>);
-<a href="#319" id="319" class="l">319: </a>
-<a href="#320" id="320" class="l">320: </a>    <span class="php-comment">/**
-</span><a href="#321" id="321" class="l">321: </a><span class="php-comment">     * Remove a specific cookie value by name
-</span><a href="#322" id="322" class="l">322: </a><span class="php-comment">     *
-</span><a href="#323" id="323" class="l">323: </a><span class="php-comment">     * @param string $name Cookie to remove by name
-</span><a href="#324" id="324" class="l">324: </a><span class="php-comment">     *
-</span><a href="#325" id="325" class="l">325: </a><span class="php-comment">     * @return RequestInterface
-</span><a href="#326" id="326" class="l">326: </a><span class="php-comment">     */</span>
-<a href="#327" id="327" class="l">327: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> removeCookie(<span class="php-var">$name</span>);
-<a href="#328" id="328" class="l">328: </a>
-<a href="#329" id="329" class="l">329: </a>    <span class="php-comment">/**
-</span><a href="#330" id="330" class="l">330: </a><span class="php-comment">     * Returns whether or not the request can be cached
-</span><a href="#331" id="331" class="l">331: </a><span class="php-comment">     *
-</span><a href="#332" id="332" class="l">332: </a><span class="php-comment">     * @return bool
-</span><a href="#333" id="333" class="l">333: </a><span class="php-comment">     */</span>
-<a href="#334" id="334" class="l">334: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> canCache();
-<a href="#335" id="335" class="l">335: </a>}
-<a href="#336" id="336" class="l">336: </a></code></pre>
+</span><a href="#313" id="313" class="l">313: </a><span class="php-comment">     * @return RequestInterface
+</span><a href="#314" id="314" class="l">314: </a><span class="php-comment">     */</span>
+<a href="#315" id="315" class="l">315: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addCookie(<span class="php-var">$name</span>, <span class="php-var">$value</span>);
+<a href="#316" id="316" class="l">316: </a>
+<a href="#317" id="317" class="l">317: </a>    <span class="php-comment">/**
+</span><a href="#318" id="318" class="l">318: </a><span class="php-comment">     * Remove a specific cookie value by name
+</span><a href="#319" id="319" class="l">319: </a><span class="php-comment">     *
+</span><a href="#320" id="320" class="l">320: </a><span class="php-comment">     * @param string $name Cookie to remove by name
+</span><a href="#321" id="321" class="l">321: </a><span class="php-comment">     *
+</span><a href="#322" id="322" class="l">322: </a><span class="php-comment">     * @return RequestInterface
+</span><a href="#323" id="323" class="l">323: </a><span class="php-comment">     */</span>
+<a href="#324" id="324" class="l">324: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> removeCookie(<span class="php-var">$name</span>);
+<a href="#325" id="325" class="l">325: </a>
+<a href="#326" id="326" class="l">326: </a>    <span class="php-comment">/**
+</span><a href="#327" id="327" class="l">327: </a><span class="php-comment">     * Returns whether or not the request can be cached
+</span><a href="#328" id="328" class="l">328: </a><span class="php-comment">     *
+</span><a href="#329" id="329" class="l">329: </a><span class="php-comment">     * @return bool
+</span><a href="#330" id="330" class="l">330: </a><span class="php-comment">     */</span>
+<a href="#331" id="331" class="l">331: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> canCache();
+<a href="#332" id="332" class="l">332: </a>}
+<a href="#333" id="333" class="l">333: </a></code></pre>
 
 	<div id="footer">
 		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>

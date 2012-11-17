@@ -7,7 +7,7 @@
 	<title>Interface Guzzle\Http\ClientInterface | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?4060521299"></script>
+	<script type="text/javascript" src="elementlist.js?2133861467"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -27,30 +27,16 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
-				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
-						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Validation.html">Validation</a>
 						</li>
 							</ul></li>
 				<li class="active"><a href="namespace-Guzzle.Http.html">Http<span></span></a>
 						<ul>
-				<li><a href="namespace-Guzzle.Http.CookieJar.html">CookieJar</a>
-						</li>
 				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
-						</li>
-				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -63,7 +49,10 @@
 						</li>
 				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
-							</ul></li></ul></li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
 						</li>
 				<li><a href="namespace-Ratchet.html">Ratchet<span></span></a>
@@ -140,12 +129,11 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html">AbstractEntityBodyDecorator</a></li>
-				<li><a href="class-Guzzle.Http.BatchRequestTransfer.html">BatchRequestTransfer</a></li>
 				<li><a href="class-Guzzle.Http.Client.html">Client</a></li>
-				<li><a href="class-Guzzle.Http.Cookie.html">Cookie</a></li>
 				<li><a href="class-Guzzle.Http.EntityBody.html">EntityBody</a></li>
 				<li><a href="class-Guzzle.Http.QueryString.html">QueryString</a></li>
 				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Url.html">Url</a></li>
 				<li><a href="class-Guzzle.Http.Utils.html">Utils</a></li>
 			</ul>
@@ -154,7 +142,6 @@
 			<ul>
 				<li class="active"><a href="class-Guzzle.Http.ClientInterface.html">ClientInterface</a></li>
 				<li><a href="class-Guzzle.Http.EntityBodyInterface.html">EntityBodyInterface</a></li>
-				<li><a href="class-Guzzle.Http.HttpException.html">HttpException</a></li>
 			</ul>
 
 
@@ -291,7 +278,7 @@ Pass an array or a Collection object.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getConfig">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#31" title="Go to source code">getConfig</a>( <span>boolean|string <var>$key</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#30" title="Go to source code">getConfig</a>( <span>boolean|string <var>$key</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
@@ -323,6 +310,63 @@ client's config.</dd>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="setSslVerification" id="_setSslVerification">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setSslVerification">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#39" title="Go to source code">setSslVerification</a>( <span>string|boolean <var>$certificateAuthority</var> = <span class="php-keyword1">true</span></span>, <span>boolean <var>$verifyPeer</var> = <span class="php-keyword1">true</span></span>, <span>integer <var>$verifyHost</var> = <span class="php-num">2</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Set SSL verification options.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set SSL verification options.</p>
+
+<p>Setting $certificateAuthority to TRUE will result in the bundled cacert.pem
+being used to verify against the remote host.</p>
+
+<p>Alternate certificates to verify against can be specified with the
+$certificateAuthority option set to a certificate file location to be used with
+CURLOPT_CAINFO, or a certificate directory path to be used with the
+CURLOPT_CAPATH option.</p>
+
+<p>Setting $certificateAuthority to FALSE will turn off peer verification, unset
+the bundled cacert.pem, and disable host verification. Please don't do this
+unless you really know what you're doing, and why you're doing it.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$certificateAuthority</var></dt>
+					<dd><code>string|boolean</code><br> bool, file path, or directory path</dd>
+					<dt><var>$verifyPeer</var></dt>
+					<dd><code>boolean</code><br> FALSE to stop cURL from verifying the peer's certificate.</dd>
+					<dt><var>$verifyHost</var></dt>
+					<dd><code>integer</code><br> Set the cURL handle's CURLOPT_SSL_VERIFYHOST option</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="getDefaultHeaders" id="_getDefaultHeaders">
 
 		<td class="attributes"><code>
@@ -334,7 +378,7 @@ client's config.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDefaultHeaders">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#41" title="Go to source code">getDefaultHeaders</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#63" title="Go to source code">getDefaultHeaders</a>( )</code>
 
 		<div class="description short">
 			
@@ -370,7 +414,7 @@ client's config.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setDefaultHeaders">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#48" title="Go to source code">setDefaultHeaders</a>( <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#70" title="Go to source code">setDefaultHeaders</a>( <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var></span> )</code>
 
 		<div class="description short">
 			
@@ -411,7 +455,7 @@ client's config.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setUriTemplate">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#57" title="Go to source code">setUriTemplate</a>( <span><code><a href="class-Guzzle.Parser.UriTemplate.UriTemplateInterface.html">Guzzle\Parser\UriTemplate\UriTemplateInterface</a></code> <var>$uriTemplate</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#79" title="Go to source code">setUriTemplate</a>( <span><code><a href="class-Guzzle.Parser.UriTemplate.UriTemplateInterface.html">Guzzle\Parser\UriTemplate\UriTemplateInterface</a></code> <var>$uriTemplate</var></span> )</code>
 
 		<div class="description short">
 			
@@ -452,7 +496,7 @@ client's config.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getUriTemplate">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#66" title="Go to source code">getUriTemplate</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#88" title="Go to source code">getUriTemplate</a>( )</code>
 
 		<div class="description short">
 			
@@ -488,7 +532,7 @@ client's config.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_expandTemplate">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#73" title="Go to source code">expandTemplate</a>( <span>string <var>$template</var></span>, <span>array <var>$variables</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#95" title="Go to source code">expandTemplate</a>( <span>string <var>$template</var></span>, <span>array <var>$variables</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -531,7 +575,7 @@ client's config.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_createRequest">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#83" title="Go to source code">createRequest</a>( <span>string <var>$method</var> = <code><a href="class-Guzzle.Http.Message.RequestInterface.html#GET">Guzzle\Http\Message\RequestInterface::<b>GET</b></a></code></span>, <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|array|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#105" title="Go to source code">createRequest</a>( <span>string <var>$method</var> = <code><a href="class-Guzzle.Http.Message.RequestInterface.html#GET">Guzzle\Http\Message\RequestInterface::<b>GET</b></a></code></span>, <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|array|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -590,7 +634,7 @@ followed by template variables<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getBaseUrl">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#102" title="Go to source code">getBaseUrl</a>( <span>boolean <var>$expand</var> = <span class="php-keyword1">true</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#123" title="Go to source code">getBaseUrl</a>( <span>boolean <var>$expand</var> = <span class="php-keyword1">true</span></span> )</code>
 
 		<div class="description short">
 			
@@ -631,7 +675,7 @@ followed by template variables<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setBaseUrl">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#112" title="Go to source code">setBaseUrl</a>( <span>string <var>$url</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#132" title="Go to source code">setBaseUrl</a>( <span>string <var>$url</var></span> )</code>
 
 		<div class="description short">
 			
@@ -672,7 +716,7 @@ followed by template variables<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setUserAgent">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#121" title="Go to source code">setUserAgent</a>( <span>string <var>$userAgent</var></span>, <span>boolean <var>$includeDefault</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#141" title="Go to source code">setUserAgent</a>( <span>string <var>$userAgent</var></span>, <span>boolean <var>$includeDefault</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
@@ -717,7 +761,7 @@ appended to the User-Agent header of all requests.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_get">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#132" title="Go to source code">get</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|array|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#152" title="Go to source code">get</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|array|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -766,7 +810,7 @@ appended to the User-Agent header of all requests.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_head">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#144" title="Go to source code">head</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#164" title="Go to source code">head</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -813,7 +857,7 @@ appended to the User-Agent header of all requests.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_delete">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#155" title="Go to source code">delete</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#175" title="Go to source code">delete</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -862,7 +906,7 @@ appended to the User-Agent header of all requests.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_put">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#167" title="Go to source code">put</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#187" title="Go to source code">put</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -911,7 +955,7 @@ appended to the User-Agent header of all requests.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_patch">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#179" title="Go to source code">patch</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#199" title="Go to source code">patch</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -960,7 +1004,7 @@ appended to the User-Agent header of all requests.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_post">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#191" title="Go to source code">post</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|string|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$postBody</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#211" title="Go to source code">post</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|string|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$postBody</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -1011,7 +1055,7 @@ to reference a file.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_options">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#206" title="Go to source code">options</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#225" title="Go to source code">options</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -1056,7 +1100,7 @@ to reference a file.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_send">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#216" title="Go to source code">send</a>( <span>array <var>$requests</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#235" title="Go to source code">send</a>( <span>array <var>$requests</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1097,7 +1141,7 @@ to reference a file.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setCurlMulti">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#225" title="Go to source code">setCurlMulti</a>( <span><code><a href="class-Guzzle.Http.Curl.CurlMultiInterface.html">Guzzle\Http\Curl\CurlMultiInterface</a></code> <var>$curlMulti</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#244" title="Go to source code">setCurlMulti</a>( <span><code><a href="class-Guzzle.Http.Curl.CurlMultiInterface.html">Guzzle\Http\Curl\CurlMultiInterface</a></code> <var>$curlMulti</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1140,7 +1184,7 @@ requests.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getCurlMulti">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#235" title="Go to source code">getCurlMulti</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#253" title="Go to source code">getCurlMulti</a>( )</code>
 
 		<div class="description short">
 			
@@ -1178,7 +1222,7 @@ transferring requests.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setRequestFactory">#</a>
-		<code><a href="source-class-Guzzle.Http.ClientInterface.html#243" title="Go to source code">setRequestFactory</a>( <span><code><a href="class-Guzzle.Http.Message.RequestFactoryInterface.html">Guzzle\Http\Message\RequestFactoryInterface</a></code> <var>$factory</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#260" title="Go to source code">setRequestFactory</a>( <span><code><a href="class-Guzzle.Http.Message.RequestFactoryInterface.html">Guzzle\Http\Message\RequestFactoryInterface</a></code> <var>$factory</var></span> )</code>
 
 		<div class="description short">
 			

@@ -8,7 +8,7 @@
 	<title>File stream/React/Stream/Buffer.php | Ratchet</title>
 
 	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?4060521299"></script>
+	<script type="text/javascript" src="elementlist.js?2133861467"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
 
 </head>
@@ -28,30 +28,16 @@
 						<ul>
 				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
 						<ul>
-				<li><a href="namespace-Guzzle.Common.Batch.html">Batch</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Cache.html">Cache</a>
-						</li>
 				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Inflection.html">Inflection</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Log.html">Log</a>
-						</li>
-				<li><a href="namespace-Guzzle.Common.Validation.html">Validation</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Http.html">Http<span></span></a>
 						<ul>
-				<li><a href="namespace-Guzzle.Http.CookieJar.html">CookieJar</a>
-						</li>
 				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
-						</li>
-				<li><a href="namespace-Guzzle.Http.Plugin.html">Plugin</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -64,7 +50,10 @@
 						</li>
 				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
 						</li>
-							</ul></li></ul></li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
 						</li>
 				<li><a href="namespace-Ratchet.html">Ratchet<span></span></a>
@@ -208,10 +197,10 @@
 <a href="#15" id="15" class="l"> 15: </a>    <span class="php-keyword1">private</span> <span class="php-var">$loop</span>;
 <a href="#16" id="16" class="l"> 16: </a>    <span class="php-keyword1">private</span> <span class="php-var">$data</span> = <span class="php-quote">''</span>;
 <a href="#17" id="17" class="l"> 17: </a>    <span class="php-keyword1">private</span> <span class="php-var">$lastError</span> = <span class="php-keyword1">array</span>(
-<a href="#18" id="18" class="l"> 18: </a>        <span class="php-quote">'number'</span>  =&gt; <span class="php-quote">''</span>,
+<a href="#18" id="18" class="l"> 18: </a>        <span class="php-quote">'number'</span>  =&gt; <span class="php-num">0</span>,
 <a href="#19" id="19" class="l"> 19: </a>        <span class="php-quote">'message'</span> =&gt; <span class="php-quote">''</span>,
 <a href="#20" id="20" class="l"> 20: </a>        <span class="php-quote">'file'</span>    =&gt; <span class="php-quote">''</span>,
-<a href="#21" id="21" class="l"> 21: </a>        <span class="php-quote">'line'</span>    =&gt; <span class="php-quote">''</span>,
+<a href="#21" id="21" class="l"> 21: </a>        <span class="php-quote">'line'</span>    =&gt; <span class="php-num">0</span>,
 <a href="#22" id="22" class="l"> 22: </a>    );
 <a href="#23" id="23" class="l"> 23: </a>
 <a href="#24" id="24" class="l"> 24: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> __construct(<span class="php-var">$stream</span>, LoopInterface <span class="php-var">$loop</span>)
@@ -270,48 +259,54 @@
 <a href="#77" id="77" class="l"> 77: </a>
 <a href="#78" id="78" class="l"> 78: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> handleWrite()
 <a href="#79" id="79" class="l"> 79: </a>    {
-<a href="#80" id="80" class="l"> 80: </a>        <span class="php-keyword2">set_error_handler</span>(<span class="php-keyword1">array</span>(<span class="php-var">$this</span>, <span class="php-quote">'errorHandler'</span>));
-<a href="#81" id="81" class="l"> 81: </a>
-<a href="#82" id="82" class="l"> 82: </a>        <span class="php-var">$sent</span> = <span class="php-keyword2">fwrite</span>(<span class="php-var">$this</span>-&gt;stream, <span class="php-var">$this</span>-&gt;data);
-<a href="#83" id="83" class="l"> 83: </a>
-<a href="#84" id="84" class="l"> 84: </a>        <span class="php-keyword2">restore_error_handler</span>();
+<a href="#80" id="80" class="l"> 80: </a>        <span class="php-keyword1">if</span> (!<span class="php-keyword2">is_resource</span>(<span class="php-var">$this</span>-&gt;stream) || <span class="php-keyword2">feof</span>(<span class="php-var">$this</span>-&gt;stream)) {
+<a href="#81" id="81" class="l"> 81: </a>            <span class="php-var">$this</span>-&gt;emit(<span class="php-quote">'error'</span>, <span class="php-keyword1">array</span>(<span class="php-keyword1">new</span> \RuntimeException(<span class="php-quote">'Tried to write to closed or invalid stream.'</span>)));
+<a href="#82" id="82" class="l"> 82: </a>
+<a href="#83" id="83" class="l"> 83: </a>            <span class="php-keyword1">return</span>;
+<a href="#84" id="84" class="l"> 84: </a>        }
 <a href="#85" id="85" class="l"> 85: </a>
-<a href="#86" id="86" class="l"> 86: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">false</span> === <span class="php-var">$sent</span>) {
-<a href="#87" id="87" class="l"> 87: </a>            <span class="php-var">$this</span>-&gt;emit(<span class="php-quote">'error'</span>, <span class="php-keyword1">array</span>(<span class="php-keyword1">new</span> \ErrorException(
-<a href="#88" id="88" class="l"> 88: </a>                <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'message'</span>],
-<a href="#89" id="89" class="l"> 89: </a>                <span class="php-num">0</span>,
-<a href="#90" id="90" class="l"> 90: </a>                <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'number'</span>],
-<a href="#91" id="91" class="l"> 91: </a>                <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'file'</span>],
-<a href="#92" id="92" class="l"> 92: </a>                <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'line'</span>]
-<a href="#93" id="93" class="l"> 93: </a>            )));
-<a href="#94" id="94" class="l"> 94: </a>
-<a href="#95" id="95" class="l"> 95: </a>            <span class="php-keyword1">return</span>;
-<a href="#96" id="96" class="l"> 96: </a>        }
-<a href="#97" id="97" class="l"> 97: </a>
-<a href="#98" id="98" class="l"> 98: </a>        <span class="php-var">$len</span> = <span class="php-keyword2">strlen</span>(<span class="php-var">$this</span>-&gt;data);
-<a href="#99" id="99" class="l"> 99: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$len</span> &gt;= <span class="php-var">$this</span>-&gt;softLimit &amp;&amp; <span class="php-var">$len</span> - <span class="php-var">$sent</span> &lt; <span class="php-var">$this</span>-&gt;softLimit) {
-<a href="#100" id="100" class="l">100: </a>            <span class="php-var">$this</span>-&gt;emit(<span class="php-quote">'drain'</span>);
-<a href="#101" id="101" class="l">101: </a>        }
-<a href="#102" id="102" class="l">102: </a>
-<a href="#103" id="103" class="l">103: </a>        <span class="php-var">$this</span>-&gt;data = (string) <span class="php-keyword2">substr</span>(<span class="php-var">$this</span>-&gt;data, <span class="php-var">$sent</span>);
-<a href="#104" id="104" class="l">104: </a>
-<a href="#105" id="105" class="l">105: </a>        <span class="php-keyword1">if</span> (<span class="php-num">0</span> === <span class="php-keyword2">strlen</span>(<span class="php-var">$this</span>-&gt;data)) {
-<a href="#106" id="106" class="l">106: </a>            <span class="php-var">$this</span>-&gt;loop-&gt;removeWriteStream(<span class="php-var">$this</span>-&gt;stream);
-<a href="#107" id="107" class="l">107: </a>            <span class="php-var">$this</span>-&gt;listening = <span class="php-keyword1">false</span>;
+<a href="#86" id="86" class="l"> 86: </a>        <span class="php-keyword2">set_error_handler</span>(<span class="php-keyword1">array</span>(<span class="php-var">$this</span>, <span class="php-quote">'errorHandler'</span>));
+<a href="#87" id="87" class="l"> 87: </a>
+<a href="#88" id="88" class="l"> 88: </a>        <span class="php-var">$sent</span> = <span class="php-keyword2">fwrite</span>(<span class="php-var">$this</span>-&gt;stream, <span class="php-var">$this</span>-&gt;data);
+<a href="#89" id="89" class="l"> 89: </a>
+<a href="#90" id="90" class="l"> 90: </a>        <span class="php-keyword2">restore_error_handler</span>();
+<a href="#91" id="91" class="l"> 91: </a>
+<a href="#92" id="92" class="l"> 92: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">false</span> === <span class="php-var">$sent</span>) {
+<a href="#93" id="93" class="l"> 93: </a>            <span class="php-var">$this</span>-&gt;emit(<span class="php-quote">'error'</span>, <span class="php-keyword1">array</span>(<span class="php-keyword1">new</span> \ErrorException(
+<a href="#94" id="94" class="l"> 94: </a>                <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'message'</span>],
+<a href="#95" id="95" class="l"> 95: </a>                <span class="php-num">0</span>,
+<a href="#96" id="96" class="l"> 96: </a>                <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'number'</span>],
+<a href="#97" id="97" class="l"> 97: </a>                <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'file'</span>],
+<a href="#98" id="98" class="l"> 98: </a>                <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'line'</span>]
+<a href="#99" id="99" class="l"> 99: </a>            )));
+<a href="#100" id="100" class="l">100: </a>
+<a href="#101" id="101" class="l">101: </a>            <span class="php-keyword1">return</span>;
+<a href="#102" id="102" class="l">102: </a>        }
+<a href="#103" id="103" class="l">103: </a>
+<a href="#104" id="104" class="l">104: </a>        <span class="php-var">$len</span> = <span class="php-keyword2">strlen</span>(<span class="php-var">$this</span>-&gt;data);
+<a href="#105" id="105" class="l">105: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$len</span> &gt;= <span class="php-var">$this</span>-&gt;softLimit &amp;&amp; <span class="php-var">$len</span> - <span class="php-var">$sent</span> &lt; <span class="php-var">$this</span>-&gt;softLimit) {
+<a href="#106" id="106" class="l">106: </a>            <span class="php-var">$this</span>-&gt;emit(<span class="php-quote">'drain'</span>);
+<a href="#107" id="107" class="l">107: </a>        }
 <a href="#108" id="108" class="l">108: </a>
-<a href="#109" id="109" class="l">109: </a>            <span class="php-var">$this</span>-&gt;emit(<span class="php-quote">'full-drain'</span>);
-<a href="#110" id="110" class="l">110: </a>        }
-<a href="#111" id="111" class="l">111: </a>    }
-<a href="#112" id="112" class="l">112: </a>
-<a href="#113" id="113" class="l">113: </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> errorHandler(<span class="php-var">$errno</span>, <span class="php-var">$errstr</span>, <span class="php-var">$errfile</span>, <span class="php-var">$errline</span>)
-<a href="#114" id="114" class="l">114: </a>    {
-<a href="#115" id="115" class="l">115: </a>        <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'number'</span>]  = <span class="php-var">$errno</span>;
-<a href="#116" id="116" class="l">116: </a>        <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'message'</span>] = <span class="php-var">$errstr</span>;
-<a href="#117" id="117" class="l">117: </a>        <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'file'</span>]    = <span class="php-var">$errfile</span>;
-<a href="#118" id="118" class="l">118: </a>        <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'line'</span>]    = <span class="php-var">$errline</span>;
-<a href="#119" id="119" class="l">119: </a>    }
-<a href="#120" id="120" class="l">120: </a>}
-<a href="#121" id="121" class="l">121: </a></code></pre>
+<a href="#109" id="109" class="l">109: </a>        <span class="php-var">$this</span>-&gt;data = (string) <span class="php-keyword2">substr</span>(<span class="php-var">$this</span>-&gt;data, <span class="php-var">$sent</span>);
+<a href="#110" id="110" class="l">110: </a>
+<a href="#111" id="111" class="l">111: </a>        <span class="php-keyword1">if</span> (<span class="php-num">0</span> === <span class="php-keyword2">strlen</span>(<span class="php-var">$this</span>-&gt;data)) {
+<a href="#112" id="112" class="l">112: </a>            <span class="php-var">$this</span>-&gt;loop-&gt;removeWriteStream(<span class="php-var">$this</span>-&gt;stream);
+<a href="#113" id="113" class="l">113: </a>            <span class="php-var">$this</span>-&gt;listening = <span class="php-keyword1">false</span>;
+<a href="#114" id="114" class="l">114: </a>
+<a href="#115" id="115" class="l">115: </a>            <span class="php-var">$this</span>-&gt;emit(<span class="php-quote">'full-drain'</span>);
+<a href="#116" id="116" class="l">116: </a>        }
+<a href="#117" id="117" class="l">117: </a>    }
+<a href="#118" id="118" class="l">118: </a>
+<a href="#119" id="119" class="l">119: </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> errorHandler(<span class="php-var">$errno</span>, <span class="php-var">$errstr</span>, <span class="php-var">$errfile</span>, <span class="php-var">$errline</span>)
+<a href="#120" id="120" class="l">120: </a>    {
+<a href="#121" id="121" class="l">121: </a>        <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'number'</span>]  = <span class="php-var">$errno</span>;
+<a href="#122" id="122" class="l">122: </a>        <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'message'</span>] = <span class="php-var">$errstr</span>;
+<a href="#123" id="123" class="l">123: </a>        <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'file'</span>]    = <span class="php-var">$errfile</span>;
+<a href="#124" id="124" class="l">124: </a>        <span class="php-var">$this</span>-&gt;lastError[<span class="php-quote">'line'</span>]    = <span class="php-var">$errline</span>;
+<a href="#125" id="125" class="l">125: </a>    }
+<a href="#126" id="126" class="l">126: </a>}
+<a href="#127" id="127" class="l">127: </a></code></pre>
 
 	<div id="footer">
 		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
