@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^socketo.me$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.socketo.me$
+RewriteCond %{REQUEST_URI} !web/
+RewriteRule (.*) /web/$1 [L]
