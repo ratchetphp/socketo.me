@@ -30,10 +30,27 @@
             <section>
                 <h3>The Chat class</h3>
 
-                <p><strong>Note:</strong> This document assumes you are familiar with PSR-0 and have loaded Composer's autoload file as well as registered <em>MyApp</em> which is the namespace where we will put our demo class.  See <a href="/docs/install">Installation</a> if you're not yet familiar with this.</p>
+                <p><strong>Note:</strong>
+                    This document assumes you are familiar with <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md" target="_blank" rel="external">PSR-0</a>
+                    and <a href="http://getcomposer.org/" target="_blank" rel="external">Composer</a>.  See <a href="/docs/install">Installation</a> if you're not yet familiar with this.
+                </p>
+
+                <p>We're going to hold everything in the <em>MyApp</em> namespace.  Your composer file should look something like this:</p>
+
+                <pre class="prettprint">{
+    "autoload": {
+        "psr-0": {
+            "MyApp": "src"
+        }
+    },
+    "require": {
+        "cboden/Ratchet": "0.2.*"
+    }
+}</pre>
+
 
                 <p>
-                    We'll start off by creating the class.
+                    We'll start off by creating a class. This class will be our chat "application".  
                     This basic application will listen for 4 events:
 
                     <ul>
@@ -71,7 +88,7 @@ class Chat implements MessageComponentInterface {
                 These objects are re-used, you will receive the same <em>Connection</em> sometimes.
             </p>
 
-            <p>We'll come back to our Chat class soon.</p>
+            <p>Save this as <em>/src/MyApp/Chat.php</em>.  We'll come back to our Chat class soon.</p>
         </section>
 
         <section>
@@ -79,7 +96,7 @@ class Chat implements MessageComponentInterface {
 
             <p>
                 Our <em>Chat</em> class will be our application logic.
-                Next, we're going to piece together our binary script.
+                Next, we're going to piece together our shell script.
                 This is the script/file we will call from the command line to launch our application.
             </p>
 
@@ -87,9 +104,11 @@ class Chat implements MessageComponentInterface {
 use Ratchet\Server\IoServer;
 use MyApp\Chat;
 
+    require dirname(__DIR__) . '/vendor/autoload.php';
+
     $server = IoServer::factory(
         new Chat()
-      , 8000
+      , 8080
     );
 
     $server->run();</pre>
@@ -99,15 +118,15 @@ use MyApp\Chat;
                 This will handle direct communication with the client.
                 It does things such as store all the connections, mediate data sent between each client and our <em>Chat</em> application, and catch errors.
                 We then take that I/O Server and wrap it around our a new instance of our <em>Chat</em> class.
-                Finally, we tell the server to enter an event loop, listening for any incoming requests on port 8000.
+                Finally, we tell the server to enter an event loop, listening for any incoming requests on port 8080.
             </p>
 
             <p>
-                Save this script as <em>chat-server.php</em>.
+                Save this script as <em>/bin/chat-server.php</em>.
                 Now, we can run it with the following command in your terminal:
             </p>
 
-            <pre class="prettyprint">$ php chat-server.php</pre>
+            <pre class="prettyprint">$ php bin/chat-server.php</pre>
 
             <p>The script should now execute, taking possession of your terminal. You can cancel the script, as we're not quite finished yet.</p>
         </section>
@@ -115,10 +134,10 @@ use MyApp\Chat;
         <section>
             <h3>Logic</h3>
 
-            <p>So far, we've just set up structure, both in our executable script and our <em>Chat</em> class. Now, to add code to our <em>Chat</em> to complete our application.</p>
+            <p>So far, we've just set up structure, both in our shell script and our <em>Chat</em> class. Now, to add code to our <em>Chat</em> to complete our application.</p>
 
             <p>
-                Let's add some logic to our <em>Chat</em> class.  We'll incorporate the logic in our methods and use some <em>Command</em> classes to do this:
+                Let's add some logic to our <em>Chat</em> class. 
                 What we're going to do, is track all incoming <em>Connections</em>, in order to send them messages.
                 Typically, you would store a collection of items in an array, but we're going to use something called <a rel="external" href="http://ca2.php.net/manual/en/class.splobjectstorage.php">SplObjectStorage</a>.
                 These storage containers are built to store objects, which is what the incoming <em>Connections</em> are.
@@ -169,8 +188,8 @@ class Chat implements MessageComponentInterface {
             <p>Complete, let's run it and test it. Open up three terminal windows, typing:</p>
 
             <pre>$ php chat-server.php</pre>
-            <pre>$ telnet localhost 8000</pre>
-            <pre>$ telnet localhost 8000</pre>
+            <pre>$ telnet localhost 8080</pre>
+            <pre>$ telnet localhost 8080</pre>
 
             <p>In each of the telnet windows, type a message ("Hello World!") and see it appear in the other!</p>
         </section>
@@ -189,25 +208,33 @@ use Ratchet\Server\IoServer;
 use Ratchet\WebSocket\WsServer;
 use MyApp\Chat;
 
+    require dirname(__DIR__) . '/vendor/autoload.php';
+
     $server = IoServer::factory(
         new WsServer(
             new Chat()
         )
-      , 8000
+      , 8080
     );
 
     $server->run();
 </pre>
 
-            <p>Now, open a couple web browser windows and open the a javascript console or a page with the following javascript:</p>
+            <p>Run the shell script again, open a couple web browser windows, and open the a javascript console or a page with the following javascript:</p>
 
-            <pre class="prettyprint lang-js">    var conn = new WebSocket('ws://localhost:8000');
-    conn.onmessage = function(e) {
-        console.log(e.data);
-    };
+            <pre class="prettyprint lang-js">    var conn = new WebSocket('ws://localhost:8080');
+conn.onopen = function(e) {
+    console.log("Connection established!");
+};
 
-    // Later, at your leisure:
-    conn.send('Hello World!');</pre>
+conn.onmessage = function(e) {
+    console.log(e.data);
+};</pre>
+
+            <p>Once you see the console message "Connection established!" you can start sending messages to other connected browsers:</p>
+            <pre class="prettyprint lang-js">
+conn.send('Hello World!');</pre>
+
         </section>
 
         <section>
