@@ -36,18 +36,15 @@
                     In order to access your session data in Ratchet, you must also use the same Symfony Session Handler on you website.
                     Below is a network diagram of how the various connections interact to access data:
                 </p>
-                <p>
-                    <strong>Warning:</strong> Session through websockets works the same way as you're used to deal with them, a cookie is set and transmitted in each request header.
-                    This means that your front application and your websocket server both <strong>must</strong> have access to the cookie.
-                    Usually, this implies that they should use the same domain.
-                </p>
 
                 <p><img src="/assets/img/RatchetSessions.png" alt="Session Network Architecture"></p>
 
                 <p>
-                    <strong>Important:</strong> In order for session data to be shared between your website and your WebSocket server they <em>MUST</em> be on the same domain. 
+                    <strong>Important:</strong> Sessions through WebSockets work as they do through a traditional webserver; a cookie is set and transmitted in each request header.
+                    This means that your website and your WebSocket server both <em>must</em> have access to the cookie.
+                    <br>In order for session data to be shared between your website and your WebSocket server they <em>must</em> be on the same domain. 
                     You can achieve this by either hosting them on the same domain and different ports, such as <em>mydomain.com:80</em> (for website) and <em>mydomain.com:8080</em> (for WebSockets).
-                    If you choose to host the WebSocket server on a sub-domain (<em>websocket.mydomain.com:80</em>) make sure to have your website's php.ini file configured for this:
+                    If you choose to host the WebSocket server on a sub-domain (<em>websocket.mydomain.com:80</em>) make sure to have your website's php.ini file configured like this:
                 </p>
 
                 <p><pre class="prettyprint">session.cookie_domain = ".mydomain.com"</pre></p>
