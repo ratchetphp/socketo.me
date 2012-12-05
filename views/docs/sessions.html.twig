@@ -38,6 +38,14 @@
                 </p>
 
                 <p><img src="/assets/img/RatchetSessions.png" alt="Session Network Architecture"></p>
+
+                <p>
+                    <strong>Important:</strong> In order for session data to be shared between your website and your WebSocket server they <em>MUST</em> be on the same domain. 
+                    You can achieve this by either hosting them on the same domain and different ports, such as <em>mydomain.com:80</em> (for website) and <em>mydomain.com:8080</em> (for WebSockets).
+                    If you choose to host the WebSocket server on a sub-domain (<em>websocket.mydomain.com:80</em>) make sure to have your website's php.ini file configured for this:
+                </p>
+
+                <p><pre class="prettyprint">session.cookie_domain = ".mydomain.com"</pre></p>
             </section>
 
             <section>
