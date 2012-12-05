@@ -36,6 +36,11 @@
                     In order to access your session data in Ratchet, you must also use the same Symfony Session Handler on you website.
                     Below is a network diagram of how the various connections interact to access data:
                 </p>
+                <p>
+                    <strong>Warning:</strong> Session through websockets works the same way as you're used to deal with them, a cookie is set and transmitted in each request header.
+                    This means that your front application and your websocket server both <strong>must</strong> have access to the cookie.
+                    Usually, this implies that they should use the same domain.
+                </p>
 
                 <p><img src="/assets/img/RatchetSessions.png" alt="Session Network Architecture"></p>
             </section>
