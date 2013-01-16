@@ -47,12 +47,12 @@
                     To set your system to use LibEvent you will need to install the system library, the development tools, and the PHP extension:
                 </p>
 
-                <pre>$ sudo apt-get install libevent libevent-dev
-$ sudo pecl install libevent</pre>
+                <p><pre>$ sudo apt-get install libevent libevent-dev
+$ sudo pecl install libevent</pre></p>
 
                 <p>
                     The event loop that PHP uses by default through stream_select uses the old, slow poll mechanism. 
-                    By using LibEvent PHP will use the faster epoll or kqueue, drastically improving concurrency (the number of connections your server can handle, quickly). 
+                    By using LibEvent PHP will use the faster epoll or kqueue, drastically improving concurrency (handling many connections quickly). 
                     Once LibEvent is installed you don't need to change anything in your script. Ratchet's IoServer::factory will automatically use LibEvent if it's available. 
             </section>
 
@@ -63,7 +63,13 @@ $ sudo pecl install libevent</pre>
                     When running Ratchet in production it's highly recommended launching it from <a href="http://supervisord.org" target="_blank" rel="external">suporvisord</a>.
                     Suporvisor is a daemon that launches other processes and ensures they stay running.  
                     If for any reason your long running Ratchet application halted the supervisor daemon would ensure it starts back up immediately.
+                    Supervisor can be installed with any of the following tools: pip, easy_install, apt-get, yum. 
+                    Once supervisor is installed you generate a template file with the following command:
                 </p>
+
+                <pre>$ echo_supervisord_conf > supervisor.conf</pre>
+
+                <p>The following is a modification from the generated supervisor.conf file to run a Ratchet application from the "Hello World" tutorial:</p>
 
                 <p><pre class="prettyprint">[unix_http_server]
 file = /tmp/supervisor.sock
@@ -96,7 +102,9 @@ stdout_logfile_maxbytes = 1MB
 stderr_logfile          = ./logs/error.log
 stderr_logfile_maxbytes = 1MB</pre></p>
 
-            <p>Supervisor can be installed with any of the following tools: pip, easy_install, apt-get, yum.</p>
+            <p>If you're only going to user supervisor to run your WebSocket application you can now run it with the command:</p>
+
+            <p><pre>$ sudo supervisord -c supervisor.conf</pre></p>
 
             </section>
 
@@ -128,6 +136,12 @@ stderr_logfile_maxbytes = 1MB</pre></p>
                 <p>
                     
                 </p>
+            </section>
+
+            <section>
+                <h3>XDebug</h3>
+
+                <p>Disable the XDebug extension.  Make sure it is commented out of your php.ini file.  XDebug destroys performance.</p>
             </section>
 
         </div>
