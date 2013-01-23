@@ -23,6 +23,7 @@ return array(
           , '/docs/hello-world'    => '!globe Hello World!'
 //              , '/docs/hello-universe' => '!tasks Pub/Sub & RPC'
           , '/docs/push'           => '!chevron-right Push Integration'
+          , '/docs/deploy'         => '!signal Deployment'
         )
 
       , 'components' => array(
