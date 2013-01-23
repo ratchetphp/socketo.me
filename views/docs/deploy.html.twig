@@ -39,12 +39,12 @@
             </section>
 
             <section>
-                <h3>LibEvent</small></h3>
+                <h3>Libevent</small></h3>
 
                 <p>
-                    LibEvent is an asynchronous event driven C library that is meant to replace default event loop API on your system. 
+                    Libevent is an asynchronous event driven C library that is meant to replace default event loop API on your system. 
                     It presents a common API that will utilize any event loop that your kernel uses. 
-                    To set your system to use LibEvent you will need to install the system library, the development tools, and the PHP extension:
+                    To set your system to use Libevent you will need to install the system library, the development tools, and the PHP extension:
                 </p>
 
                 <p><pre>$ sudo apt-get install libevent libevent-dev
@@ -52,8 +52,8 @@ $ sudo pecl install libevent</pre></p>
 
                 <p>
                     The event loop that PHP uses by default through stream_select uses the old, slow poll mechanism. 
-                    By using LibEvent PHP will use the faster epoll or kqueue, drastically improving concurrency (handling many connections quickly). 
-                    Once LibEvent is installed you don't need to change anything in your script. Ratchet's IoServer::factory will automatically use LibEvent if it's available. 
+                    By using Libevent PHP will use the faster epoll or kqueue, drastically improving concurrency (handling many connections quickly). 
+                    Once Libevent is installed you don't need to change anything in your script. Ratchet's IoServer::factory will automatically use Libevent if it's available. 
             </section>
 
             <section>
@@ -137,12 +137,70 @@ stderr_logfile_maxbytes = 1MB</pre></p>
                     The goal is to setup the architecutre like the diagram below.
                 </p>
 
-                <p>Reminder: insert image here</p>
+                <p><img src="/assets/img/proxy-arch.png"></p>
 
-                <p>
-                    
-                </p>
-            </section>
+                <p>As of this writing, HAProxy support for WebSockets (via tunnel mode) (and SSL) is in the unstable branch, so we'll have to install it from source:</p>
+
+                <p><pre>wget http://haproxy.1wt.eu/download/1.5/src/devel/haproxy-1.5-dev17.tar.gz
+tar -zxvf haproxy-1.5-dev17.tar.gz
+cd haproxy-1.5-dev17
+make install</pre></p>
+
+                <p>The default installation should be in <em>/usr/local/sbin/haproxy</em>. The next step is to configure it. Below is a sample configuration:
+
+                <p><pre class="prettyprint">global
+	log	127.0.0.1	local0
+	maxconn	10000
+	user	haproxy
+	group	haproxy
+	daemon
+
+defaults
+	mode			http
+	log			global
+	option			httplog
+	retries			3
+	backlog			10000
+	timeout	client		30s
+	timeout	connect		30s
+	timeout	server		30s
+	timeout	tunnel		3600s
+	timeout	http-keep-alive	1s
+	timeout	http-request	15s
+
+frontend public
+	bind		*:80
+	acl		is_websocket hdr(Upgrade) -i WebSocket
+	use_backend	ws if is_websocket #is_websocket_server
+	default_backend	www
+
+backend ws
+	server	ws1	127.0.0.1:1337
+
+backend www
+	timeout	server	30s
+	server	www1	127.0.0.1:1338</pre></p>
+
+	           <p>
+	               Save this file, <em>/etc/haproxy.cfg</em> for example. 
+	               You'll notice we set the user an group to haproxy; you'll need to create these or update your configuration to use a different user/group combo. 
+	               Note the important parts above begin at "frontend public". 
+	               We're telling HAProxy to listen on port 80 and if we find an HTTP header with the "Upgrade: WebSocket" direct it to our WebSocket application running on port 1337 and all other traffic to port 1338 running our traditional web stack (Nginx or Apache). Finally, run HAProxy:
+	           </p>
+
+	           <p><pre>$ sudo haproxy -f /etc/haproxy.cfg -p /var/run/haproxy.pid -D</pre></p>
+	       </section>
+
+	       <section>
+	           <h3>Links</h3>
+
+	           <ul>
+	               <li><a href="http://libevent.org" rel="external">LibEvent</a></li>
+	               <li><a href="http://pecl.php.net/package/libevent" rel="external">Libevent PHP extension</a></li>
+	               <li><a href="http://supervisord.org/configuration.html" rel="external">Supervisor Configuration</a></li>
+	               <li><a href="http://haproxy.1wt.eu/download/1.5/doc/configuration.txt" rel="external">HAProxy Configuration Manual v1.5</a></li>
+	           </ul>
+	       </section>
 
         </div>
     </div>
