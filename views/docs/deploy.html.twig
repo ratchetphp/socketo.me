@@ -31,7 +31,8 @@
                     Before you run your shell script (your WebSocket application) you should probably update your <em>ulimit</em>.
                     What is this?  It's a unix security feature that limits the number of open file descriptors one running process can have open at a time.
                     We want to increase this as each client connecting to your server opens a file descriptor. 
-                    You should update this number to make sure the number of clients you expect never exceeds your ulimit.
+                    You should update this number to make sure the number of clients you expect never exceeds your ulimit. 
+                    Remember, when you update your ulimit, that change only affects the current shell session. 
                     Before you run you application make sure to execute this command:
 
                     <pre>$ ulimit -n 10000</pre>
@@ -59,63 +60,12 @@ $ sudo pecl install libevent</pre></p>
             <section>
                 <h3>XDebug</h3>
 
-                <p>Disable the XDebug extension.  Make sure it is commented out of your php.ini file.  XDebug destroys performance.</p>
+                <p>Disable the XDebug extension.  Make sure it is commented out of your php.ini file.  XDebug is fantastic for development, but destroys performance in production.</p>
             </section>
 
+            <a name="sconf"></a>
             <section>
-                <h3>Supervisor</h3>
-
-                <p>
-                    When running Ratchet in production it's highly recommended launching it from <a href="http://supervisord.org" target="_blank" rel="external">suporvisord</a>.
-                    Suporvisor is a daemon that launches other processes and ensures they stay running.  
-                    If for any reason your long running Ratchet application halted the supervisor daemon would ensure it starts back up immediately.
-                    Supervisor can be installed with any of the following tools: pip, easy_install, apt-get, yum. 
-                    Once supervisor is installed you generate a template file with the following command:
-                </p>
-
-                <pre>$ echo_supervisord_conf > supervisor.conf</pre>
-
-                <p>The following is a modification from the generated supervisor.conf file to run a Ratchet application from the "Hello World" tutorial:</p>
-
-                <p><pre class="prettyprint">[unix_http_server]
-file = /tmp/supervisor.sock
-
-[supervisord]
-logfile          = ./logs/supervisord.log
-logfile_maxbytes = 50MB
-logfile_backups  = 10
-loglevel         = info
-pidfile          = /tmp/supervisord.pid
-nodaemon         = false
-minfds           = 1024
-minprocs         = 200
-
-[rpcinterface:supervisor]
-supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
-
-[supervisorctl]
-serverurl = unix:///tmp/supervisor.sock
-
-[program:ratchet]
-command                 = bash -c "ulimit -n 10000 && /usr/bin/php ./bin/tutorial-terminal-chat.php"
-process_name            = Ratchet
-numprocs                = 1
-autostart               = true
-autorestart             = true
-user                    = root
-stdout_logfile          = ./logs/info.log
-stdout_logfile_maxbytes = 1MB
-stderr_logfile          = ./logs/error.log
-stderr_logfile_maxbytes = 1MB</pre></p>
-
-            <p>If you're only going to user supervisor to run your WebSocket application you can now run it with the command:</p>
-
-            <p><pre>$ sudo supervisord -c supervisor.conf</pre></p>
-
-            </section>
-
-            <section>
-                <h3><a name="sconf">Server Configuration</a></h3>
+                <h3>Server Configuration</h3>
 
                 <p>There's a couple things you need to know when deploying a WebSocket server that impact how you set up your server architecture:</p>
                 <ul>
@@ -191,14 +141,66 @@ backend www
 	           <p><pre>$ sudo haproxy -f /etc/haproxy.cfg -p /var/run/haproxy.pid -D</pre></p>
 	       </section>
 
+            <section>
+                <h3>Supervisor</h3>
+
+                <p>
+                    When running Ratchet in production it's highly recommended launching it from <a href="http://supervisord.org" target="_blank" rel="external">suporvisord</a>.
+                    Suporvisor is a daemon that launches other processes and ensures they stay running.  
+                    If for any reason your long running Ratchet application halted the supervisor daemon would ensure it starts back up immediately.
+                    Supervisor can be installed with any of the following tools: pip, easy_install, apt-get, yum. 
+                    Once supervisor is installed you generate a template file with the following command:
+                </p>
+
+                <pre>$ echo_supervisord_conf > supervisor.conf</pre>
+
+                <p>The following is a modification from the generated supervisor.conf file to run a Ratchet application from the "Hello World" tutorial:</p>
+
+                <p><pre class="prettyprint">[unix_http_server]
+file = /tmp/supervisor.sock
+
+[supervisord]
+logfile          = ./logs/supervisord.log
+logfile_maxbytes = 50MB
+logfile_backups  = 10
+loglevel         = info
+pidfile          = /tmp/supervisord.pid
+nodaemon         = false
+minfds           = 1024
+minprocs         = 200
+
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
+
+[supervisorctl]
+serverurl = unix:///tmp/supervisor.sock
+
+[program:ratchet]
+command                 = bash -c "ulimit -n 10000 && /usr/bin/php ./bin/tutorial-terminal-chat.php"
+process_name            = Ratchet
+numprocs                = 1
+autostart               = true
+autorestart             = true
+user                    = root
+stdout_logfile          = ./logs/info.log
+stdout_logfile_maxbytes = 1MB
+stderr_logfile          = ./logs/error.log
+stderr_logfile_maxbytes = 1MB</pre></p>
+
+            <p>If you're only going to user supervisor to run your WebSocket application you can now run it with the command:</p>
+
+            <p><pre>$ sudo supervisord -c supervisor.conf</pre></p>
+
+            </section>
+
 	       <section>
 	           <h3>Links</h3>
 
 	           <ul>
 	               <li><a href="http://libevent.org" rel="external">LibEvent</a></li>
 	               <li><a href="http://pecl.php.net/package/libevent" rel="external">Libevent PHP extension</a></li>
-	               <li><a href="http://supervisord.org/configuration.html" rel="external">Supervisor Configuration</a></li>
 	               <li><a href="http://haproxy.1wt.eu/download/1.5/doc/configuration.txt" rel="external">HAProxy Configuration Manual v1.5</a></li>
+	               <li><a href="http://supervisord.org/configuration.html" rel="external">Supervisor Configuration</a></li>
 	           </ul>
 	       </section>
 
