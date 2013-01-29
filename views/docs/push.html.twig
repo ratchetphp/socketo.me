@@ -234,7 +234,7 @@ class Pusher implements WampServerInterface {
         $topic = $this->subscribedTopics[$entryData['cat']];
 
         // re-send the serialized json to all the clients subscribed to that category
-        $topic->broadcast($entry);
+        $topic->broadcast($entryData);
     }
 
     /* The rest of our methods were as they were, omitted from docs to save space */
