@@ -21,7 +21,7 @@
                 <h3>The Problem</h3>
 
                 <p>
-                    The previous tutorials were cool and all, but their focus was creating a long lived application where users interacted with each other.
+                    The previous tutorials were cool and all, but their focus was creating a long lived application where users interacted with each other entirely over WebSockets with no persistence.
                     That's a lot of work to incorporate into an already existing site.
                     Code would need to be ported out of your repository and into a new Ratchet application.
                     A whole new testing phase would need to happen to make sure previously functional pages still work.
@@ -34,14 +34,7 @@
                     We will add real-time updates to our site without disrupting your code base or affecting its current stability.
                 </p>
 
-                <p>For this tutorial we're going to pretend you're publishing a blog article on your website and the visitors will see the story pop up as soon as you publish it.</p>
-
-                <h3>Givens</h3>
-
-                <p>
-                    Your blog is hosted on <em>example.com</em> publicly served on port 80
-                    and you're running your WebSocket server on the same domain and machine, publicly server on port 8080.
-                </p>
+                <p>For this tutorial we're going to pretend <small>(reads: boilerplate code missing)</small> you're publishing a blog article on your website and the visitors will see the story pop up as soon as you publish it.</p>
             </section>
 
             <section class="diagram">
@@ -79,8 +72,8 @@
                 </ol>
 
                 <p>
-                    This workflow is un-obtrusive; it is easy to introduce into existing websites.
-                    The only changes to the site are adding a 1 liner of ZeroMQ to the server and a Javascript file on the client to handle incoming message from the WebSocket server.
+                    This workflow is un-obtrusive and it's easy to introduce into existing websites.
+                    The only changes to the site are adding a bit of ZeroMQ to the server and a Javascript file on the client to handle incoming message from the WebSocket server.
                 </p>
             </section>
 
@@ -91,7 +84,7 @@
 
                 <p>
                     To communicate with a running script it needs to be listening on an open socket.
-                    Our application will be listening to port 808- for incoming WebSocket connections...but how will it also get updates from another PHP script?
+                    Our application will be listening to port 8080 for incoming WebSocket connections...but how will it also get updates from another PHP script?
                     Enter <a href="http://www.zeromq.org" rel="external">ZeroMQ</a>.
                     We could use raw sockets, like the ones Ratchet is built on, but ZeroMQ is a library that just makes sockets easier.
                 </p>
@@ -113,6 +106,11 @@
 
                 <pre class="prettprint json javascript">{
     "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "MyApp": "src"
+        }
+    },
     "require": {
         "cboden/Ratchet": "0.2.*"
       , "react/zmq": "dev-master"
@@ -125,11 +123,12 @@
 
                 <p>
                     Let's get to some code!  We'll start by stubbing out our class application.
-                    We're going to use {{ m.wamp() }} for it's ease of use with the Pub/Sub pattern.
+                    We're going to use {{ m.wamp() }} for its ease of use with the Pub/Sub pattern.
                     This will allow clients to subscribe to updates on a specific page and we'll only push updates to those who have subscribed.
                 </p>
 
                 <pre class="prettyprint php">&lt;?php
+namespace MyApp;
 use Ratchet\ConnectionInterface;
 use Ratchet\Wamp\WampServerInterface;
 
@@ -155,8 +154,8 @@ class Pusher implements WampServerInterface {
 }</pre>
 
                 <p>
-                    Simple enough? We just made the methods required for {{ m.wamp() }} and made sure no one tries to send data, closing the connection if they do.
-                    We're making a push application and not accepting any incoming messages, those will all be coming from AJAX.
+                    Save this in <em>/src/MyApp/Pusher.php</em>. We just made the methods required for {{ m.wamp() }} and made sure no one tries to send data, closing the connection if they do.
+                    We're making a push application and not accepting any incoming messages from WebSockets, those will all be coming from AJAX.
                 </p>
             </section>
 
@@ -169,6 +168,7 @@ class Pusher implements WampServerInterface {
                 </p>
 
                 <pre class="prettyprint php">&lt;?php
+    // post.php ???
     // This all was here before  ;)
     $entryData = array(
         'cat'     => $_POST['category']
@@ -204,6 +204,7 @@ class Pusher implements WampServerInterface {
                 </p>
 
                 <pre class="prettyprint php">&lt;?php
+namespace MyApp;
 use Ratchet\ConnectionInterface;
 use Ratchet\Wamp\WampServerInterface;
 
@@ -233,7 +234,7 @@ class Pusher implements WampServerInterface {
 
         $topic = $this->subscribedTopics[$entryData['cat']];
 
-        // re-send the serialized json to all the clients subscribed to that category
+        // re-send the data to all the clients subscribed to that category
         $topic->broadcast($entryData);
     }
 
@@ -252,20 +253,20 @@ class Pusher implements WampServerInterface {
                 </p>
 
                 <pre class="prettyprint php">&lt;?php
-    require __DIR__ . '/vendor/autoload.php';
+    require dirname(__DIR__) . '/vendor/autoload.php';
 
     $loop   = React\EventLoop\Factory::create();
-    $pusher = new Pusher();
+    $pusher = new MyApp\Pusher;
 
     // Listen for the web server to make a ZeroMQ push after an ajax request
     $context = new React\ZMQ\Context($loop);
     $pull = $context->getSocket(ZMQ::SOCKET_PULL);
-    $pull->bind('tcp://127.0.0.1:5555');
+    $pull->bind('tcp://127.0.0.1:5555'); // Binding to 127.0.0.1 means the only client that can connect is itself
     $pull->on('message', array($pusher, 'onBlogEntry'));
 
     // Set up our WebSocket server for clients wanting real-time updates
     $webSock = new React\Socket\Server($loop);
-    $webSock->listen(8080, '0.0.0.0');
+    $webSock->listen(8080, '0.0.0.0'); // Binding to 0.0.0.0 means remotes can connect
     $webServer = new Ratchet\Server\IoServer(
         new Ratchet\WebSocket\WsServer(
             new Ratchet\Wamp\WampServer(
@@ -278,9 +279,9 @@ class Pusher implements WampServerInterface {
     $loop->run();
 </pre>
 
-            <p>Save the code as "push-server.php" and run it:</p>
+            <p>Save the code as <em>/bin/push-server.php</em> and run it:</p>
 
-            <pre># php push-server.php</pre>
+            <pre>$ php bin/push-server.php</pre>
 
             </section>
 
@@ -289,11 +290,11 @@ class Pusher implements WampServerInterface {
 
                 <p>Now that our server side code is complete as well as up and running it's time to get those real-time posts! What you do with those updates specifically is beyond the scope of this document, we're just going to put those messages into the debug console.</p>
 
-                <pre class="prettyprint javascript">&lt;script src="/scripts/when.js"&gt;&lt;/script&gt; //  You will have to download when.js
+                <pre class="prettyprint javascript">&lt;script src="/scripts/when.js"&gt;&lt;/script&gt; &lt;!-- You will have to download <a href="https://github.com/cujojs/when" rel="external">when.js</a> --&gt;
 &lt;script src="http://autobahn.s3.amazonaws.com/js/autobahn.min.js"&gt;&lt;/script&gt;
 &lt;script&gt;
     var conn = new ab.Session(
-        'ws://example.com:8080' // The host (our Ratchet WebSocket server) to connect to
+        'ws://localhost:8080' // The host (our Ratchet WebSocket server) to connect to
       , function() {            // Once the connection has been established
             conn.subscribe('kittensCategory', function(topic, data) {
                 // This is where you would add the new article to the DOM (beyond the scope of this tutorial)
@@ -309,6 +310,13 @@ class Pusher implements WampServerInterface {
     );
 &lt;/script&gt;
 </pre>
+
+                <p>
+                    Finally, open the page you placed this Javascript in with one browser window and from another browser post a blog entry to "kittensCategory" and watch your console's log from the first.
+                    Once that is working, your next steps are to incorporate the data received into some DOM manipulation goodness. 
+                </p>
+
+                <p>When that's working locally (assuming localhost has been your development environment) you can change the localhost references and possibly the bindings to your proper server hostnames/IP addresses.</p>
             </section>
         </div>
     </div>
