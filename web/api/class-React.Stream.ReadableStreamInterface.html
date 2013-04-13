@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Interface React\Stream\ReadableStreamInterface | Ratchet</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2133861467"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?323617084"></script>
+	<script type="text/javascript" src="elementlist.js?1890192539"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -37,6 +37,8 @@
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -129,8 +131,13 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-React.Stream.Buffer.html">Buffer</a></li>
+				<li><a href="class-React.Stream.BufferedSink.html">BufferedSink</a></li>
+				<li><a href="class-React.Stream.CompositeStream.html">CompositeStream</a></li>
+				<li><a href="class-React.Stream.ReadableStream.html">ReadableStream</a></li>
 				<li><a href="class-React.Stream.Stream.html">Stream</a></li>
+				<li><a href="class-React.Stream.ThroughStream.html">ThroughStream</a></li>
 				<li><a href="class-React.Stream.Util.html">Util</a></li>
+				<li><a href="class-React.Stream.WritableStream.html">WritableStream</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -199,12 +206,15 @@
 	<div>
 		<h4>Direct known implementers</h4>
 			<a href="class-React.Socket.ConnectionInterface.html">React\Socket\ConnectionInterface</a>, 
+			<a href="class-React.Stream.CompositeStream.html">React\Stream\CompositeStream</a>, 
+			<a href="class-React.Stream.ReadableStream.html">React\Stream\ReadableStream</a>, 
 			<a href="class-React.Stream.Stream.html">React\Stream\Stream</a>
 	</div>
 
 	<div>
 		<h4>Indirect known implementers</h4>
-			<a href="class-React.Socket.Connection.html">React\Socket\Connection</a>
+			<a href="class-React.Socket.Connection.html">React\Socket\Connection</a>, 
+			<a href="class-React.Stream.ThroughStream.html">React\Stream\ThroughStream</a>
 	</div>
 
 
@@ -215,8 +225,17 @@
 		<b>Namespace:</b> <a href="namespace-React.html">React</a>\<a href="namespace-React.Stream.html">Stream</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-React.Stream.ReadableStreamInterface.html#8" title="Go to source code">stream/React/Stream/ReadableStreamInterface.php</a><br />
+				<b>Event:</b>
+				data<br />
+				<b>Event:</b>
+				end<br />
+				<b>Event:</b>
+				error<br />
+				<b>Event:</b>
+				close<br />
+		<b>Located at</b> <a href="source-class-React.Stream.ReadableStreamInterface.html#7-19" title="Go to source code">stream/React/Stream/ReadableStreamInterface.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -232,7 +251,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isReadable">#</a>
-		<code><a href="source-class-React.Stream.ReadableStreamInterface.html#10" title="Go to source code">isReadable</a>( )</code>
+		<code><a href="source-class-React.Stream.ReadableStreamInterface.html#15" title="Go to source code">isReadable</a>( )</code>
 
 		<div class="description short">
 			
@@ -240,6 +259,7 @@
 
 		<div class="description detailed hidden">
 			
+
 
 
 
@@ -260,7 +280,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_pause">#</a>
-		<code><a href="source-class-React.Stream.ReadableStreamInterface.html#11" title="Go to source code">pause</a>( )</code>
+		<code><a href="source-class-React.Stream.ReadableStreamInterface.html#16" title="Go to source code">pause</a>( )</code>
 
 		<div class="description short">
 			
@@ -268,6 +288,7 @@
 
 		<div class="description detailed hidden">
 			
+
 
 
 
@@ -288,7 +309,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_resume">#</a>
-		<code><a href="source-class-React.Stream.ReadableStreamInterface.html#12" title="Go to source code">resume</a>( )</code>
+		<code><a href="source-class-React.Stream.ReadableStreamInterface.html#17" title="Go to source code">resume</a>( )</code>
 
 		<div class="description short">
 			
@@ -296,6 +317,7 @@
 
 		<div class="description detailed hidden">
 			
+
 
 
 
@@ -316,7 +338,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_pipe">#</a>
-		<code><a href="source-class-React.Stream.ReadableStreamInterface.html#13" title="Go to source code">pipe</a>( <span><code><a href="class-React.Stream.WritableStreamInterface.html">React\Stream\WritableStreamInterface</a></code> <var>$dest</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">array</span>()</span> )</code>
+		<code><a href="source-class-React.Stream.ReadableStreamInterface.html#18" title="Go to source code">pipe</a>( <span><code><a href="class-React.Stream.WritableStreamInterface.html">React\Stream\WritableStreamInterface</a></code> <var>$dest</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 		<div class="description short">
 			
@@ -324,6 +346,7 @@
 
 		<div class="description detailed hidden">
 			
+
 
 
 
@@ -365,10 +388,18 @@
 
 
 
+
+
+
+
+
+
+
+
 </div>
 
 	<div id="footer">
-		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

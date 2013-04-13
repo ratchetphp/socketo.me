@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Http\EntityBody | Ratchet</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2133861467"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?323617084"></script>
+	<script type="text/javascript" src="elementlist.js?1890192539"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -37,6 +37,8 @@
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -131,11 +133,12 @@
 				<li><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html">AbstractEntityBodyDecorator</a></li>
 				<li><a href="class-Guzzle.Http.Client.html">Client</a></li>
 				<li class="active"><a href="class-Guzzle.Http.EntityBody.html">EntityBody</a></li>
+				<li><a href="class-Guzzle.Http.IoEmittingEntityBody.html">IoEmittingEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.Mimetypes.html">Mimetypes</a></li>
 				<li><a href="class-Guzzle.Http.QueryString.html">QueryString</a></li>
 				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
 				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Url.html">Url</a></li>
-				<li><a href="class-Guzzle.Http.Utils.html">Utils</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -224,8 +227,9 @@
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.EntityBody.html#8" title="Go to source code">http/Guzzle/Http/EntityBody.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.EntityBody.html#9-235" title="Go to source code">http/Guzzle/Http/EntityBody.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -241,7 +245,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_factory">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBody.html#23" title="Go to source code">factory</a>( <span>resource|string|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code> <var>$resource</var> = <span class="php-quote">''</span></span>, <span>integer <var>$size</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBody.html#24-54" title="Go to source code">factory</a>( <span>resource|string|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code> <var>$resource</var> = <span class="php-quote">''</span></span>, <span>integer <var>$size</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -258,9 +262,9 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$resource</var></dt>
-					<dd><code>resource|string|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code></code><br> Entity body data</dd>
+					<dd><code>resource|string|<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code></code><br>$resource Entity body data</dd>
 					<dt><var>$size</var></dt>
-					<dd><code>integer</code><br> Size of the data contained in the resource</dd>
+					<dd><code>integer</code><br>$size Size of the data contained in the resource</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -274,6 +278,7 @@
 				</div>
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -281,14 +286,14 @@
 
 		<td class="attributes"><code>
 			 public 
-			self
+			<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setRewindFunction">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBody.html#55" title="Go to source code">setRewindFunction</a>( <span>mixed <var>$callable</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBody.html#56-68" title="Go to source code">setRewindFunction</a>( <span>mixed <var>$callable</var></span> )</code>
 
 		<div class="description short">
 			
@@ -307,20 +312,21 @@ useful entity enclosing requests that are redirected.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$callable</var></dt>
-					<dd><code>mixed</code><br> Callable to invoke to rewind a non-seekable stream. The callback must accept an
-EntityBodyInterface object, perform the rewind if possible, and return a boolean
-representing whether or not the rewind was successful.</dd>
+					<dd><code>mixed</code><br>$callable Callable to invoke to rewind a non-seekable stream. The callback must
+accept an EntityBodyInterface object, perform the rewind if possible, and return
+a boolean representing whether or not the rewind was successful.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>self</code><br />
+					<code><code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code></code><br />
 				</div>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_setRewindFunction">Guzzle\Http\EntityBodyInterface::setRewindFunction</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_setRewindFunction">Guzzle\Http\EntityBodyInterface::setRewindFunction()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -335,7 +341,7 @@ representing whether or not the rewind was successful.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_rewind">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBody.html#69" title="Go to source code">rewind</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBody.html#70-76" title="Go to source code">rewind</a>( )</code>
 
 		<div class="description short">
 			
@@ -357,8 +363,11 @@ representing whether or not the rewind was successful.</dd>
 
 
 
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Stream.Stream.html#_rewind">Guzzle\Stream\Stream::rewind()</a></code></div>
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_rewind">Guzzle\Stream\StreamInterface::rewind</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_rewind">Guzzle\Stream\StreamInterface::rewind()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -373,7 +382,7 @@ representing whether or not the rewind was successful.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_fromString">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBody.html#77" title="Go to source code">fromString</a>( <span>string <var>$string</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBody.html#78-94" title="Go to source code">fromString</a>( <span>string <var>$string</var></span> )</code>
 
 		<div class="description short">
 			
@@ -390,13 +399,14 @@ representing whether or not the rewind was successful.</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$string</var></dt>
-					<dd><code>string</code><br> String of data</dd>
+					<dd><code>string</code><br>$string String of data</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code></code><br />
 				</div>
+
 
 
 
@@ -414,7 +424,7 @@ representing whether or not the rewind was successful.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_compress">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBody.html#93" title="Go to source code">compress</a>( <span>string <var>$filter</var> = <span class="php-quote">'zlib.deflate'</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBody.html#96-105" title="Go to source code">compress</a>( <span>string <var>$filter</var> = <span class="php-quote">'zlib.deflate'</span></span> )</code>
 
 		<div class="description short">
 			
@@ -435,7 +445,7 @@ then becomes the wrapped stream.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$filter</var></dt>
-					<dd><code>string</code><br> Compression filter</dd>
+					<dd><code>string</code><br>$filter Compression filter</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -445,8 +455,9 @@ then becomes the wrapped stream.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_compress">Guzzle\Http\EntityBodyInterface::compress</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_compress">Guzzle\Http\EntityBodyInterface::compress()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -461,7 +472,7 @@ then becomes the wrapped stream.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_uncompress">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBody.html#104" title="Go to source code">uncompress</a>( <span>string <var>$filter</var> = <span class="php-quote">'zlib.inflate'</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBody.html#107-130" title="Go to source code">uncompress</a>( <span>string <var>$filter</var> = <span class="php-quote">'zlib.inflate'</span></span> )</code>
 
 		<div class="description short">
 			
@@ -480,7 +491,7 @@ then used as the wrapped stream.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$filter</var></dt>
-					<dd><code>string</code><br> De-compression filter</dd>
+					<dd><code>string</code><br>$filter De-compression filter</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -490,8 +501,9 @@ then used as the wrapped stream.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_uncompress">Guzzle\Http\EntityBodyInterface::uncompress</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_uncompress">Guzzle\Http\EntityBodyInterface::uncompress()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -506,7 +518,7 @@ then used as the wrapped stream.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentLength">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBody.html#129" title="Go to source code">getContentLength</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBody.html#132-138" title="Go to source code">getContentLength</a>( )</code>
 
 		<div class="description short">
 			
@@ -528,8 +540,9 @@ then used as the wrapped stream.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentLength">Guzzle\Http\EntityBodyInterface::getContentLength</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentLength">Guzzle\Http\EntityBodyInterface::getContentLength()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -544,7 +557,7 @@ then used as the wrapped stream.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentType">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBody.html#137" title="Go to source code">getContentType</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBody.html#140-150" title="Go to source code">getContentType</a>( )</code>
 
 		<div class="description short">
 			
@@ -566,8 +579,9 @@ then used as the wrapped stream.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentType">Guzzle\Http\EntityBodyInterface::getContentType</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentType">Guzzle\Http\EntityBodyInterface::getContentType()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -582,7 +596,7 @@ then used as the wrapped stream.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentMd5">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBody.html#151" title="Go to source code">getContentMd5</a>( <span>boolean <var>$rawOutput</var> = <span class="php-keyword1">false</span></span>, <span>boolean <var>$base64Encode</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBody.html#152-160" title="Go to source code">getContentMd5</a>( <span>boolean <var>$rawOutput</var> = <span class="php-keyword1">false</span></span>, <span>boolean <var>$base64Encode</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
@@ -599,9 +613,10 @@ then used as the wrapped stream.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$rawOutput</var></dt>
-					<dd><code>boolean</code><br> Whether or not to use raw output</dd>
+					<dd><code>boolean</code><br>$rawOutput Whether or not to use raw output</dd>
 					<dt><var>$base64Encode</var></dt>
-					<dd><code>boolean</code><br> Whether or not to base64 encode raw output (only if raw output is true)</dd>
+					<dd><code>boolean</code><br>$base64Encode Whether or not to base64 encode raw output (only if raw output is
+true)</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -611,8 +626,9 @@ then used as the wrapped stream.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentMd5">Guzzle\Http\EntityBodyInterface::getContentMd5</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentMd5">Guzzle\Http\EntityBodyInterface::getContentMd5()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -627,7 +643,7 @@ then used as the wrapped stream.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setStreamFilterContentEncoding">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBody.html#177" title="Go to source code">setStreamFilterContentEncoding</a>( <span> <var>$streamFilterContentEncoding</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBody.html#178-186" title="Go to source code">setStreamFilterContentEncoding</a>( <span>mixed <var>$streamFilterContentEncoding</var></span> )</code>
 
 		<div class="description short">
 			
@@ -635,6 +651,7 @@ then used as the wrapped stream.</p>
 
 		<div class="description detailed hidden">
 			
+
 
 
 
@@ -655,7 +672,7 @@ then used as the wrapped stream.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentEncoding">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBody.html#187" title="Go to source code">getContentEncoding</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBody.html#188-197" title="Go to source code">getContentEncoding</a>( )</code>
 
 		<div class="description short">
 			
@@ -677,8 +694,9 @@ then used as the wrapped stream.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentEncoding">Guzzle\Http\EntityBodyInterface::getContentEncoding</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentEncoding">Guzzle\Http\EntityBodyInterface::getContentEncoding()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -693,7 +711,7 @@ then used as the wrapped stream.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_handleCompression">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBody.html#198" title="Go to source code">handleCompression</a>( <span> <var>$filter</var></span>, <span> <var>$offsetStart</var> = <span class="php-num">0</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBody.html#199-234" title="Go to source code">handleCompression</a>( <span>mixed <var>$filter</var></span>, <span>mixed <var>$offsetStart</var> = <span class="php-num">0</span></span> )</code>
 
 		<div class="description short">
 			
@@ -701,6 +719,7 @@ then used as the wrapped stream.</p>
 
 		<div class="description detailed hidden">
 			
+
 
 
 
@@ -719,7 +738,10 @@ then used as the wrapped stream.</p>
 			<a href="class-Guzzle.Stream.Stream.html#___construct">__construct()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#___destruct">__destruct()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#___toString">__toString()</a>, 
+			<a href="class-Guzzle.Stream.Stream.html#_close">close()</a>, 
+			<a href="class-Guzzle.Stream.Stream.html#_feof">feof()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_ftell">ftell()</a>, 
+			<a href="class-Guzzle.Stream.Stream.html#_getCustomData">getCustomData()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_getHash">getHash()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_getMetaData">getMetaData()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_getSize">getSize()</a>, 
@@ -734,14 +756,20 @@ then used as the wrapped stream.</p>
 			<a href="class-Guzzle.Stream.Stream.html#_isSeekable">isSeekable()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_isWritable">isWritable()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_read">read()</a>, 
+			<a href="class-Guzzle.Stream.Stream.html#_readLine">readLine()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_rebuildCache">rebuildCache()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_seek">seek()</a>, 
+			<a href="class-Guzzle.Stream.Stream.html#_setCustomData">setCustomData()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_setSize">setSize()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_setStream">setStream()</a>, 
 			<a href="class-Guzzle.Stream.Stream.html#_write">write()</a>
 		</code></td>
 	</tr>
 	</table>
+
+
+
+
 
 
 
@@ -761,17 +789,17 @@ then used as the wrapped stream.</p>
 	</table>
 
 
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="contentEncoding" id="$contentEncoding">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			boolean
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.EntityBody.html#13" title="Go to source code"><var>$contentEncoding</var></a>
+				<a href="source-class-Guzzle.Http.EntityBody.html#14-17" title="Go to source code"><var>$contentEncoding</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">false</span></code></td>
 		<td class="description"><div>
@@ -792,14 +820,13 @@ then used as the wrapped stream.</p>
 		</div></td>
 	</tr>
 	<tr data-order="rewindFunction" id="$rewindFunction">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			callable
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.EntityBody.html#18" title="Go to source code"><var>$rewindFunction</var></a>
+				<a href="source-class-Guzzle.Http.EntityBody.html#19-22" title="Go to source code"><var>$rewindFunction</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -826,6 +853,7 @@ then used as the wrapped stream.</p>
 	<tr>
 		<td><code>
 			<a href="class-Guzzle.Stream.Stream.html#$cache"><var>$cache</var></a>, 
+			<a href="class-Guzzle.Stream.Stream.html#$customData"><var>$customData</var></a>, 
 			<a href="class-Guzzle.Stream.Stream.html#$readWriteHash"><var>$readWriteHash</var></a>, 
 			<a href="class-Guzzle.Stream.Stream.html#$size"><var>$size</var></a>, 
 			<a href="class-Guzzle.Stream.Stream.html#$stream"><var>$stream</var></a>
@@ -834,10 +862,13 @@ then used as the wrapped stream.</p>
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

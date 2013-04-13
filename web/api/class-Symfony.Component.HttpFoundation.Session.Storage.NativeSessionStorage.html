@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage | Ratchet</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2133861467"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?323617084"></script>
+	<script type="text/javascript" src="elementlist.js?1890192539"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -37,6 +37,8 @@
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -216,8 +218,9 @@
 
 				<b>Author:</b>
 				Drak &lt;<a href="mailto:drak&#64;zikula.org">drak&#64;<!---->zikula.org</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#20" title="Go to source code">Storage/NativeSessionStorage.php</a><br />
+		<b>Located at</b> <a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#20-400" title="Go to source code">Storage/NativeSessionStorage.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -233,7 +236,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#54" title="Go to source code">__construct</a>( <span>array <var>$options</var> = <span class="php-keyword1">array</span>()</span>, <span>object <var>$handler</var> = <span class="php-keyword1">null</span></span>, <span><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.MetadataBag.html">Symfony\Component\HttpFoundation\Session\Storage\MetadataBag</a></code> <var>$metaBag</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#54-112" title="Go to source code">__construct</a>( <span>array <var>$options</var> = <span class="php-keyword1">array</span>()</span>, <span>object <var>$handler</var> = <span class="php-keyword1">null</span></span>, <span><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.MetadataBag.html">Symfony\Component\HttpFoundation\Session\Storage\MetadataBag</a></code> <var>$metaBag</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -245,7 +248,7 @@
 			
 <p>Constructor.</p>
 
-<p>Depending on how you want the storage driver to behave you probably want top
+<p>Depending on how you want the storage driver to behave you probably want to
 override this constructor entirely.</p>
 
 <p>List of options for $options array with their defaults.</p>
@@ -255,11 +258,11 @@ override this constructor entirely.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$options</var></dt>
-					<dd><code>array</code><br> Session configuration options.</dd>
+					<dd><code>array</code><br>$options Session configuration options.</dd>
 					<dt><var>$handler</var></dt>
-					<dd><code>object</code><br> SessionHandlerInterface.</dd>
+					<dd><code>object</code><br>$handler SessionHandlerInterface.</dd>
 					<dt><var>$metaBag</var></dt>
-					<dd><code><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.MetadataBag.html">Symfony\Component\HttpFoundation\Session\Storage\MetadataBag</a></code></code><br> MetadataBag.</dd>
+					<dd><code><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.MetadataBag.html">Symfony\Component\HttpFoundation\Session\Storage\MetadataBag</a></code></code><br>$metaBag MetadataBag.</dd>
 				</dl></div>
 
 
@@ -272,6 +275,7 @@ for options but we omit 'session.' from the beginning of the keys for
 convenience. ("auto_start", is not supported as it tells PHP to start a session before PHP starts to execute
 user-land code. Setting during runtime has no effect). cache_limiter, "nocache" (use "0" to prevent headers from being sent entirely). cookie_domain, "" cookie_httponly, "" cookie_lifetime, "0" cookie_path, "/" cookie_secure, "" entropy_file, "" entropy_length, "0" gc_divisor, "100" gc_maxlifetime, "1440" gc_probability, "1" hash_bits_per_character, "4" hash_function, "0" name, "PHPSESSID" referer_check, "" serialize_handler, "php" use_cookies, "1" use_only_cookies, "1" use_trans_sid, "0" upload_progress.enabled, "1" upload_progress.cleanup, "1" upload_progress.prefix, "upload_progress_" upload_progress.name, "PHP_SESSION_UPLOAD_PROGRESS" upload_progress.freq, "1%" upload_progress.min-freq, "1" url_rewriter.tags, "a=href, area=href, frame=src, form=, fieldset="<br />
 				</div>
+
 
 		</div>
 		</div></td>
@@ -287,7 +291,7 @@ user-land code. Setting during runtime has no effect). cache_limiter, "nocache" 
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSaveHandler">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#114" title="Go to source code">getSaveHandler</a>( )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#114-122" title="Go to source code">getSaveHandler</a>( )</code>
 
 		<div class="description short">
 			
@@ -309,6 +313,7 @@ user-land code. Setting during runtime has no effect). cache_limiter, "nocache" 
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -323,7 +328,7 @@ user-land code. Setting during runtime has no effect). cache_limiter, "nocache" 
 
 		<td class="name"><div>
 		<a class="anchor" href="#_start">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#124" title="Go to source code">start</a>( )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#124-157" title="Go to source code">start</a>( )</code>
 
 		<div class="description short">
 			
@@ -349,8 +354,9 @@ user-land code. Setting during runtime has no effect). cache_limiter, "nocache" 
 				</div>
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_start">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::start</a></code></div>
+				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_start">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::start()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -365,7 +371,7 @@ user-land code. Setting during runtime has no effect). cache_limiter, "nocache" 
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getId">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#159" title="Go to source code">getId</a>( )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#159-169" title="Go to source code">getId</a>( )</code>
 
 		<div class="description short">
 			
@@ -387,8 +393,9 @@ user-land code. Setting during runtime has no effect). cache_limiter, "nocache" 
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_getId">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::getId</a></code></div>
+				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_getId">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::getId()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -403,7 +410,7 @@ user-land code. Setting during runtime has no effect). cache_limiter, "nocache" 
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setId">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#171" title="Go to source code">setId</a>( <span>string <var>$id</var></span> )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#171-177" title="Go to source code">setId</a>( <span>string <var>$id</var></span> )</code>
 
 		<div class="description short">
 			
@@ -420,14 +427,15 @@ user-land code. Setting during runtime has no effect). cache_limiter, "nocache" 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$id</var></dt>
-					<dd><code>string</code></dd>
+					<dd><code>string</code><br>$id</dd>
 				</dl></div>
 
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_setId">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::setId</a></code></div>
+				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_setId">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::setId()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -442,7 +450,7 @@ user-land code. Setting during runtime has no effect). cache_limiter, "nocache" 
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getName">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#179" title="Go to source code">getName</a>( )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#179-185" title="Go to source code">getName</a>( )</code>
 
 		<div class="description short">
 			
@@ -464,8 +472,9 @@ user-land code. Setting during runtime has no effect). cache_limiter, "nocache" 
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_getName">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::getName</a></code></div>
+				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_getName">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::getName()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -480,7 +489,7 @@ user-land code. Setting during runtime has no effect). cache_limiter, "nocache" 
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setName">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#187" title="Go to source code">setName</a>( <span>string <var>$name</var></span> )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#187-193" title="Go to source code">setName</a>( <span>string <var>$name</var></span> )</code>
 
 		<div class="description short">
 			
@@ -497,14 +506,15 @@ user-land code. Setting during runtime has no effect). cache_limiter, "nocache" 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$name</var></dt>
-					<dd><code>string</code></dd>
+					<dd><code>string</code><br>$name</dd>
 				</dl></div>
 
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_setName">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::setName</a></code></div>
+				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_setName">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::setName()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -519,7 +529,7 @@ user-land code. Setting during runtime has no effect). cache_limiter, "nocache" 
 
 		<td class="name"><div>
 		<a class="anchor" href="#_regenerate">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#195" title="Go to source code">regenerate</a>( <span>Boolean <var>$destroy</var> = <span class="php-keyword1">false</span></span>, <span>integer <var>$lifetime</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#195-209" title="Go to source code">regenerate</a>( <span>Boolean <var>$destroy</var> = <span class="php-keyword1">false</span></span>, <span>integer <var>$lifetime</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -536,11 +546,11 @@ user-land code. Setting during runtime has no effect). cache_limiter, "nocache" 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$destroy</var></dt>
-					<dd><code>Boolean</code><br> Destroy session when regenerating?</dd>
+					<dd><code>Boolean</code><br>$destroy Destroy session when regenerating?</dd>
 					<dt><var>$lifetime</var></dt>
-					<dd><code>integer</code><br> Sets the cookie lifetime for the session cookie. A null value will leave the
-system settings unchanged, 0 sets the cookie to expire with browser session.
-Time is in seconds, and is not a Unix timestamp.</dd>
+					<dd><code>integer</code><br>$lifetime Sets the cookie lifetime for the session cookie. A null value will
+leave the system settings unchanged, 0 sets the cookie to expire with browser
+session. Time is in seconds, and is not a Unix timestamp.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -554,8 +564,9 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 				</div>
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_regenerate">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::regenerate</a></code></div>
+				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_regenerate">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::regenerate()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -570,7 +581,7 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_save">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#211" title="Go to source code">save</a>( )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#211-223" title="Go to source code">save</a>( )</code>
 
 		<div class="description short">
 			
@@ -586,10 +597,16 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 
 
 
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-RuntimeException.html">RuntimeException</a></code></code><br>If the session is saved without being started, or if the session is already
+closed.<br />
+				</div>
+
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_save">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::save</a></code></div>
+				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_save">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::save()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -604,7 +621,7 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_clear">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#225" title="Go to source code">clear</a>( )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#225-240" title="Go to source code">clear</a>( )</code>
 
 		<div class="description short">
 			
@@ -622,8 +639,9 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_clear">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::clear</a></code></div>
+				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_clear">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::clear()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -638,7 +656,7 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_registerBag">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#242" title="Go to source code">registerBag</a>( <span><code><a href="class-Symfony.Component.HttpFoundation.Session.SessionBagInterface.html">Symfony\Component\HttpFoundation\Session\SessionBagInterface</a></code> <var>$bag</var></span> )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#242-248" title="Go to source code">registerBag</a>( <span><code><a href="class-Symfony.Component.HttpFoundation.Session.SessionBagInterface.html">Symfony\Component\HttpFoundation\Session\SessionBagInterface</a></code> <var>$bag</var></span> )</code>
 
 		<div class="description short">
 			
@@ -655,14 +673,15 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$bag</var></dt>
-					<dd><code><code><a href="class-Symfony.Component.HttpFoundation.Session.SessionBagInterface.html">Symfony\Component\HttpFoundation\Session\SessionBagInterface</a></code></code></dd>
+					<dd><code><code><a href="class-Symfony.Component.HttpFoundation.Session.SessionBagInterface.html">Symfony\Component\HttpFoundation\Session\SessionBagInterface</a></code></code><br>$bag</dd>
 				</dl></div>
 
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_registerBag">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::registerBag</a></code></div>
+				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_registerBag">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::registerBag()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -677,7 +696,7 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getBag">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#250" title="Go to source code">getBag</a>( <span>string <var>$name</var></span> )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#250-266" title="Go to source code">getBag</a>( <span>string <var>$name</var></span> )</code>
 
 		<div class="description short">
 			
@@ -694,7 +713,7 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$name</var></dt>
-					<dd><code>string</code></dd>
+					<dd><code>string</code><br>$name</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -708,8 +727,9 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 				</div>
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_getBag">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::getBag</a></code></div>
+				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_getBag">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::getBag()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -724,7 +744,7 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setMetadataBag">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#268" title="Go to source code">setMetadataBag</a>( <span><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.MetadataBag.html">Symfony\Component\HttpFoundation\Session\Storage\MetadataBag</a></code> <var>$metaBag</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#268-280" title="Go to source code">setMetadataBag</a>( <span><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.MetadataBag.html">Symfony\Component\HttpFoundation\Session\Storage\MetadataBag</a></code> <var>$metaBag</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -741,8 +761,9 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$metaBag</var></dt>
-					<dd><code><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.MetadataBag.html">Symfony\Component\HttpFoundation\Session\Storage\MetadataBag</a></code></code></dd>
+					<dd><code><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.MetadataBag.html">Symfony\Component\HttpFoundation\Session\Storage\MetadataBag</a></code></code><br>$metaBag</dd>
 				</dl></div>
+
 
 
 
@@ -761,7 +782,7 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMetadataBag">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#282" title="Go to source code">getMetadataBag</a>( )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#282-290" title="Go to source code">getMetadataBag</a>( )</code>
 
 		<div class="description short">
 			
@@ -783,8 +804,9 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_getMetadataBag">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::getMetadataBag</a></code></div>
+				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_getMetadataBag">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::getMetadataBag()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -799,7 +821,7 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isStarted">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#292" title="Go to source code">isStarted</a>( )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#292-298" title="Go to source code">isStarted</a>( )</code>
 
 		<div class="description short">
 			
@@ -821,8 +843,9 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_isStarted">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::isStarted</a></code></div>
+				<div class="list"><code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.SessionStorageInterface.html#_isStarted">Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface::isStarted()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -837,7 +860,7 @@ Time is in seconds, and is not a Unix timestamp.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setOptions">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#300" title="Go to source code">setOptions</a>( <span>array <var>$options</var></span> )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#300-329" title="Go to source code">setOptions</a>( <span>array <var>$options</var></span> )</code>
 
 		<div class="description short">
 			
@@ -857,7 +880,7 @@ ignores other ini keys.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$options</var></dt>
-					<dd><code>array</code><br> Session ini directives array(key =&gt; value).</dd>
+					<dd><code>array</code><br>$options Session ini directives array(key =&gt; value).</dd>
 				</dl></div>
 
 
@@ -867,6 +890,7 @@ ignores other ini keys.</p>
 						<a
 href="http://php.net/session.configuration">http://php.net/session.configuration</a><br />
 				</div>
+
 
 		</div>
 		</div></td>
@@ -882,7 +906,7 @@ href="http://php.net/session.configuration">http://php.net/session.configuration
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setSaveHandler">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#331" title="Go to source code">setSaveHandler</a>( <span>object <var>$saveHandler</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#331-371" title="Go to source code">setSaveHandler</a>( <span>object <var>$saveHandler</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -895,8 +919,8 @@ href="http://php.net/session.configuration">http://php.net/session.configuration
 <p>Registers save handler as a PHP session handler.</p>
 
 <p>To use internal PHP session save handlers, override this method using ini_set
-with session.save_handlers and session.save_path e.g.<br />
-ini_set('session.save_handlers', 'files'); ini_set('session.save_path',
+with session.save_handler and session.save_path e.g.<br />
+ini_set('session.save_handler', 'files'); ini_set('session.save_path',
 /tmp');</p>
 
 
@@ -904,7 +928,7 @@ ini_set('session.save_handlers', 'files'); ini_set('session.save_path',
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$saveHandler</var></dt>
-					<dd><code>object</code><br> Default null means NativeProxy.</dd>
+					<dd><code>object</code><br>$saveHandler Default null means NativeProxy.</dd>
 				</dl></div>
 
 
@@ -917,6 +941,7 @@ href="http://php.net/session-set-save-handler">http://php.net/session-set-save-h
 href="http://php.net/sessionhandlerinterface">http://php.net/sessionhandlerinterface</a><br />
 						<a href="http://php.net/sessionhandler">http://php.net/sessionhandler</a><br />
 				</div>
+
 
 		</div>
 		</div></td>
@@ -932,7 +957,7 @@ href="http://php.net/sessionhandlerinterface">http://php.net/sessionhandlerinter
 
 		<td class="name"><div>
 		<a class="anchor" href="#_loadSession">#</a>
-		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#373" title="Go to source code">loadSession</a>( <span>array <var>&amp; $session</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#373-399" title="Go to source code">loadSession</a>( <span>array <var>&amp; $session</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -954,8 +979,9 @@ unserializes it and populates $_SESSION with the result automatically.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$session</var></dt>
-					<dd><code>array|null</code></dd>
+					<dd><code>array|null</code><br>$session</dd>
 				</dl></div>
+
 
 
 
@@ -971,17 +997,21 @@ unserializes it and populates $_SESSION with the result automatically.</p>
 
 
 
+
+
+
+
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="bags" id="$bags">
-
 		<td class="attributes"><code>
-			protected 
-			array
+			protected  
+			<code><a href="class-Symfony.Component.HttpFoundation.Session.SessionBagInterface.html">Symfony\Component\HttpFoundation\Session\SessionBagInterface</a>[]</code>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#27" title="Go to source code"><var>$bags</var></a>
+				<a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#27-32" title="Go to source code"><var>$bags</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1002,14 +1032,13 @@ unserializes it and populates $_SESSION with the result automatically.</p>
 		</div></td>
 	</tr>
 	<tr data-order="started" id="$started">
-
 		<td class="attributes"><code>
-			protected 
-			boolean
+			protected  
+			Boolean
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#34" title="Go to source code"><var>$started</var></a>
+				<a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#34-37" title="Go to source code"><var>$started</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">false</span></code></td>
 		<td class="description"><div>
@@ -1026,14 +1055,13 @@ unserializes it and populates $_SESSION with the result automatically.</p>
 		</div></td>
 	</tr>
 	<tr data-order="closed" id="$closed">
-
 		<td class="attributes"><code>
-			protected 
-			boolean
+			protected  
+			Boolean
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#39" title="Go to source code"><var>$closed</var></a>
+				<a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#39-42" title="Go to source code"><var>$closed</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">false</span></code></td>
 		<td class="description"><div>
@@ -1050,14 +1078,13 @@ unserializes it and populates $_SESSION with the result automatically.</p>
 		</div></td>
 	</tr>
 	<tr data-order="saveHandler" id="$saveHandler">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.Proxy.AbstractProxy.html">Symfony\Component\HttpFoundation\Session\Storage\Proxy\AbstractProxy</a></code>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#44" title="Go to source code"><var>$saveHandler</var></a>
+				<a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#44-47" title="Go to source code"><var>$saveHandler</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1074,14 +1101,13 @@ unserializes it and populates $_SESSION with the result automatically.</p>
 		</div></td>
 	</tr>
 	<tr data-order="metadataBag" id="$metadataBag">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Symfony.Component.HttpFoundation.Session.Storage.MetadataBag.html">Symfony\Component\HttpFoundation\Session\Storage\MetadataBag</a></code>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#49" title="Go to source code"><var>$metadataBag</var></a>
+				<a href="source-class-Symfony.Component.HttpFoundation.Session.Storage.NativeSessionStorage.html#49-52" title="Go to source code"><var>$metadataBag</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1101,10 +1127,13 @@ unserializes it and populates $_SESSION with the result automatically.</p>
 
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

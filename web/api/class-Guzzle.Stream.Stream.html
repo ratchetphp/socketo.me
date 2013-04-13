@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Stream\Stream | Ratchet</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2133861467"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?323617084"></script>
+	<script type="text/javascript" src="elementlist.js?1890192539"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -37,6 +37,8 @@
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -128,12 +130,14 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-Guzzle.Stream.PhpStreamRequestFactory.html">PhpStreamRequestFactory</a></li>
 				<li class="active"><a href="class-Guzzle.Stream.Stream.html">Stream</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
 			<ul>
 				<li><a href="class-Guzzle.Stream.StreamInterface.html">StreamInterface</a></li>
+				<li><a href="class-Guzzle.Stream.StreamRequestFactoryInterface.html">StreamRequestFactoryInterface</a></li>
 			</ul>
 
 
@@ -211,8 +215,9 @@
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Stream.html">Stream</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Stream.Stream.html#7" title="Go to source code">stream/Guzzle/Stream/Stream.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Stream.Stream.html#7-368" title="Go to source code">stream/Guzzle/Stream/Stream.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -228,7 +233,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#50" title="Go to source code">__construct</a>( <span>resource <var>$stream</var></span>, <span>integer <var>$size</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#55-66" title="Go to source code">__construct</a>( <span>resource <var>$stream</var></span>, <span>integer <var>$size</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -245,10 +250,10 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$stream</var></dt>
-					<dd><code>resource</code><br> Stream resource to wrap</dd>
+					<dd><code>resource</code><br>$stream Stream resource to wrap</dd>
 					<dt><var>$size</var></dt>
-					<dd><code>integer</code><br> Size of the stream in bytes. Only pass if the size cannot be obtained from the
-stream.</dd>
+					<dd><code>integer</code><br>$size Size of the stream in bytes. Only pass if the size cannot be obtained from
+the stream.</dd>
 				</dl></div>
 
 
@@ -256,6 +261,7 @@ stream.</dd>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Common.Exception.InvalidArgumentException.html">Guzzle\Common\Exception\InvalidArgumentException</a></code></code><br>if the stream is not a stream resource<br />
 				</div>
+
 
 
 		</div>
@@ -272,7 +278,7 @@ stream.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___destruct">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#63" title="Go to source code">__destruct</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#68-74" title="Go to source code">__destruct</a>( )</code>
 
 		<div class="description short">
 			
@@ -283,6 +289,7 @@ stream.</dd>
 		<div class="description detailed hidden">
 			
 <p>Closes the stream when the helper is destructed</p>
+
 
 
 
@@ -304,7 +311,7 @@ stream.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#73" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#76-90" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -328,8 +335,44 @@ seekable.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#___toString">Guzzle\Stream\StreamInterface::__toString</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#___toString">Guzzle\Stream\StreamInterface::__toString()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="close" id="_close">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_close">#</a>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#92-102" title="Go to source code">close</a>( )</code>
+
+		<div class="description short">
+			
+<p>Close the underlying stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Close the underlying stream</p>
+
+
+
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_close">Guzzle\Stream\StreamInterface::close()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -344,7 +387,7 @@ seekable.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getHash">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#89" title="Go to source code">getHash</a>( <span><code><a href="class-Guzzle.Stream.StreamInterface.html">Guzzle\Stream\StreamInterface</a></code> <var>$stream</var></span>, <span>string <var>$algo</var></span>, <span>boolean <var>$rawOutput</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#104-129" title="Go to source code">getHash</a>( <span><code><a href="class-Guzzle.Stream.StreamInterface.html">Guzzle\Stream\StreamInterface</a></code> <var>$stream</var></span>, <span>string <var>$algo</var></span>, <span>boolean <var>$rawOutput</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
@@ -361,17 +404,18 @@ seekable.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$stream</var></dt>
-					<dd><code><code><a href="class-Guzzle.Stream.StreamInterface.html">Guzzle\Stream\StreamInterface</a></code></code><br> Stream to calculate the hash for</dd>
+					<dd><code><code><a href="class-Guzzle.Stream.StreamInterface.html">Guzzle\Stream\StreamInterface</a></code></code><br>$stream Stream to calculate the hash for</dd>
 					<dt><var>$algo</var></dt>
-					<dd><code>string</code><br> Hash algorithm (e.g. md5, crc32, etc)</dd>
+					<dd><code>string</code><br>$algo Hash algorithm (e.g. md5, crc32, etc)</dd>
 					<dt><var>$rawOutput</var></dt>
-					<dd><code>boolean</code><br> Whether or not to use raw output</dd>
+					<dd><code>boolean</code><br>$rawOutput Whether or not to use raw output</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>boolean|string</code><br>Returns false on failure or a hash string on success<br />
 				</div>
+
 
 
 
@@ -389,7 +433,7 @@ seekable.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMetaData">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#116" title="Go to source code">getMetaData</a>( <span>string <var>$key</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#131-139" title="Go to source code">getMetaData</a>( <span>string <var>$key</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -406,7 +450,7 @@ seekable.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$key</var></dt>
-					<dd><code>string</code><br> Specific metadata to retrieve</dd>
+					<dd><code>string</code><br>$key Specific metadata to retrieve</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -416,8 +460,9 @@ seekable.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_getMetaData">Guzzle\Stream\StreamInterface::getMetaData</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_getMetaData">Guzzle\Stream\StreamInterface::getMetaData()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -432,7 +477,7 @@ seekable.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getStream">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#126" title="Go to source code">getStream</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#141-147" title="Go to source code">getStream</a>( )</code>
 
 		<div class="description short">
 			
@@ -454,8 +499,9 @@ seekable.</p>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_getStream">Guzzle\Stream\StreamInterface::getStream</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_getStream">Guzzle\Stream\StreamInterface::getStream()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -463,14 +509,14 @@ seekable.</p>
 
 		<td class="attributes"><code>
 			 public 
-			self
+			<code><a href="class-Guzzle.Stream.Stream.html">Guzzle\Stream\Stream</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setStream">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#134" title="Go to source code">setStream</a>( <span>resource <var>$stream</var></span>, <span>integer <var>$size</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#149-163" title="Go to source code">setStream</a>( <span>resource <var>$stream</var></span>, <span>integer <var>$size</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -487,21 +533,22 @@ seekable.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$stream</var></dt>
-					<dd><code>resource</code><br> Stream resource to wrap</dd>
+					<dd><code>resource</code><br>$stream Stream resource to wrap</dd>
 					<dt><var>$size</var></dt>
-					<dd><code>integer</code><br> Size of the stream in bytes. Only pass if the size cannot be obtained from the
-stream.</dd>
+					<dd><code>integer</code><br>$size Size of the stream in bytes. Only pass if the size cannot be obtained from
+the stream.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>self</code><br />
+					<code><code><a href="class-Guzzle.Stream.Stream.html">Guzzle\Stream\Stream</a></code></code><br />
 				</div>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_setStream">Guzzle\Stream\StreamInterface::setStream</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_setStream">Guzzle\Stream\StreamInterface::setStream()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -516,7 +563,7 @@ stream.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getWrapper">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#150" title="Go to source code">getWrapper</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#165-171" title="Go to source code">getWrapper</a>( )</code>
 
 		<div class="description short">
 			
@@ -538,8 +585,9 @@ stream.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_getWrapper">Guzzle\Stream\StreamInterface::getWrapper</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_getWrapper">Guzzle\Stream\StreamInterface::getWrapper()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -547,14 +595,14 @@ stream.</dd>
 
 		<td class="attributes"><code>
 			 public 
-			string
+			array
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getWrapperData">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#158" title="Go to source code">getWrapperData</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#173-179" title="Go to source code">getWrapperData</a>( )</code>
 
 		<div class="description short">
 			
@@ -571,13 +619,14 @@ stream.</dd>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>string</code><br />
+					<code>array</code><br />
 				</div>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_getWrapperData">Guzzle\Stream\StreamInterface::getWrapperData</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_getWrapperData">Guzzle\Stream\StreamInterface::getWrapperData()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -592,7 +641,7 @@ stream.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getStreamType">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#166" title="Go to source code">getStreamType</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#181-187" title="Go to source code">getStreamType</a>( )</code>
 
 		<div class="description short">
 			
@@ -614,8 +663,9 @@ stream.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_getStreamType">Guzzle\Stream\StreamInterface::getStreamType</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_getStreamType">Guzzle\Stream\StreamInterface::getStreamType()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -630,7 +680,7 @@ stream.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getUri">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#174" title="Go to source code">getUri</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#189-195" title="Go to source code">getUri</a>( )</code>
 
 		<div class="description short">
 			
@@ -652,8 +702,9 @@ stream.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_getUri">Guzzle\Stream\StreamInterface::getUri</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_getUri">Guzzle\Stream\StreamInterface::getUri()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -668,7 +719,7 @@ stream.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSize">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#182" title="Go to source code">getSize</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#197-220" title="Go to source code">getSize</a>( )</code>
 
 		<div class="description short">
 			
@@ -690,8 +741,9 @@ stream.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_getSize">Guzzle\Stream\StreamInterface::getSize</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_getSize">Guzzle\Stream\StreamInterface::getSize()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -706,7 +758,7 @@ stream.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isReadable">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#207" title="Go to source code">isReadable</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#222-228" title="Go to source code">isReadable</a>( )</code>
 
 		<div class="description short">
 			
@@ -728,8 +780,9 @@ stream.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_isReadable">Guzzle\Stream\StreamInterface::isReadable</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_isReadable">Guzzle\Stream\StreamInterface::isReadable()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -744,7 +797,7 @@ stream.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isWritable">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#215" title="Go to source code">isWritable</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#230-236" title="Go to source code">isWritable</a>( )</code>
 
 		<div class="description short">
 			
@@ -766,8 +819,9 @@ stream.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_isWritable">Guzzle\Stream\StreamInterface::isWritable</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_isWritable">Guzzle\Stream\StreamInterface::isWritable()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -782,7 +836,7 @@ stream.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isConsumed">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#223" title="Go to source code">isConsumed</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#238-244" title="Go to source code">isConsumed</a>( )</code>
 
 		<div class="description short">
 			
@@ -804,8 +858,48 @@ stream.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_isConsumed">Guzzle\Stream\StreamInterface::isConsumed</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_isConsumed">Guzzle\Stream\StreamInterface::isConsumed()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="feof" id="_feof">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_feof">#</a>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#246-252" title="Go to source code">feof</a>( )</code>
+
+		<div class="description short">
+			
+<p>Alias of isConsumed</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Alias of isConsumed</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_feof">Guzzle\Stream\StreamInterface::feof()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -820,7 +914,7 @@ stream.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isLocal">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#231" title="Go to source code">isLocal</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#254-260" title="Go to source code">isLocal</a>( )</code>
 
 		<div class="description short">
 			
@@ -842,8 +936,9 @@ stream.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_isLocal">Guzzle\Stream\StreamInterface::isLocal</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_isLocal">Guzzle\Stream\StreamInterface::isLocal()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -858,7 +953,7 @@ stream.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isSeekable">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#239" title="Go to source code">isSeekable</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#262-268" title="Go to source code">isSeekable</a>( )</code>
 
 		<div class="description short">
 			
@@ -880,8 +975,9 @@ stream.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_isSeekable">Guzzle\Stream\StreamInterface::isSeekable</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_isSeekable">Guzzle\Stream\StreamInterface::isSeekable()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -896,7 +992,7 @@ stream.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setSize">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#247" title="Go to source code">setSize</a>( <span>integer <var>$size</var></span> )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#270-278" title="Go to source code">setSize</a>( <span>integer <var>$size</var></span> )</code>
 
 		<div class="description short">
 			
@@ -913,7 +1009,7 @@ stream.</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$size</var></dt>
-					<dd><code>integer</code><br> Size of the stream contents in bytes</dd>
+					<dd><code>integer</code><br>$size Size of the stream contents in bytes</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -923,8 +1019,9 @@ stream.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_setSize">Guzzle\Stream\StreamInterface::setSize</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_setSize">Guzzle\Stream\StreamInterface::setSize()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -939,7 +1036,7 @@ stream.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_seek">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#257" title="Go to source code">seek</a>( <span>integer <var>$offset</var></span>, <span>integer <var>$whence</var> = SEEK_SET</span> )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#280-286" title="Go to source code">seek</a>( <span>integer <var>$offset</var></span>, <span>integer <var>$whence</var> = SEEK_SET</span> )</code>
 
 		<div class="description short">
 			
@@ -956,9 +1053,9 @@ stream.</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$offset</var></dt>
-					<dd><code>integer</code><br> Stream offset</dd>
+					<dd><code>integer</code><br>$offset Stream offset</dd>
 					<dt><var>$whence</var></dt>
-					<dd><code>integer</code><br> Where the offset is applied</dd>
+					<dd><code>integer</code><br>$whence Where the offset is applied</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -968,8 +1065,9 @@ stream.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_seek">Guzzle\Stream\StreamInterface::seek</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_seek">Guzzle\Stream\StreamInterface::seek()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -984,7 +1082,7 @@ stream.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_read">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#265" title="Go to source code">read</a>( <span>integer <var>$length</var></span> )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#288-294" title="Go to source code">read</a>( <span>integer <var>$length</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1001,7 +1099,7 @@ stream.</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$length</var></dt>
-					<dd><code>integer</code><br> Up to length number of bytes read.</dd>
+					<dd><code>integer</code><br>$length Up to length number of bytes read.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1011,8 +1109,9 @@ stream.</dd>
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_read">Guzzle\Stream\StreamInterface::read</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_read">Guzzle\Stream\StreamInterface::read()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1027,7 +1126,7 @@ stream.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_write">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#273" title="Go to source code">write</a>( <span>string <var>$string</var></span> )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#296-309" title="Go to source code">write</a>( <span>string <var>$string</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1044,7 +1143,7 @@ stream.</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$string</var></dt>
-					<dd><code>string</code><br> The string that is to be written.</dd>
+					<dd><code>string</code><br>$string The string that is to be written.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1055,8 +1154,9 @@ failure.<br />
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_write">Guzzle\Stream\StreamInterface::write</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_write">Guzzle\Stream\StreamInterface::write()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1071,7 +1171,7 @@ failure.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ftell">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#288" title="Go to source code">ftell</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#311-317" title="Go to source code">ftell</a>( )</code>
 
 		<div class="description short">
 			
@@ -1093,8 +1193,9 @@ failure.<br />
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_ftell">Guzzle\Stream\StreamInterface::ftell</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_ftell">Guzzle\Stream\StreamInterface::ftell()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1109,7 +1210,7 @@ failure.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_rewind">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#296" title="Go to source code">rewind</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#319-325" title="Go to source code">rewind</a>( )</code>
 
 		<div class="description short">
 			
@@ -1131,8 +1232,143 @@ failure.<br />
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_rewind">Guzzle\Stream\StreamInterface::rewind</a></code></div>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_rewind">Guzzle\Stream\StreamInterface::rewind()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="readLine" id="_readLine">
+
+		<td class="attributes"><code>
+			 public 
+			string|boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_readLine">#</a>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#327-337" title="Go to source code">readLine</a>( <span>integer <var>$maxLength</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Read a line from the stream up to the maximum allowed buffer length</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Read a line from the stream up to the maximum allowed buffer length</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$maxLength</var></dt>
+					<dd><code>integer</code><br>$maxLength Maximum buffer length</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|boolean</code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_readLine">Guzzle\Stream\StreamInterface::readLine()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setCustomData" id="_setCustomData">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Stream.Stream.html">Guzzle\Stream\Stream</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setCustomData">#</a>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#339-347" title="Go to source code">setCustomData</a>( <span>string <var>$key</var></span>, <span>mixed <var>$value</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set custom data on the stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set custom data on the stream</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>string</code><br>$key Key to set</dd>
+					<dt><var>$value</var></dt>
+					<dd><code>mixed</code><br>$value Value to set</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Stream.Stream.html">Guzzle\Stream\Stream</a></code></code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_setCustomData">Guzzle\Stream\StreamInterface::setCustomData()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCustomData" id="_getCustomData">
+
+		<td class="attributes"><code>
+			 public 
+			null|mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCustomData">#</a>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#349-355" title="Go to source code">getCustomData</a>( <span>string <var>$key</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Get custom data from the stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get custom data from the stream</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>string</code><br>$key Key to retrieve</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>null|mixed</code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_getCustomData">Guzzle\Stream\StreamInterface::getCustomData()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1147,7 +1383,7 @@ failure.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_rebuildCache">#</a>
-		<code><a href="source-class-Guzzle.Stream.Stream.html#304" title="Go to source code">rebuildCache</a>( )</code>
+		<code><a href="source-class-Guzzle.Stream.Stream.html#358-367" title="Go to source code">rebuildCache</a>( )</code>
 
 		<div class="description short">
 			
@@ -1165,6 +1401,7 @@ failure.<br />
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -1173,13 +1410,15 @@ failure.<br />
 
 
 
+
+
+
+
 	<table class="summary" id="constants">
 	<caption>Constants summary</caption>
 	<tr data-order="STREAM_TYPE" id="STREAM_TYPE">
 
-		<td class="attributes"><code>
-			string
-		</code></td>
+		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
 				<a href="source-class-Guzzle.Stream.Stream.html#12" title="Go to source code"><b>STREAM_TYPE</b></a>
 		</code></td>
@@ -1199,9 +1438,7 @@ failure.<br />
 	</tr>
 	<tr data-order="WRAPPER_TYPE" id="WRAPPER_TYPE">
 
-		<td class="attributes"><code>
-			string
-		</code></td>
+		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
 				<a href="source-class-Guzzle.Stream.Stream.html#13" title="Go to source code"><b>WRAPPER_TYPE</b></a>
 		</code></td>
@@ -1221,9 +1458,7 @@ failure.<br />
 	</tr>
 	<tr data-order="IS_LOCAL" id="IS_LOCAL">
 
-		<td class="attributes"><code>
-			string
-		</code></td>
+		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
 				<a href="source-class-Guzzle.Stream.Stream.html#14" title="Go to source code"><b>IS_LOCAL</b></a>
 		</code></td>
@@ -1243,9 +1478,7 @@ failure.<br />
 	</tr>
 	<tr data-order="IS_READABLE" id="IS_READABLE">
 
-		<td class="attributes"><code>
-			string
-		</code></td>
+		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
 				<a href="source-class-Guzzle.Stream.Stream.html#15" title="Go to source code"><b>IS_READABLE</b></a>
 		</code></td>
@@ -1265,9 +1498,7 @@ failure.<br />
 	</tr>
 	<tr data-order="IS_WRITABLE" id="IS_WRITABLE">
 
-		<td class="attributes"><code>
-			string
-		</code></td>
+		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
 				<a href="source-class-Guzzle.Stream.Stream.html#16" title="Go to source code"><b>IS_WRITABLE</b></a>
 		</code></td>
@@ -1287,9 +1518,7 @@ failure.<br />
 	</tr>
 	<tr data-order="SEEKABLE" id="SEEKABLE">
 
-		<td class="attributes"><code>
-			string
-		</code></td>
+		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
 				<a href="source-class-Guzzle.Stream.Stream.html#17" title="Go to source code"><b>SEEKABLE</b></a>
 		</code></td>
@@ -1311,17 +1540,17 @@ failure.<br />
 
 
 
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="stream" id="$stream">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			resource
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Stream.Stream.html#19" title="Go to source code"><var>$stream</var></a>
+				<a href="source-class-Guzzle.Stream.Stream.html#19-22" title="Go to source code"><var>$stream</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1342,14 +1571,13 @@ failure.<br />
 		</div></td>
 	</tr>
 	<tr data-order="size" id="$size">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			integer
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Stream.Stream.html#24" title="Go to source code"><var>$size</var></a>
+				<a href="source-class-Guzzle.Stream.Stream.html#24-27" title="Go to source code"><var>$size</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1370,14 +1598,13 @@ failure.<br />
 		</div></td>
 	</tr>
 	<tr data-order="cache" id="$cache">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			array
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Stream.Stream.html#29" title="Go to source code"><var>$cache</var></a>
+				<a href="source-class-Guzzle.Stream.Stream.html#29-32" title="Go to source code"><var>$cache</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
@@ -1397,15 +1624,41 @@ failure.<br />
 			</div>
 		</div></td>
 	</tr>
-	<tr data-order="readWriteHash" id="$readWriteHash">
-
+	<tr data-order="customData" id="$customData">
 		<td class="attributes"><code>
-			protected static
+			protected  
 			array
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Stream.Stream.html#34" title="Go to source code"><var>$readWriteHash</var></a>
+				<a href="source-class-Guzzle.Stream.Stream.html#34-37" title="Go to source code"><var>$customData</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$customData" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Custom stream data</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Custom stream data</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="readWriteHash" id="$readWriteHash">
+		<td class="attributes"><code>
+			protected static 
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Stream.Stream.html#39-53" title="Go to source code"><var>$readWriteHash</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>(
     <span class="php-quote">'read'</span> =&gt; <span class="php-keyword1">array</span>(
@@ -1415,7 +1668,7 @@ failure.<br />
     ),
     <span class="php-quote">'write'</span> =&gt; <span class="php-keyword1">array</span>(
         <span class="php-quote">'w'</span> =&gt; <span class="php-keyword1">true</span>, <span class="php-quote">'w+'</span> =&gt; <span class="php-keyword1">true</span>, <span class="php-quote">'rw'</span> =&gt; <span class="php-keyword1">true</span>, <span class="php-quote">'r+'</span> =&gt; <span class="php-keyword1">true</span>, <span class="php-quote">'x+'</span> =&gt; <span class="php-keyword1">true</span>, <span class="php-quote">'c+'</span> =&gt; <span class="php-keyword1">true</span>,
-        <span class="php-quote">'w+b'</span> =&gt; <span class="php-keyword1">true</span>, <span class="php-quote">'r+b'</span> =&gt; <span class="php-keyword1">true</span>, <span class="php-quote">'x+b'</span> =&gt; <span class="php-keyword1">true</span>, <span class="php-quote">'c+b'</span> =&gt; <span class="php-keyword1">true</span>,
+        <span class="php-quote">'wb'</span> =&gt; <span class="php-keyword1">true</span>, <span class="php-quote">'w+b'</span> =&gt; <span class="php-keyword1">true</span>, <span class="php-quote">'r+b'</span> =&gt; <span class="php-keyword1">true</span>, <span class="php-quote">'x+b'</span> =&gt; <span class="php-keyword1">true</span>, <span class="php-quote">'c+b'</span> =&gt; <span class="php-keyword1">true</span>,
         <span class="php-quote">'w+t'</span> =&gt; <span class="php-keyword1">true</span>, <span class="php-quote">'r+t'</span> =&gt; <span class="php-keyword1">true</span>, <span class="php-quote">'x+t'</span> =&gt; <span class="php-keyword1">true</span>, <span class="php-quote">'c+t'</span> =&gt; <span class="php-keyword1">true</span>
     )
 )</code></td>
@@ -1440,10 +1693,13 @@ failure.<br />
 
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class React\Stream\Buffer | Ratchet</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2133861467"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?323617084"></script>
+	<script type="text/javascript" src="elementlist.js?1890192539"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -37,6 +37,8 @@
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -129,8 +131,13 @@
 			<h3>Classes</h3>
 			<ul>
 				<li class="active"><a href="class-React.Stream.Buffer.html">Buffer</a></li>
+				<li><a href="class-React.Stream.BufferedSink.html">BufferedSink</a></li>
+				<li><a href="class-React.Stream.CompositeStream.html">CompositeStream</a></li>
+				<li><a href="class-React.Stream.ReadableStream.html">ReadableStream</a></li>
 				<li><a href="class-React.Stream.Stream.html">Stream</a></li>
+				<li><a href="class-React.Stream.ThroughStream.html">ThroughStream</a></li>
 				<li><a href="class-React.Stream.Util.html">Util</a></li>
+				<li><a href="class-React.Stream.WritableStream.html">WritableStream</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -215,8 +222,11 @@
 		<b>Namespace:</b> <a href="namespace-React.html">React</a>\<a href="namespace-React.Stream.html">Stream</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-React.Stream.Buffer.html#9" title="Go to source code">stream/React/Stream/Buffer.php</a><br />
+				<b>Event:</b>
+				full-drain<br />
+		<b>Located at</b> <a href="source-class-React.Stream.Buffer.html#9-127" title="Go to source code">stream/React/Stream/Buffer.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -232,7 +242,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-React.Stream.Buffer.html#24" title="Go to source code">__construct</a>( <span> <var>$stream</var></span>, <span><code><a href="class-React.EventLoop.LoopInterface.html">React\EventLoop\LoopInterface</a></code> <var>$loop</var></span> )</code>
+		<code><a href="source-class-React.Stream.Buffer.html#25-29" title="Go to source code">__construct</a>( <span>mixed <var>$stream</var></span>, <span><code><a href="class-React.EventLoop.LoopInterface.html">React\EventLoop\LoopInterface</a></code> <var>$loop</var></span> )</code>
 
 		<div class="description short">
 			
@@ -240,6 +250,7 @@
 
 		<div class="description detailed hidden">
 			
+
 
 
 
@@ -260,7 +271,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isWritable">#</a>
-		<code><a href="source-class-React.Stream.Buffer.html#30" title="Go to source code">isWritable</a>( )</code>
+		<code><a href="source-class-React.Stream.Buffer.html#31-34" title="Go to source code">isWritable</a>( )</code>
 
 		<div class="description short">
 			
@@ -274,8 +285,9 @@
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-React.Stream.WritableStreamInterface.html#_isWritable">React\Stream\WritableStreamInterface::isWritable</a></code></div>
+				<div class="list"><code><a href="class-React.Stream.WritableStreamInterface.html#_isWritable">React\Stream\WritableStreamInterface::isWritable()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -290,7 +302,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_write">#</a>
-		<code><a href="source-class-React.Stream.Buffer.html#35" title="Go to source code">write</a>( <span> <var>$data</var></span> )</code>
+		<code><a href="source-class-React.Stream.Buffer.html#36-53" title="Go to source code">write</a>( <span>mixed <var>$data</var></span> )</code>
 
 		<div class="description short">
 			
@@ -304,8 +316,9 @@
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-React.Stream.WritableStreamInterface.html#_write">React\Stream\WritableStreamInterface::write</a></code></div>
+				<div class="list"><code><a href="class-React.Stream.WritableStreamInterface.html#_write">React\Stream\WritableStreamInterface::write()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -320,7 +333,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_end">#</a>
-		<code><a href="source-class-React.Stream.Buffer.html#54" title="Go to source code">end</a>( <span> <var>$data</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-React.Stream.Buffer.html#55-68" title="Go to source code">end</a>( <span>mixed <var>$data</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -334,8 +347,9 @@
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-React.Stream.WritableStreamInterface.html#_end">React\Stream\WritableStreamInterface::end</a></code></div>
+				<div class="list"><code><a href="class-React.Stream.WritableStreamInterface.html#_end">React\Stream\WritableStreamInterface::end()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -350,7 +364,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_close">#</a>
-		<code><a href="source-class-React.Stream.Buffer.html#69" title="Go to source code">close</a>( )</code>
+		<code><a href="source-class-React.Stream.Buffer.html#70-77" title="Go to source code">close</a>( )</code>
 
 		<div class="description short">
 			
@@ -364,8 +378,9 @@
 
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-React.Stream.StreamInterface.html#_close">React\Stream\StreamInterface::close</a></code></div>
+				<div class="list"><code><a href="class-React.Stream.StreamInterface.html#_close">React\Stream\StreamInterface::close()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -380,7 +395,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_handleWrite">#</a>
-		<code><a href="source-class-React.Stream.Buffer.html#78" title="Go to source code">handleWrite</a>( )</code>
+		<code><a href="source-class-React.Stream.Buffer.html#79-118" title="Go to source code">handleWrite</a>( )</code>
 
 		<div class="description short">
 			
@@ -388,6 +403,7 @@
 
 		<div class="description detailed hidden">
 			
+
 
 
 
@@ -418,17 +434,21 @@
 
 
 
+
+
+
+
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="stream" id="$stream">
-
 		<td class="attributes"><code>
-			public 
-			
+			public  
+			mixed
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-React.Stream.Buffer.html#11" title="Go to source code"><var>$stream</var></a>
+				<a href="source-class-React.Stream.Buffer.html#12" title="Go to source code"><var>$stream</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -445,14 +465,13 @@
 		</div></td>
 	</tr>
 	<tr data-order="listening" id="$listening">
-
 		<td class="attributes"><code>
-			public 
+			public  
 			boolean
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-React.Stream.Buffer.html#12" title="Go to source code"><var>$listening</var></a>
+				<a href="source-class-React.Stream.Buffer.html#13" title="Go to source code"><var>$listening</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">false</span></code></td>
 		<td class="description"><div>
@@ -469,14 +488,13 @@
 		</div></td>
 	</tr>
 	<tr data-order="softLimit" id="$softLimit">
-
 		<td class="attributes"><code>
-			public 
+			public  
 			integer
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-React.Stream.Buffer.html#13" title="Go to source code"><var>$softLimit</var></a>
+				<a href="source-class-React.Stream.Buffer.html#14" title="Go to source code"><var>$softLimit</var></a>
 		</td>
 		<td class="value"><code><span class="php-num">2048</span></code></td>
 		<td class="description"><div>
@@ -504,10 +522,13 @@
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

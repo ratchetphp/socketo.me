@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Ratchet\Server\IoServer | Ratchet</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2133861467"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?323617084"></script>
+	<script type="text/javascript" src="elementlist.js?1890192539"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -37,6 +37,8 @@
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -198,8 +200,9 @@ Events are delegated through this to attached applications</p>
 		<b>Namespace:</b> <a href="namespace-Ratchet.html">Ratchet</a>\<a href="namespace-Ratchet.Server.html">Server</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Ratchet.Server.IoServer.html#10" title="Go to source code">Ratchet/Server/IoServer.php</a><br />
+		<b>Located at</b> <a href="source-class-Ratchet.Server.IoServer.html#9-131" title="Go to source code">Ratchet/Server/IoServer.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -215,7 +218,7 @@ Events are delegated through this to attached applications</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Ratchet.Server.IoServer.html#31" title="Go to source code">__construct</a>( <span><code><a href="class-Ratchet.MessageComponentInterface.html">Ratchet\MessageComponentInterface</a></code> <var>$app</var></span>, <span><code><a href="class-React.Socket.ServerInterface.html">React\Socket\ServerInterface</a></code> <var>$socket</var></span>, <span><code><a href="class-React.EventLoop.LoopInterface.html">React\EventLoop\LoopInterface</a></code> <var>$loop</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Ratchet.Server.IoServer.html#30-49" title="Go to source code">__construct</a>( <span><code><a href="class-Ratchet.MessageComponentInterface.html">Ratchet\MessageComponentInterface</a></code> <var>$app</var></span>, <span><code><a href="class-React.Socket.ServerInterface.html">React\Socket\ServerInterface</a></code> <var>$socket</var></span>, <span><code><a href="class-React.EventLoop.LoopInterface.html">React\EventLoop\LoopInterface</a></code> <var>$loop</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -228,12 +231,13 @@ Events are delegated through this to attached applications</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$app</var></dt>
-					<dd><code><code><a href="class-Ratchet.MessageComponentInterface.html">Ratchet\MessageComponentInterface</a></code></code><br>The Ratchet application stack to host</dd>
+					<dd><code><code><a href="class-Ratchet.MessageComponentInterface.html">Ratchet\MessageComponentInterface</a></code></code><br>$app The Ratchet application stack to host</dd>
 					<dt><var>$socket</var></dt>
-					<dd><code><code><a href="class-React.Socket.ServerInterface.html">React\Socket\ServerInterface</a></code></code><br>The React socket server to run the Ratchet application off of</dd>
+					<dd><code><code><a href="class-React.Socket.ServerInterface.html">React\Socket\ServerInterface</a></code></code><br>$socket The React socket server to run the Ratchet application off of</dd>
 					<dt><var>$loop</var></dt>
-					<dd><code><code><a href="class-React.EventLoop.LoopInterface.html">React\EventLoop\LoopInterface</a></code>|null</code><br>The React looper to run the Ratchet application off of</dd>
+					<dd><code><code><a href="class-React.EventLoop.LoopInterface.html">React\EventLoop\LoopInterface</a></code>|null</code><br>$loop The React looper to run the Ratchet application off of</dd>
 				</dl></div>
+
 
 
 
@@ -252,7 +256,7 @@ Events are delegated through this to attached applications</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_factory">#</a>
-		<code><a href="source-class-Ratchet.Server.IoServer.html#52" title="Go to source code">factory</a>( <span><code><a href="class-Ratchet.MessageComponentInterface.html">Ratchet\MessageComponentInterface</a></code> <var>$component</var></span>, <span>integer <var>$port</var> = <span class="php-num">80</span></span>, <span>string <var>$address</var> = <span class="php-quote">'0.0.0.0'</span></span> )</code>
+		<code><a href="source-class-Ratchet.Server.IoServer.html#51-63" title="Go to source code">factory</a>( <span><code><a href="class-Ratchet.MessageComponentInterface.html">Ratchet\MessageComponentInterface</a></code> <var>$component</var></span>, <span>integer <var>$port</var> = <span class="php-num">80</span></span>, <span>string <var>$address</var> = <span class="php-quote">'0.0.0.0'</span></span> )</code>
 
 		<div class="description short">
 			
@@ -265,17 +269,19 @@ Events are delegated through this to attached applications</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$component</var></dt>
-					<dd><code><code><a href="class-Ratchet.MessageComponentInterface.html">Ratchet\MessageComponentInterface</a></code></code><br>The application that I/O will call when events are received</dd>
+					<dd><code><code><a href="class-Ratchet.MessageComponentInterface.html">Ratchet\MessageComponentInterface</a></code></code><br>$component The application that I/O will call when events are received</dd>
 					<dt><var>$port</var></dt>
-					<dd><code>integer</code><br>The port to server sockets on</dd>
+					<dd><code>integer</code><br>$port The port to server sockets on</dd>
 					<dt><var>$address</var></dt>
-					<dd><code>string</code><br>The address to receive sockets on (0.0.0.0 means receive connections from any)</dd>
+					<dd><code>string</code><br>$address The address to receive sockets on (0.0.0.0 means receive connections
+from any)</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Ratchet.Server.IoServer.html">Ratchet\Server\IoServer</a></code></code><br />
 				</div>
+
 
 
 
@@ -293,7 +299,7 @@ Events are delegated through this to attached applications</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_run">#</a>
-		<code><a href="source-class-Ratchet.Server.IoServer.html#66" title="Go to source code">run</a>( )</code>
+		<code><a href="source-class-Ratchet.Server.IoServer.html#65-77" title="Go to source code">run</a>( )</code>
 
 		<div class="description short">
 			
@@ -315,6 +321,7 @@ Events are delegated through this to attached applications</p>
 				</div>
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -329,7 +336,7 @@ Events are delegated through this to attached applications</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_handleConnect">#</a>
-		<code><a href="source-class-Ratchet.Server.IoServer.html#80" title="Go to source code">handleConnect</a>( <span> <var>$conn</var></span> )</code>
+		<code><a href="source-class-Ratchet.Server.IoServer.html#79-94" title="Go to source code">handleConnect</a>( <span><code><a href="class-React.Socket.ConnectionInterface.html">React\Socket\ConnectionInterface</a></code> <var>$conn</var></span> )</code>
 
 		<div class="description short">
 			
@@ -342,6 +349,12 @@ Events are delegated through this to attached applications</p>
 <p>Triggered when a new connection is received from React</p>
 
 
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$conn</var></dt>
+					<dd><code><code><a href="class-React.Socket.ConnectionInterface.html">React\Socket\ConnectionInterface</a></code></code><br>$conn</dd>
+				</dl></div>
 
 
 
@@ -361,7 +374,7 @@ Events are delegated through this to attached applications</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_handleData">#</a>
-		<code><a href="source-class-Ratchet.Server.IoServer.html#96" title="Go to source code">handleData</a>( <span>string <var>$data</var></span>, <span><code><a href="class-React.Socket.Connection.html">React\Socket\Connection</a></code> <var>$conn</var></span> )</code>
+		<code><a href="source-class-Ratchet.Server.IoServer.html#96-107" title="Go to source code">handleData</a>( <span>string <var>$data</var></span>, <span><code><a href="class-React.Socket.ConnectionInterface.html">React\Socket\ConnectionInterface</a></code> <var>$conn</var></span> )</code>
 
 		<div class="description short">
 			
@@ -378,10 +391,11 @@ Events are delegated through this to attached applications</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$data</var></dt>
-					<dd><code>string</code></dd>
+					<dd><code>string</code><br>$data</dd>
 					<dt><var>$conn</var></dt>
-					<dd><code><code><a href="class-React.Socket.Connection.html">React\Socket\Connection</a></code></code></dd>
+					<dd><code><code><a href="class-React.Socket.ConnectionInterface.html">React\Socket\ConnectionInterface</a></code></code><br>$conn</dd>
 				</dl></div>
+
 
 
 
@@ -400,7 +414,7 @@ Events are delegated through this to attached applications</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_handleEnd">#</a>
-		<code><a href="source-class-Ratchet.Server.IoServer.html#109" title="Go to source code">handleEnd</a>( <span><code><a href="class-React.Socket.Connection.html">React\Socket\Connection</a></code> <var>$conn</var></span> )</code>
+		<code><a href="source-class-Ratchet.Server.IoServer.html#109-121" title="Go to source code">handleEnd</a>( <span><code><a href="class-React.Socket.ConnectionInterface.html">React\Socket\ConnectionInterface</a></code> <var>$conn</var></span> )</code>
 
 		<div class="description short">
 			
@@ -417,8 +431,9 @@ Events are delegated through this to attached applications</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$conn</var></dt>
-					<dd><code><code><a href="class-React.Socket.Connection.html">React\Socket\Connection</a></code></code></dd>
+					<dd><code><code><a href="class-React.Socket.ConnectionInterface.html">React\Socket\ConnectionInterface</a></code></code><br>$conn</dd>
 				</dl></div>
+
 
 
 
@@ -437,7 +452,7 @@ Events are delegated through this to attached applications</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_handleError">#</a>
-		<code><a href="source-class-Ratchet.Server.IoServer.html#123" title="Go to source code">handleError</a>( <span><code><a href="class-Exception.html">Exception</a></code> <var>$e</var></span>, <span><code><a href="class-React.Socket.Connection.html">React\Socket\Connection</a></code> <var>$conn</var></span> )</code>
+		<code><a href="source-class-Ratchet.Server.IoServer.html#123-130" title="Go to source code">handleError</a>( <span><code><a href="class-Exception.html">Exception</a></code> <var>$e</var></span>, <span><code><a href="class-React.Socket.ConnectionInterface.html">React\Socket\ConnectionInterface</a></code> <var>$conn</var></span> )</code>
 
 		<div class="description short">
 			
@@ -454,10 +469,11 @@ Events are delegated through this to attached applications</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$e</var></dt>
-					<dd><code><code><a href="class-Exception.html">Exception</a></code></code></dd>
+					<dd><code><code><a href="class-Exception.html">Exception</a></code></code><br>$e</dd>
 					<dt><var>$conn</var></dt>
-					<dd><code><code><a href="class-React.Socket.Connection.html">React\Socket\Connection</a></code></code></dd>
+					<dd><code><code><a href="class-React.Socket.ConnectionInterface.html">React\Socket\ConnectionInterface</a></code></code><br>$conn</dd>
 				</dl></div>
+
 
 
 
@@ -473,17 +489,21 @@ Events are delegated through this to attached applications</p>
 
 
 
+
+
+
+
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="loop" id="$loop">
-
 		<td class="attributes"><code>
-			public 
+			public  
 			<code><a href="class-React.EventLoop.LoopInterface.html">React\EventLoop\LoopInterface</a></code>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Ratchet.Server.IoServer.html#15" title="Go to source code"><var>$loop</var></a>
+				<a href="source-class-Ratchet.Server.IoServer.html#14-17" title="Go to source code"><var>$loop</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -500,14 +520,13 @@ Events are delegated through this to attached applications</p>
 		</div></td>
 	</tr>
 	<tr data-order="app" id="$app">
-
 		<td class="attributes"><code>
-			public 
+			public  
 			<code><a href="class-Ratchet.MessageComponentInterface.html">Ratchet\MessageComponentInterface</a></code>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Ratchet.Server.IoServer.html#20" title="Go to source code"><var>$app</var></a>
+				<a href="source-class-Ratchet.Server.IoServer.html#19-22" title="Go to source code"><var>$app</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -524,14 +543,13 @@ Events are delegated through this to attached applications</p>
 		</div></td>
 	</tr>
 	<tr data-order="handlers" id="$handlers">
-
 		<td class="attributes"><code>
-			protected 
-			SplFixedArray
+			protected  
+			<code><a href="class-SplFixedArray.html">SplFixedArray</a></code>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Ratchet.Server.IoServer.html#25" title="Go to source code"><var>$handlers</var></a>
+				<a href="source-class-Ratchet.Server.IoServer.html#24-28" title="Go to source code"><var>$handlers</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -555,10 +573,13 @@ Events are delegated through this to attached applications</p>
 
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

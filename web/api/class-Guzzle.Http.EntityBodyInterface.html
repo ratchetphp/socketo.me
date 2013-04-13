@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Interface Guzzle\Http\EntityBodyInterface | Ratchet</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2133861467"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?323617084"></script>
+	<script type="text/javascript" src="elementlist.js?1890192539"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -37,6 +37,8 @@
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -131,11 +133,12 @@
 				<li><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html">AbstractEntityBodyDecorator</a></li>
 				<li><a href="class-Guzzle.Http.Client.html">Client</a></li>
 				<li><a href="class-Guzzle.Http.EntityBody.html">EntityBody</a></li>
+				<li><a href="class-Guzzle.Http.IoEmittingEntityBody.html">IoEmittingEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.Mimetypes.html">Mimetypes</a></li>
 				<li><a href="class-Guzzle.Http.QueryString.html">QueryString</a></li>
 				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
 				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Url.html">Url</a></li>
-				<li><a href="class-Guzzle.Http.Utils.html">Utils</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -213,6 +216,7 @@
 
 	<div>
 		<h4>Indirect known implementers</h4>
+			<a href="class-Guzzle.Http.IoEmittingEntityBody.html">Guzzle\Http\IoEmittingEntityBody</a>, 
 			<a href="class-Guzzle.Http.ReadLimitEntityBody.html">Guzzle\Http\ReadLimitEntityBody</a>
 	</div>
 
@@ -224,8 +228,9 @@
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.EntityBodyInterface.html#7" title="Go to source code">http/Guzzle/Http/EntityBodyInterface.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.EntityBodyInterface.html#7-73" title="Go to source code">http/Guzzle/Http/EntityBodyInterface.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -234,14 +239,14 @@
 
 		<td class="attributes"><code>
 			 public 
-			self
+			<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setRewindFunction">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBodyInterface.html#12" title="Go to source code">setRewindFunction</a>( <span>mixed <var>$callable</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBodyInterface.html#12-21" title="Go to source code">setRewindFunction</a>( <span>mixed <var>$callable</var></span> )</code>
 
 		<div class="description short">
 			
@@ -260,15 +265,16 @@ useful entity enclosing requests that are redirected.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$callable</var></dt>
-					<dd><code>mixed</code><br> Callable to invoke to rewind a non-seekable stream. The callback must accept an
-EntityBodyInterface object, perform the rewind if possible, and return a boolean
-representing whether or not the rewind was successful.</dd>
+					<dd><code>mixed</code><br>$callable Callable to invoke to rewind a non-seekable stream. The callback must
+accept an EntityBodyInterface object, perform the rewind if possible, and return
+a boolean representing whether or not the rewind was successful.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>self</code><br />
+					<code><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br />
 				</div>
+
 
 
 
@@ -286,7 +292,7 @@ representing whether or not the rewind was successful.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_compress">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBodyInterface.html#23" title="Go to source code">compress</a>( <span>string <var>$filter</var> = <span class="php-quote">'zlib.deflate'</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBodyInterface.html#23-31" title="Go to source code">compress</a>( <span>string <var>$filter</var> = <span class="php-quote">'zlib.deflate'</span></span> )</code>
 
 		<div class="description short">
 			
@@ -307,13 +313,14 @@ then becomes the wrapped stream.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$filter</var></dt>
-					<dd><code>string</code><br> Compression filter</dd>
+					<dd><code>string</code><br>$filter Compression filter</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>boolean</code><br>Returns TRUE on success or FALSE on failure<br />
 				</div>
+
 
 
 
@@ -331,7 +338,7 @@ then becomes the wrapped stream.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_uncompress">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBodyInterface.html#33" title="Go to source code">uncompress</a>( <span>string <var>$filter</var> = <span class="php-quote">'zlib.inflate'</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBodyInterface.html#33-40" title="Go to source code">uncompress</a>( <span>string <var>$filter</var> = <span class="php-quote">'zlib.inflate'</span></span> )</code>
 
 		<div class="description short">
 			
@@ -350,13 +357,14 @@ then used as the wrapped stream.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$filter</var></dt>
-					<dd><code>string</code><br> De-compression filter</dd>
+					<dd><code>string</code><br>$filter De-compression filter</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>boolean</code><br>Returns TRUE on success or FALSE on failure<br />
 				</div>
+
 
 
 
@@ -374,7 +382,7 @@ then used as the wrapped stream.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentLength">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBodyInterface.html#42" title="Go to source code">getContentLength</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBodyInterface.html#42-47" title="Go to source code">getContentLength</a>( )</code>
 
 		<div class="description short">
 			
@@ -396,6 +404,7 @@ then used as the wrapped stream.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -410,7 +419,7 @@ then used as the wrapped stream.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentType">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBodyInterface.html#49" title="Go to source code">getContentType</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBodyInterface.html#49-55" title="Go to source code">getContentType</a>( )</code>
 
 		<div class="description short">
 			
@@ -437,6 +446,7 @@ then used as the wrapped stream.</p>
 href="http://www.php.net/manual/en/function.finfo-open.php">http://www.php.net/manual/en/function.finfo-open.php</a><br />
 				</div>
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -451,7 +461,7 @@ href="http://www.php.net/manual/en/function.finfo-open.php">http://www.php.net/m
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentMd5">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBodyInterface.html#57" title="Go to source code">getContentMd5</a>( <span>boolean <var>$rawOutput</var> = <span class="php-keyword1">false</span></span>, <span>boolean <var>$base64Encode</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBodyInterface.html#57-65" title="Go to source code">getContentMd5</a>( <span>boolean <var>$rawOutput</var> = <span class="php-keyword1">false</span></span>, <span>boolean <var>$base64Encode</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
@@ -468,15 +478,17 @@ href="http://www.php.net/manual/en/function.finfo-open.php">http://www.php.net/m
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$rawOutput</var></dt>
-					<dd><code>boolean</code><br> Whether or not to use raw output</dd>
+					<dd><code>boolean</code><br>$rawOutput Whether or not to use raw output</dd>
 					<dt><var>$base64Encode</var></dt>
-					<dd><code>boolean</code><br> Whether or not to base64 encode raw output (only if raw output is true)</dd>
+					<dd><code>boolean</code><br>$base64Encode Whether or not to base64 encode raw output (only if raw output is
+true)</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>boolean|string</code><br>Returns an MD5 string on success or FALSE on failure<br />
 				</div>
+
 
 
 
@@ -494,7 +506,7 @@ href="http://www.php.net/manual/en/function.finfo-open.php">http://www.php.net/m
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentEncoding">#</a>
-		<code><a href="source-class-Guzzle.Http.EntityBodyInterface.html#67" title="Go to source code">getContentEncoding</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.EntityBodyInterface.html#67-72" title="Go to source code">getContentEncoding</a>( )</code>
 
 		<div class="description short">
 			
@@ -516,6 +528,7 @@ href="http://www.php.net/manual/en/function.finfo-open.php">http://www.php.net/m
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -526,7 +539,10 @@ href="http://www.php.net/manual/en/function.finfo-open.php">http://www.php.net/m
 	<tr>
 		<td><code>
 			<a href="class-Guzzle.Stream.StreamInterface.html#___toString">__toString()</a>, 
+			<a href="class-Guzzle.Stream.StreamInterface.html#_close">close()</a>, 
+			<a href="class-Guzzle.Stream.StreamInterface.html#_feof">feof()</a>, 
 			<a href="class-Guzzle.Stream.StreamInterface.html#_ftell">ftell()</a>, 
+			<a href="class-Guzzle.Stream.StreamInterface.html#_getCustomData">getCustomData()</a>, 
 			<a href="class-Guzzle.Stream.StreamInterface.html#_getMetaData">getMetaData()</a>, 
 			<a href="class-Guzzle.Stream.StreamInterface.html#_getSize">getSize()</a>, 
 			<a href="class-Guzzle.Stream.StreamInterface.html#_getStream">getStream()</a>, 
@@ -540,8 +556,10 @@ href="http://www.php.net/manual/en/function.finfo-open.php">http://www.php.net/m
 			<a href="class-Guzzle.Stream.StreamInterface.html#_isSeekable">isSeekable()</a>, 
 			<a href="class-Guzzle.Stream.StreamInterface.html#_isWritable">isWritable()</a>, 
 			<a href="class-Guzzle.Stream.StreamInterface.html#_read">read()</a>, 
+			<a href="class-Guzzle.Stream.StreamInterface.html#_readLine">readLine()</a>, 
 			<a href="class-Guzzle.Stream.StreamInterface.html#_rewind">rewind()</a>, 
 			<a href="class-Guzzle.Stream.StreamInterface.html#_seek">seek()</a>, 
+			<a href="class-Guzzle.Stream.StreamInterface.html#_setCustomData">setCustomData()</a>, 
 			<a href="class-Guzzle.Stream.StreamInterface.html#_setSize">setSize()</a>, 
 			<a href="class-Guzzle.Stream.StreamInterface.html#_setStream">setStream()</a>, 
 			<a href="class-Guzzle.Stream.StreamInterface.html#_write">write()</a>
@@ -557,10 +575,18 @@ href="http://www.php.net/manual/en/function.finfo-open.php">http://www.php.net/m
 
 
 
+
+
+
+
+
+
+
+
 </div>
 
 	<div id="footer">
-		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

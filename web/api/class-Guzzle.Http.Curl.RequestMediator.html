@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Http\Curl\RequestMediator | Ratchet</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2133861467"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?323617084"></script>
+	<script type="text/javascript" src="elementlist.js?1890192539"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -37,6 +37,8 @@
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -201,8 +203,9 @@
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.Curl.html">Curl</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.Curl.RequestMediator.html#7" title="Go to source code">http/Guzzle/Http/Curl/RequestMediator.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.Curl.RequestMediator.html#7-130" title="Go to source code">http/Guzzle/Http/Curl/RequestMediator.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -218,7 +221,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Guzzle.Http.Curl.RequestMediator.html#27" title="Go to source code">__construct</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Curl.RequestMediator.html#27-35" title="Go to source code">__construct</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>boolean <var>$emitIo</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
@@ -231,8 +234,11 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$request</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br> Request to mediate</dd>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to mediate</dd>
+					<dt><var>$emitIo</var></dt>
+					<dd><code>boolean</code><br>$emitIo Set to true to dispatch events on input and output</dd>
 				</dl></div>
+
 
 
 
@@ -251,7 +257,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setCurlHandle">#</a>
-		<code><a href="source-class-Guzzle.Http.Curl.RequestMediator.html#36" title="Go to source code">setCurlHandle</a>( <span><code><a href="class-Guzzle.Http.Curl.CurlHandle.html">Guzzle\Http\Curl\CurlHandle</a></code> <var>$handle</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Curl.RequestMediator.html#37-50" title="Go to source code">setCurlHandle</a>( <span><code><a href="class-Guzzle.Http.Curl.CurlHandle.html">Guzzle\Http\Curl\CurlHandle</a></code> <var>$handle</var></span> )</code>
 
 		<div class="description short">
 			
@@ -268,13 +274,14 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$handle</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Curl.CurlHandle.html">Guzzle\Http\Curl\CurlHandle</a></code></code><br> Curl handle</dd>
+					<dd><code><code><a href="class-Guzzle.Http.Curl.CurlHandle.html">Guzzle\Http\Curl\CurlHandle</a></code></code><br>$handle Curl handle</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Curl.RequestMediator.html">Guzzle\Http\Curl\RequestMediator</a></code></code><br />
 				</div>
+
 
 
 
@@ -292,7 +299,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_receiveResponseHeader">#</a>
-		<code><a href="source-class-Guzzle.Http.Curl.RequestMediator.html#51" title="Go to source code">receiveResponseHeader</a>( <span>resource <var>$curl</var></span>, <span>string <var>$header</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Curl.RequestMediator.html#52-63" title="Go to source code">receiveResponseHeader</a>( <span>resource <var>$curl</var></span>, <span>string <var>$header</var></span> )</code>
 
 		<div class="description short">
 			
@@ -309,15 +316,16 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$curl</var></dt>
-					<dd><code>resource</code><br> Curl handle</dd>
+					<dd><code>resource</code><br>$curl Curl handle</dd>
 					<dt><var>$header</var></dt>
-					<dd><code>string</code><br> Received header</dd>
+					<dd><code>string</code><br>$header Received header</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>integer</code><br />
 				</div>
+
 
 
 
@@ -335,7 +343,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_progress">#</a>
-		<code><a href="source-class-Guzzle.Http.Curl.RequestMediator.html#64" title="Go to source code">progress</a>( <span>integer <var>$downloadSize</var></span>, <span>integer <var>$downloaded</var></span>, <span>integer <var>$uploadSize</var></span>, <span>integer <var>$uploaded</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Curl.RequestMediator.html#65-83" title="Go to source code">progress</a>( <span>integer <var>$downloadSize</var></span>, <span>integer <var>$downloaded</var></span>, <span>integer <var>$uploadSize</var></span>, <span>integer <var>$uploaded</var></span> )</code>
 
 		<div class="description short">
 			
@@ -352,14 +360,15 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$downloadSize</var></dt>
-					<dd><code>integer</code><br> Total download size</dd>
+					<dd><code>integer</code><br>$downloadSize Total download size</dd>
 					<dt><var>$downloaded</var></dt>
-					<dd><code>integer</code><br> Amount of bytes downloaded</dd>
+					<dd><code>integer</code><br>$downloaded Amount of bytes downloaded</dd>
 					<dt><var>$uploadSize</var></dt>
-					<dd><code>integer</code><br> Total upload size</dd>
+					<dd><code>integer</code><br>$uploadSize Total upload size</dd>
 					<dt><var>$uploaded</var></dt>
-					<dd><code>integer</code><br> Amount of bytes uploaded</dd>
+					<dd><code>integer</code><br>$uploaded Amount of bytes uploaded</dd>
 				</dl></div>
+
 
 
 
@@ -378,7 +387,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_writeResponseBody">#</a>
-		<code><a href="source-class-Guzzle.Http.Curl.RequestMediator.html#84" title="Go to source code">writeResponseBody</a>( <span>resource <var>$curl</var></span>, <span>string <var>$write</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Curl.RequestMediator.html#85-103" title="Go to source code">writeResponseBody</a>( <span>resource <var>$curl</var></span>, <span>string <var>$write</var></span> )</code>
 
 		<div class="description short">
 			
@@ -395,15 +404,16 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$curl</var></dt>
-					<dd><code>resource</code><br> Curl handle</dd>
+					<dd><code>resource</code><br>$curl Curl handle</dd>
 					<dt><var>$write</var></dt>
-					<dd><code>string</code><br> Data that was received</dd>
+					<dd><code>string</code><br>$write Data that was received</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>integer</code><br />
 				</div>
+
 
 
 
@@ -421,7 +431,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_readRequestBody">#</a>
-		<code><a href="source-class-Guzzle.Http.Curl.RequestMediator.html#104" title="Go to source code">readRequestBody</a>( <span>resource <var>$ch</var></span>, <span>resource <var>$fd</var></span>, <span>integer <var>$length</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Curl.RequestMediator.html#105-129" title="Go to source code">readRequestBody</a>( <span>resource <var>$ch</var></span>, <span>resource <var>$fd</var></span>, <span>integer <var>$length</var></span> )</code>
 
 		<div class="description short">
 			
@@ -438,17 +448,18 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$ch</var></dt>
-					<dd><code>resource</code><br> Curl handle</dd>
+					<dd><code>resource</code><br>$ch Curl handle</dd>
 					<dt><var>$fd</var></dt>
-					<dd><code>resource</code><br> File descriptor</dd>
+					<dd><code>resource</code><br>$fd File descriptor</dd>
 					<dt><var>$length</var></dt>
-					<dd><code>integer</code><br> Amount of data to read</dd>
+					<dd><code>integer</code><br>$length Amount of data to read</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>string</code><br />
 				</div>
+
 
 
 
@@ -463,17 +474,21 @@
 
 
 
+
+
+
+
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="request" id="$request">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Curl.RequestMediator.html#12" title="Go to source code"><var>$request</var></a>
+				<a href="source-class-Guzzle.Http.Curl.RequestMediator.html#12-15" title="Go to source code"><var>$request</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -490,14 +505,13 @@
 		</div></td>
 	</tr>
 	<tr data-order="emitIo" id="$emitIo">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			boolean
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Curl.RequestMediator.html#17" title="Go to source code"><var>$emitIo</var></a>
+				<a href="source-class-Guzzle.Http.Curl.RequestMediator.html#17-20" title="Go to source code"><var>$emitIo</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -518,14 +532,13 @@
 		</div></td>
 	</tr>
 	<tr data-order="curlHandle" id="$curlHandle">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Http.Curl.CurlHandle.html">Guzzle\Http\Curl\CurlHandle</a></code>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Curl.RequestMediator.html#22" title="Go to source code"><var>$curlHandle</var></a>
+				<a href="source-class-Guzzle.Http.Curl.RequestMediator.html#22-25" title="Go to source code"><var>$curlHandle</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -545,10 +558,13 @@
 
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

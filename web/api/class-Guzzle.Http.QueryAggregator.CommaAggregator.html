@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class Guzzle\Http\Utils | Ratchet</title>
+	<title>Class Guzzle\Http\QueryAggregator\CommaAggregator | Ratchet</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2133861467"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?323617084"></script>
+	<script type="text/javascript" src="elementlist.js?1890192539"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -37,6 +37,8 @@
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li class="active"><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -128,20 +130,14 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html">AbstractEntityBodyDecorator</a></li>
-				<li><a href="class-Guzzle.Http.Client.html">Client</a></li>
-				<li><a href="class-Guzzle.Http.EntityBody.html">EntityBody</a></li>
-				<li><a href="class-Guzzle.Http.QueryString.html">QueryString</a></li>
-				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
-				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
-				<li><a href="class-Guzzle.Http.Url.html">Url</a></li>
-				<li class="active"><a href="class-Guzzle.Http.Utils.html">Utils</a></li>
+				<li class="active"><a href="class-Guzzle.Http.QueryAggregator.CommaAggregator.html">CommaAggregator</a></li>
+				<li><a href="class-Guzzle.Http.QueryAggregator.DuplicateAggregator.html">DuplicateAggregator</a></li>
+				<li><a href="class-Guzzle.Http.QueryAggregator.PhpAggregator.html">PhpAggregator</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
 			<ul>
-				<li><a href="class-Guzzle.Http.ClientInterface.html">ClientInterface</a></li>
-				<li><a href="class-Guzzle.Http.EntityBodyInterface.html">EntityBodyInterface</a></li>
+				<li><a href="class-Guzzle.Http.QueryAggregator.QueryAggregatorInterface.html">QueryAggregatorInterface</a></li>
 			</ul>
 
 
@@ -168,7 +164,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="namespace-Guzzle.Http.html" title="Summary of Guzzle\Http"><span>Namespace</span></a>
+				<a href="namespace-Guzzle.Http.QueryAggregator.html" title="Summary of Guzzle\Http\QueryAggregator"><span>Namespace</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -183,15 +179,24 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class Utils</h1>
+	<h1>Class CommaAggregator</h1>
 
 
 	<div class="description">
 	
-<p>HTTP utility class</p>
+<p>Aggregates nested query string variables using commas</p>
 
 	</div>
 
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Guzzle\Http\QueryAggregator\CommaAggregator</span></b>			
+			 implements 
+				<a href="class-Guzzle.Http.QueryAggregator.QueryAggregatorInterface.html"><span>Guzzle\Http\QueryAggregator\QueryAggregatorInterface</span></a>
+			
+			
+		</dd>
+	</dl>
 
 
 
@@ -203,89 +208,61 @@
 	<div class="info">
 		
 		
-		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a><br />
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.Utils.html#8" title="Go to source code">http/Guzzle/Http/Utils.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.QueryAggregator.CommaAggregator.html#7-23" title="Go to source code">http/Guzzle/Http/QueryAggregator/CommaAggregator.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="getHttpDate" id="_getHttpDate">
+	<tr data-order="aggregate" id="_aggregate">
 
 		<td class="attributes"><code>
-			 public static
-			string
+			 public 
+			array
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getHttpDate">#</a>
-		<code><a href="source-class-Guzzle.Http.Utils.html#18" title="Go to source code">getHttpDate</a>( <span>string|integer <var>$date</var></span> )</code>
+		<a class="anchor" href="#_aggregate">#</a>
+		<code><a href="source-class-Guzzle.Http.QueryAggregator.CommaAggregator.html#12-22" title="Go to source code">aggregate</a>( <span>string <var>$key</var></span>, <span>array <var>$value</var></span>, <span><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code> <var>$query</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Create an RFC 1123 HTTP-Date from various date values</p>
+<p>Aggregate multi-valued parameters into a flattened associative array</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Create an RFC 1123 HTTP-Date from various date values</p>
+<p>Aggregate multi-valued parameters into a flattened associative array</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$date</var></dt>
-					<dd><code>string|integer</code><br> Date to convert</dd>
+					<dt><var>$key</var></dt>
+					<dd><code>string</code><br>$key The name of the query string parameter</dd>
+					<dt><var>$value</var></dt>
+					<dd><code>array</code><br>$value The values of the parameter</dd>
+					<dt><var>$query</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code></code><br>$query The query string that is being aggregated</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>string</code><br />
+					<code>array</code><br>Returns an array of the combined values<br />
 				</div>
 
 
 
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getDefaultUserAgent" id="_getDefaultUserAgent">
 
-		<td class="attributes"><code>
-			 public static
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getDefaultUserAgent">#</a>
-		<code><a href="source-class-Guzzle.Http.Utils.html#34" title="Go to source code">getDefaultUserAgent</a>( )</code>
-
-		<div class="description short">
-			
-<p>Get the default User-Agent to add to requests sent through the library</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get the default User-Agent to add to requests sent through the library</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br />
-				</div>
-
-
-
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.QueryAggregator.QueryAggregatorInterface.html#_aggregate">Guzzle\Http\QueryAggregator\QueryAggregatorInterface::aggregate()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -297,40 +274,21 @@
 
 
 
-	<table class="summary" id="properties">
-	<caption>Properties summary</caption>
-	<tr data-order="userAgent" id="$userAgent">
 
-		<td class="attributes"><code>
-			protected static
-			string
-		</code></td>
 
-		<td class="name">
-				<a href="source-class-Guzzle.Http.Utils.html#13" title="Go to source code"><var>$userAgent</var></a>
-		</td>
-		<td class="value"><code></code></td>
-		<td class="description"><div>
-			<a href="#$userAgent" class="anchor">#</a>
 
-			<div class="description short">
-				
-			</div>
 
-			<div class="description detailed hidden">
-				
 
-			</div>
-		</div></td>
-	</tr>
-	</table>
+
+
+
 
 
 
 </div>
 
 	<div id="footer">
-		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

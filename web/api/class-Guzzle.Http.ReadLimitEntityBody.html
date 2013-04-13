@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Http\ReadLimitEntityBody | Ratchet</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2133861467"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?323617084"></script>
+	<script type="text/javascript" src="elementlist.js?1890192539"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -37,6 +37,8 @@
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -131,11 +133,12 @@
 				<li><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html">AbstractEntityBodyDecorator</a></li>
 				<li><a href="class-Guzzle.Http.Client.html">Client</a></li>
 				<li><a href="class-Guzzle.Http.EntityBody.html">EntityBody</a></li>
+				<li><a href="class-Guzzle.Http.IoEmittingEntityBody.html">IoEmittingEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.Mimetypes.html">Mimetypes</a></li>
 				<li><a href="class-Guzzle.Http.QueryString.html">QueryString</a></li>
 				<li class="active"><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
 				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Url.html">Url</a></li>
-				<li><a href="class-Guzzle.Http.Utils.html">Utils</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -222,8 +225,9 @@
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#5" title="Go to source code">http/Guzzle/Http/ReadLimitEntityBody.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#5-116" title="Go to source code">http/Guzzle/Http/ReadLimitEntityBody.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -239,7 +243,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#20" title="Go to source code">__construct</a>( <span><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var></span>, <span>integer <var>$limit</var></span>, <span>integer <var>$offset</var> = <span class="php-num">0</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#20-30" title="Go to source code">__construct</a>( <span><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var></span>, <span>integer <var>$limit</var></span>, <span>integer <var>$offset</var> = <span class="php-num">0</span></span> )</code>
 
 		<div class="description short">
 			
@@ -252,15 +256,18 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$body</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br> Body to wrap</dd>
+					<dd><code><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br>$body Body to wrap</dd>
 					<dt><var>$limit</var></dt>
-					<dd><code>integer</code><br> Total number of bytes to allow to be read from the stream</dd>
+					<dd><code>integer</code><br>$limit Total number of bytes to allow to be read from the stream</dd>
 					<dt><var>$offset</var></dt>
-					<dd><code>integer</code><br> Position to seek to before reading (only works on seekable streams)</dd>
+					<dd><code>integer</code><br>$offset Position to seek to before reading (only works on seekable streams)</dd>
 				</dl></div>
 
 
 
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#___construct">Guzzle\Http\AbstractEntityBodyDecorator::__construct()</a></code></div>
 
 		</div>
 		</div></td>
@@ -276,7 +283,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#32" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#32-39" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -302,8 +309,9 @@ seekable.</p>
 
 
 
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#___toString">Guzzle\Stream\StreamInterface::__toString</a></code></div>
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#___toString">Guzzle\Http\AbstractEntityBodyDecorator::__toString()</a></code></div>
+
 		</div>
 		</div></td>
 	</tr>
@@ -318,7 +326,7 @@ seekable.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isConsumed">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#41" title="Go to source code">isConsumed</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#41-47" title="Go to source code">isConsumed</a>( )</code>
 
 		<div class="description short">
 			
@@ -340,8 +348,9 @@ seekable.</p>
 
 
 
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_isConsumed">Guzzle\Stream\StreamInterface::isConsumed</a></code></div>
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_isConsumed">Guzzle\Http\AbstractEntityBodyDecorator::isConsumed()</a></code></div>
+
 		</div>
 		</div></td>
 	</tr>
@@ -356,7 +365,7 @@ seekable.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContentLength">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#49" title="Go to source code">getContentLength</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#49-60" title="Go to source code">getContentLength</a>( )</code>
 
 		<div class="description short">
 			
@@ -380,8 +389,9 @@ Content-Length of the entity body if possible (alias of getSize)</p>
 
 
 
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Http.EntityBodyInterface.html#_getContentLength">Guzzle\Http\EntityBodyInterface::getContentLength</a></code></div>
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getContentLength">Guzzle\Http\AbstractEntityBodyDecorator::getContentLength()</a></code></div>
+
 		</div>
 		</div></td>
 	</tr>
@@ -396,7 +406,7 @@ Content-Length of the entity body if possible (alias of getSize)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_seek">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#62" title="Go to source code">seek</a>( <span>integer <var>$offset</var></span>, <span>integer <var>$whence</var> = SEEK_SET</span> )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#62-71" title="Go to source code">seek</a>( <span>integer <var>$offset</var></span>, <span>integer <var>$whence</var> = SEEK_SET</span> )</code>
 
 		<div class="description short">
 			
@@ -415,9 +425,9 @@ in the stream</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$offset</var></dt>
-					<dd><code>integer</code><br> Stream offset</dd>
+					<dd><code>integer</code><br>$offset Stream offset</dd>
 					<dt><var>$whence</var></dt>
-					<dd><code>integer</code><br> Where the offset is applied</dd>
+					<dd><code>integer</code><br>$whence Where the offset is applied</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -427,8 +437,9 @@ in the stream</p>
 
 
 
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_seek">Guzzle\Stream\StreamInterface::seek</a></code></div>
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_seek">Guzzle\Http\AbstractEntityBodyDecorator::seek()</a></code></div>
+
 		</div>
 		</div></td>
 	</tr>
@@ -436,14 +447,14 @@ in the stream</p>
 
 		<td class="attributes"><code>
 			 public 
-			self
+			<code><a href="class-Guzzle.Http.ReadLimitEntityBody.html">Guzzle\Http\ReadLimitEntityBody</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setOffset">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#73" title="Go to source code">setOffset</a>( <span>integer <var>$offset</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#73-86" title="Go to source code">setOffset</a>( <span>integer <var>$offset</var></span> )</code>
 
 		<div class="description short">
 			
@@ -460,13 +471,14 @@ in the stream</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$offset</var></dt>
-					<dd><code>integer</code><br> Offset to seek to and begin byte limiting from</dd>
+					<dd><code>integer</code><br>$offset Offset to seek to and begin byte limiting from</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>self</code><br />
+					<code><code><a href="class-Guzzle.Http.ReadLimitEntityBody.html">Guzzle\Http\ReadLimitEntityBody</a></code></code><br />
 				</div>
+
 
 
 
@@ -477,14 +489,14 @@ in the stream</p>
 
 		<td class="attributes"><code>
 			 public 
-			self
+			<code><a href="class-Guzzle.Http.ReadLimitEntityBody.html">Guzzle\Http\ReadLimitEntityBody</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setLimit">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#88" title="Go to source code">setLimit</a>( <span>integer <var>$limit</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#88-100" title="Go to source code">setLimit</a>( <span>integer <var>$limit</var></span> )</code>
 
 		<div class="description short">
 			
@@ -503,13 +515,14 @@ stream</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$limit</var></dt>
-					<dd><code>integer</code><br> Total number of bytes to allow to be read from the stream</dd>
+					<dd><code>integer</code><br>$limit Total number of bytes to allow to be read from the stream</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>self</code><br />
+					<code><code><a href="class-Guzzle.Http.ReadLimitEntityBody.html">Guzzle\Http\ReadLimitEntityBody</a></code></code><br />
 				</div>
+
 
 
 
@@ -527,7 +540,7 @@ stream</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_read">#</a>
-		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#102" title="Go to source code">read</a>( <span>integer <var>$length</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#102-115" title="Go to source code">read</a>( <span>integer <var>$length</var></span> )</code>
 
 		<div class="description short">
 			
@@ -544,7 +557,7 @@ stream</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$length</var></dt>
-					<dd><code>integer</code><br> Up to length number of bytes read.</dd>
+					<dd><code>integer</code><br>$length Up to length number of bytes read.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -554,8 +567,9 @@ stream</p>
 
 
 
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Guzzle.Stream.StreamInterface.html#_read">Guzzle\Stream\StreamInterface::read</a></code></div>
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_read">Guzzle\Http\AbstractEntityBodyDecorator::read()</a></code></div>
+
 		</div>
 		</div></td>
 	</tr>
@@ -566,11 +580,14 @@ stream</p>
 	<tr>
 		<td><code>
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#___call">__call()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_close">close()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_compress">compress()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_feof">feof()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_ftell">ftell()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getContentEncoding">getContentEncoding()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getContentMd5">getContentMd5()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getContentType">getContentType()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getCustomData">getCustomData()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getMetaData">getMetaData()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getSize">getSize()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getStream">getStream()</a>, 
@@ -582,7 +599,9 @@ stream</p>
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_isReadable">isReadable()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_isSeekable">isSeekable()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_isWritable">isWritable()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_readLine">readLine()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_rewind">rewind()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_setCustomData">setCustomData()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_setRewindFunction">setRewindFunction()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_setSize">setSize()</a>, 
 			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_setStream">setStream()</a>, 
@@ -597,17 +616,21 @@ stream</p>
 
 
 
+
+
+
+
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="limit" id="$limit">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			integer
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#10" title="Go to source code"><var>$limit</var></a>
+				<a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#10-13" title="Go to source code"><var>$limit</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -628,14 +651,13 @@ stream</p>
 		</div></td>
 	</tr>
 	<tr data-order="offset" id="$offset">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			integer
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#15" title="Go to source code"><var>$offset</var></a>
+				<a href="source-class-Guzzle.Http.ReadLimitEntityBody.html#15-18" title="Go to source code"><var>$offset</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -667,10 +689,13 @@ stream</p>
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

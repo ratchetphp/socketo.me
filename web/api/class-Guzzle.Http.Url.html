@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Http\Url | Ratchet</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2133861467"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?323617084"></script>
+	<script type="text/javascript" src="elementlist.js?1890192539"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -37,6 +37,8 @@
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -131,11 +133,12 @@
 				<li><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html">AbstractEntityBodyDecorator</a></li>
 				<li><a href="class-Guzzle.Http.Client.html">Client</a></li>
 				<li><a href="class-Guzzle.Http.EntityBody.html">EntityBody</a></li>
+				<li><a href="class-Guzzle.Http.IoEmittingEntityBody.html">IoEmittingEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.Mimetypes.html">Mimetypes</a></li>
 				<li><a href="class-Guzzle.Http.QueryString.html">QueryString</a></li>
 				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
 				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
 				<li class="active"><a href="class-Guzzle.Http.Url.html">Url</a></li>
-				<li><a href="class-Guzzle.Http.Utils.html">Utils</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -207,8 +210,9 @@ parts are not validated.</p>
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.Url.html#8" title="Go to source code">http/Guzzle/Http/Url.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.Url.html#8-527" title="Go to source code">http/Guzzle/Http/Url.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -224,7 +228,7 @@ parts are not validated.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_factory">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#26" title="Go to source code">factory</a>( <span>string <var>$url</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#26-45" title="Go to source code">factory</a>( <span>string <var>$url</var></span> )</code>
 
 		<div class="description short">
 			
@@ -241,13 +245,14 @@ parts are not validated.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$url</var></dt>
-					<dd><code>string</code><br> Full URL used to create a Url object</dd>
+					<dd><code>string</code><br>$url Full URL used to create a Url object</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -265,7 +270,7 @@ parts are not validated.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_buildUrl">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#47" title="Go to source code">buildUrl</a>( <span>array <var>$parts</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#47-103" title="Go to source code">buildUrl</a>( <span>array <var>$parts</var></span> )</code>
 
 		<div class="description short">
 			
@@ -284,13 +289,14 @@ a scheme or host are not provided.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$parts</var></dt>
-					<dd><code>array</code><br> Array of parse_url parts</dd>
+					<dd><code>array</code><br>$parts Array of parse_url parts</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>string</code><br />
 				</div>
+
 
 
 
@@ -308,7 +314,7 @@ a scheme or host are not provided.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#109" title="Go to source code">__construct</a>( <span>string <var>$scheme</var></span>, <span>string <var>$host</var></span>, <span>string <var>$username</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$password</var> = <span class="php-keyword1">null</span></span>, <span>integer <var>$port</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$path</var> = <span class="php-keyword1">null</span></span>, <span><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code> <var>$query</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$fragment</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#105-131" title="Go to source code">__construct</a>( <span>string <var>$scheme</var></span>, <span>string <var>$host</var></span>, <span>string <var>$username</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$password</var> = <span class="php-keyword1">null</span></span>, <span>integer <var>$port</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$path</var> = <span class="php-keyword1">null</span></span>, <span><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code> <var>$query</var> = <span class="php-keyword1">null</span></span>, <span>string <var>$fragment</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -325,22 +331,23 @@ a scheme or host are not provided.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$scheme</var></dt>
-					<dd><code>string</code><br> Scheme of the URL</dd>
+					<dd><code>string</code><br>$scheme Scheme of the URL</dd>
 					<dt><var>$host</var></dt>
-					<dd><code>string</code><br> Host of the URL</dd>
+					<dd><code>string</code><br>$host Host of the URL</dd>
 					<dt><var>$username</var></dt>
-					<dd><code>string</code><br> Username of the URL</dd>
+					<dd><code>string</code><br>$username Username of the URL</dd>
 					<dt><var>$password</var></dt>
-					<dd><code>string</code><br> Password of the URL</dd>
+					<dd><code>string</code><br>$password Password of the URL</dd>
 					<dt><var>$port</var></dt>
-					<dd><code>integer</code><br> Port of the URL</dd>
+					<dd><code>integer</code><br>$port Port of the URL</dd>
 					<dt><var>$path</var></dt>
-					<dd><code>string</code><br> Path of the URL</dd>
+					<dd><code>string</code><br>$path Path of the URL</dd>
 					<dt><var>$query</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>|array|string</code><br> Query string of the URL</dd>
+					<dd><code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>|array|string</code><br>$query Query string of the URL</dd>
 					<dt><var>$fragment</var></dt>
-					<dd><code>string</code><br> Fragment of the URL</dd>
+					<dd><code>string</code><br>$fragment Fragment of the URL</dd>
 				</dl></div>
+
 
 
 
@@ -359,7 +366,7 @@ a scheme or host are not provided.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___clone">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#136" title="Go to source code">__clone</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#133-139" title="Go to source code">__clone</a>( )</code>
 
 		<div class="description short">
 			
@@ -370,6 +377,7 @@ a scheme or host are not provided.</p>
 		<div class="description detailed hidden">
 			
 <p>Clone the URL</p>
+
 
 
 
@@ -391,7 +399,7 @@ a scheme or host are not provided.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#144" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#141-149" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -413,6 +421,7 @@ a scheme or host are not provided.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -427,7 +436,7 @@ a scheme or host are not provided.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getParts">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#154" title="Go to source code">getParts</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#151-168" title="Go to source code">getParts</a>( )</code>
 
 		<div class="description short">
 			
@@ -449,6 +458,7 @@ a scheme or host are not provided.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -463,7 +473,7 @@ a scheme or host are not provided.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setHost">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#174" title="Go to source code">setHost</a>( <span>string <var>$host</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#170-188" title="Go to source code">setHost</a>( <span>string <var>$host</var></span> )</code>
 
 		<div class="description short">
 			
@@ -480,13 +490,15 @@ a scheme or host are not provided.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$host</var></dt>
-					<dd><code>string</code><br> Host to set (e.g. <a href="http://www.yahoo.com">www.yahoo.com</a>, yahoo.com)</dd>
+					<dd><code>string</code><br>$host Host to set (e.g. <a href="http://www.yahoo.com">www.yahoo.com</a>,
+yahoo.com)</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -504,7 +516,7 @@ a scheme or host are not provided.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getHost">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#194" title="Go to source code">getHost</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#190-198" title="Go to source code">getHost</a>( )</code>
 
 		<div class="description short">
 			
@@ -523,6 +535,7 @@ a scheme or host are not provided.</p>
 				<div class="list">
 					<code>string</code><br />
 				</div>
+
 
 
 
@@ -540,7 +553,7 @@ a scheme or host are not provided.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setScheme">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#204" title="Go to source code">setScheme</a>( <span>string <var>$scheme</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#200-212" title="Go to source code">setScheme</a>( <span>string <var>$scheme</var></span> )</code>
 
 		<div class="description short">
 			
@@ -557,13 +570,14 @@ a scheme or host are not provided.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$scheme</var></dt>
-					<dd><code>string</code><br> Scheme to set</dd>
+					<dd><code>string</code><br>$scheme Scheme to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -581,7 +595,7 @@ a scheme or host are not provided.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getScheme">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#218" title="Go to source code">getScheme</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#214-222" title="Go to source code">getScheme</a>( )</code>
 
 		<div class="description short">
 			
@@ -603,6 +617,7 @@ a scheme or host are not provided.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -617,7 +632,7 @@ a scheme or host are not provided.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setPort">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#228" title="Go to source code">setPort</a>( <span>integer <var>$port</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#224-236" title="Go to source code">setPort</a>( <span>integer <var>$port</var></span> )</code>
 
 		<div class="description short">
 			
@@ -634,13 +649,14 @@ a scheme or host are not provided.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$port</var></dt>
-					<dd><code>integer</code><br> Port to set</dd>
+					<dd><code>integer</code><br>$port Port to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -658,7 +674,7 @@ a scheme or host are not provided.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getPort">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#242" title="Go to source code">getPort</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#238-254" title="Go to source code">getPort</a>( )</code>
 
 		<div class="description short">
 			
@@ -682,6 +698,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -696,7 +713,7 @@ if no port has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setPath">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#260" title="Go to source code">setPath</a>( <span>array|string <var>$path</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#256-272" title="Go to source code">setPath</a>( <span>array|string <var>$path</var></span> )</code>
 
 		<div class="description short">
 			
@@ -713,13 +730,14 @@ if no port has been set.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$path</var></dt>
-					<dd><code>array|string</code><br> Path string or array of path segments</dd>
+					<dd><code>array|string</code><br>$path Path string or array of path segments</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -737,7 +755,7 @@ if no port has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_normalizePath">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#281" title="Go to source code">normalizePath</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#274-313" title="Go to source code">normalizePath</a>( )</code>
 
 		<div class="description short">
 			
@@ -756,6 +774,7 @@ if no port has been set.</p>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -773,7 +792,7 @@ if no port has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addPath">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#330" title="Go to source code">addPath</a>( <span>string <var>$relativePath</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#315-334" title="Go to source code">addPath</a>( <span>string <var>$relativePath</var></span> )</code>
 
 		<div class="description short">
 			
@@ -790,13 +809,14 @@ if no port has been set.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$relativePath</var></dt>
-					<dd><code>string</code><br> Relative path to add</dd>
+					<dd><code>string</code><br>$relativePath Relative path to add</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -814,7 +834,7 @@ if no port has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getPath">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#351" title="Go to source code">getPath</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#336-344" title="Go to source code">getPath</a>( )</code>
 
 		<div class="description short">
 			
@@ -836,6 +856,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -850,7 +871,7 @@ if no port has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getPathSegments">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#361" title="Go to source code">getPathSegments</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#346-354" title="Go to source code">getPathSegments</a>( )</code>
 
 		<div class="description short">
 			
@@ -872,6 +893,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -886,7 +908,7 @@ if no port has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setPassword">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#371" title="Go to source code">setPassword</a>( <span>string <var>$password</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#356-368" title="Go to source code">setPassword</a>( <span>string <var>$password</var></span> )</code>
 
 		<div class="description short">
 			
@@ -903,13 +925,14 @@ if no port has been set.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$password</var></dt>
-					<dd><code>string</code><br> Password to set</dd>
+					<dd><code>string</code><br>$password Password to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -927,7 +950,7 @@ if no port has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getPassword">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#385" title="Go to source code">getPassword</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#370-378" title="Go to source code">getPassword</a>( )</code>
 
 		<div class="description short">
 			
@@ -946,6 +969,7 @@ if no port has been set.</p>
 				<div class="list">
 					<code>null|string</code><br />
 				</div>
+
 
 
 
@@ -963,7 +987,7 @@ if no port has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setUsername">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#395" title="Go to source code">setUsername</a>( <span>string <var>$username</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#380-392" title="Go to source code">setUsername</a>( <span>string <var>$username</var></span> )</code>
 
 		<div class="description short">
 			
@@ -980,13 +1004,14 @@ if no port has been set.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$username</var></dt>
-					<dd><code>string</code><br> Username to set</dd>
+					<dd><code>string</code><br>$username Username to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -1004,7 +1029,7 @@ if no port has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getUsername">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#409" title="Go to source code">getUsername</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#394-402" title="Go to source code">getUsername</a>( )</code>
 
 		<div class="description short">
 			
@@ -1026,6 +1051,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -1040,7 +1066,7 @@ if no port has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getQuery">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#419" title="Go to source code">getQuery</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#404-412" title="Go to source code">getQuery</a>( )</code>
 
 		<div class="description short">
 			
@@ -1062,6 +1088,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -1076,7 +1103,7 @@ if no port has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setQuery">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#429" title="Go to source code">setQuery</a>( <span><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>|string|array <var>$query</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#414-434" title="Go to source code">setQuery</a>( <span><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>|string|array <var>$query</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1093,13 +1120,14 @@ if no port has been set.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$query</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>|string|array</code><br> Query to set</dd>
+					<dd><code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>|string|array</code><br>$query Query to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -1117,7 +1145,7 @@ if no port has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getFragment">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#451" title="Go to source code">getFragment</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#436-444" title="Go to source code">getFragment</a>( )</code>
 
 		<div class="description short">
 			
@@ -1139,6 +1167,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -1153,7 +1182,7 @@ if no port has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setFragment">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#461" title="Go to source code">setFragment</a>( <span>string <var>$fragment</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#446-458" title="Go to source code">setFragment</a>( <span>string <var>$fragment</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1170,13 +1199,14 @@ if no port has been set.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$fragment</var></dt>
-					<dd><code>string</code><br> Fragment to set</dd>
+					<dd><code>string</code><br>$fragment Fragment to set</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code></code><br />
 				</div>
+
 
 
 
@@ -1194,7 +1224,7 @@ if no port has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isAbsolute">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#475" title="Go to source code">isAbsolute</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#460-468" title="Go to source code">isAbsolute</a>( )</code>
 
 		<div class="description short">
 			
@@ -1216,6 +1246,7 @@ if no port has been set.</p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -1230,7 +1261,7 @@ if no port has been set.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_combine">#</a>
-		<code><a href="source-class-Guzzle.Http.Url.html#485" title="Go to source code">combine</a>( <span>string <var>$url</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Url.html#470-526" title="Go to source code">combine</a>( <span>string <var>$url</var></span> )</code>
 
 		<div class="description short">
 			
@@ -1249,7 +1280,7 @@ supersede parts in the current URL.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$url</var></dt>
-					<dd><code>string</code><br> Relative URL to combine with</dd>
+					<dd><code>string</code><br>$url Relative URL to combine with</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -1263,6 +1294,7 @@ supersede parts in the current URL.</p>
 				</div>
 
 
+
 		</div>
 		</div></td>
 	</tr>
@@ -1274,13 +1306,17 @@ supersede parts in the current URL.</p>
 
 
 
+
+
+
+
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="scheme" id="$scheme">
-
 		<td class="attributes"><code>
-			protected 
-			
+			protected  
+			mixed
 		</code></td>
 
 		<td class="name">
@@ -1301,10 +1337,9 @@ supersede parts in the current URL.</p>
 		</div></td>
 	</tr>
 	<tr data-order="host" id="$host">
-
 		<td class="attributes"><code>
-			protected 
-			
+			protected  
+			mixed
 		</code></td>
 
 		<td class="name">
@@ -1325,10 +1360,9 @@ supersede parts in the current URL.</p>
 		</div></td>
 	</tr>
 	<tr data-order="port" id="$port">
-
 		<td class="attributes"><code>
-			protected 
-			
+			protected  
+			mixed
 		</code></td>
 
 		<td class="name">
@@ -1349,10 +1383,9 @@ supersede parts in the current URL.</p>
 		</div></td>
 	</tr>
 	<tr data-order="username" id="$username">
-
 		<td class="attributes"><code>
-			protected 
-			
+			protected  
+			mixed
 		</code></td>
 
 		<td class="name">
@@ -1373,10 +1406,9 @@ supersede parts in the current URL.</p>
 		</div></td>
 	</tr>
 	<tr data-order="password" id="$password">
-
 		<td class="attributes"><code>
-			protected 
-			
+			protected  
+			mixed
 		</code></td>
 
 		<td class="name">
@@ -1397,16 +1429,15 @@ supersede parts in the current URL.</p>
 		</div></td>
 	</tr>
 	<tr data-order="path" id="$path">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			string
 		</code></td>
 
 		<td class="name">
 				<a href="source-class-Guzzle.Http.Url.html#18" title="Go to source code"><var>$path</var></a>
 		</td>
-		<td class="value"><code><span class="php-quote">'/'</span></code></td>
+		<td class="value"><code><span class="php-quote">''</span></code></td>
 		<td class="description"><div>
 			<a href="#$path" class="anchor">#</a>
 
@@ -1421,10 +1452,9 @@ supersede parts in the current URL.</p>
 		</div></td>
 	</tr>
 	<tr data-order="fragment" id="$fragment">
-
 		<td class="attributes"><code>
-			protected 
-			
+			protected  
+			mixed
 		</code></td>
 
 		<td class="name">
@@ -1445,14 +1475,13 @@ supersede parts in the current URL.</p>
 		</div></td>
 	</tr>
 	<tr data-order="query" id="$query">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			<code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.Url.html#21" title="Go to source code"><var>$query</var></a>
+				<a href="source-class-Guzzle.Http.Url.html#21-24" title="Go to source code"><var>$query</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -1476,10 +1505,13 @@ supersede parts in the current URL.</p>
 
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

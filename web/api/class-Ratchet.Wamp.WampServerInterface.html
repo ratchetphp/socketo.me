@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Interface Ratchet\Wamp\WampServerInterface | Ratchet</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2133861467"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?323617084"></script>
+	<script type="text/javascript" src="elementlist.js?1890192539"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -37,6 +37,8 @@
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -222,8 +224,9 @@ rpc)</p>
 		<b>Namespace:</b> <a href="namespace-Ratchet.html">Ratchet</a>\<a href="namespace-Ratchet.Wamp.html">Wamp</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Ratchet.Wamp.WampServerInterface.html#6" title="Go to source code">Ratchet/Wamp/WampServerInterface.php</a><br />
+		<b>Located at</b> <a href="source-class-Ratchet.Wamp.WampServerInterface.html#6-43" title="Go to source code">Ratchet/Wamp/WampServerInterface.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -239,7 +242,7 @@ rpc)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onCall">#</a>
-		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#11" title="Go to source code">onCall</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>string <var>$id</var></span>, <span>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code> <var>$topic</var></span>, <span>array <var>$params</var></span> )</code>
+		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#11-18" title="Go to source code">onCall</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>string <var>$id</var></span>, <span>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code> <var>$topic</var></span>, <span>array <var>$params</var></span> )</code>
 
 		<div class="description short">
 			
@@ -256,14 +259,15 @@ rpc)</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$conn</var></dt>
-					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code></dd>
+					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code><br>$conn</dd>
 					<dt><var>$id</var></dt>
-					<dd><code>string</code><br>The unique ID of the RPC, required to respond to</dd>
+					<dd><code>string</code><br>$id The unique ID of the RPC, required to respond to</dd>
 					<dt><var>$topic</var></dt>
-					<dd><code>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code></code><br>The topic to execute the call against</dd>
+					<dd><code>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code></code><br>$topic The topic to execute the call against</dd>
 					<dt><var>$params</var></dt>
-					<dd><code>array</code><br>Call parameters received from the client</dd>
+					<dd><code>array</code><br>$params Call parameters received from the client</dd>
 				</dl></div>
+
 
 
 
@@ -282,7 +286,7 @@ rpc)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onSubscribe">#</a>
-		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#20" title="Go to source code">onSubscribe</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code> <var>$topic</var></span> )</code>
+		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#20-25" title="Go to source code">onSubscribe</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code> <var>$topic</var></span> )</code>
 
 		<div class="description short">
 			
@@ -299,10 +303,11 @@ rpc)</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$conn</var></dt>
-					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code></dd>
+					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code><br>$conn</dd>
 					<dt><var>$topic</var></dt>
-					<dd><code>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code></code><br>The topic to subscribe to</dd>
+					<dd><code>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code></code><br>$topic The topic to subscribe to</dd>
 				</dl></div>
+
 
 
 
@@ -321,7 +326,7 @@ rpc)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onUnSubscribe">#</a>
-		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#27" title="Go to source code">onUnSubscribe</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code> <var>$topic</var></span> )</code>
+		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#27-32" title="Go to source code">onUnSubscribe</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code> <var>$topic</var></span> )</code>
 
 		<div class="description short">
 			
@@ -338,10 +343,11 @@ rpc)</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$conn</var></dt>
-					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code></dd>
+					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code><br>$conn</dd>
 					<dt><var>$topic</var></dt>
-					<dd><code>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code></code><br>The topic to unsubscribe from</dd>
+					<dd><code>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code></code><br>$topic The topic to unsubscribe from</dd>
 				</dl></div>
+
 
 
 
@@ -360,7 +366,7 @@ rpc)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onPublish">#</a>
-		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#34" title="Go to source code">onPublish</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code> <var>$topic</var></span>, <span>string <var>$event</var></span>, <span>array <var>$exclude</var></span>, <span>array <var>$eligible</var></span> )</code>
+		<code><a href="source-class-Ratchet.Wamp.WampServerInterface.html#34-42" title="Go to source code">onPublish</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code> <var>$topic</var></span>, <span>string <var>$event</var></span>, <span>array <var>$exclude</var></span>, <span>array <var>$eligible</var></span> )</code>
 
 		<div class="description short">
 			
@@ -379,16 +385,17 @@ URI</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$conn</var></dt>
-					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code></dd>
+					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code><br>$conn</dd>
 					<dt><var>$topic</var></dt>
-					<dd><code>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code></code><br>The topic the user has attempted to publish to</dd>
+					<dd><code>string|<code><a href="class-Ratchet.Wamp.Topic.html">Ratchet\Wamp\Topic</a></code></code><br>$topic The topic the user has attempted to publish to</dd>
 					<dt><var>$event</var></dt>
-					<dd><code>string</code><br>Payload of the publish</dd>
+					<dd><code>string</code><br>$event Payload of the publish</dd>
 					<dt><var>$exclude</var></dt>
-					<dd><code>array</code><br>A list of session IDs the message should be excluded from (blacklist)</dd>
+					<dd><code>array</code><br>$exclude A list of session IDs the message should be excluded from (blacklist)</dd>
 					<dt><var>$eligible</var></dt>
-					<dd><code>array</code><br>A list of session Ids the message should be send to (whitelist)</dd>
+					<dd><code>array</code><br>$eligible A list of session Ids the message should be send to (whitelist)</dd>
 				</dl></div>
+
 
 
 
@@ -417,10 +424,18 @@ URI</p>
 
 
 
+
+
+
+
+
+
+
+
 </div>
 
 	<div id="footer">
-		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

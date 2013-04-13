@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Ratchet\Server\FlashPolicy | Ratchet</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2133861467"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?323617084"></script>
+	<script type="text/javascript" src="elementlist.js?1890192539"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -37,6 +37,8 @@
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -216,8 +218,9 @@ tighten the rules up for production</p>
 				<b>Link:</b>
 				view-source:<a
 href="http://www.adobe.com/xml/schemas/PolicyFileSocket.xsd">http://www.adobe.com/xml/schemas/PolicyFileSocket.xsd</a><br />
-		<b>Located at</b> <a href="source-class-Ratchet.Server.FlashPolicy.html#6" title="Go to source code">Ratchet/Server/FlashPolicy.php</a><br />
+		<b>Located at</b> <a href="source-class-Ratchet.Server.FlashPolicy.html#6-187" title="Go to source code">Ratchet/Server/FlashPolicy.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -233,7 +236,7 @@ href="http://www.adobe.com/xml/schemas/PolicyFileSocket.xsd">http://www.adobe.co
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addAllowedAccess">#</a>
-		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#45" title="Go to source code">addAllowedAccess</a>( <span>string <var>$domain</var></span>, <span>string <var>$ports</var> = <span class="php-quote">'*'</span></span>, <span>boolean <var>$secure</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#45-73" title="Go to source code">addAllowedAccess</a>( <span>string <var>$domain</var></span>, <span>string <var>$ports</var> = <span class="php-quote">'*'</span></span>, <span>boolean <var>$secure</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			
@@ -250,23 +253,28 @@ href="http://www.adobe.com/xml/schemas/PolicyFileSocket.xsd">http://www.adobe.co
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$domain</var></dt>
-					<dd><code>string</code><br>Specifies a requesting domain to be granted access. Both named domains and IP
-addresses are acceptable values. Subdomains are considered different domains. A
-wildcard (*) can be used to match all domains when used alone, or multiple
-domains (subdomains) when used as a prefix for an explicit, second-level domain
-name separated with a dot (.)</dd>
+					<dd><code>string</code><br>$domain Specifies a requesting domain to be granted access. Both named domains
+and IP addresses are acceptable values. Subdomains are considered different
+domains. A wildcard (*) can be used to match all domains when used alone, or
+multiple domains (subdomains) when used as a prefix for an explicit,
+second-level domain name separated with a dot (.)</dd>
 					<dt><var>$ports</var></dt>
-					<dd><code>string</code><br>A comma-separated list of ports or range of ports that a socket connection is
-allowed to connect to. A range of ports is specified through a dash (-) between
-two port numbers. Ranges can be used with individual ports when separated with a
-comma. A single wildcard (*) can be used to allow all ports.</dd>
+					<dd><code>string</code><br>$ports A comma-separated list of ports or range of ports that a socket
+connection is allowed to connect to. A range of ports is specified through a
+dash (-) between two port numbers. Ranges can be used with individual ports when
+separated with a comma. A single wildcard (*) can be used to allow all ports.</dd>
 					<dt><var>$secure</var></dt>
-					<dd><code>boolean</code></dd>
+					<dd><code>boolean</code><br>$secure</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Ratchet.Server.FlashPolicy.html">Ratchet\Server\FlashPolicy</a></code></code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-UnexpectedValueException.html">UnexpectedValueException</a></code></code><br />
 				</div>
 
 
@@ -285,7 +293,7 @@ comma. A single wildcard (*) can be used to allow all ports.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setSiteControl">#</a>
-		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#74" title="Go to source code">setSiteControl</a>( <span>string <var>$permittedCrossDomainPolicies</var> = <span class="php-quote">'all'</span></span> )</code>
+		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#75-93" title="Go to source code">setSiteControl</a>( <span>string <var>$permittedCrossDomainPolicies</var> = <span class="php-quote">'all'</span></span> )</code>
 
 		<div class="description short">
 			
@@ -306,12 +314,17 @@ located in the target domain's root and named crossdomain.xml.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$permittedCrossDomainPolicies</var></dt>
-					<dd><code>string</code></dd>
+					<dd><code>string</code><br>$permittedCrossDomainPolicies</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Ratchet.Server.FlashPolicy.html">Ratchet\Server\FlashPolicy</a></code></code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-UnexpectedValueException.html">UnexpectedValueException</a></code></code><br />
 				</div>
 
 
@@ -330,7 +343,7 @@ located in the target domain's root and named crossdomain.xml.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onOpen">#</a>
-		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#93" title="Go to source code">onOpen</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span> )</code>
+		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#95-99" title="Go to source code">onOpen</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span> )</code>
 
 		<div class="description short">
 			
@@ -347,7 +360,7 @@ located in the target domain's root and named crossdomain.xml.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$conn</var></dt>
-					<dd><code>Ratchet\Connection</code><br>The socket/connection that just connected to your application</dd>
+					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code><br>$conn The socket/connection that just connected to your application</dd>
 				</dl></div>
 
 
@@ -357,8 +370,9 @@ located in the target domain's root and named crossdomain.xml.</p>
 				</div>
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Ratchet.ComponentInterface.html#_onOpen">Ratchet\ComponentInterface::onOpen</a></code></div>
+				<div class="list"><code><a href="class-Ratchet.ComponentInterface.html#_onOpen">Ratchet\ComponentInterface::onOpen()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -373,7 +387,7 @@ located in the target domain's root and named crossdomain.xml.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onMessage">#</a>
-		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#99" title="Go to source code">onMessage</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$from</var></span>, <span>string <var>$msg</var></span> )</code>
+		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#101-111" title="Go to source code">onMessage</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$from</var></span>, <span>string <var>$msg</var></span> )</code>
 
 		<div class="description short">
 			
@@ -390,9 +404,9 @@ located in the target domain's root and named crossdomain.xml.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$from</var></dt>
-					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code><br>The socket/connection that sent the message to your application</dd>
+					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code><br>$from The socket/connection that sent the message to your application</dd>
 					<dt><var>$msg</var></dt>
-					<dd><code>string</code><br>The message received</dd>
+					<dd><code>string</code><br>$msg The message received</dd>
 				</dl></div>
 
 
@@ -402,8 +416,9 @@ located in the target domain's root and named crossdomain.xml.</p>
 				</div>
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Ratchet.MessageInterface.html#_onMessage">Ratchet\MessageInterface::onMessage</a></code></div>
+				<div class="list"><code><a href="class-Ratchet.MessageInterface.html#_onMessage">Ratchet\MessageInterface::onMessage()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -418,7 +433,7 @@ located in the target domain's root and named crossdomain.xml.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onClose">#</a>
-		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#111" title="Go to source code">onClose</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span> )</code>
+		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#113-117" title="Go to source code">onClose</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span> )</code>
 
 		<div class="description short">
 			
@@ -439,7 +454,7 @@ closed.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$conn</var></dt>
-					<dd><code>Ratchet\Connection</code><br>The socket/connection that is closing/closed</dd>
+					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code><br>$conn The socket/connection that is closing/closed</dd>
 				</dl></div>
 
 
@@ -449,8 +464,9 @@ closed.</p>
 				</div>
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Ratchet.ComponentInterface.html#_onClose">Ratchet\ComponentInterface::onClose</a></code></div>
+				<div class="list"><code><a href="class-Ratchet.ComponentInterface.html#_onClose">Ratchet\ComponentInterface::onClose()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -465,7 +481,7 @@ closed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onError">#</a>
-		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#117" title="Go to source code">onError</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span><code><a href="class-Exception.html">Exception</a></code> <var>$e</var></span> )</code>
+		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#119-124" title="Go to source code">onError</a>( <span><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code> <var>$conn</var></span>, <span><code><a href="class-Exception.html">Exception</a></code> <var>$e</var></span> )</code>
 
 		<div class="description short">
 			
@@ -486,9 +502,9 @@ by the Server and bubbled back up the application through this method</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$conn</var></dt>
-					<dd><code>Ratchet\Connection</code></dd>
+					<dd><code><code><a href="class-Ratchet.ConnectionInterface.html">Ratchet\ConnectionInterface</a></code></code><br>$conn</dd>
 					<dt><var>$e</var></dt>
-					<dd><code><code><a href="class-Exception.html">Exception</a></code></code></dd>
+					<dd><code><code><a href="class-Exception.html">Exception</a></code></code><br>$e</dd>
 				</dl></div>
 
 
@@ -498,8 +514,9 @@ by the Server and bubbled back up the application through this method</p>
 				</div>
 
 
+
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Ratchet.ComponentInterface.html#_onError">Ratchet\ComponentInterface::onError</a></code></div>
+				<div class="list"><code><a href="class-Ratchet.ComponentInterface.html#_onError">Ratchet\ComponentInterface::onError()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -514,7 +531,7 @@ by the Server and bubbled back up the application through this method</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_renderPolicy">#</a>
-		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#124" title="Go to source code">renderPolicy</a>( )</code>
+		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#126-155" title="Go to source code">renderPolicy</a>( )</code>
 
 		<div class="description short">
 			
@@ -534,6 +551,11 @@ by the Server and bubbled back up the application through this method</p>
 					<code><code><a href="class-SimpleXMLElement.html">SimpleXMLElement</a></code></code><br />
 				</div>
 
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-UnexpectedValueException.html">UnexpectedValueException</a></code></code><br />
+				</div>
+
 
 
 		</div>
@@ -550,7 +572,7 @@ by the Server and bubbled back up the application through this method</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_validateSiteControl">#</a>
-		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#154" title="Go to source code">validateSiteControl</a>( <span>string <var>$permittedCrossDomainPolicies</var></span> )</code>
+		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#157-166" title="Go to source code">validateSiteControl</a>( <span>string <var>$permittedCrossDomainPolicies</var></span> )</code>
 
 		<div class="description short">
 			
@@ -567,13 +589,14 @@ by the Server and bubbled back up the application through this method</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$permittedCrossDomainPolicies</var></dt>
-					<dd><code>string</code></dd>
+					<dd><code>string</code><br>$permittedCrossDomainPolicies</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>boolean</code><br />
 				</div>
+
 
 
 
@@ -591,7 +614,7 @@ by the Server and bubbled back up the application through this method</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_validateDomain">#</a>
-		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#165" title="Go to source code">validateDomain</a>( <span>string <var>$domain</var></span> )</code>
+		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#168-176" title="Go to source code">validateDomain</a>( <span>string <var>$domain</var></span> )</code>
 
 		<div class="description short">
 			
@@ -608,13 +631,14 @@ by the Server and bubbled back up the application through this method</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$domain</var></dt>
-					<dd><code>string</code></dd>
+					<dd><code>string</code><br>$domain</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>boolean</code><br />
 				</div>
+
 
 
 
@@ -632,7 +656,7 @@ by the Server and bubbled back up the application through this method</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_validatePorts">#</a>
-		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#175" title="Go to source code">validatePorts</a>( <span>string <var>$port</var></span> )</code>
+		<code><a href="source-class-Ratchet.Server.FlashPolicy.html#178-186" title="Go to source code">validatePorts</a>( <span>string <var>$port</var></span> )</code>
 
 		<div class="description short">
 			
@@ -649,13 +673,14 @@ by the Server and bubbled back up the application through this method</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$port</var></dt>
-					<dd><code>string</code></dd>
+					<dd><code>string</code><br>$port</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>boolean</code><br />
 				</div>
+
 
 
 
@@ -670,17 +695,21 @@ by the Server and bubbled back up the application through this method</p>
 
 
 
+
+
+
+
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="_policy" id="$_policy">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			string
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Ratchet.Server.FlashPolicy.html#18" title="Go to source code"><var>$_policy</var></a>
+				<a href="source-class-Ratchet.Server.FlashPolicy.html#18-22" title="Go to source code"><var>$_policy</var></a>
 		</td>
 		<td class="value"><code><span class="php-quote">'&lt;?xml version=&quot;1.0&quot;?&gt;&lt;!DOCTYPE cross-domain-policy SYSTEM &quot;http://www.adobe.com/xml/dtds/cross-domain-policy.dtd&quot;&gt;&lt;cross-domain-policy&gt;&lt;/cross-domain-policy&gt;'</span></code></td>
 		<td class="description"><div>
@@ -701,14 +730,13 @@ by the Server and bubbled back up the application through this method</p>
 		</div></td>
 	</tr>
 	<tr data-order="_access" id="$_access">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			array
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Ratchet.Server.FlashPolicy.html#24" title="Go to source code"><var>$_access</var></a>
+				<a href="source-class-Ratchet.Server.FlashPolicy.html#24-28" title="Go to source code"><var>$_access</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>
@@ -729,14 +757,13 @@ by the Server and bubbled back up the application through this method</p>
 		</div></td>
 	</tr>
 	<tr data-order="_siteControl" id="$_siteControl">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			string
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Ratchet.Server.FlashPolicy.html#30" title="Go to source code"><var>$_siteControl</var></a>
+				<a href="source-class-Ratchet.Server.FlashPolicy.html#30-33" title="Go to source code"><var>$_siteControl</var></a>
 		</td>
 		<td class="value"><code><span class="php-quote">''</span></code></td>
 		<td class="description"><div>
@@ -753,14 +780,13 @@ by the Server and bubbled back up the application through this method</p>
 		</div></td>
 	</tr>
 	<tr data-order="_cache" id="$_cache">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			string
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Ratchet.Server.FlashPolicy.html#35" title="Go to source code"><var>$_cache</var></a>
+				<a href="source-class-Ratchet.Server.FlashPolicy.html#35-38" title="Go to source code"><var>$_cache</var></a>
 		</td>
 		<td class="value"><code><span class="php-quote">''</span></code></td>
 		<td class="description"><div>
@@ -777,14 +803,13 @@ by the Server and bubbled back up the application through this method</p>
 		</div></td>
 	</tr>
 	<tr data-order="_cacheValid" id="$_cacheValid">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			string
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Ratchet.Server.FlashPolicy.html#40" title="Go to source code"><var>$_cacheValid</var></a>
+				<a href="source-class-Ratchet.Server.FlashPolicy.html#40-43" title="Go to source code"><var>$_cacheValid</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">false</span></code></td>
 		<td class="description"><div>
@@ -804,10 +829,13 @@ by the Server and bubbled back up the application through this method</p>
 
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

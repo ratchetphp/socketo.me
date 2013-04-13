@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Http\Exception\BadResponseException | Ratchet</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2133861467"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?323617084"></script>
+	<script type="text/javascript" src="elementlist.js?1890192539"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -37,6 +37,8 @@
 				<li class="active"><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -139,6 +141,7 @@
 				<li><a href="class-Guzzle.Http.Exception.ClientErrorResponseException.html">ClientErrorResponseException</a></li>
 				<li><a href="class-Guzzle.Http.Exception.CouldNotRewindStreamException.html">CouldNotRewindStreamException</a></li>
 				<li><a href="class-Guzzle.Http.Exception.CurlException.html">CurlException</a></li>
+				<li><a href="class-Guzzle.Http.Exception.MultiTransferException.html">MultiTransferException</a></li>
 				<li><a href="class-Guzzle.Http.Exception.RequestException.html">RequestException</a></li>
 				<li><a href="class-Guzzle.Http.Exception.ServerErrorResponseException.html">ServerErrorResponseException</a></li>
 				<li><a href="class-Guzzle.Http.Exception.TooManyRedirectsException.html">TooManyRedirectsException</a></li>
@@ -234,7 +237,6 @@
 	<div>
 		<h4>Direct known subclasses</h4>
 			<a href="class-Guzzle.Http.Exception.ClientErrorResponseException.html">Guzzle\Http\Exception\ClientErrorResponseException</a>, 
-			<a href="class-Guzzle.Http.Exception.CurlException.html">Guzzle\Http\Exception\CurlException</a>, 
 			<a href="class-Guzzle.Http.Exception.ServerErrorResponseException.html">Guzzle\Http\Exception\ServerErrorResponseException</a>, 
 			<a href="class-Guzzle.Http.Exception.TooManyRedirectsException.html">Guzzle\Http\Exception\TooManyRedirectsException</a>
 	</div>
@@ -250,8 +252,9 @@
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.Exception.html">Exception</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.Exception.BadResponseException.html#8" title="Go to source code">http/Guzzle/Http/Exception/BadResponseException.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.Exception.BadResponseException.html#8-72" title="Go to source code">http/Guzzle/Http/Exception/BadResponseException.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -267,7 +270,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_factory">#</a>
-		<code><a href="source-class-Guzzle.Http.Exception.BadResponseException.html#18" title="Go to source code">factory</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Exception.BadResponseException.html#18-51" title="Go to source code">factory</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
 
 		<div class="description short">
 			
@@ -286,15 +289,16 @@ code.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$request</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br> Request</dd>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request</dd>
 					<dt><var>$response</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br> Response received</dd>
+					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response Response received</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Exception.BadResponseException.html">Guzzle\Http\Exception\BadResponseException</a></code></code><br />
 				</div>
+
 
 
 
@@ -312,7 +316,7 @@ code.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setResponse">#</a>
-		<code><a href="source-class-Guzzle.Http.Exception.BadResponseException.html#55" title="Go to source code">setResponse</a>( <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.Exception.BadResponseException.html#53-61" title="Go to source code">setResponse</a>( <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
 
 		<div class="description short">
 			
@@ -329,8 +333,9 @@ code.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$response</var></dt>
-					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br> Response to set</dd>
+					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response Response to set</dd>
 				</dl></div>
+
 
 
 
@@ -349,7 +354,7 @@ code.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getResponse">#</a>
-		<code><a href="source-class-Guzzle.Http.Exception.BadResponseException.html#65" title="Go to source code">getResponse</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.Exception.BadResponseException.html#63-71" title="Go to source code">getResponse</a>( )</code>
 
 		<div class="description short">
 			
@@ -368,6 +373,7 @@ code.</p>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br />
 				</div>
+
 
 
 
@@ -408,6 +414,11 @@ code.</p>
 
 
 
+
+
+
+
+
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-Guzzle.Http.Exception.RequestException.html#properties">Guzzle\Http\Exception\RequestException</a></caption>
 	<tr>
@@ -429,10 +440,13 @@ code.</p>
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>

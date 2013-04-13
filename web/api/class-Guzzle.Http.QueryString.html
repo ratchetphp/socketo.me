@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.6.1" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
 	<title>Class Guzzle\Http\QueryString | Ratchet</title>
 
-	<script type="text/javascript" src="resources/combined.js?144019575"></script>
-	<script type="text/javascript" src="elementlist.js?2133861467"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1532301413" />
+	<script type="text/javascript" src="resources/combined.js?323617084"></script>
+	<script type="text/javascript" src="elementlist.js?1890192539"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -37,6 +37,8 @@
 				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
 						</li>
 				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
@@ -131,11 +133,12 @@
 				<li><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html">AbstractEntityBodyDecorator</a></li>
 				<li><a href="class-Guzzle.Http.Client.html">Client</a></li>
 				<li><a href="class-Guzzle.Http.EntityBody.html">EntityBody</a></li>
+				<li><a href="class-Guzzle.Http.IoEmittingEntityBody.html">IoEmittingEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.Mimetypes.html">Mimetypes</a></li>
 				<li class="active"><a href="class-Guzzle.Http.QueryString.html">QueryString</a></li>
 				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
 				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
 				<li><a href="class-Guzzle.Http.Url.html">Url</a></li>
-				<li><a href="class-Guzzle.Http.Utils.html">Utils</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -229,8 +232,9 @@ aggregating those parameters together as a string.</p>
 		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a><br />
 		
 
-		<b>Located at</b> <a href="source-class-Guzzle.Http.QueryString.html#7" title="Go to source code">http/Guzzle/Http/QueryString.php</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Http.QueryString.html#9-283" title="Go to source code">http/Guzzle/Http/QueryString.php</a><br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -246,7 +250,7 @@ aggregating those parameters together as a string.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_fromString">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#42" title="Go to source code">fromString</a>( <span>string <var>$query</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.QueryString.html#54-86" title="Go to source code">fromString</a>( <span>string <var>$query</var></span> )</code>
 
 		<div class="description short">
 			
@@ -263,13 +267,14 @@ aggregating those parameters together as a string.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$query</var></dt>
-					<dd><code>string</code><br> Query string to parse</dd>
+					<dd><code>string</code><br>$query Query string to parse</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code></code><br />
 				</div>
+
 
 
 
@@ -287,7 +292,7 @@ aggregating those parameters together as a string.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#76" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.QueryString.html#88-118" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			
@@ -307,145 +312,6 @@ aggregating those parameters together as a string.</p>
 					<code>string</code><br />
 				</div>
 
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="aggregateUsingPhp" id="_aggregateUsingPhp">
-
-		<td class="attributes"><code>
-			 public static
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_aggregateUsingPhp">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#108" title="Go to source code">aggregateUsingPhp</a>( <span>string <var>$key</var></span>, <span>array <var>$value</var></span>, <span>boolean <var>$encode</var> = <span class="php-keyword1">false</span></span> )</code>
-
-		<div class="description short">
-			
-<p>Aggregate multi-valued parameters using PHP style syntax</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Aggregate multi-valued parameters using PHP style syntax</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$key</var></dt>
-					<dd><code>string</code><br> The name of the query string parameter</dd>
-					<dt><var>$value</var></dt>
-					<dd><code>array</code><br> The values of the parameter</dd>
-					<dt><var>$encode</var></dt>
-					<dd><code>boolean</code><br> Set to TRUE to encode field names and values</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br>Returns an array of the combined values<br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="aggregateUsingComma" id="_aggregateUsingComma">
-
-		<td class="attributes"><code>
-			 public static
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_aggregateUsingComma">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#137" title="Go to source code">aggregateUsingComma</a>( <span>string <var>$key</var></span>, <span>array <var>$value</var></span>, <span>boolean <var>$encode</var> = <span class="php-keyword1">false</span></span> )</code>
-
-		<div class="description short">
-			
-<p>Aggregate multi-valued parameters by joining the values using a comma</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Aggregate multi-valued parameters by joining the values using a comma</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$key</var></dt>
-					<dd><code>string</code><br> The name of the query string parameter</dd>
-					<dt><var>$value</var></dt>
-					<dd><code>array</code><br> The values of the parameter</dd>
-					<dt><var>$encode</var></dt>
-					<dd><code>boolean</code><br> Set to TRUE to encode field names and values</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br>Returns an array of the combined values<br />
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="aggregateUsingDuplicates" id="_aggregateUsingDuplicates">
-
-		<td class="attributes"><code>
-			 public static
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_aggregateUsingDuplicates">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#153" title="Go to source code">aggregateUsingDuplicates</a>( <span>string <var>$key</var></span>, <span>array <var>$value</var></span>, <span>boolean <var>$encode</var> = <span class="php-keyword1">false</span></span> )</code>
-
-		<div class="description short">
-			
-<p>Aggregate multi-valued parameters using duplicate values in a query
-string</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Aggregate multi-valued parameters using duplicate values in a query
-string</p>
-
-<p>Example: <a
-href="http://test.com?q=1&amp;q=2">http://test.com?q=1&q=2</a></p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$key</var></dt>
-					<dd><code>string</code><br> The name of the query string parameter</dd>
-					<dt><var>$value</var></dt>
-					<dd><code>array</code><br> The values of the parameter</dd>
-					<dt><var>$encode</var></dt>
-					<dd><code>boolean</code><br> Set to TRUE to encode field names and values</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br>Returns an array of the combined values<br />
-				</div>
 
 
 
@@ -463,7 +329,7 @@ href="http://test.com?q=1&amp;q=2">http://test.com?q=1&q=2</a></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getFieldSeparator">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#171" title="Go to source code">getFieldSeparator</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.QueryString.html#120-128" title="Go to source code">getFieldSeparator</a>( )</code>
 
 		<div class="description short">
 			
@@ -483,41 +349,6 @@ href="http://test.com?q=1&amp;q=2">http://test.com?q=1&q=2</a></p>
 					<code>string</code><br />
 				</div>
 
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getPrefix" id="_getPrefix">
-
-		<td class="attributes"><code>
-			 public 
-			string
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getPrefix">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#181" title="Go to source code">getPrefix</a>( )</code>
-
-		<div class="description short">
-			
-<p>Get the query string prefix</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get the query string prefix</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string</code><br />
-				</div>
 
 
 
@@ -535,7 +366,7 @@ href="http://test.com?q=1&amp;q=2">http://test.com?q=1&q=2</a></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getValueSeparator">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#191" title="Go to source code">getValueSeparator</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.QueryString.html#130-138" title="Go to source code">getValueSeparator</a>( )</code>
 
 		<div class="description short">
 			
@@ -557,6 +388,46 @@ href="http://test.com?q=1&amp;q=2">http://test.com?q=1&q=2</a></p>
 
 
 
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getUrlEncoding" id="_getUrlEncoding">
+
+		<td class="attributes"><code>
+			 public 
+			boolean|string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getUrlEncoding">#</a>
+		<code><a href="source-class-Guzzle.Http.QueryString.html#140-150" title="Go to source code">getUrlEncoding</a>( )</code>
+
+		<div class="description short">
+			
+<p>Returns the type of URL encoding used by the query string</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns the type of URL encoding used by the query string</p>
+
+<p>One of: false, "RFC 3986", or "application/x-www-form-urlencoded"</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean|string</code><br />
+				</div>
+
+
+
+
 		</div>
 		</div></td>
 	</tr>
@@ -571,17 +442,17 @@ href="http://test.com?q=1&amp;q=2">http://test.com?q=1&q=2</a></p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isUrlEncoding">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#201" title="Go to source code">isUrlEncoding</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.QueryString.html#152-160" title="Go to source code">isUrlEncoding</a>( )</code>
 
 		<div class="description short">
 			
-<p>Returns whether or not field names and values will be urlencoded</p>
+<p>Returns true or false if using URL encoding</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Returns whether or not field names and values will be urlencoded</p>
+<p>Returns true or false if using URL encoding</p>
 
 
 
@@ -593,10 +464,11 @@ href="http://test.com?q=1&amp;q=2">http://test.com?q=1&q=2</a></p>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="setAggregateFunction" id="_setAggregateFunction">
+	<tr data-order="setAggregator" id="_setAggregator">
 
 		<td class="attributes"><code>
 			 public 
@@ -606,8 +478,8 @@ href="http://test.com?q=1&amp;q=2">http://test.com?q=1&q=2</a></p>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_setAggregateFunction">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#211" title="Go to source code">setAggregateFunction</a>( <span>callable|null <var>$callback</var></span> )</code>
+		<a class="anchor" href="#_setAggregator">#</a>
+		<code><a href="source-class-Guzzle.Http.QueryString.html#162-186" title="Go to source code">setAggregator</a>( <span><code><a href="class-Guzzle.Http.QueryAggregator.QueryAggregatorInterface.html">Guzzle\Http\QueryAggregator\QueryAggregatorInterface</a></code> <var>$aggregator</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -625,10 +497,11 @@ single or multiple fields</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$callback</var></dt>
-					<dd><code>callable|null</code><br> A function or callback array that accepts a $key, $value, $encodeFields, and
-$encodeValues as arguments and returns an associative array containing the
-combined values. Set to null to remove any custom aggregator.</dd>
+					<dt><var>$aggregator</var></dt>
+					<dd><code>null|<code><a href="class-Guzzle.Http.QueryAggregator.QueryAggregatorInterface.html">Guzzle\Http\QueryAggregator\QueryAggregatorInterface</a></code></code><br>$aggregator Pass in a QueryAggregatorInterface object to handle converting
+deeply nested query string variables into a flattened array. Pass null to use
+the default PHP style aggregator. For legacy reasons, this function accepts a
+callable that must accepts a $key, $value, and query object.</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -639,8 +512,9 @@ combined values. Set to null to remove any custom aggregator.</dd>
 
 				<h4>See</h4>
 				<div class="list">
-						<code><code><a href="class-Guzzle.Http.QueryString.html#_aggregateUsingComma">Guzzle\Http\QueryString::aggregateUsingComma()</a></code></code><br />
+						\Guzzle\Http\QueryString::aggregateUsingComma()<br />
 				</div>
+
 
 		</div>
 		</div></td>
@@ -656,7 +530,7 @@ combined values. Set to null to remove any custom aggregator.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_useUrlEncoding">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#225" title="Go to source code">useUrlEncoding</a>( <span>boolean <var>$encode</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.QueryString.html#188-200" title="Go to source code">useUrlEncoding</a>( <span>boolean|string <var>$encode</var></span> )</code>
 
 		<div class="description short">
 			
@@ -673,13 +547,16 @@ combined values. Set to null to remove any custom aggregator.</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$encode</var></dt>
-					<dd><code>boolean</code><br> Set whether or not to encode</dd>
+					<dd><code>boolean|string</code><br>$encode Set to TRUE to use RFC 3986 encoding (rawurlencode), false to disable
+encoding, or form_urlencoding to use application/x-www-form-urlencoded encoding
+(urlencode)</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code></code><br />
 				</div>
+
 
 
 
@@ -697,7 +574,7 @@ combined values. Set to null to remove any custom aggregator.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setFieldSeparator">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#239" title="Go to source code">setFieldSeparator</a>( <span>string <var>$separator</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.QueryString.html#202-214" title="Go to source code">setFieldSeparator</a>( <span>string <var>$separator</var></span> )</code>
 
 		<div class="description short">
 			
@@ -714,7 +591,7 @@ combined values. Set to null to remove any custom aggregator.</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$separator</var></dt>
-					<dd><code>string</code><br> The query string separator that will separate fields</dd>
+					<dd><code>string</code><br>$separator The query string separator that will separate fields</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -722,46 +599,6 @@ combined values. Set to null to remove any custom aggregator.</dd>
 					<code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code></code><br />
 				</div>
 
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="setPrefix" id="_setPrefix">
-
-		<td class="attributes"><code>
-			 public 
-			<code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_setPrefix">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#253" title="Go to source code">setPrefix</a>( <span>string <var>$prefix</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Set the query string prefix</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Set the query string prefix</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$prefix</var></dt>
-					<dd><code>string</code><br> Prefix to use with the query string (e.g. '?')</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code></code><br />
-				</div>
 
 
 
@@ -779,7 +616,7 @@ combined values. Set to null to remove any custom aggregator.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setValueSeparator">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#267" title="Go to source code">setValueSeparator</a>( <span>string <var>$separator</var></span> )</code>
+		<code><a href="source-class-Guzzle.Http.QueryString.html#216-228" title="Go to source code">setValueSeparator</a>( <span>string <var>$separator</var></span> )</code>
 
 		<div class="description short">
 			
@@ -796,13 +633,14 @@ combined values. Set to null to remove any custom aggregator.</dd>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$separator</var></dt>
-					<dd><code>string</code><br> The query string separator that will separate values from fields</dd>
+					<dd><code>string</code><br>$separator The query string separator that will separate values from fields</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code><code><a href="class-Guzzle.Http.QueryString.html">Guzzle\Http\QueryString</a></code></code><br />
 				</div>
+
 
 
 
@@ -820,7 +658,7 @@ combined values. Set to null to remove any custom aggregator.</dd>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_urlEncode">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#281" title="Go to source code">urlEncode</a>( )</code>
+		<code><a href="source-class-Guzzle.Http.QueryString.html#230-238" title="Go to source code">urlEncode</a>( )</code>
 
 		<div class="description short">
 			
@@ -842,10 +680,55 @@ combined values. Set to null to remove any custom aggregator.</dd>
 
 
 
+
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="encodeData" id="_encodeData">
+	<tr data-order="encodeValue" id="_encodeValue">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_encodeValue">#</a>
+		<code><a href="source-class-Guzzle.Http.QueryString.html#240-256" title="Go to source code">encodeValue</a>( <span>string <var>$value</var></span> )</code>
+
+		<div class="description short">
+			
+<p>URL encodes a value based on the url encoding type of the query string
+object</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>URL encodes a value based on the url encoding type of the query string
+object</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$value</var></dt>
+					<dd><code>string</code><br>$value Value to encode</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="prepareData" id="_prepareData">
 
 		<td class="attributes"><code>
 			 protected 
@@ -855,36 +738,34 @@ combined values. Set to null to remove any custom aggregator.</dd>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_encodeData">#</a>
-		<code><a href="source-class-Guzzle.Http.QueryString.html#291" title="Go to source code">encodeData</a>( <span>array <var>$data</var></span> )</code>
+		<a class="anchor" href="#_prepareData">#</a>
+		<code><a href="source-class-Guzzle.Http.QueryString.html#258-282" title="Go to source code">prepareData</a>( <span>array <var>$data</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Url encode parameter data.</p>
+<p>Url encode parameter data and convert nested query strings into a flattened
+hash.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Url encode parameter data.</p>
-
-<p>If a parameter value is an array and no aggregator has been set, the values
-of the array will be converted into a PHP compatible form array. If an
-aggregator is set, the values will be converted using the aggregator
-function</p>
+<p>Url encode parameter data and convert nested query strings into a flattened
+hash.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$data</var></dt>
-					<dd><code>array</code><br> The data to encode</dd>
+					<dd><code>array</code><br>$data The data to encode</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
 					<code>array</code><br>Returns an array of encoded values and keys<br />
 				</div>
+
 
 
 
@@ -907,7 +788,7 @@ function</p>
 			<a href="class-Guzzle.Common.Collection.html#_getAll">getAll()</a>, 
 			<a href="class-Guzzle.Common.Collection.html#_getIterator">getIterator()</a>, 
 			<a href="class-Guzzle.Common.Collection.html#_getKeys">getKeys()</a>, 
-			<a href="class-Guzzle.Common.Collection.html#_getPregMatchValue">getPregMatchValue()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_getPath">getPath()</a>, 
 			<a href="class-Guzzle.Common.Collection.html#_hasKey">hasKey()</a>, 
 			<a href="class-Guzzle.Common.Collection.html#_hasValue">hasValue()</a>, 
 			<a href="class-Guzzle.Common.Collection.html#_inject">inject()</a>, 
@@ -918,6 +799,7 @@ function</p>
 			<a href="class-Guzzle.Common.Collection.html#_offsetGet">offsetGet()</a>, 
 			<a href="class-Guzzle.Common.Collection.html#_offsetSet">offsetSet()</a>, 
 			<a href="class-Guzzle.Common.Collection.html#_offsetUnset">offsetUnset()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_overwriteWith">overwriteWith()</a>, 
 			<a href="class-Guzzle.Common.Collection.html#_remove">remove()</a>, 
 			<a href="class-Guzzle.Common.Collection.html#_replace">replace()</a>, 
 			<a href="class-Guzzle.Common.Collection.html#_set">set()</a>, 
@@ -928,15 +810,65 @@ function</p>
 
 
 
+
+
+
+
 	<table class="summary" id="constants">
 	<caption>Constants summary</caption>
+	<tr data-order="RFC_3986" id="RFC_3986">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Guzzle.Http.QueryString.html#14-17" title="Go to source code"><b>RFC_3986</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'RFC 3986'</span></code></td>
+		<td class="description"><div>
+			<a href="#RFC_3986" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Used to URL encode with rawurlencode</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Used to URL encode with rawurlencode</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="FORM_URLENCODED" id="FORM_URLENCODED">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Guzzle.Http.QueryString.html#19-22" title="Go to source code"><b>FORM_URLENCODED</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'application/x-www-form-urlencoded'</span></code></td>
+		<td class="description"><div>
+			<a href="#FORM_URLENCODED" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Used to encode with urlencode</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Used to encode with urlencode</p>
+
+
+			</div>
+		</div></td>
+	</tr>
 	<tr data-order="BLANK" id="BLANK">
 
-		<td class="attributes"><code>
-			string
-		</code></td>
+		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Guzzle.Http.QueryString.html#12" title="Go to source code"><b>BLANK</b></a>
+				<a href="source-class-Guzzle.Http.QueryString.html#24-27" title="Go to source code"><b>BLANK</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">&quot;_guzzle_blank_&quot;</span></code></td>
 		<td class="description"><div>
@@ -960,17 +892,17 @@ function</p>
 
 
 
+
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="fieldSeparator" id="$fieldSeparator">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			string
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.QueryString.html#17" title="Go to source code"><var>$fieldSeparator</var></a>
+				<a href="source-class-Guzzle.Http.QueryString.html#29-32" title="Go to source code"><var>$fieldSeparator</var></a>
 		</td>
 		<td class="value"><code><span class="php-quote">'&amp;'</span></code></td>
 		<td class="description"><div>
@@ -991,14 +923,13 @@ function</p>
 		</div></td>
 	</tr>
 	<tr data-order="valueSeparator" id="$valueSeparator">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			string
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.QueryString.html#22" title="Go to source code"><var>$valueSeparator</var></a>
+				<a href="source-class-Guzzle.Http.QueryString.html#34-37" title="Go to source code"><var>$valueSeparator</var></a>
 		</td>
 		<td class="value"><code><span class="php-quote">'='</span></code></td>
 		<td class="description"><div>
@@ -1018,45 +949,16 @@ function</p>
 			</div>
 		</div></td>
 	</tr>
-	<tr data-order="prefix" id="$prefix">
-
-		<td class="attributes"><code>
-			protected 
-			string
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-Guzzle.Http.QueryString.html#27" title="Go to source code"><var>$prefix</var></a>
-		</td>
-		<td class="value"><code><span class="php-quote">'?'</span></code></td>
-		<td class="description"><div>
-			<a href="#$prefix" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>The query string prefix</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>The query string prefix</p>
-
-
-			</div>
-		</div></td>
-	</tr>
 	<tr data-order="urlEncode" id="$urlEncode">
-
 		<td class="attributes"><code>
-			protected 
+			protected  
 			boolean
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.QueryString.html#32" title="Go to source code"><var>$urlEncode</var></a>
+				<a href="source-class-Guzzle.Http.QueryString.html#39-42" title="Go to source code"><var>$urlEncode</var></a>
 		</td>
-		<td class="value"><code><span class="php-keyword1">true</span></code></td>
+		<td class="value"><code><span class="php-quote">'RFC 3986'</span></code></td>
 		<td class="description"><div>
 			<a href="#$urlEncode" class="anchor">#</a>
 
@@ -1075,28 +977,50 @@ function</p>
 		</div></td>
 	</tr>
 	<tr data-order="aggregator" id="$aggregator">
-
 		<td class="attributes"><code>
-			protected 
-			callable
+			protected  
+			<code><a href="class-Guzzle.Http.QueryAggregator.QueryAggregatorInterface.html">Guzzle\Http\QueryAggregator\QueryAggregatorInterface</a></code>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Guzzle.Http.QueryString.html#37" title="Go to source code"><var>$aggregator</var></a>
+				<a href="source-class-Guzzle.Http.QueryString.html#44-47" title="Go to source code"><var>$aggregator</var></a>
 		</td>
-		<td class="value"><code><span class="php-keyword1">array</span>(__CLASS__, <span class="php-quote">'aggregateUsingPhp'</span>)</code></td>
+		<td class="value"><code></code></td>
 		<td class="description"><div>
 			<a href="#$aggregator" class="anchor">#</a>
 
 			<div class="description short">
 				
-<p>A callback function for combining multi-valued query string values</p>
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="defaultAggregator" id="$defaultAggregator">
+		<td class="attributes"><code>
+			protected static 
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Http.QueryString.html#49-52" title="Go to source code"><var>$defaultAggregator</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$defaultAggregator" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Cached PHP aggregator</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>A callback function for combining multi-valued query string values</p>
+<p>Cached PHP aggregator</p>
 
 
 			</div>
@@ -1114,10 +1038,13 @@ function</p>
 	</table>
 
 
+
+
+
 </div>
 
 	<div id="footer">
-		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.6.1</a>
+		Ratchet API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>
