@@ -164,7 +164,7 @@ var GUI = function() {
    		$('#setName').submit(function(e) {
             e.preventDefault();
             var Name = $('#setName input').val();
-            $.cookie('name', Name, {domain: '.socketo.me'});
+            $.cookie('name', Name, {domain: '.' + window.location.hostname});
 
     		$('#giveName input').val('');
     		$('#giveName').fadeOut(300);
