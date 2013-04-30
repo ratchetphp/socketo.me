@@ -17,8 +17,8 @@
       <div class="span9">
             <h2>Push to an Existing Site<br /><small>Enhance your existing work without wide-spread changes.</small></h2>
 
-            <section class="intro">
-                <h3>The Problem</h3>
+            <section class="intro" id="theproblem">
+                <h3>The Problem <a class="headerlink" href="#theproblem" title="Permalink to this headline">¶</a></h3>
 
                 <p>
                     The previous tutorials were cool and all, but their focus was creating a long lived application where users interacted with each other entirely over WebSockets with no persistence.
@@ -26,8 +26,11 @@
                     Code would need to be ported out of your repository and into a new Ratchet application.
                     A whole new testing phase would need to happen to make sure previously functional pages still work.
                 </p>
-
-                <h3>Goal</h3>
+                
+            </section>
+            
+            <section id="goal">
+                <h3>Goal <a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h3>
 
                 <p>
                     When a user, be it yourself in your admin or a user posting a comment on your blog, does a POST through a form submission or AJAX we want that change to immediately be pushed to all other visitors on that page.
@@ -37,8 +40,8 @@
                 <p>For this tutorial we're going to pretend <small>(reads: boilerplate code missing)</small> you're publishing a blog article on your website and the visitors will see the story pop up as soon as you publish it.</p>
             </section>
 
-            <section class="diagram">
-                <h3>Network Architecture</h3>
+            <section class="diagram" id="networkarchitecture">
+                <h3>Network Architecture <a class="headerlink" href="#networkarchitecture" title="Permalink to this headline">¶</a></h3>
 
                 <ol>
                     <li>
@@ -77,8 +80,8 @@
                 </p>
             </section>
 
-            <section>
-                <h3>Requirements</h3>
+            <section id="requirements">
+                <h3>Requirements <a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
 
                 <h4>ZeroMQ</h4>
 
@@ -118,8 +121,8 @@
 }</pre>
             </section>
 
-            <section>
-                <h3>Start your coding</h3>
+            <section id="coding">
+                <h3>Start your coding <a class="headerlink" href="#coding" title="Permalink to this headline">¶</a></h3>
 
                 <p>
                     Let's get to some code!  We'll start by stubbing out our class application.
@@ -159,8 +162,8 @@ class Pusher implements WampServerInterface {
                 </p>
             </section>
 
-            <section>
-                <h3>Editing your blog submission</h3>
+            <section id="editblogsubmission">
+                <h3>Editing your blog submission <a class="headerlink" href="#editblogsubmission" title="Permalink to this headline">¶</a></h3>
 
                 <p>
                     Next we're going to add a little ZeroMQ magic into your existing website's code where you handle a new blog post.
@@ -193,8 +196,8 @@ class Pusher implements WampServerInterface {
                 </p>
             </section>
 
-            <section>
-                <h3>Handling ZeroMQ messages</h3>
+            <section id="zeromqmessages">
+                <h3>Handling ZeroMQ messages <a class="headerlink" href="#zeromqmessages" title="Permalink to this headline">¶</a></h3>
 
                 <p>
                     Let's go back to our application stub class.
@@ -243,8 +246,8 @@ class Pusher implements WampServerInterface {
 </pre>
             </section>
 
-            <section>
-                <h3>Tying it all together <small>Creating our executable</small></h3>
+            <section id="tyingittogether">
+                <h3>Tying it all together <small>Creating our executable</small> <a class="headerlink" href="#tyingittogether" title="Permalink to this headline">¶</a></h3>
 
                 <p>
                     So far we've covered all the logic of sending, receiving, and handling messages.
@@ -285,8 +288,8 @@ class Pusher implements WampServerInterface {
 
             </section>
 
-            <section>
-                <h3>Client side <small>Getting real-time updates</small></h3>
+            <section id="client">
+                <h3>Client side <small>Getting real-time updates</small> <a class="headerlink" href="#client" title="Permalink to this headline">¶</a></h3>
 
                 <p>Now that our server side code is complete as well as up and running it's time to get those real-time posts! What you do with those updates specifically is beyond the scope of this document, we're just going to put those messages into the debug console.</p>
 
