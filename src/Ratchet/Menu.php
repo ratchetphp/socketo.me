@@ -55,7 +55,8 @@ class Menu
                 $path = $this->request->getRequestUri();
             }
 
-            $markup($link, $label, ($nots($link) == $nots($path)));
+            $active = ($nots($link) == $nots($path) || (strlen($link) > 1 && substr($link, -1) == '/' && substr($this->request->getRequestUri(), 0, strlen($link)) == $link));
+            $markup($link, $label, $active);
         }
     }
 }
