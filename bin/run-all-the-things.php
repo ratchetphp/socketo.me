@@ -13,6 +13,11 @@ use Monolog\Handler\StreamHandler;
     // Composer: The greatest thing since sliced bread
     require dirname(__DIR__) . '/vendor/autoload.php';
 
+    $host = 'socketo.me';
+    if (file_exists(__DIR__ . '/config.php')) {
+        require __DIR__ . '/config.php';
+    }
+
     // Setup logging
     $stdout = new StreamHandler('php://stdout');
     $logout = new Logger('SockOut');
@@ -20,7 +25,7 @@ use Monolog\Handler\StreamHandler;
     $login->pushHandler($stdout);
     $logout->pushHandler($stdout);
 
-    $app = new App('localhost');
+    $app = new App($host);
     $app->route('/chat',
         new MessageLogger(       // Log events in case of "oh noes"
             new ServerProtocol(  // WAMP; the new hotness sub-protocol
