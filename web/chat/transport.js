@@ -157,11 +157,5 @@ ChatRoom = function(optDebug) {
         }
     );
 
-    var portCheck = new WebSocket('ws://' + window.location.hostname + ':9000');
-    portCheck.onOpen = function() {
-        console.log('success');
-        portCheck.close();
-    }
-
     return api;
 };

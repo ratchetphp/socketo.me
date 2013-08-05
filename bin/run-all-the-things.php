@@ -1,10 +1,37 @@
-#!/usr/bin/env php
 <?php
-use Ratchet\Server\IoServer;
-use Ratchet\WebSocket\WsServer;
-use Ratchet\Server\EchoServer;
+// Dear FIG: Thank you for PSR-0!
+use Ratchet\App;
+use Ratchet\Wamp\ServerProtocol;
 
-    require __DIR__ . '/../vendor/autoload.php';
+use Ratchet\Website\Chat\Bot;
+use Ratchet\Website\Chat\ChatRoom;
+use Ratchet\WebSite\MessageLogger;
 
-    $server = IoServer::factory(new WsServer(new EchoServer), 8080);
-    $server->run();
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+    // Composer: The greatest thing since sliced bread
+    require dirname(__DIR__) . '/vendor/autoload.php';
+
+    // Setup logging
+    $stdout = new StreamHandler('php://stdout');
+    $logout = new Logger('SockOut');
+    $login  = new Logger('Sock-In');
+    $login->pushHandler($stdout);
+    $logout->pushHandler($stdout);
+
+    $app = new App('localhost');
+    $app->route('/chat',
+        new MessageLogger(       // Log events in case of "oh noes"
+            new ServerProtocol(  // WAMP; the new hotness sub-protocol
+                new Bot(         // People kept asking me if I was a bot, so I made one!
+                    new ChatRoom // ...and DISCUSS!
+                )
+            )
+            , $login
+            , $logout
+        )
+    );
+
+    // GO GO GO!
+    $app->run();
