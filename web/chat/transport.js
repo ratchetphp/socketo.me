@@ -127,7 +127,7 @@ ChatRoom = function(optDebug) {
     ab._debugws     = api.debug;
 
     var sess = new ab.Session(
-        'ws://demo.socketo.me'
+        'ws://' + window.location.hostname + '/chat'
       , function() {
             api.sessionId = sess._session_id;
 
@@ -156,12 +156,6 @@ ChatRoom = function(optDebug) {
             'skipSubprotocolCheck': true
         }
     );
-
-    var portCheck = new WebSocket('ws://demo.socketo.me:9000');
-    portCheck.onOpen = function() {
-        console.log('success');
-        portCheck.close();
-    }
 
     return api;
 };

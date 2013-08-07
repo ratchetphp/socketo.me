@@ -1,0 +1,24 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "quantal"
+  config.vm.box_url = "https://github.com/downloads/roderik/VagrantQuantal64Box/quantal64.box"
+
+  config.vm.hostname = "reactor"
+
+  config.vm.synced_folder "..", "/socketo.me"
+  config.vm.provision :shell, :path => "bootstrap.sh"
+
+  config.vm.network :forwarded_port, guest: 80,   host: 8080, auto_correct: true
+  config.vm.network :forwarded_port, guest: 843,  host: 8843, auto_correct: true
+
+  config.vm.provider :virtualbox do |vb|
+    vb.customize [
+      "modifyvm", :id,
+      "--cpus", 2,
+      "--memory", "2048",
+      "--name", "Ratchet"
+    ]
+  end
+end

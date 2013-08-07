@@ -10,15 +10,19 @@
     ]
   , "require": {
         "php": ">=5.3.0"
+      , "cboden/Ratchet": "0.3.*@dev"
       , "silex/silex": "1.0.*@dev"
       , "twig/twig": "1.10.*"
+      , "monolog/monolog": "~1.6"
       , "cujojs/when": "dev-master"
       , "tavendo/autobahnjs": "dev-master"
       , "gimite/web-socket-js": "dev-master"
     }
   , "autoload": {
-        "psr-0": { "Ratchet": "src" }
-  }
+        "psr-0": {
+            "Ratchet": ["src", "Ratchet/src"]
+         }
+    }
   , "repositories": [
         {
             "type": "package"
