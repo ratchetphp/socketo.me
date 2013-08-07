@@ -5,7 +5,7 @@ use Ratchet\Wamp\ServerProtocol;
 
 use Ratchet\Website\Chat\Bot;
 use Ratchet\Website\Chat\ChatRoom;
-use Ratchet\WebSite\MessageLogger;
+use Ratchet\Website\MessageLogger;
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
