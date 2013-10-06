@@ -44,13 +44,13 @@
         }
     },
     "require": {
-        "cboden/Ratchet": "0.2.*"
+        "cboden/Ratchet": "0.3.*"
     }
 }</pre>
 
 
                 <p>
-                    We'll start off by creating a class. This class will be our chat "application".  
+                    We'll start off by creating a class. This class will be our chat "application".
                     This basic application will listen for 4 events:
 
                     <ul>
@@ -107,8 +107,8 @@ use MyApp\Chat;
     require dirname(__DIR__) . '/vendor/autoload.php';
 
     $server = IoServer::factory(
-        new Chat()
-      , 8080
+        new Chat(),
+        8080
     );
 
     $server->run();</pre>
@@ -136,7 +136,7 @@ use MyApp\Chat;
             <p>So far, we've just set up structure, both in our shell script and our <em>Chat</em> class. Now, to add code to our <em>Chat</em> to complete our application.</p>
 
             <p>
-                Let's add some logic to our <em>Chat</em> class. 
+                Let's add some logic to our <em>Chat</em> class.
                 What we're going to do, is track all incoming <em>Connections</em>, in order to send them messages.
                 Typically, you would store a collection of items in an array, but we're going to use something called <a rel="external" href="http://ca2.php.net/manual/en/class.splobjectstorage.php">SplObjectStorage</a>.
                 These storage containers are built to store objects, which is what the incoming <em>Connections</em> are.
@@ -212,16 +212,19 @@ class Chat implements MessageComponentInterface {
 
             <pre class="prettyprint">&lt;?php
 use Ratchet\Server\IoServer;
+use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
 use MyApp\Chat;
 
     require dirname(__DIR__) . '/vendor/autoload.php';
 
     $server = IoServer::factory(
-        new WsServer(
-            new Chat()
-        )
-      , 8080
+        new HttpServer(
+            new WsServer(
+                new Chat()
+            )
+        ),
+        8080
     );
 
     $server->run();
