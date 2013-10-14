@@ -1,0 +1,49 @@
+{% extends "layout.html.twig" %}
+
+{% import "macros.html.twig" as m %}
+
+{% block title %}Troubleshooting{% endblock %}
+
+{% block description %}
+    My app isn't working, what should I do?
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        {{ m.menu() }}
+
+        <div class="span9">
+            <section id="troubleshooting">
+                <h2>Troubleshooting <a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+
+                <p>&nbsp;</p>
+
+                <p>
+                    <strong>Q:</strong> I followed the <a href="/docs/hello-world">Hello World!</a> tutorial and I got it
+                    to work in telnet but couldn't get it working in any of the browsers.
+                    <br><strong>A:</strong> <a href="/docs/hello-world#nextsteps">You missed a step</a>
+                </p>
+
+                <hr>
+
+                <p>
+                    <strong>Q:</strong> I'm using App and I get 404's when I try to connect.
+                    <br><strong>A: </strong> Make sure the first parameter ($host) of App is the same hostname you use to connect in your JavaScript WebSocket connection.
+                    If you need to support multiple hosts the fourth parameter of App::route() lets you specify an alternative $host to the default in __construct.
+                </p>
+
+                <hr>
+
+                <p>
+                    <strong>Q:</strong> I'm using App and I get 403's when I try to connect.
+                    <br><strong>A:</strong> This is actually a security feature!
+                    App, by default, enforces a same origin policy to prevent other websites from connecting to your server.
+                    Either make sure you're opening WebSocket connections in JavaScript from the same URL as your $host in App
+                    or to allow another Origin the third parameter of App::route() accepts an array of allowed origins.
+                </p>
+            </section>
+        </div>
+    </div>
+    {% endblock %}

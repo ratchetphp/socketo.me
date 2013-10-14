@@ -109,13 +109,14 @@
                 <pre class="prettyprint">&lt;?php
 // Your shell script
 use Ratchet\WebSocket\WsServer;
+use Ratchet\Http\HttpServer;
 use Ratchet\Server\IoServer;
 
     $ws = new WsServer(new MyChat);
     $ws->disableVersion(0); // old, bad, protocol version
 
     // Make sure you're running this as root
-    $server = IoServer::factory($ws);
+    $server = IoServer::factory(new HttpServer($ws));
     $server->run();</pre>
             </section>
         </div>

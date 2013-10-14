@@ -26,6 +26,11 @@ return array(
           , '/docs/deploy'         => '!signal Deployment'
         )
 
+      , 'troubleshooting' => array(
+            '_title' => 'Troubleshooting'
+          , 'troubleshooting' => '!question-sign Help Me!'
+        )
+
       , 'components' => array(
             '_title' => 'Components'
           , '/docs/websocket' => '!random WsServer'

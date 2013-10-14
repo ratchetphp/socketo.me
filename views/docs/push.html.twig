@@ -270,9 +270,11 @@ class Pusher implements WampServerInterface {
     $webSock = new React\Socket\Server($loop);
     $webSock->listen(8080, '0.0.0.0'); // Binding to 0.0.0.0 means remotes can connect
     $webServer = new Ratchet\Server\IoServer(
-        new Ratchet\WebSocket\WsServer(
-            new Ratchet\Wamp\WampServer(
-                $pusher
+        new Ratchet\Http\HttpServer(
+            new Ratchet\WebSocket\WsServer(
+                new Ratchet\Wamp\WampServer(
+                    $pusher
+                )
             )
         ),
         $webSock

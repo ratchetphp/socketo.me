@@ -122,17 +122,8 @@
 
                 <pre class="prettyprint">&lt;?php
 // Your shell script
-use Ratchet\Wamp\WampServer;
-use Ratchet\Server\IoServer;
-use Ratchet\WebSocket\WsServer;
-
-    $server = IoServer::factory(
-        new WsServer(
-            new WampServer(
-                new BasicPubSub
-            )
-        )
-    );
+    $server = new \Ratchet\App('localhost');
+    $server->route('/pubsub', new BasicPubSub);
     $server->run();
 </pre>
 
