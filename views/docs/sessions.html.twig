@@ -42,7 +42,7 @@
                 <p>
                     <strong>Important:</strong> Sessions through WebSockets work as they do through a traditional webserver; a cookie is set and transmitted in each request header.
                     This means that your website and your WebSocket server both <em>must</em> have access to the cookie.
-                    <br>In order for session data to be shared between your website and your WebSocket server they <em>must</em> be on the same domain. 
+                    <br>In order for session data to be shared between your website and your WebSocket server they <em>must</em> be on the same domain.
                     You can achieve this by either hosting them on the same domain and different ports, such as <em>mydomain.com:80</em> (for website) and <em>mydomain.com:8080</em> (for WebSockets).
                     If you choose to host the WebSocket server on a sub-domain (<em>websocket.mydomain.com:80</em>) make sure to have your website's php.ini file configured like this:
                 </p>
@@ -109,9 +109,8 @@
                 <pre class="prettyprint">&lt;?php
 // Your shell script
 use Ratchet\Session\SessionProvider;
-use Ratchet\WebSocket\WsServer;
-use Ratchet\Server\IoServer;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler;
+use Ratchet\App;
 
     $memcache = new Memcache;
     $memcache->connect('localhost', 11211);
@@ -121,13 +120,13 @@ use Symfony\Component\HttpFoundation\Session\Storage\Handler;
       , new Handler\MemcacheSessionHandler($memcache)
     );
 
-    // Make sure to run as root
-    $server = IoServer::factory(new WsServer($session));
+    $server = new App('localhost');
+    $server->route('/sessDemo', $session);
     $server->run();
 </pre>
 
                 <pre class="prettyprint">&lt;?php
-// Inside your MyApp class
+    // Inside your MyApp class
     public function onOpen($conn) {
         $conn->send('Hello ' . $conn->Session->get('name'));
     }</pre>
