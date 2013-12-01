@@ -43,6 +43,14 @@
                     Either make sure you're opening WebSocket connections in JavaScript from the same URL as your $host in App
                     or to allow another Origin the third parameter of App::route() accepts an array of allowed origins.
                 </p>
+
+                <p>
+                    <strong>Q:</strong> I can connect locally but not remotely or when I run on my server.
+                    <br><strong>A:</strong> This is also another security feature!
+                    By default Ratchet binds to 127.0.0.1 which only allows connections from itself.
+                    The recommended approach is to put Ratchet behind a proxy and only that proxy (locally) will connect.
+                    <br>If you want to open Ratchet up (not behind a proxy) set the third parameter of App to '0.0.0.0'.
+                </p>
             </section>
         </div>
     </div>
