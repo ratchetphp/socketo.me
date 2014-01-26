@@ -12,15 +12,18 @@ apt-get -y upgrade
 mkdir -p /usr/local/bin
 chown -R vagrant /usr/local/bin
 
-apt-get install -y libevent-dev libzmq-dev git pkg-config
+apt-get install -y libevent-dev libev-dev libzmq-dev git pkg-config
 apt-get install -y php5-cli php5-dev php-pear php5-sqlite php5-xdebug
 
 /vagrant/bin/xdebug_disable
 rm /etc/php5/mods-available/xdebug.ini
 ln -s /vagrant/templates/xdebug.ini /etc/php5/mods-available/xdebug.ini
 
-printf "\n" | sudo pecl install channel://pecl.php.net/libevent-0.0.5
+printf "\n" | sudo pecl install channel://pecl.php.net/libevent-0.1.0
 echo "extension=libevent.so" >> /etc/php5/cli/php.ini
+
+(git clone --recursive https://github.com/m4rw3r/php-libev && cd php-libev && phpize && ./configure --with-libev && make && make install)
+echo "extension=libev.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
 
 git clone https://github.com/mkoppanen/php-zmq.git
 sh -c "cd php-zmq && phpize && ./configure && make --silent && make install"
@@ -37,7 +40,7 @@ pear config-set auto_discover 1
 pear install pear.phpunit.de/PHPUnit
 
 apt-get install -y python-setuptools python-dev python-twisted supervisor
-easy_install autobahntestsuite==0.5.2
+easy_install autobahn==0.5.14 autobahntestsuite==0.5.2
 service supervisor stop
 ln -s /vagrant/templates/supervisor.conf /etc/supervisor/conf.d/socketome.conf
 sudo update-rc.d supervisor disable
