@@ -294,20 +294,17 @@ class Pusher implements WampServerInterface {
                 <pre class="prettyprint javascript">
 &lt;script src="http://autobahn.s3.amazonaws.com/js/autobahn.min.js"&gt;&lt;/script&gt;
 &lt;script&gt;
-    var conn = new ab.Session(
-        'ws://localhost:8080' // The host (our Ratchet WebSocket server) to connect to
-      , function() {            // Once the connection has been established
+    var conn = new ab.Session('ws://localhost:8080',
+        function() {
             conn.subscribe('kittensCategory', function(topic, data) {
                 // This is where you would add the new article to the DOM (beyond the scope of this tutorial)
                 console.log('New article published to category "' + topic + '" : ' + data.title);
             });
-        }
-      , function() {            // When the connection is closed
+        },
+        function() {
             console.warn('WebSocket connection closed');
-        }
-      , {                       // Additional parameters, we're ignoring the WAMP sub-protocol for older browsers
-            'skipSubprotocolCheck': true
-        }
+        },
+        {'skipSubprotocolCheck': true}
     );
 &lt;/script&gt;
 </pre>
