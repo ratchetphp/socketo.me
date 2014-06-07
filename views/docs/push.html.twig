@@ -217,10 +217,7 @@ class Pusher implements WampServerInterface {
     protected $subscribedTopics = array();
 
     public function onSubscribe(ConnectionInterface $conn, $topic) {
-        // When a visitor subscribes to a topic link the Topic object in a  lookup array
-        if (!array_key_exists($topic->getId(), $this->subscribedTopics)) {
-            $this->subscribedTopics[$topic->getId()] = $topic;
-        }
+        $this->subscribedTopics[$topic->getId()] = $topic;
     }
 
     /**
