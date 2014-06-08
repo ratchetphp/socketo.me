@@ -120,7 +120,14 @@ class ChatRoom implements WampServerInterface {
      */
     function onUnSubscribe(ConnectionInterface $conn, $topic) {
         unset($conn->Chat->rooms[$topic]);
-        $this->rooms[$topic]->detach($conn);
+
+        if (!array_key_exists($topic, $this->rooms)) {
+            return;
+        }
+
+        if ($this->rooms[$topic]->contains($conn)) {
+            $this->rooms[$topic]->detach($conn);
+        }
 
         if ($this->isControl($topic)) {
             return;
