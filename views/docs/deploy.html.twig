@@ -25,17 +25,18 @@
             </p></section>
 
             <section id="ulimit">
-                <h3>ulimit <a class="headerlink" href="#ulimit" title="Permalink to this headline">¶</a></h3>
+                <h3>Open Connection Limit <a class="headerlink" href="#ulimit" title="Permalink to this headline">¶</a></h3>
 
                 <p>
-                    Before you run your shell script (your WebSocket application) you should probably update your <em>ulimit</em>.
-                    What is this?  It's a unix security feature that limits the number of open file descriptors one running process can have open at a time.
-                    We want to increase this as each client connecting to your server opens a file descriptor. 
-                    You should update this number to make sure the number of clients you expect never exceeds your ulimit. 
-                    Remember, when you update your ulimit, that change only affects the current shell session. 
-                    Before you run you application make sure to execute this command:
-
-                    <pre>$ ulimit -n 10000</pre>
+                    A Unix philosophy is "everything is a file". This means each user connecting to your WebSocket application is represented <em>as</em> a file somewhere. 
+                    A security feature of every Unix based OS is to limit the number of file descriptors one running application may have open at a time. 
+                    On many systems this default is 1024. 
+                    This would mean if you had 1024 users currently connected to your WebSocket server anyone else attempting to connect would fail to do so. 
+                </p>
+                
+                <p>
+                    Most OS's have many layers of security to prevent applications from opening too many file descriptors. 
+                    Here is a great resource on the various ways to <a href="https://rtcamp.com/tutorials/linux/increase-open-files-limit/">increase open file limits</a>. 
                 </p>
             </section>
 
