@@ -56,7 +56,7 @@ class ChatRoom implements WampServerInterface {
                 $created = false;
 
                 if (empty($topic)) {
-                    return $conn->callError($id, 'Room name can not be empty');
+                    return $conn->callError($id, 'createRoom', 'Room name can not be empty');
                 }
 
                 if (array_key_exists($topic, $this->roomLookup)) {
@@ -74,12 +74,12 @@ class ChatRoom implements WampServerInterface {
 
                     return $conn->callResult($id, array('id' => $roomId, 'display' => $topic));
                 } else {
-                    return $conn->callError($id, array('id' => $roomId, 'display' => $topic));
+                    return $conn->callError($id, 'createRoom', "Room '{$topic}' exists", array('id' => $roomId, 'display' => $topic));
                 }
             break;
 
             default:
-                return $conn->callError($id, 'Unknown call');
+                return $conn->callError($id, '', 'Unknown call');
             break;
         }
     }

@@ -113,7 +113,7 @@ ChatRoom = function(optDebug) {
             sess.call('createRoom', name).then(function(args) {
                 callback(args.id, args.display);
             }, function(args) {
-                callback(args.id, args.display);
+                callback(args.detail.id, args.detail.display);
             });
         }
 
