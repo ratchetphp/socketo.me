@@ -1,111 +1,134 @@
-{% extends "layout.html.twig" %}
+{% extends "docs.html.twig" %}
 
 {% import "macros.html.twig" as m %}
 
 {% block title %}Tutorial: Push on the Web{% endblock %}
 
 {% block description %}
-  Bake WebSockets in without breaking your existing website
+    Bake WebSockets in without breaking your existing website
 {% endblock %}
 
-{% block body %}
-  <div class="container-fluid">
-    <div class="row-fluid">
+{% block doc_content %}
+    <h2>Push to an Existing Site<br/>
+        <small>Enhance your existing work without wide-spread changes.</small>
+    </h2>
 
-    {{ m.menu() }}
+    <section class="intro" id="theproblem">
+        <h3>
+            The Problem <small><a class="headerlink" href="#theproblem" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-      <div class="span9">
-            <h2>Push to an Existing Site<br /><small>Enhance your existing work without wide-spread changes.</small></h2>
+        <p>
+            The previous tutorials were cool and all, but their focus was creating a long lived application where users
+            interacted with each other entirely over WebSockets with no persistence.
+            That's a lot of work to incorporate into an already existing site.
+            Code would need to be ported out of your repository and into a new Ratchet application.
+            A whole new testing phase would need to happen to make sure previously functional pages still work.
+        </p>
 
-            <section class="intro" id="theproblem">
-                <h3>The Problem <a class="headerlink" href="#theproblem" title="Permalink to this headline">¶</a></h3>
+    </section>
 
-                <p>
-                    The previous tutorials were cool and all, but their focus was creating a long lived application where users interacted with each other entirely over WebSockets with no persistence.
-                    That's a lot of work to incorporate into an already existing site.
-                    Code would need to be ported out of your repository and into a new Ratchet application.
-                    A whole new testing phase would need to happen to make sure previously functional pages still work.
-                </p>
+    <section id="goal">
+        <h3>
+            Goal <small><a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-            </section>
+        <p>
+            When a user, be it yourself in your admin or a user posting a comment on your blog, does a POST through a
+            form submission or AJAX we want that change to immediately be pushed to all other visitors on that page.
+            We will add real-time updates to our site without disrupting your code base or affecting its current
+            stability.
+        </p>
 
-            <section id="goal">
-                <h3>Goal <a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h3>
+        <p>For this tutorial we're going to pretend
+            <small>(reads: boilerplate code missing)</small>
+            you're publishing a blog article on your website and the visitors will see the story pop up as soon as you
+            publish it.
+        </p>
+    </section>
 
-                <p>
-                    When a user, be it yourself in your admin or a user posting a comment on your blog, does a POST through a form submission or AJAX we want that change to immediately be pushed to all other visitors on that page.
-                    We will add real-time updates to our site without disrupting your code base or affecting its current stability.
-                </p>
+    <section class="diagram" id="networkarchitecture">
+        <h3>Network Architecture <a class="headerlink" href="#networkarchitecture"
+                                    title="Permalink to this headline">¶</a></h3>
 
-                <p>For this tutorial we're going to pretend <small>(reads: boilerplate code missing)</small> you're publishing a blog article on your website and the visitors will see the story pop up as soon as you publish it.</p>
-            </section>
-
-            <section class="diagram" id="networkarchitecture">
-                <h3>Network Architecture <a class="headerlink" href="#networkarchitecture" title="Permalink to this headline">¶</a></h3>
-
-                <ol>
-                    <li>
-                        <img src="/assets/img/push-1.png" alt="Step 1">
-                        <p>
-                            A client makes a request and receives a response from the web server and renders the page.
-                            It then establishes an open WebSocket connection (client 2 and 3 do the same thing).
-                        </p>
-                    </li>
-
-                    <li>
-                        <img src="/assets/img/push-2.png" alt="Step 2">
-                        <p>
-                            Client 1 does a POST back, through form submission or AJAX, to the web server.
-                            (Notice the still open WebSocket connection)
-                        </p>
-                    </li>
-
-                    <li>
-                        <img src="/assets/img/push-3.png" alt="Step 3">
-                        <p>While the server is handling the POST request (saving to database, etc) it sends a message directly to the WebSocket stack with a ZeroMQ transport.</p>
-                    </li>
-
-                    <li>
-                        <img src="/assets/img/push-4.png" alt="Step 4">
-                        <p>
-                            The WebSocket stack handles the ZeroMQ message and sends it to the appropriate clients through open WebSocket connections.
-                            The web browsers handle the incoming message and update the webpage with Javascript accordingly.
-                        </p>
-                    </li>
-                </ol>
+        <ol>
+            <li>
+                <img src="/assets/img/push-1.png" alt="Step 1">
 
                 <p>
-                    This workflow is un-obtrusive and it's easy to introduce into existing websites.
-                    The only changes to the site are adding a bit of ZeroMQ to the server and a Javascript file on the client to handle incoming message from the WebSocket server.
+                    A client makes a request and receives a response from the web server and renders the page.
+                    It then establishes an open WebSocket connection (client 2 and 3 do the same thing).
                 </p>
-            </section>
+            </li>
 
-            <section id="requirements">
-                <h3>Requirements <a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
-
-                <h4>ZeroMQ</h4>
+            <li>
+                <img src="/assets/img/push-2.png" alt="Step 2">
 
                 <p>
-                    To communicate with a running script it needs to be listening on an open socket.
-                    Our application will be listening to port 8080 for incoming WebSocket connections...but how will it also get updates from another PHP script?
-                    Enter <a href="http://www.zeromq.org" rel="external">ZeroMQ</a>.
-                    We could use raw sockets, like the ones Ratchet is built on, but ZeroMQ is a library that just makes sockets easier.
+                    Client 1 does a POST back, through form submission or AJAX, to the web server.
+                    (Notice the still open WebSocket connection)
                 </p>
+            </li>
+
+            <li>
+                <img src="/assets/img/push-3.png" alt="Step 3">
+
+                <p>While the server is handling the POST request (saving to database, etc) it sends a message directly
+                    to the WebSocket stack with a ZeroMQ transport.</p>
+            </li>
+
+            <li>
+                <img src="/assets/img/push-4.png" alt="Step 4">
 
                 <p>
-                    ZeroMQ is a library (libzmq) you will need to install, as well as a PECL extension for PHP bindings.
-                    Installation is easy and is provided for many operating systems on <a href="http://www.zeromq.org" rel="external">their website</a>.
+                    The WebSocket stack handles the ZeroMQ message and sends it to the appropriate clients through open
+                    WebSocket connections.
+                    The web browsers handle the incoming message and update the webpage with Javascript accordingly.
                 </p>
+            </li>
+        </ol>
 
-                <h4>React/ZMQ</h4>
+        <p>
+            This workflow is un-obtrusive and it's easy to introduce into existing websites.
+            The only changes to the site are adding a bit of ZeroMQ to the server and a Javascript file on the client to
+            handle incoming message from the WebSocket server.
+        </p>
+    </section>
 
-                <p>
-                    Ratchet is a WebSocket library built on top of a socket library called <a href="http://reactphp.org" rel="external">React</a>.
-                    React handles connections and the raw I/O for Ratchet.
-                    In addition to React, which comes with Ratchet, we need another library that is part of the React suite: React/ZMQ.
-                    This library will bind ZeroMQ sockets to the Reactor core enabling us to handle both WebSockets and ZeroMQ sockets.
-                    To install, your <em>composer.json</em> file should look like this:
-                </p>
+    <section id="requirements">
+        <h3>
+            Requirements <small><a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></small>
+        </h3>
+
+        <h4>ZeroMQ</h4>
+
+        <p>
+            To communicate with a running script it needs to be listening on an open socket.
+            Our application will be listening to port 8080 for incoming WebSocket connections...but how will it also get
+            updates from another PHP script?
+            Enter <a href="http://www.zeromq.org" rel="external">ZeroMQ</a>.
+            We could use raw sockets, like the ones Ratchet is built on, but ZeroMQ is a library that just makes sockets
+            easier.
+        </p>
+
+        <p>
+            ZeroMQ is a library (libzmq) you will need to install, as well as a PECL extension for PHP bindings.
+            Installation is easy and is provided for many operating systems on <a href="http://www.zeromq.org"
+                                                                                  rel="external">their website</a>.
+        </p>
+
+        <h4>React/ZMQ</h4>
+
+        <p>
+            Ratchet is a WebSocket library built on top of a socket library called <a href="http://reactphp.org"
+                                                                                      rel="external">React</a>.
+            React handles connections and the raw I/O for Ratchet.
+            In addition to React, which comes with Ratchet, we need another library that is part of the React suite:
+            React/ZMQ.
+            This library will bind ZeroMQ sockets to the Reactor core enabling us to handle both WebSockets and ZeroMQ
+            sockets.
+            To install, your <em>composer.json</em> file should look like this:
+        </p>
 
                 <pre class="prettprint json javascript">{
     "autoload": {
@@ -118,16 +141,19 @@
         "react/zmq": "0.2.*|0.3.*"
     }
 }</pre>
-            </section>
+    </section>
 
-            <section id="coding">
-                <h3>Start your coding <a class="headerlink" href="#coding" title="Permalink to this headline">¶</a></h3>
+    <section id="coding">
+        <h3>
+            Start your coding <small><a class="headerlink" href="#coding" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <p>
-                    Let's get to some code!  We'll start by stubbing out our class application.
-                    We're going to use {{ m.wamp() }} for its ease of use with the Pub/Sub pattern.
-                    This will allow clients to subscribe to updates on a specific page and we'll only push updates to those who have subscribed.
-                </p>
+        <p>
+            Let's get to some code! We'll start by stubbing out our class application.
+            We're going to use {{ m.wamp() }} for its ease of use with the Pub/Sub pattern.
+            This will allow clients to subscribe to updates on a specific page and we'll only push updates to those who
+            have subscribed.
+        </p>
 
                 <pre class="prettyprint php">&lt;?php
 namespace MyApp;
@@ -155,19 +181,25 @@ class Pusher implements WampServerInterface {
     }
 }</pre>
 
-                <p>
-                    Save this in <em>/src/MyApp/Pusher.php</em>. We just made the methods required for {{ m.wamp() }} and made sure no one tries to send data, closing the connection if they do.
-                    We're making a push application and not accepting any incoming messages from WebSockets, those will all be coming from AJAX.
-                </p>
-            </section>
+        <p>
+            Save this in <em>/src/MyApp/Pusher.php</em>. We just made the methods required for {{ m.wamp() }} and made
+            sure no one tries to send data, closing the connection if they do.
+            We're making a push application and not accepting any incoming messages from WebSockets, those will all be
+            coming from AJAX.
+        </p>
+    </section>
 
-            <section id="editblogsubmission">
-                <h3>Editing your blog submission <a class="headerlink" href="#editblogsubmission" title="Permalink to this headline">¶</a></h3>
+    <section id="editblogsubmission">
+        <h3>
+            Editing your blog submission <small><a class="headerlink" href="#editblogsubmission" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <p>
-                    Next we're going to add a little ZeroMQ magic into your existing website's code where you handle a new blog post.
-                    The code here may be a little basic and archaic compared to the advanced architecture your actual blog is, sitting on Drupal or WordPress, but we're focusing on the fundamentals.
-                </p>
+        <p>
+            Next we're going to add a little ZeroMQ magic into your existing website's code where you handle a new blog
+            post.
+            The code here may be a little basic and archaic compared to the advanced architecture your actual blog is,
+            sitting on Drupal or WordPress, but we're focusing on the fundamentals.
+        </p>
 
                 <pre class="prettyprint php">&lt;?php
     // post.php ???
@@ -189,21 +221,24 @@ class Pusher implements WampServerInterface {
 
     $socket->send(json_encode($entryData));
 </pre>
-                <p>
-                    After we logged your blog entry in the database we've opened a ZeroMQ connection to our socket server and delivered a serialized message with the same information.
-                    (note: please do proper sanitization, this is just a quick and dirty example)
-                </p>
-            </section>
+        <p>
+            After we logged your blog entry in the database we've opened a ZeroMQ connection to our socket server and
+            delivered a serialized message with the same information.
+            (note: please do proper sanitization, this is just a quick and dirty example)
+        </p>
+    </section>
 
-            <section id="zeromqmessages">
-                <h3>Handling ZeroMQ messages <a class="headerlink" href="#zeromqmessages" title="Permalink to this headline">¶</a></h3>
+    <section id="zeromqmessages">
+        <h3>
+            Handling ZeroMQ messages <small><a class="headerlink" href="#zeromqmessages" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <p>
-                    Let's go back to our application stub class.
-                    As we left it, it was only handling WebSocket connections.
-                    As you saw in our last code snippit, we opened a connection to localhost on port 5555 that we sent data to.
-                    We're going to add handling for that ZeroMQ message as well as re-sending it to our WebSocket clients.
-                </p>
+        <p>
+            Let's go back to our application stub class.
+            As we left it, it was only handling WebSocket connections.
+            As you saw in our last code snippit, we opened a connection to localhost on port 5555 that we sent data to.
+            We're going to add handling for that ZeroMQ message as well as re-sending it to our WebSocket clients.
+        </p>
 
                 <pre class="prettyprint php">&lt;?php
 namespace MyApp;
@@ -240,16 +275,19 @@ class Pusher implements WampServerInterface {
     /* The rest of our methods were as they were, omitted from docs to save space */
 }
 </pre>
-            </section>
+    </section>
 
-            <section id="tyingittogether">
-                <h3>Tying it all together <small>Creating our executable</small> <a class="headerlink" href="#tyingittogether" title="Permalink to this headline">¶</a></h3>
+    <section id="tyingittogether">
+        <h3>
+            Tying it all together <small>Creating our executable <a class="headerlink" href="#tyingittogether" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <p>
-                    So far we've covered all the logic of sending, receiving, and handling messages.
-                    Now, we're going to bind it all together and create our executable script that manages everything.
-                    We're going to build our Ratchet application with I/O, WebSockets, Wamp, and ZeroMQ components and run the event loop.
-                </p>
+        <p>
+            So far we've covered all the logic of sending, receiving, and handling messages.
+            Now, we're going to bind it all together and create our executable script that manages everything.
+            We're going to build our Ratchet application with I/O, WebSockets, Wamp, and ZeroMQ components and run the
+            event loop.
+        </p>
 
                 <pre class="prettyprint php">&lt;?php
     require dirname(__DIR__) . '/vendor/autoload.php';
@@ -280,16 +318,20 @@ class Pusher implements WampServerInterface {
     $loop->run();
 </pre>
 
-            <p>Save the code as <em>/bin/push-server.php</em> and run it:</p>
+        <p>Save the code as <em>/bin/push-server.php</em> and run it:</p>
 
-            <pre>$ php bin/push-server.php</pre>
+        <pre>$ php bin/push-server.php</pre>
 
-            </section>
+    </section>
 
-            <section id="client">
-                <h3>Client side <small>Getting real-time updates</small> <a class="headerlink" href="#client" title="Permalink to this headline">¶</a></h3>
+    <section id="client">
+        <h3>
+            Client side <small>Getting real-time updates <a class="headerlink" href="#client" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <p>Now that our server side code is complete as well as up and running it's time to get those real-time posts! What you do with those updates specifically is beyond the scope of this document, we're just going to put those messages into the debug console.</p>
+        <p>Now that our server side code is complete as well as up and running it's time to get those real-time posts!
+            What you do with those updates specifically is beyond the scope of this document, we're just going to put
+            those messages into the debug console.</p>
 
                 <pre class="prettyprint javascript">
 &lt;script src="http://autobahn.s3.amazonaws.com/js/autobahn.min.js"&gt;&lt;/script&gt;
@@ -309,13 +351,14 @@ class Pusher implements WampServerInterface {
 &lt;/script&gt;
 </pre>
 
-                <p>
-                    Finally, open the page you placed this Javascript in with one browser window and from another browser post a blog entry to "kittensCategory" and watch your console's log from the first.
-                    Once that is working, your next steps are to incorporate the data received into some DOM manipulation goodness.
-                </p>
+        <p>
+            Finally, open the page you placed this Javascript in with one browser window and from another browser post a
+            blog entry to "kittensCategory" and watch your console's log from the first.
+            Once that is working, your next steps are to incorporate the data received into some DOM manipulation
+            goodness.
+        </p>
 
-                <p>When that's working locally (assuming localhost has been your development environment) you can change the localhost references and possibly the bindings to your proper server hostnames/IP addresses.</p>
-            </section>
-        </div>
-    </div>
+        <p>When that's working locally (assuming localhost has been your development environment) you can change the
+            localhost references and possibly the bindings to your proper server hostnames/IP addresses.</p>
+    </section>
 {% endblock %}

@@ -1,6 +1,4 @@
-{% extends "layout.html.twig" %}
-
-{% import "macros.html.twig" as m %}
+{% extends "docs.html.twig" %}
 
 {% block title %}Component: HttpServer| HTTP Protocol{% endblock %}
 
@@ -8,84 +6,92 @@
     The HttpServer component allows your application to handle incoming HTTP requests (required to upgrade to WebSocket)
 {% endblock %}
 
-{% block body %}
-<div class="container-fluid">
-    <div class="row-fluid">
+{% block doc_content %}
+    <h2>HttpServer</h2>
 
-        {{ m.menu() }}
+    <section id="purpose">
+        <h3>
+            Purpose <small>of this <em>Component</em></small> <a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a>
+        </h3>
 
-        <div class="span9 component-doc">
-            <h2>HttpServer</h2>
+        <p>
+            This component is responsible for parsing incoming HTTP requests.
+            It's purpose is to buffer data until it receives a full HTTP header request and pass it on.
+            You can use this as a raw HTTP server (not advised) but it's meant for upgrading WebSocket requests.
+        </p>
 
-            <section id="purpose">
-                <h3>Purpose <small>of this <em>Component</em></small> <a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+        <p><strong>Note:</strong> This component is bundled within the App class.</p>
+    </section>
 
-                <p>
-                    This component is responsible for parsing incoming HTTP requests.
-                    It's purpose is to buffer data until it receives a full HTTP header request and pass it on.
-                    You can use this as a raw HTTP server (not advised) but it's meant for upgrading WebSocket requests.
-                </p>
+    <section id="events">
+        <h3>
+            Events <small>triggered by this <em>Component</em> <a class="headerlink" href="#events" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <p><strong>Note:</strong> This component is bundled within the App class.</p>
-            </section>
+        <p>As found in the API Docs: Triggered events are propagated through a <a href="/api/class-Ratchet.Http.HttpServerInterface.html">HttpServerInterface</a> object passed to the <em>__construct</em>.</p>
 
-            <section id="events">
-                <h3>Events <small>triggered by this <em>Component</em> <a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h3>
+        <ul>
+            <li><span class="label label-success">onOpen</span> (ConnectionInterface <em>$conn</em>, RequestInterface $request = null) - A new client connection has been opened</li>
+            <li><span class="label label-warning">onClose</span> (ConnectionInterface <em>$conn</em>) - A client connection is about to, or has closed</li>
+            <li><span class="label label-info">onMessage</span> (ConnectionInterface <em>$from</em>, string <em>$message</em>) - A data message has been received</li>
+            <li><span class="label label-danger">onError</span> (ConnectionInterface <em>$from</em>, Exception <em>$error</em>) - An error has occurred with a <em>Connection</em></li>
+        </ul>
+    </section>
 
-                <p>As found in the API Docs: Triggered events are propagated through a <a href="/api/class-Ratchet.Http.HttpServerInterface.html">HttpServerInterface</a> object passed to the <em>__construct</em>.</p>
+    <section id="configuration">
+        <h3>
+            Configuration <small>methods <a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <ul>
-                    <li><span class="label label-success">onOpen</span> (ConnectionInterface <em>$conn</em>, RequestInterface $request = null) - A new client connection has been opened</li>
-                    <li><span class="label label-warning">onClose</span> (ConnectionInterface <em>$conn</em>) - A client connection is about to, or has closed</li>
-                    <li><span class="label label-info">onMessage</span> (ConnectionInterface <em>$from</em>, string <em>$message</em>) - A data message has been received</li>
-                    <li><span class="label label-important">onError</span> (ConnectionInterface <em>$from</em>, Exception <em>$error</em>) - An error has occurred with a <em>Connection</em></li>
-                </ul>
-            </section>
+        <p>None</p>
+    </section>
 
-            <section id="configuration">
-                <h3>Configuration <small>methods</small> <a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+    <section id="functions">
+        <h3>
+            Functions <small>callable on <em>Connections</em> <a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <p>None</p>
-            </section>
+        <ul>
+            <li><span class="label label-info">send</span> (string <em>$message</em>) - Send a message (string) to the client</li>
+            <li><span class="label label-warning">close</span> - Gracefully close the connection to the client</li>
+        </ul>
+        {#
+                        <ul>
+                            <li><span class="label label-warning">Disconnect</span> - Notify the client of an intent to close the connection. All data currently being transferred will finish before the connection closes</li>
+                            <li><span class="label">Pong</span> - Part of the WebSocket protocol, typically not needed by your application
+                            <li><span class="label">Ping</span> - Part of the WebSocket protocol, typically not needed by your application
+                        </ul>
+        #}
+    </section>
 
-            <section id="functions">
-                <h3>Functions <small>callable on <em>Connections</em></small> <a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+    <section id="wraps">
+        <h3>
+            Wraps <small>other components nicely <a class="headerlink" href="#wraps" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <ul>
-                    <li><span class="label label-info">send</span> (string <em>$message</em>) - Send a message (string) to the client</li>
-                    <li><span class="label label-warning">close</span> - Gracefully close the connection to the client</li>
-                </ul>
-                {#
-                                <ul>
-                                    <li><span class="label label-warning">Disconnect</span> - Notify the client of an intent to close the connection. All data currently being transferred will finish before the connection closes</li>
-                                    <li><span class="label">Pong</span> - Part of the WebSocket protocol, typically not needed by your application
-                                    <li><span class="label">Ping</span> - Part of the WebSocket protocol, typically not needed by your application
-                                </ul>
-                #}
-            </section>
+        <ul>
+            <li><a href="/docs/websocket">WsServer</a></li>
+            <li><a href="/docs/router">Router</a></li>
+        </ul>
+    </section>
 
-            <section id="wraps">
-                <h3>Wraps <small>other components nicely</small> <a class="headerlink" href="#wraps" title="Permalink to this headline">¶</a></h3>
+    <section id="wrapped">
+        <h3>
+            Wrapped <small>by other components nicely <a class="headerlink" href="#wrapped" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <ul>
-                    <li><a href="/docs/websocket">WsServer</a></li>
-                    <li><a href="/docs/router">Router</a></li>
-                </ul>
-            </section>
+        <ul>
+            <li><a href="/docs/server">IoServer</a></li>
+            <li><a href="/docs/black">IpBlackList</a></li>
+        </ul>
+    </section>
 
-            <section id="wrapped">
-                <h3>Wrapped <small>by other components nicely</small> <a class="headerlink" href="#wrapped" title="Permalink to this headline">¶</a></h3>
+    <section id="usage">
+        <h3>
+            Usage <small><a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <ul>
-                    <li><a href="/docs/server">IoServer</a></li>
-                    <li><a href="/docs/black">IpBlackList</a></li>
-                </ul>
-            </section>
-
-            <section id="usage">
-                <h3>Usage <a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
-
-                <pre class="prettyprint">&lt;?php
+        <pre class="prettyprint">&lt;?php
 // Your shell script
 use Ratchet\Http\HttpServer;
 use Ratchet\Server\IoServer;
@@ -93,8 +99,7 @@ use Ratchet\Server\IoServer;
     $http = new HttpServer(new MyWebPage);
 
     $server = IoServer::factory($http);
-    $server->run();</pre>
-            </section>
-        </div>
-    </div>
-    {% endblock %}
+    $server->run();
+        </pre>
+    </section>
+{% endblock %}

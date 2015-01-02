@@ -28,7 +28,7 @@ class Menu
         $markup = function ($link, $label, $active = false) {
             $icon = '';
             if (substr($label, 0, 1) == '!') {
-                $icon = '<i class="icon-' . substr($label, 1, strpos($label, ' ')) . '"></i> ';
+                $icon = '<i class="glyphicon glyphicon-' . substr($label, 1, strpos($label, ' ')) . '"></i> ';
                 $label = substr($label, strpos($label, ' '));
             }
 
@@ -41,7 +41,7 @@ class Menu
             if (is_array($label)) {
                 foreach ($label as $clink => $clabel) {
                     if ($clink == '_title') {
-                        echo '<li class="nav-header">' . $clabel . '</li>';
+                        echo '<li class="nav-header"><b>' . $clabel . '</b></li>';
                     } else {
                         $markup($clink, $clabel, $nots($clink) == $nots($this->request->getRequestUri()));
                     }

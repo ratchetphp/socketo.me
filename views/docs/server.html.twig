@@ -1,101 +1,126 @@
-{% extends "layout.html.twig" %}
+{% extends "docs.html.twig" %}
 
 {% import "macros.html.twig" as m %}
 
 {% block title %}Component: IoServer{% endblock %}
 
 {% block description %}
-  IoServer provides basic I/O connectivity to clients
+    IoServer provides basic I/O connectivity to clients
 {% endblock %}
 
-{% block body %}
-  <div class="container-fluid">
-    <div class="row-fluid">
+{% block doc_content %}
+    <h2>IoServer</h2>
 
-    {{ m.menu() }}
+    <section id="purpose">
+        <h3>
+            Purpose <small>of this <em>Component</em> <a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-      <div class="span9 component-doc">
-            <h2>IoServer</h2>
+        <p>
+            The <em>IoServer</em> should be the base of your application.
+            This is the core of the events driven from client actions.
+            It handles receiving new connections, reading/writing to those connections, closing the connections,
+            and handles all errors from your application.
+        </p>
 
-            <section id="purpose">
-                <h3>Purpose <small>of this <em>Component</em></small> <a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+        <p><strong>Note:</strong> This component is bundled within the App class.</p>
+    </section>
 
-                <p>
-                    The <em>IoServer</em> should be the base of your application.
-                    This is the core of the events driven from client actions.
-                    It handles receiving new connections, reading/writing to those connections, closing the connections, and handles all errors from your application.
-                </p>
+    <section id="events">
+        <h3>
+            Events <small>triggered by this <em>Component</em> <a class="headerlink" href="#events" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <p><strong>Note:</strong> This component is bundled within the App class.</p>
-            </section>
+        <ul>
+            <li><span class="label label-success">onOpen</span> (ConnectionInterface <em>$conn</em>) - A new
+                client connection has been opened
+            </li>
+            <li><span class="label label-warning">onClose</span> (ConnectionInterface <em>$conn</em>) - A client
+                connection is about to, or has closed
+            </li>
+            <li><span class="label label-info">onMessage</span> (ConnectionInterface <em>$from</em>, string <em>$message</em>)
+                - A data message has been received
+            </li>
+            <li><span class="label label-danger">onError</span> (ConnectionInterface <em>$from</em>,
+                Exception <em>$error</em>) - An error has occurred with a <em>Connection</em></li>
+        </ul>
+    </section>
 
-            <section id="events">
-                <h3>Events <small>triggered by this <em>Component</em> <a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h3>
+    <section id="configuration">
+        <h3>
+            Configuration <small>methods <a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <ul>
-                    <li><span class="label label-success">onOpen</span> (ConnectionInterface <em>$conn</em>) - A new client connection has been opened</li>
-                    <li><span class="label label-warning">onClose</span> (ConnectionInterface <em>$conn</em>) - A client connection is about to, or has closed</li>
-                    <li><span class="label label-info">onMessage</span> (ConnectionInterface <em>$from</em>, string <em>$message</em>) - A data message has been received</li>
-                    <li><span class="label label-important">onError</span> (ConnectionInterface <em>$from</em>, Exception <em>$error</em>) - An error has occurred with a <em>Connection</em></li>
-                </ul>
-            </section>
+        <ul>
+            <li>void <strong>run</strong>() - Enter the event loop of your application and listen for incoming
+                connections and data
+            </li>
+            <!--
+                                <li>self <strong>setBufferSize</strong> (int <em>$bytes</em>) - Set the number of bytes for the socket read buffer</li>
+            -->
+        </ul>
+    </section>
 
-            <section id="configuration">
-                <h3>Configuration <small>methods</small> <a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+    <section id="functions">
+        <h3>
+            Functions <small>callable on <em>Connections</em> <a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <ul>
-                    <li>void <strong>run</strong>() - Enter the event loop of your application and listen for incoming connections and data</li>
-<!--
-                    <li>self <strong>setBufferSize</strong> (int <em>$bytes</em>) - Set the number of bytes for the socket read buffer</li>
--->
-                </ul>
-            </section>
+        <ul>
+            <li><span class="label label-info">send</span> (string <em>$message</em>) - Send a message (string)
+                to the client
+            </li>
+            <li><span class="label label-warning">close</span> - Gracefully close the connection to the client
+            </li>
+        </ul>
+    </section>
 
-            <section id="functions">
-                <h3>Functions <small>callable on <em>Connections</em></small> <a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+    <section id="parameters">
+        <h3>
+            Parameters <small>added to each <em>Connection</em> <a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <ul>
-                    <li><span class="label label-info">send</span> (string <em>$message</em>) - Send a message (string) to the client</li>
-                    <li><span class="label label-warning">close</span> - Gracefully close the connection to the client</span>
-                </ul>
-            </section>
+        <dl>
+            <dd>(string <em>$remoteAddress</em>) - The address (IP Address) the user connected with</dd>
+            <dd>(int <em>$resourceId</em>) - An incremental number assigned when the connection is made</dd>
+        </dl>
+    </section>
 
-            <section id="parameters">
-                <h3>Parameters <small>added to each <em>Connection</em></small> <a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+    <section id="wraps">
+        <h3>
+            Wraps <small>other components nicely <a class="headerlink" href="#wraps" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <dl>
-                    <dd>(string <em>$remoteAddress</em>) - The address (IP Address) the user connected with</dd>
-                    <dd>(int <em>$resourceId</em>) - An incremental number assigned when the connection is made</dd>
-                </dl>
-            </section>
+        <ul>
+            <li>Your app class (for testing, or making a telnet application) implementing <a
+                        href="/api/class-Ratchet.MessageComponentInterface.html">MessageComponentInterface</a>
+            </li>
+            <li><a href="/docs/black">IpBlackList</a></li>
+            <li><a href="/docs/flash">FlashPolicy</a></li>
+            <li><a href="/docs/websocket">WsServer</a></li>
+        </ul>
+    </section>
 
-            <section id="wraps">
-                <h3>Wraps <small>other components nicely</small> <a class="headerlink" href="#wraps" title="Permalink to this headline">¶</a></h3>
+    <section id="wrapped">
+        <h3>
+            Wrapped <small>by other components nicely <a class="headerlink" href="#wrapped" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <ul>
-                    <li>Your app class (for testing, or making a telnet application) implementing <a href="/api/class-Ratchet.MessageComponentInterface.html">MessageComponentInterface</a></li>
-                    <li><a href="/docs/black">IpBlackList</a></li>
-                    <li><a href="/docs/flash">FlashPolicy</a></li>
-                    <li><a href="/docs/websocket">WsServer</a></li>
-                </ul>
-            </section>
+        <p>Typically, none. This should be the base of your application as it handles the direct communication
+            and transport with clients.</p>
+    </section>
 
-            <section id="wrapped">
-                <h3>Wrapped <small>by other components nicely</small> <a class="headerlink" href="#wrapped" title="Permalink to this headline">¶</a></h3>
+    <section id="usage">
+        <h3>
+            Usage <small><a class="headerlink" href="#client" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <p>Typically, none.  This should be the base of your application as it handles the direct communication and transport with clients.</p>
-            </section>
-
-            <section id="usage">
-                <h3>Usage <a class="headerlink" href="#client" title="Permalink to this headline">¶</a></h3>
-
-                <pre class="prettyprint">&lt;?php
+        <pre class="prettyprint">&lt;?php
 // Your shell script
 use Ratchet\Server\IoServer;
 
     $server = IoServer::factory(new MyApp, 8080); // Run your app on port 8080
-    $server->run();</pre>
-            </section>
-        </div>
-    </div>
+    $server->run();
+        </pre>
+    </section>
 {% endblock %}

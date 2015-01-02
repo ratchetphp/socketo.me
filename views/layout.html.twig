@@ -1,11 +1,14 @@
 {%- import "macros.html.twig" as m -%}
 
 <!DOCTYPE html>
-<html lang="en"{% block htmlAttributes %}{% endblock %}>
-  <head>
+<html lang="en" {% block htmlAttributes %}{% endblock %}>
+<head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ratchet - {% block title %}WebSockets for PHP{% endblock %}</title>
-    <meta name="description"{% block descriptionAttributes %}{% endblock %} content="{% block description %}PHP WebSocket development{% endblock %}">
+    <meta name="description"{% block descriptionAttributes %}{% endblock %}
+          content="{% block description %}PHP WebSocket development{% endblock %}">
     <meta name="author"{% block authorAttributes %}{% endblock %} content="Chris Boden">
 
     {% block metaTags %}
@@ -13,14 +16,14 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="/assets/css/site.css" rel="stylesheet">
     <link href="/chat/chat.css" rel="stylesheet">
-    <link href="/assets/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
     <!-- Le fav and touch icons -->
@@ -30,83 +33,68 @@
     <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/logo.png">
 
     <script>
-        if (typeof MozWebSocket == 'function') {
+        if(typeof MozWebSocket == 'function') {
             window.WebSocket = MozWebSocket;
         }
     </script>
 
     <script type="text/javascript">
 
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-16850356-4']);
-      _gaq.push(['_trackPageview']);
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-16850356-4']);
+        _gaq.push(['_trackPageview']);
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+        (function() {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
 
     </script>
-  </head>
+</head>
+<body>
 
-  <body>
+<nav class="navbar navbar-inverse">
+    <div class="navbar-collapse">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ratchet-navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img src="/assets/img/logo.png" height="36" width="36" style="position:absolute; top: 5px;">
+                <span style="margin-left: 40px">Ratchet</span>
+            </a>
+        </div>
 
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/"><img src="/assets/img/logo.png" height="36" width="36" style="margin: -20px 4px -20px 0;"> Ratchet</a>
-          <div class="nav-collapse">
-            <ul class="nav">
+        <div class="navbar-collapse collapse" id="ratchet-navbar">
+            <ul class="nav navbar-nav">
                 {{ app.menu.render('main') }}
             </ul>
-          </div><!--/.nav-collapse -->
         </div>
-      </div>
+        <!--/.nav-collapse -->
     </div>
+</nav>
 
-{% block body %}
-{% endblock %}
+{% block body %}{% endblock %}
 
-    <script src="/assets/js/jquery.js"></script>
-    <script src="/assets/js/jquery.cookie.js"></script>
-    <script src="/assets/js/bootstrap-transition.js"></script>
-    <script src="/assets/js/bootstrap-alert.js"></script>
-    <script src="/assets/js/bootstrap-modal.js"></script>
-    <script src="/assets/js/bootstrap-dropdown.js"></script>
-    <script src="/assets/js/bootstrap-scrollspy.js"></script>
-    <script src="/assets/js/bootstrap-tab.js"></script>
-    <script src="/assets/js/bootstrap-tooltip.js"></script>
-    <script src="/assets/js/bootstrap-popover.js"></script>
-    <script src="/assets/js/bootstrap-button.js"></script>
-    <script src="/assets/js/bootstrap-collapse.js"></script>
-    <script src="/assets/js/bootstrap-carousel.js"></script>
-    <script src="/assets/js/bootstrap-typeahead.js"></script>
-    <script src="/assets/js/google-code-prettify/prettify.js"></script>
-
-    <script>
-        $(function() {
-            prettyPrint();
-        });
-    </script>
-
-    {% block scripts %}
-    {% endblock %}
-
-    <footer id="banner" class="well">
+<footer class="container-fluid">
+    <div id="banner" class="well">
         <div id="banner-logos">
             <img src="/assets/img/logo.png" class="pull-left" height="64" width="64" style="margin-right: 1em;">
 
-            <a class="pull-left" href="http://dev.w3.org/html5/websockets/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity.png" width="133" height="64" alt="HTML5 Powered with Connectivity / Realtime" title="HTML5 Powered with Connectivity / Realtime"></a>
+            <a class="pull-left" href="http://dev.w3.org/html5/websockets/"><img
+                        src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity.png" width="133" height="64"
+                        alt="HTML5 Powered with Connectivity / Realtime"
+                        title="HTML5 Powered with Connectivity / Realtime"></a>
 
             <div id="wamp-tm" class="pull-left">
                 <a class="pull-left" href="http://wamp.ws/"><img src="/assets/img/wamp_logo.png"></a>
-                <br /><span class="pull-left legal">&quot;{{ m.wamp() }}&quot; and the WAMP logo are trademarks of Tavendo GmbH.</span>
+                <br/><span class="pull-left legal">&quot;{{ m.wamp() }}&quot; and the WAMP logo are trademarks of Tavendo GmbH.</span>
             </div>
         </div>
 
@@ -114,7 +102,8 @@
 
             <div class="pull-right right-space" style="margin-top: -7px">
                 <a href="http://www.iloveopensource.io/projects/52504583c4e2e919440002ac">
-                    <img src="http://www.iloveopensource.io/images/logo-lightbg.png" alt="I Love Open Source" width="88" height="35">
+                    <img src="http://www.iloveopensource.io/images/logo-lightbg.png" alt="I Love Open Source" width="88"
+                         height="35">
                 </a>
             </div>
 
@@ -140,12 +129,38 @@
             -->
 
             <div class="pull-right right-space">
-                <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="twitterapi" data-hashtags="ratchetphp">Tweet</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none"
+                   data-via="twitterapi" data-hashtags="ratchetphp">Tweet</a>
+                <script>!function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if(!d.getElementById(id)) {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "https://platform.twitter.com/widgets.js";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, "script", "twitter-wjs");</script>
             </div>
         </div>
 
         <div style="clear: both;"></div>
-    </footer>
-  </body>
+    </div>
+</footer>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.cookie.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/google-code-prettify/prettify.js"></script>
+
+<script>
+    $(function() {
+        prettyPrint();
+    });
+</script>
+
+{% block scripts %}
+{% endblock %}
+
+
+</body>
 </html>

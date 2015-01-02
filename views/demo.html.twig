@@ -3,64 +3,64 @@
 {% block title %}Chatroom WebSocket demonstration{% endblock %}
 
 {% block description %}
-  The "Hello World!" of socket examples. Try out this IRC-like chatroom
+    The "Hello World!" of socket examples. Try out this IRC-like chatroom
 {% endblock %}
 
 {% block scripts %}
-  <script src="/assets/js/jquery.timeago.js"></script>
-  <script src="/vendor/web-socket-js/swfobject.js"></script>
-  <script src="/vendor/web-socket-js/web_socket.js"></script>
+    <script src="/assets/js/jquery.timeago.js"></script>
+    <script src="/vendor/web-socket-js/swfobject.js"></script>
+    <script src="/vendor/web-socket-js/web_socket.js"></script>
 
-  <script>
-      // Set URL of your WebSocketMain.swf here:
-      WEB_SOCKET_SWF_LOCATION = "/vendor/web-socket-js/WebSocketMain.swf";
-  </script>
+    <script>
+        // Set URL of your WebSocketMain.swf here:
+        WEB_SOCKET_SWF_LOCATION = "/vendor/web-socket-js/WebSocketMain.swf";
+    </script>
 
-  <script src="/vendor/when/when.js"></script>
-  <script src="/vendor/autobahnjs/autobahn/autobahn.js"></script>
-  <script src="/chat/transport.js"></script>
-  <script src="/chat/chat.js"></script>
+    <script src="/vendor/when/when.js"></script>
+    <script src="/vendor/autobahnjs/autobahn/autobahn.js"></script>
+    <script src="/chat/transport.js"></script>
+    <script src="/chat/chat.js"></script>
 {% endblock %}
 
 {% block body %}
     <div class="container">
 
-      <section id="create" class="create">
-        <form id="createRoom">
-            <input type="text" placeholder="Enter room name..." maxlength="32" />
-        </form>
-      </section>
+        <section id="create" class="create">
+            <form id="createRoom">
+                <input type="text" placeholder="Enter room name..." maxlength="32"/>
+            </form>
+        </section>
 
-      <section id="giveName" class="create">
-          <form id="setName">
-              <input type="text" placeholder="Enter your name..." maxlength="32" />
-          </form>
-      </section>
+        <section id="giveName" class="create">
+            <form id="setName">
+                <input type="text" placeholder="Enter your name..." maxlength="32"/>
+            </form>
+        </section>
 
-      <section id="channelList">
-          <button id="chat-status" class="btn btn-inverse">Offline</button>
+        <section id="channelList">
+            <button id="chat-status" class="btn btn-inverse">Offline</button>
 
-        <ul>
-        </ul>
-      </section>
+            <ul>
+            </ul>
+        </section>
 
-      <section id="chat">
+        <section id="chat">
 
-        <div id="colA">
+            <div id="colA">
 
-          <div class="rooms">
-          </div>
+                <div class="rooms">
+                </div>
 
-          <a href="#" class="add">Create Room</a>
-        </div>
+                <a href="#" class="add">Create Room</a>
+            </div>
 
-        <div id="colB">
-          <form id="textbox">
-            <input type="text" placeholder="Type here..." maxlength="140" />
-          </form>
-        </div>
+            <div id="colB">
+                <form id="textbox">
+                    <input type="text" placeholder="Type here..." maxlength="140"/>
+                </form>
+            </div>
 
-      </section>
+        </section>
 
     </div> <!-- /container -->
 {% endblock %}
