@@ -28,7 +28,7 @@ class Menu
         $markup = function ($link, $label, $active = false) {
             $icon = '';
             if (substr($label, 0, 1) == '!') {
-                $icon = '<i class="icon-' . substr($label, 1, strpos($label, ' ')) . '"></i> ';
+                $icon = '<i class="glyphicon glyphicon-' . substr($label, 1, strpos($label, ' ')) . '"></i> ';
                 $label = substr($label, strpos($label, ' '));
             }
 

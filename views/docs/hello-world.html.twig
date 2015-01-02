@@ -1,41 +1,43 @@
-{% extends "layout.html.twig" %}
+{% extends "docs.html.twig" %}
 
 {% import "macros.html.twig" as m %}
 
 {% block title %}Tutorial: Your first app{% endblock %}
 
 {% block description %}
-  Learn to write a live chat room with Ratchet
+    Learn to write a live chat room with Ratchet
 {% endblock %}
 
-{% block body %}
-  <div class="container-fluid">
-    <div class="row-fluid">
+{% block doc_content %}
+    <h2>Creating <em>Your</em> First Application</h2>
 
-    {{ m.menu() }}
+    <section id="goal">
+        <h3>
+            Goal <small><a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-      <div class="span9">
-            <h2>Creating <em>Your</em> First Application</h2>
+        <p>
+            The goal of this application is to write a simple Chat application.
+            Chats in event-driven programming are the "Hello World!" of applications.
+            The chat will accept all incoming messages and deliver that message to all other connections.
+        </p>
+    </section>
 
-            <section id="goal">
-                <h3>Goal <a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h3>
+    <section id="chatclass">
+        <h3>
+            The Chat class <small><a class="headerlink" href="#chatclass" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-                <p>
-                    The goal of this application is to write a simple Chat application.
-                    Chats in event-driven programming are the "Hello World!" of applications.
-                    The chat will accept all incoming messages and deliver that message to all other connections.
-                </p>
-            </section>
+        <p><strong>Note:</strong>
+            This document assumes you are familiar with <a
+                    href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md" target="_blank"
+                    rel="external">PSR-0</a>
+            and <a href="http://getcomposer.org/" target="_blank" rel="external">Composer</a>. See <a href="/docs/install">Installation</a>
+            if you're not yet familiar with this.
+        </p>
 
-            <section id="chatclass">
-                <h3>The Chat class <a class="headerlink" href="#chatclass" title="Permalink to this headline">¶</a></h3>
-
-                <p><strong>Note:</strong>
-                    This document assumes you are familiar with <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md" target="_blank" rel="external">PSR-0</a>
-                    and <a href="http://getcomposer.org/" target="_blank" rel="external">Composer</a>.  See <a href="/docs/install">Installation</a> if you're not yet familiar with this.
-                </p>
-
-                <p>We're going to hold everything in the <em>MyApp</em> namespace.  Your composer file should look something like this:</p>
+        <p>We're going to hold everything in the <em>MyApp</em> namespace. Your composer file should look something like
+            this:</p>
 
                 <pre class="prettprint">{
     "autoload": {
@@ -49,18 +51,19 @@
 }</pre>
 
 
-                <p>
-                    We'll start off by creating a class. This class will be our chat "application".
-                    This basic application will listen for 4 events:
+        <p>
+            We'll start off by creating a class. This class will be our chat "application".
+            This basic application will listen for 4 events:
 
-                    <ul>
-                        <li><em>onOpen</em> - Called when a new client has Connected</li>
-                        <li><em>onMessage</em> - Called when a message is received by a <em>Connection</em></li>
-                        <li><em>onClose</em> - Called when a <em>Connection</em> is closed</li>
-                        <li><em>onError</em> - Called when an error occurs on a <em>Connection</em>
-                    </ul>
+        <ul>
+            <li><em>onOpen</em> - Called when a new client has Connected</li>
+            <li><em>onMessage</em> - Called when a message is received by a <em>Connection</em></li>
+            <li><em>onClose</em> - Called when a <em>Connection</em> is closed</li>
+            <li><em>onError</em> - Called when an error occurs on a <em>Connection</em>
+        </ul>
 
-                    <p>Given those triggers, our class will implement the <a href="/api/class-Ratchet.MessageComponentInterface.html">MessageComponentInterface</a>:</p>
+        <p>Given those triggers, our class will implement the <a href="/api/class-Ratchet.MessageComponentInterface.html">MessageComponentInterface</a>:
+        </p>
 
                     <pre class="prettyprint">&lt;?php
 namespace MyApp;
@@ -81,24 +84,29 @@ class Chat implements MessageComponentInterface {
     }
 }</pre>
 
-            <p>
-                You'll notice, in addition from just implementing methods from the <em>MessageComponentInterface</em>, we've given our application a namespace and are accepting the <a href="/api/class-Ratchet.ConnectionInterface.html">ConnectionInterface</a> classes.
-                This class, usually implemented by a <a href="/api/class-Ratchet.Server.IoConnection.html">Connection</a> instance, is a representation of a client's connection on the other side of the socket.
-                On each of the four triggered events, the client <em>Connection</em> representation is passed.
-                These objects are re-used, you will receive the same <em>Connection</em> sometimes.
-            </p>
+        <p>
+            You'll notice, in addition from just implementing methods from the <em>MessageComponentInterface</em>, we've
+            given our application a namespace and are accepting the <a href="/api/class-Ratchet.ConnectionInterface.html">ConnectionInterface</a>
+            classes.
+            This class, usually implemented by a <a href="/api/class-Ratchet.Server.IoConnection.html">Connection</a>
+            instance, is a representation of a client's connection on the other side of the socket.
+            On each of the four triggered events, the client <em>Connection</em> representation is passed.
+            These objects are re-used, you will receive the same <em>Connection</em> sometimes.
+        </p>
 
-            <p>Save this as <em>/src/MyApp/Chat.php</em>.  We'll come back to our Chat class soon.</p>
-        </section>
+        <p>Save this as <em>/src/MyApp/Chat.php</em>. We'll come back to our Chat class soon.</p>
+    </section>
 
-        <section id="instantiation">
-            <h3>Instantiation <a class="headerlink" href="#instantiation" title="Permalink to this headline">¶</a></h3>
+    <section id="instantiation">
+        <h3>
+            Instantiation <small><a class="headerlink" href="#instantiation" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-            <p>
-                Our <em>Chat</em> class will be our application logic.
-                Next, we're going to piece together our shell script.
-                This is the script/file we will call from the command line to launch our application.
-            </p>
+        <p>
+            Our <em>Chat</em> class will be our application logic.
+            Next, we're going to piece together our shell script.
+            This is the script/file we will call from the command line to launch our application.
+        </p>
 
         <pre class="prettyprint">&lt;?php
 use Ratchet\Server\IoServer;
@@ -113,34 +121,40 @@ use MyApp\Chat;
 
     $server->run();</pre>
 
-            <p>
-                Above, you'll see we create an I/O (Input/Output) server class.
-                It stores all the established connections, mediates data sent between each client and our <em>Chat</em> application,
-                and catches errors. The new instance of <em>Chat</em> class then wraps the I/O Server class.
-                Finally, we tell the server to enter an event loop, listening for any incoming requests on port 8080.
-            </p>
+        <p>
+            Above, you'll see we create an I/O (Input/Output) server class.
+            It stores all the established connections, mediates data sent between each client and our <em>Chat</em>
+            application,
+            and catches errors. The new instance of <em>Chat</em> class then wraps the I/O Server class.
+            Finally, we tell the server to enter an event loop, listening for any incoming requests on port 8080.
+        </p>
 
-            <p>
-                Save this script as <em>/bin/chat-server.php</em>.
-                Now, we can run it with the following command in your terminal:
-            </p>
+        <p>
+            Save this script as <em>/bin/chat-server.php</em>.
+            Now, we can run it with the following command in your terminal:
+        </p>
 
-            <pre class="prettyprint">$ php bin/chat-server.php</pre>
+        <pre class="prettyprint">$ php bin/chat-server.php</pre>
 
-            <p>The script should now execute, taking possession of your terminal. You can cancel the script, as we're not quite finished yet.</p>
-        </section>
+        <p>The script should now execute, taking possession of your terminal. You can cancel the script, as we're not quite
+            finished yet.</p>
+    </section>
 
-        <section id="logic">
-            <h3>Logic <a class="headerlink" href="#logic" title="Permalink to this headline">¶</a></h3>
+    <section id="logic">
+        <h3>
+            Logic <small><a class="headerlink" href="#logic" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-            <p>So far, we've just set up structure, both in our shell script and our <em>Chat</em> class. Now, to add code to our <em>Chat</em> to complete our application.</p>
+        <p>So far, we've just set up structure, both in our shell script and our <em>Chat</em> class. Now, to add code to
+            our <em>Chat</em> to complete our application.</p>
 
-            <p>
-                Let's add some logic to our <em>Chat</em> class.
-                What we're going to do, is track all incoming <em>Connections</em>, in order to send them messages.
-                Typically, you would store a collection of items in an array, but we're going to use something called <a rel="external" href="http://ca2.php.net/manual/en/class.splobjectstorage.php">SplObjectStorage</a>.
-                These storage containers are built to store objects, which is what the incoming <em>Connections</em> are.
-            </p>
+        <p>
+            Let's add some logic to our <em>Chat</em> class.
+            What we're going to do, is track all incoming <em>Connections</em>, in order to send them messages.
+            Typically, you would store a collection of items in an array, but we're going to use something called <a
+                    rel="external" href="http://ca2.php.net/manual/en/class.splobjectstorage.php">SplObjectStorage</a>.
+            These storage containers are built to store objects, which is what the incoming <em>Connections</em> are.
+        </p>
 
             <pre class="prettyprint">&lt;?php
 namespace MyApp;
@@ -187,30 +201,35 @@ class Chat implements MessageComponentInterface {
         $conn->close();
     }
 }</pre>
-        </section>
+    </section>
 
-        <section id="runningit">
-            <h3>Running It <a class="headerlink" href="#runningit" title="Permalink to this headline">¶</a></h3>
+    <section id="runningit">
+        <h3>
+            Running It <small><a class="headerlink" href="#runningit" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-            <p>Complete, let's run it and test it. Open up three terminal windows, typing:</p>
+        <p>Complete, let's run it and test it. Open up three terminal windows, typing:</p>
 
-            <pre>$ php bin/chat-server.php</pre>
-            <pre>$ telnet localhost 8080</pre>
-            <pre>$ telnet localhost 8080</pre>
+        <pre>$ php bin/chat-server.php</pre>
+        <pre>$ telnet localhost 8080</pre>
+        <pre>$ telnet localhost 8080</pre>
 
-            <p>In each of the telnet windows, type a message ("Hello World!") and see it appear in the other!</p>
-        </section>
+        <p>In each of the telnet windows, type a message ("Hello World!") and see it appear in the other!</p>
+    </section>
 
-        <section id="nextsteps">
-            <h3>Next Steps <a class="headerlink" href="#nextsteps" title="Permalink to this headline">¶</a></h3>
+    <section id="nextsteps">
+        <h3>
+            Next Steps <small><a class="headerlink" href="#nextsteps" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-            <p>
-                Now that we have a basic working Chat application, let's make that work in a web browser (Chrome, FireFox, or Safari [for now]).
-                First, let's go back to our <em>chat-server.php</em> script.
-                We're going to utilize another component of Ratchet; the <em>WsServer</em> class:
-            </p>
+        <p>
+            Now that we have a basic working Chat application, let's make that work in a web browser (Chrome, FireFox, or
+            Safari [for now]).
+            First, let's go back to our <em>chat-server.php</em> script.
+            We're going to utilize another component of Ratchet; the <em>WsServer</em> class:
+        </p>
 
-            <pre class="prettyprint">&lt;?php
+        <pre class="prettyprint">&lt;?php
 use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
@@ -228,11 +247,13 @@ use MyApp\Chat;
     );
 
     $server->run();
-</pre>
+        </pre>
 
-            <p>Run the shell script again, open a couple web browser windows, and open a javascript console or a page with the following javascript:</p>
+        <p>Run the shell script again, open a couple web browser windows, and open a javascript console or a page with the
+            following javascript:
+        </p>
 
-            <pre class="prettyprint lang-js">var conn = new WebSocket('ws://localhost:8080');
+        <pre class="prettyprint lang-js">var conn = new WebSocket('ws://localhost:8080');
 conn.onopen = function(e) {
     console.log("Connection established!");
 };
@@ -241,21 +262,22 @@ conn.onmessage = function(e) {
     console.log(e.data);
 };</pre>
 
-            <p>Once you see the console message "Connection established!" you can start sending messages to other connected browsers:</p>
+        <p>Once you see the console message "Connection established!" you can start sending messages to other connected
+            browsers:</p>
             <pre class="prettyprint lang-js">
 conn.send('Hello World!');</pre>
 
-        </section>
+    </section>
 
-        <section id="download">
-            <h3>And then?<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h3>
+    <section id="download">
+        <h3>
+            And then?<small><a class="headerlink" href="#download" title="Permalink to this headline">¶</a></small>
+        </h3>
 
-            <p>
-                This tutorial has been an introduction to help you get started with WebSockets and understand how Ratchet works.
-                The next tutorial (in the works) will introduce the App class that will abstract some of the work into running your application.
-            </p>
-        </section>
-
-        </div><!--/span-->
-      </div><!--/row-->
+        <p>
+            This tutorial has been an introduction to help you get started with WebSockets and understand how Ratchet works.
+            The next tutorial (in the works) will introduce the App class that will abstract some of the work into running
+            your application.
+        </p>
+    </section>
 {% endblock %}

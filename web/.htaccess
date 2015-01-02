@@ -1,0 +1,11 @@
+AddDefaultCharset utf-8
+Options +FollowSymlinks
+
+RewriteEngine On
+RewriteBase /
+RewriteRule ^.htaccess$ - [F]
+RewriteRule favicon.ico$ - [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L,QSA]
