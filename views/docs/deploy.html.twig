@@ -177,7 +177,7 @@ supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
 serverurl = unix:///tmp/supervisor.sock
 
 [program:ratchet]
-command                 = bash -c "ulimit -n 10000 && /usr/bin/php ./bin/tutorial-terminal-chat.php"
+command                 = bash -c "ulimit -n 10000; exec /usr/bin/php ./bin/tutorial-terminal-chat.php"
 process_name            = Ratchet
 numprocs                = 1
 autostart               = true
