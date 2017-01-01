@@ -40,22 +40,30 @@
                 </p>
             </section>
 
-            <section id="libevent">
-                <h3>Libevent <a class="headerlink" href="#libevent" title="Permalink to this headline">¶</a></h3>
+            <section id="evented-io-extensions">
+                <h3>Evented I/O extensions <a class="headerlink" href="#evented-io-extensions" title="Permalink to this headline">¶</a></h3>
 
                 <p>
-                    Libevent is an asynchronous event driven C library that is meant to replace default event loop API on your system. 
-                    It presents a common API that will utilize any event loop that your kernel uses. 
-                    To set your system to use Libevent you will need to install the system library, the development tools, and the PHP extension:
+                    The <code>libev</code> and <code>libevent</code> projects implement high-performance asynchronous event driven C libraries. 
+                    The PHP extensions <a href="https://pecl.php.net/package/ev"><code>ev</code></a> and <a href="https://pecl.php.net/package/event"><code>event</code></a> are available to interface with these libraries.
+                    They allow an application to transparently use the best kernel level evented I/O method (<code>select</code>, <code>poll</code>, <code>epoll</code>, <code>kqueue</code>, or event ports) available for the operating system it is running on.
                 </p>
 
-                <p><pre>$ sudo apt-get install libevent libevent-dev
-$ sudo pecl install libevent</pre></p>
-
                 <p>
-                    The event loop that PHP uses by default through stream_select uses the old, slow poll mechanism. 
-                    By using Libevent PHP will use the faster epoll or kqueue, drastically improving concurrency (handling many connections quickly). 
-                    Once Libevent is installed you don't need to change anything in your script. Ratchet's IoServer::factory will automatically use Libevent if it's available. 
+                    The <code>ev</code> PHP extension bundles the <code>libev</code> C library in its source and requires no prior setup. If you want to use the <code>event</code> PHP extension, you need to first install the <code>libevent</code> library along with its headers for your operating system. For example on Debian/Ubuntu:
+                    <pre>$ sudo apt-get install libevent libevent-dev</pre>
+                </p>
+                
+                <p>
+                    You may then install the <code>ev</code> or the <code>event</code> extension, either through your preferred package manager, or directly using <code>pecl</code>:
+                </p>
+                
+                <p>
+                    <pre>$ sudo pecl install ev</pre>
+                    <pre>$ sudo pecl install event</pre>
+                </p>
+                
+                <p>No further setup is necessary; if either of these extensions is present, the evented I/O loop toolkit used by Ratchet will automatically utilize them, which will drastically improve concurrency.</p>
             </section>
 
             <section id="xdebug">
