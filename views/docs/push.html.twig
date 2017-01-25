@@ -5,7 +5,7 @@
 {% block title %}Tutorial: Push on the Web{% endblock %}
 
 {% block description %}
-  Bake WebSockets in without breaking your existing website
+  Bake WebSockets in without breaking your existing web site
 {% endblock %}
 
 {% block body %}
@@ -17,8 +17,8 @@
       <div class="span9">
             <h2>Push to an Existing Site<br /><small>Enhance your existing work without wide-spread changes.</small></h2>
 
-            <section class="intro" id="theproblem">
-                <h3>The Problem <a class="headerlink" href="#theproblem" title="Permalink to this headline">¶</a></h3>
+            <section class="intro" id="the_problem">
+                <h3>The Problem <a class="headerlink" href="#the_problem" title="Permalink to this headline">¶</a></h3>
 
                 <p>
                     The previous tutorials were cool and all, but their focus was creating a long lived application where users interacted with each other entirely over WebSockets with no persistence.
@@ -37,11 +37,11 @@
                     We will add real-time updates to our site without disrupting your code base or affecting its current stability.
                 </p>
 
-                <p>For this tutorial we're going to pretend <small>(reads: boilerplate code missing)</small> you're publishing a blog article on your website and the visitors will see the story pop up as soon as you publish it.</p>
+                <p>For this tutorial we're going to pretend <small>(reads: boilerplate code missing)</small> you're publishing a blog article on your web site and the visitors will see the story pop up as soon as you publish it.</p>
             </section>
 
-            <section class="diagram" id="networkarchitecture">
-                <h3>Network Architecture <a class="headerlink" href="#networkarchitecture" title="Permalink to this headline">¶</a></h3>
+            <section class="diagram" id="network_architecture">
+                <h3>Network Architecture <a class="headerlink" href="#network_architecture" title="Permalink to this headline">¶</a></h3>
 
                 <ol>
                     <li>
@@ -69,13 +69,13 @@
                         <img src="/assets/img/push-4.png" alt="Step 4">
                         <p>
                             The WebSocket stack handles the ZeroMQ message and sends it to the appropriate clients through open WebSocket connections.
-                            The web browsers handle the incoming message and update the webpage with Javascript accordingly.
+                            The web browsers handle the incoming message and update the web page with Javascript accordingly.
                         </p>
                     </li>
                 </ol>
 
                 <p>
-                    This workflow is un-obtrusive and it's easy to introduce into existing websites.
+                    This workflow is unobtrusive and it's easy to introduce into existing web sites.
                     The only changes to the site are adding a bit of ZeroMQ to the server and a Javascript file on the client to handle incoming message from the WebSocket server.
                 </p>
             </section>
@@ -94,7 +94,7 @@
 
                 <p>
                     ZeroMQ is a library (libzmq) you will need to install, as well as a PECL extension for PHP bindings.
-                    Installation is easy and is provided for many operating systems on <a href="http://www.zeromq.org" rel="external">their website</a>.
+                    Installation is easy and is provided for many operating systems on <a href="http://www.zeromq.org" rel="external">their web site</a>.
                 </p>
 
                 <h4>React/ZMQ</h4>
@@ -107,7 +107,7 @@
                     To install, your <em>composer.json</em> file should look like this:
                 </p>
 
-                <pre class="prettprint json javascript">{
+                <pre class="prettyprint json javascript">{
     "autoload": {
         "psr-0": {
             "MyApp": "src"
@@ -161,11 +161,11 @@ class Pusher implements WampServerInterface {
                 </p>
             </section>
 
-            <section id="editblogsubmission">
-                <h3>Editing your blog submission <a class="headerlink" href="#editblogsubmission" title="Permalink to this headline">¶</a></h3>
+            <section id="edit_blog_submission">
+                <h3>Editing your blog submission <a class="headerlink" href="#edit_blog_submission" title="Permalink to this headline">¶</a></h3>
 
                 <p>
-                    Next we're going to add a little ZeroMQ magic into your existing website's code where you handle a new blog post.
+                    Next we're going to add a little ZeroMQ magic into your existing web site's code where you handle a new blog post.
                     The code here may be a little basic and archaic compared to the advanced architecture your actual blog is, sitting on Drupal or WordPress, but we're focusing on the fundamentals.
                 </p>
 
@@ -195,13 +195,13 @@ class Pusher implements WampServerInterface {
                 </p>
             </section>
 
-            <section id="zeromqmessages">
-                <h3>Handling ZeroMQ messages <a class="headerlink" href="#zeromqmessages" title="Permalink to this headline">¶</a></h3>
+            <section id="zeromq_messages">
+                <h3>Handling ZeroMQ messages <a class="headerlink" href="#zeromq_messages" title="Permalink to this headline">¶</a></h3>
 
                 <p>
                     Let's go back to our application stub class.
                     As we left it, it was only handling WebSocket connections.
-                    As you saw in our last code snippit, we opened a connection to localhost on port 5555 that we sent data to.
+                    As you saw in our last code snippet, we opened a connection to localhost on port 5555 that we sent data to.
                     We're going to add handling for that ZeroMQ message as well as re-sending it to our WebSocket clients.
                 </p>
 
@@ -242,8 +242,8 @@ class Pusher implements WampServerInterface {
 </pre>
             </section>
 
-            <section id="tyingittogether">
-                <h3>Tying it all together <small>Creating our executable</small> <a class="headerlink" href="#tyingittogether" title="Permalink to this headline">¶</a></h3>
+            <section id="tying_it_together">
+                <h3>Tying it all together <small>Creating our executable</small> <a class="headerlink" href="#tying_it_together" title="Permalink to this headline">¶</a></h3>
 
                 <p>
                     So far we've covered all the logic of sending, receiving, and handling messages.
