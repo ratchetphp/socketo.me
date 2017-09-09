@@ -27,8 +27,8 @@
                 </p>
             </section>
 
-            <section id="chatclass">
-                <h3>The Chat class <a class="headerlink" href="#chatclass" title="Permalink to this headline">¶</a></h3>
+            <section id="chat_class">
+                <h3>The Chat class <a class="headerlink" href="#chat_class" title="Permalink to this headline">¶</a></h3>
 
                 <p><strong>Note:</strong>
                     This document assumes you are familiar with <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md" target="_blank" rel="external">PSR-0</a>
@@ -37,7 +37,7 @@
 
                 <p>We're going to hold everything in the <em>MyApp</em> namespace.  Your composer file should look something like this:</p>
 
-                <pre class="prettprint">{
+                <pre class="prettyprint">{
     "autoload": {
         "psr-0": {
             "MyApp": "src"
@@ -189,8 +189,8 @@ class Chat implements MessageComponentInterface {
 }</pre>
         </section>
 
-        <section id="runningit">
-            <h3>Running It <a class="headerlink" href="#runningit" title="Permalink to this headline">¶</a></h3>
+        <section id="running_it">
+            <h3>Running It <a class="headerlink" href="#running_it" title="Permalink to this headline">¶</a></h3>
 
             <p>Complete, let's run it and test it. Open up three terminal windows, typing:</p>
 
@@ -201,11 +201,11 @@ class Chat implements MessageComponentInterface {
             <p>In each of the telnet windows, type a message ("Hello World!") and see it appear in the other!</p>
         </section>
 
-        <section id="nextsteps">
-            <h3>Next Steps <a class="headerlink" href="#nextsteps" title="Permalink to this headline">¶</a></h3>
+        <section id="next_steps">
+            <h3>Next Steps <a class="headerlink" href="#next_steps" title="Permalink to this headline">¶</a></h3>
 
             <p>
-                Now that we have a basic working Chat application, let's make that work in a web browser (Chrome, FireFox, or Safari [for now]).
+                Now that we have a basic working Chat application, let's make that work in a web browser (Chrome, Firefox, or Safari [for now]).
                 First, let's go back to our <em>chat-server.php</em> script.
                 We're going to utilize another component of Ratchet; the <em>WsServer</em> class:
             </p>
@@ -230,7 +230,7 @@ use MyApp\Chat;
     $server->run();
 </pre>
 
-            <p>Run the shell script again, open a couple web browser windows, and open a javascript console or a page with the following javascript:</p>
+            <p>Run the shell script again, open a couple of web browser windows, and open a Javascript console or a page with the following Javascript:</p>
 
             <pre class="prettyprint lang-js">var conn = new WebSocket('ws://localhost:8080');
 conn.onopen = function(e) {
