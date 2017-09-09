@@ -31,7 +31,7 @@
                 <h3>The Chat class <a class="headerlink" href="#chat_class" title="Permalink to this headline">¶</a></h3>
 
                 <p><strong>Note:</strong>
-                    This document assumes you are familiar with <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md" target="_blank" rel="external">PSR-0</a>
+                    This document assumes you are familiar with <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md" target="_blank" rel="external">PSR-4</a>
                     and <a href="http://getcomposer.org/" target="_blank" rel="external">Composer</a>.  See <a href="/docs/install">Installation</a> if you're not yet familiar with this.
                 </p>
 
@@ -39,12 +39,12 @@
 
                 <pre class="prettyprint">{
     "autoload": {
-        "psr-0": {
-            "MyApp": "src"
+        "psr-4": {
+            "MyApp\\": "src"
         }
     },
     "require": {
-        "cboden/ratchet": "0.3.*"
+        "cboden/ratchet": "0.4.*"
     }
 }</pre>
 
@@ -88,7 +88,7 @@ class Chat implements MessageComponentInterface {
                 These objects are re-used, you will receive the same <em>Connection</em> sometimes.
             </p>
 
-            <p>Save this as <em>/src/MyApp/Chat.php</em>.  We'll come back to our Chat class soon.</p>
+            <p>Save this as <em>/src/Chat.php</em>.  We'll come back to our Chat class soon.</p>
         </section>
 
         <section id="instantiation">
