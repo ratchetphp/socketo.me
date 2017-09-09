@@ -41,14 +41,6 @@
                 </ul>
             </section>
 
-            <section id="configuration">
-                <h3>Configuration <small>methods</small> <a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
-
-                <ul>
-                  <li>void <strong>enableKeepAlive</strong> (LoopInterface $loop, int $interval) - Ping every connected client every $interval. If there is no response by the next cycle the client is disconnected. 
-                </ul>
-            </section>
-
             <section id="functions">
                 <h3>Functions <small>callable on <em>Connections</em></small> <a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
 
@@ -65,12 +57,21 @@
                 #}
             </section>
 
+            <section id="parameters">
+                <h3>Parameters <small>added to each <em>Connection</em></small></h3>
+
+                <dl>
+                    <dd>(<a href="/api/class-Psr.Http.Message.RequestInterface.html">Psr\Http\Message\RequestInterface</a> <em>$httpRequest</em>) - A PSR-7 Request object containing all the information from the initial HTTP connection</dd>
+                </dl>
+            </section>
+
             <section id="wraps">
                 <h3>Wraps <small>other components nicely</small> <a class="headerlink" href="#wraps" title="Permalink to this headline">¶</a></h3>
 
                 <ul>
                     <li><a href="/docs/websocket">WsServer</a></li>
                     <li><a href="/docs/router">Router</a></li>
+                    <li><a href="/docs/sessions">SessionProvider</a></li>
                 </ul>
             </section>
 
