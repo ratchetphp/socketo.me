@@ -36,7 +36,12 @@
                 
                 <p>
                     Most OS's have many layers of security to prevent applications from opening too many file descriptors. 
-                    Here is a great resource on the various ways to <a href="https://rtcamp.com/tutorials/linux/increase-open-files-limit/">increase open file limits</a>. 
+                    Here is a great resource on the various ways to <a href="https://rtcamp.com/tutorials/linux/increase-open-files-limit/" rel="external">increase open file limits</a>. 
+                </p>
+
+                
+                <p>
+                    In addition to operating system restrictions the default EventLoop (stream_select) has a hard limit of 1024. You will need to install a new I/O handler as described in the next section.
                 </p>
             </section>
 
@@ -73,80 +78,29 @@
             </section>
 
             <section id="server_configuration">
-                <h3>Server Configuration <a class="headerlink" href="#server_configuration" title="Permalink to this headline">¶</a></h3>
+                <h3>Server Configuration</h3>
 
-                <p>There's a couple things you need to know when deploying a WebSocket server that impact how you set up your server architecture:</p>
-                <ul>
-                    <li>Apache can not handle or even pass-through WebSocket traffic (as of this writing)</li>
-                    <li>Some aggressive proxies will block traffic that isn't on port 80 or 443 (not many, research your target audience)</li>
-                </ul>
-
-                <p>Given these issues with WebSockets we have three choices on how to architect:</p>
+                <p>There's a few different options when running your WebSocket server along side your website:</p>
                 <ul>
                     <li>Run your web site and WebSocket server on the same machine using port 8080 for WebSockets and take the chance client proxies won't block traffic</li>
                     <li>Run your WebSocket server on its own server on port 80 under a subdomain (sock.example.com)</li>
-                    <li>Put a reverse proxy (HAProxy or Varnish) in front of your web server and WebSocket server</li>
+                    <li>Put a reverse proxy (Nginx, HAProxy, Varnish) in front of your web server and WebSocket server</li>
                 </ul>
 
                 <p>
                     The first two options are fairly easy with the second being a decent option if you can afford a second server.
-                    This article will detail the third option and show you how to configure your network, specifically HAProxy, to run your web and WebSocket servers on the same machine. 
-                    We've chosen to demonstrate HAProxy because it can also handle SSL (in v1.5) where Varnish can not. 
-                    The goal is to setup the architecture like the diagram below.
+                    The third is probably the most standard way to handle this. Most web servers are able to route WebSocket traffic to a running server while still rendering traditional PHP websites. 
+                    We felt this approach is now common enough that it didn't need to be specifically documented here. There's now plenty of resources available through search. 
+                    Here's a few links to documentation for some of the major proxies:
                 </p>
 
-                <p><img src="/assets/img/proxy-arch.png"></p>
+                <ul>
+                    <li><a href="http://nginx.org/en/docs/http/websocket.html" rel="external">nginx</a></li>
+                    <li>Apache via <a href="https://httpd.apache.org/docs/2.4/mod/mod_proxy_wstunnel.html" rel="external">mod_proxy_wstunnel</a></li>
+                    <li><a href="https://www.haproxy.com/blog/websockets-load-balancing-with-haproxy/" rel="external">HAProxy</a></li>
+                    <li><a href="https://varnish-cache.org/docs/3.0/tutorial/websockets.html" rel="external">Varnish</a></li>
+                </ul>
 
-                <p>As of this writing, HAProxy support for WebSockets (via tunnel mode) (and SSL) is in the unstable branch, so we'll have to install it from source:</p>
-
-                <p><pre>wget http://haproxy.1wt.eu/download/1.5/src/devel/haproxy-1.5-dev17.tar.gz
-tar -zxvf haproxy-1.5-dev17.tar.gz
-cd haproxy-1.5-dev17
-make install</pre></p>
-
-                <p>The default installation should be in <em>/usr/local/sbin/haproxy</em>. The next step is to configure it. Below is a sample configuration:
-
-                <p><pre class="prettyprint">global
-	log	127.0.0.1	local0
-	maxconn	10000
-	user	haproxy
-	group	haproxy
-	daemon
-
-defaults
-	mode			http
-	log			global
-	option			httplog
-	retries			3
-	backlog			10000
-	timeout	client		30s
-	timeout	connect		30s
-	timeout	server		30s
-	timeout	tunnel		3600s
-	timeout	http-keep-alive	1s
-	timeout	http-request	15s
-
-frontend public
-	bind		*:80
-	acl		is_websocket hdr(Upgrade) -i WebSocket
-	use_backend	ws if is_websocket #is_websocket_server
-	default_backend	www
-
-backend ws
-	server	ws1	127.0.0.1:1337
-
-backend www
-	timeout	server	30s
-	server	www1	127.0.0.1:1338</pre></p>
-
-	           <p>
-	               Save this file, <em>/etc/haproxy.cfg</em> for example. 
-	               You'll notice we set the user an group to haproxy; you'll need to create these or update your configuration to use a different user/group combo. 
-	               Note the important parts above begin at "frontend public". 
-	               We're telling HAProxy to listen on port 80 and if we find an HTTP header with the "Upgrade: WebSocket" direct it to our WebSocket application running on port 1337 and all other traffic to port 1338 running our traditional web stack (Nginx or Apache). Finally, run HAProxy:
-	           </p>
-
-	           <p><pre>$ sudo haproxy -f /etc/haproxy.cfg -p /var/run/haproxy.pid -D</pre></p>
 	       </section>
 
             <section id="supervisor">
@@ -207,8 +161,10 @@ stderr_logfile_maxbytes = 1MB</pre></p>
 	           <ul>
 	               <li><a href="http://libevent.org" rel="external">libevent</a></li>
 	               <li><a href="http://pecl.php.net/package/libevent" rel="external">libevent PHP extension</a></li>
+{#
 	               <li><a href="http://haproxy.1wt.eu/download/1.5/doc/configuration.txt" rel="external">HAProxy Configuration Manual v1.5</a></li>
 	               <li><a href="http://supervisord.org/configuration.html" rel="external">Supervisor Configuration</a></li>
+#}
 	           </ul>
 	       </section>
 

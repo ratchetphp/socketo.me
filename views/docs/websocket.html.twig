@@ -21,13 +21,12 @@
                 <h3>Purpose <small>of this <em>Component</em></small> <a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
 
                 <p>
-                    This component (when used with IoServer) allows your server to communicate with web browsers that use the <a rel="external" href="http://dev.w3.org/html5/websockets/">W3C WebSocket API</a>.
-                    It is compatible with each of the different WebSocket protocol versions browsers use: RFC6455, HyBi, and Hixie76.
-                    Ratchet <a href="/reports/ab/" target="_blank">passes</a> all WebSocket protocol tests from the <a href="http://autobahn.ws/testsuite" rel="external">Autobahn Testsuite</a>.
+                    This component allows your server to communicate with web browsers that use the <a rel="external" href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket">W3C WebSocket API</a>.
+                    Ratchet <a href="/reports/ab/index.html" target="_blank">passes</a> all WebSocket protocol tests from the <a href="http://autobahn.ws/testsuite" rel="external">Autobahn Testsuite</a>.
                 </p>
 
                 <p>
-                    <strong>Note:</strong> This component created for you when you add a route to an App instance.
+                    <strong>Note:</strong> This component is automatically created for you when you add a route to an App instance.
                 </p>
             </section>
 
@@ -49,7 +48,7 @@
 
                 <ul>
                     <li>void <strong>enableKeepAlive</strong> (LoopInterface $loop, integer $interval) - Ping every connected client every $interval. If there is no response by the next cycle the client is disconnected.
-                    <li>void <strong>setStrictSubProtocolCheck</strong> (boolean $enable) - If enabled the server will reject client connections that don't meet at least one of the specified sub-protocols defined by the server (default <em>false</em>).</li>
+                    <li>void <strong>setStrictSubProtocolCheck</strong> (boolean $enable) - If enabled the server will reject client connections that don't meet at least one of the specified sub-protocols defined by the server (default <em>true</em>).</li>
                 </ul>
             </section>
 
@@ -58,7 +57,7 @@
 
                 <ul>
                     <li><span class="label label-info">send</span> (string <em>$message</em>) - Send a message (string) to the client</li>
-                    <li><span class="label label-warning">close</span> (integer <em>$code = 1000</em>) - Gracefully close the connection to the client with a valid <a href="https://tools.ietf.org/html/rfc6455#section-7.4.1">close code</a></span>
+                    <li><span class="label label-warning">close</span> (integer <em>$code = 1000</em>) - Gracefully close the connection to the client with a valid <a rel="external" href="https://tools.ietf.org/html/rfc6455#section-7.4.1">close code</a></span>
                 </ul>
             </section>
 
@@ -80,7 +79,7 @@
                 <ul>
                     <li><a href="/docs/wamp">WampServer</a></li>
                     <li>Your app class implementing <a href="/api/class-Ratchet.MessageComponentInterface.html">MessageComponentInterface</a> or <a href="/api/class-Ratchet.WebSocket.MessageComponentInterface.html">WebSocket\MessageComponentInterface</a> for binary message support.</li>
-                    <li><a rel="external" href="https://github.com/cboden/Ratchet-examples/blob/master/src/Ratchet/Cookbook/MessageLogger.php">MessageLogger</a> (found in example repo)</li>
+                    <li><a rel="external" href="https://github.com/cboden/Ratchet-examples/blob/master/src/Cookbook/MessageLogger.php">MessageLogger</a> (found in example repo)</li>
                 </ul>
             </section>
 
