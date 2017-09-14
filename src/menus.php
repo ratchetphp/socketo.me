@@ -6,7 +6,6 @@ return array(
       , '/docs/'  => 'Documentation'
       , '/api/namespace-Ratchet.html' => 'API Docs'
       , '/demo' => 'Demo'
-      , 'https://groups.google.com/forum/#!forum/ratchet-php' => 'Mailing List'
     )
 
   , 'docs' => array(
@@ -28,12 +27,13 @@ return array(
 
       , 'troubleshooting' => array(
             '_title' => 'Troubleshooting'
+          , 'migration-3' => '!plane Migrating from 0.3'
           , 'troubleshooting' => '!question-sign Help Me!'
         )
 
       , 'components' => array(
-            '_title' => 'Components'
-          , '/docs/websocket' => '!random WsServer'
+            '_title' => 'Server Components'
+          , '/docs/websocket' => '!th-large WsServer'
           , '/docs/wamp'      => '!road WampServer'
           , '/docs/sessions'  => '!user SessionProvider'
           , '/docs/server'    => '!off IoServer'

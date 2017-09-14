@@ -21,13 +21,12 @@
                 <h3>Purpose <small>of this <em>Component</em></small> <a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
 
                 <p>
-                    This component (when used with IoServer) allows your server to communicate with web browsers that use the <a rel="external" href="http://dev.w3.org/html5/websockets/">W3C WebSocket API</a>.
-                    It is compatible with each of the different WebSocket protocol versions browsers use: RFC6455, HyBi, and Hixie76.
-                    Ratchet <a href="/reports/ab/" target="_blank">passes</a> all (non-binary) WebSocket protocol tests from the <a href="http://autobahn.ws/testsuite" rel="external">Autobahn Testsuite</a>.
+                    This component allows your server to communicate with web browsers that use the <a rel="external" href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket">W3C WebSocket API</a>.
+                    Ratchet <a href="/reports/ab/index.html" target="_blank">passes</a> all WebSocket protocol tests from the <a href="http://autobahn.ws/testsuite" rel="external">Autobahn Testsuite</a>.
                 </p>
 
                 <p>
-                    <strong>Note:</strong> This component created for you when you add a route to an App instance.
+                    <strong>Note:</strong> This component is automatically created for you when you add a route to an App instance.
                 </p>
             </section>
 
@@ -41,9 +40,6 @@
                     <li><span class="label label-warning">onClose</span> (ConnectionInterface <em>$conn</em>) - A client connection is about to, or has closed</li>
                     <li><span class="label label-info">onMessage</span> (ConnectionInterface <em>$from</em>, string <em>$message</em>) - A data message has been received</li>
                     <li><span class="label label-important">onError</span> (ConnectionInterface <em>$from</em>, Exception <em>$error</em>) - An error has occurred with a <em>Connection</em></li>
-{#
-                    <li><span class="label label-inverse">onFile</span> (ConnectionInterface <em>$from</em>, object <em>$file</em>) - NOT IMPLEMENTED YET.  When coded, will be when a binary file is transferred to the server</li>
-#}
                 </ul>
             </section>
 
@@ -51,8 +47,8 @@
                 <h3>Configuration <small>methods</small> <a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
 
                 <ul>
-                    <li>void <strong>disableVersion</strong> (string $versionId) - Disable a specific version of the WebSocket protocol. Sometimes you'll want to disable Hixie76, which you can do by passing <em>0</em> to this method. </li>
-                    <li>void <strong>setEncodingChecks</strong> (boolean $opt) - Turn UTF-8 checks on or off. The WebSocket spec says to check incoming messages for UTF-8 encoding, but all web browsers do this. Turning off this check will boost performance. </li>
+                    <li>void <strong>enableKeepAlive</strong> (LoopInterface $loop, integer $interval) - Ping every connected client every $interval. If there is no response by the next cycle the client is disconnected.
+                    <li>void <strong>setStrictSubProtocolCheck</strong> (boolean $enable) - If enabled the server will reject client connections that don't meet at least one of the specified sub-protocols defined by the server (default <em>true</em>).</li>
                 </ul>
             </section>
 
@@ -61,23 +57,16 @@
 
                 <ul>
                     <li><span class="label label-info">send</span> (string <em>$message</em>) - Send a message (string) to the client</li>
-                    <li><span class="label label-warning">close</span> - Gracefully close the connection to the client</span>
+                    <li><span class="label label-warning">close</span> (integer <em>$code = 1000</em>) - Gracefully close the connection to the client with a valid <a rel="external" href="https://tools.ietf.org/html/rfc6455#section-7.4.1">close code</a></span>
                 </ul>
-{#
-                <ul>
-                    <li><span class="label label-warning">Disconnect</span> - Notify the client of an intent to close the connection. All data currently being transferred will finish before the connection closes</li>
-                    <li><span class="label">Pong</span> - Part of the WebSocket protocol, typically not needed by your application
-                    <li><span class="label">Ping</span> - Part of the WebSocket protocol, typically not needed by your application
-                </ul>
-#}
             </section>
 
             <section id="parameters">
                 <h3>Parameters <small>added to each <em>Connection</em></small> <a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 
                 <dl>
-                    <dt>WebSocket</dt>
-                    <dd>(<a href="/api/class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a> <em>$request</em>) - A Guzzle Request object containing all the information from the initial HTTP connection</dd>
+                    <dd>(<a href="/api/class-Psr.Http.Message.RequestInterface.html">Psr\Http\Message\RequestInterface</a> <em>$httpRequest</em>) - A PSR-7 Request object containing all the information from the initial HTTP connection</dd>
+                    <dd>(StdClass <em>$WebSocket</em>) - Contains a single boolean value <em>$closing</em> indicating if the connection has begun the shutdown protocol.</dd>
 {#
                     <dd>(Ratchet\WebSocket\Version\VersionInterface <em>$version</em>) - Not used by your application, but stores information/data about the WebSocket version the client is connected with. The object is a re-entrant, re-used on other connections, so don't mess with it  :)</dd>
 #}
@@ -89,9 +78,8 @@
 
                 <ul>
                     <li><a href="/docs/wamp">WampServer</a></li>
-                    <li><a href="/docs/sessions">SessionProvider</a></li>
-                    <li>Your app class implementing <a href="/api/class-Ratchet.MessageComponentInterface.html">MessageComponentInterface</a></li>
-                    <li><a rel="external" href="https://github.com/cboden/Ratchet-examples/blob/master/src/Ratchet/Cookbook/MessageLogger.php">MessageLogger</a> (found in example repo)</li>
+                    <li>Your app class implementing <a href="/api/class-Ratchet.MessageComponentInterface.html">MessageComponentInterface</a> or <a href="/api/class-Ratchet.WebSocket.MessageComponentInterface.html">WebSocket\MessageComponentInterface</a> for binary message support.</li>
+                    <li><a rel="external" href="https://github.com/cboden/Ratchet-examples/blob/master/src/Cookbook/MessageLogger.php">MessageLogger</a> (found in example repo)</li>
                 </ul>
             </section>
 
@@ -100,6 +88,7 @@
 
                 <ul>
                     <li><a href="/docs/http">HttpServer</a></li>
+                    <li><a href="/docs/sessions">SessionProvider</a></li>
                 </ul>
             </section>
 
@@ -113,7 +102,6 @@ use Ratchet\Http\HttpServer;
 use Ratchet\Server\IoServer;
 
     $ws = new WsServer(new MyChat);
-    $ws->disableVersion(0); // old, bad, protocol version
 
     // Make sure you're running this as root
     $server = IoServer::factory(new HttpServer($ws));
