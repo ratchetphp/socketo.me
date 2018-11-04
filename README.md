@@ -3,12 +3,10 @@
 This is a bit messy, if you're good at cleaning it up, please submit a PR!
 
 Steps to get the site running:
-* Run `cp .htaccess.example .htaccess` and replace "socketo.me" with what ever your local URL is for the site
-* Run `composer.phar install` in the repository directory
-* Run `make`
-
-This is assuming you're using Apache.  The .htaccess is re-writing to ignore the root directory and look at /web as the root. 
-The demo requires a couple external libraries loaded by composer, the Makefile moves in /web to be publically accessible. 
+* Run 'npm install'
+* Run `composer install` in the repository directory
+* Run `npm run dev/production`
+* Run `composer site build/serve`
 
 ## Documentation
 
