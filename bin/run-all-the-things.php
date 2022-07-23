@@ -25,7 +25,7 @@ use Monolog\Handler\StreamHandler;
     $login->pushHandler($stdout);
     $logout->pushHandler($stdout);
 
-    $app = new App($host);
+    $app = new App($host, 8080, '0.0.0.0');
     $app->route('/chat',
         new MessageLogger(       // Log events in case of "oh noes"
             new ServerProtocol(  // WAMP; the new hotness sub-protocol

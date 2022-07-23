@@ -1,4 +1,10 @@
 build:
+	docker build -t socketome .
+
+run:
+	docker run --rm -it -p 8080:8080 socketome
+
+setup:
 	rm -rf web/vendor
 	mkdir -p web/vendor
 	cp -r vendor/cujojs/when web/vendor/when
