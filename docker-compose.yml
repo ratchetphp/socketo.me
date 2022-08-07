@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  nginx:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile-nginx
+    ports:
+      - "8080:80"
+    networks:
+      - ratchet
+    volumes:
+      - ./web/:/var/www/html/
+      - ./vendor:/var/www/vendor/
+      - ./logs/nginx:/var/log/nginx/
+
+  php:
+    image: php:fpm-alpine
+    networks:
+      - ratchet
+    volumes:
+      - ./web/:/var/www/html/
+      - ./vendor:/var/www/vendor/
+      - ./logs/fpm:/var/log/fpm-php.www.log
+
+
+networks:
+  ratchet:
+    name: ratchet
+    driver: bridge
