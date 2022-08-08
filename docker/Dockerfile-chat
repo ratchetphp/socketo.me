@@ -11,8 +11,6 @@ RUN chmod +x composer.phar
 
 COPY bin bin
 COPY src src
-#COPY views views
-#COPY web web
 COPY composer.json ./
 COPY composer.lock ./
 RUN ./composer.phar install --ansi --no-interaction --prefer-dist -o --no-scripts --no-plugins

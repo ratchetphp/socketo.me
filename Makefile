@@ -1,5 +1,5 @@
 build:
-	docker build -t socketome .
+	docker build -f docker/Dockerfile-chat -t socketome .
 
 run:
 	docker run --rm -it -p 8080:8080 socketome
