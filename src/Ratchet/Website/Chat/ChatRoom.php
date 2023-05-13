@@ -23,8 +23,10 @@ class ChatRoom implements WampServerInterface {
         $conn->Chat->rooms = array();
         $conn->Chat->name  = $conn->WAMP->sessionId;
 
-        if (isset($conn->WebSocket)) {
-            $conn->Chat->name = $this->escape($conn->WebSocket->request->getCookie('name'));
+        if (isset($conn->httpRequest)) {
+            $raw_cookie = $conn->httpRequest->getHeader('cookie')[0];
+            parse_str(strtr($raw_cookie, array('&' => '%26', '+' => '%2B', ';' => '&')), $cookies);
+            $conn->Chat->name = $cookies['name'];
 
             if (empty($conn->Chat->name)) {
                 $conn->Chat->name  = 'Anonymous ' . $conn->resourceId;

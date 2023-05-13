@@ -1,11 +1,12 @@
 <?php
-// Dear FIG: Thank you for PSR-0!
 use Ratchet\App;
 use Ratchet\Wamp\ServerProtocol;
 
 use Ratchet\Website\Chat\Bot;
 use Ratchet\Website\Chat\ChatRoom;
 use Ratchet\Website\MessageLogger;
+
+use React\EventLoop\Loop;
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
@@ -25,7 +26,7 @@ use Monolog\Handler\StreamHandler;
     $login->pushHandler($stdout);
     $logout->pushHandler($stdout);
 
-    $app = new App($host);
+    $app = new App($host, 8080, '0.0.0.0');
     $app->route('/chat',
         new MessageLogger(       // Log events in case of "oh noes"
             new ServerProtocol(  // WAMP; the new hotness sub-protocol
@@ -37,6 +38,19 @@ use Monolog\Handler\StreamHandler;
             , $logout
         )
     );
+
+    Loop::addSignal(SIGINT, $func = function ($signal) use (&$func) {
+        echo 'Received signal: ', (string)$signal, PHP_EOL;
+
+        Loop::removeSignal(SIGINT, $func);
+        Loop::get()->stop();
+    });
+    Loop::addSignal(SIGTERM, $func = function ($signal) use (&$func) {
+        echo 'Received signal: ', (string)$signal, PHP_EOL;
+
+        Loop::removeSignal(SIGTERM, $func);
+        Loop::get()->stop();
+    });
 
     // GO GO GO!
     $app->run();

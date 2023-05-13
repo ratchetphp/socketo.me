@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  nginx:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile-nginx
+    ports:
+      - "80:80"
+    networks:
+      - ratchet
+    volumes:
+      - ./web/:/var/www/html/
+      - ./logs/nginx:/var/log/nginx/
+
+  php:
+    image: php:7.4-fpm-alpine
+    networks:
+      - ratchet
+    volumes:
+      - ./web/:/var/www/html/
+      - ./vendor:/var/www/vendor/
+      - ./views:/var/www/views/
+      - ./src:/var/www/src/
+      - ./logs/fpm:/var/log/fpm-php.www.log
+
+  chat:
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile-chat
+    networks:
+      - ratchet
+    restart: on-failure
+
+networks:
+  ratchet:
+    name: ratchet
+    driver: bridge

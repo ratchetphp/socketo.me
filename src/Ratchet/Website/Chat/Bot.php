@@ -3,7 +3,7 @@ namespace Ratchet\Website\Chat;
 use Ratchet\ConnectionInterface;
 use Ratchet\Wamp\WampServerInterface;
 use Ratchet\Wamp\WampConnection;
-use Guzzle\Http\Message\Request;
+use GuzzleHttp\Psr7\ServerRequest as Request;
 
 class Bot implements WampServerInterface {
     protected $app;
@@ -24,8 +24,7 @@ class Bot implements WampServerInterface {
         $this->wampBot->resourceId = -1;
 
         $this->wampBot->WebSocket = new \StdClass;
-        $this->wampBot->WebSocket->request = new Request('get', '/');
-        $this->wampBot->WebSocket->request->addCookie('name', 'Lonely Bot');
+        $this->wampBot->httpRequest = (new Request('get', '/'))->withHeader('cookie', 'name=Lonely Bot');
 
         $this->wampBot->WAMP = new \StdClass;
         $this->wampBot->WAMP->sessionId =  1;
